@@ -1,0 +1,120 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using MVC_Freelancer.Data;
+using MVC_Freelancer.Data.Models;
+using MVC_Freelancer.Models;
+
+namespace MVC_Freelancer.Controllers
+{
+    public class JobController : Controller
+    {
+        private readonly ApplicationDbContext db;
+        private readonly IWebHostEnvironment webHostEnvironment;
+        private string[] allowedExtention = new[] { "png", "jpg", "jpeg" };
+
+        public JobController(ApplicationDbContext db, IWebHostEnvironment webHostEnvironment)
+        {
+            this.db = db;
+            this.webHostEnvironment = webHostEnvironment;
+        }
+
+        public IActionResult Index()
+        {
+            var model = db.Jobs.Select(x => new InputJobModel
+            {
+                Name = x.Name,
+                Id = x.Id,
+                ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}", //четене на снимката от базата данни
+            }
+             ).ToList();
+            return View(model);
+        }
+        [HttpGet]
+        public IActionResult Add()
+        {
+            //
+            var categories = db.Categories.Select(x => new SelectListItem
+            {
+                Text = x.Name,
+                Value = x.Id.ToString()
+            }).ToList();
+            InputJobModel model = new InputJobModel
+            {
+                Categories = categories
+            };
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult Add(InputJobModel model)
+        {
+            //Добавяне на 1 обява в базата данни
+            var job = new Job
+            {
+                Name = model.Name,
+                DeadLine = model.DeadLine,
+                Price = model.Price,
+                CategoryId = model.CategoryId,
+                Description = model.Description,
+                Progress = model.Progress,
+
+            };
+            // от името на прикачения файл получаваме неговото разширение   .png
+            var extention = Path.GetExtension(model.Image.FileName).TrimStart('.');
+            //създаваме обект, който ще се запише в БД
+            var image = new Image
+            {
+                Extention = extention
+            };
+            string path = $"{webHostEnvironment.WebRootPath}/img/{image.Id}.{extention}";
+
+            using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate))
+            {
+                model.Image.CopyTo(fs);
+            }
+            job.Images.Add(image);
+            //foreach (var item in model.Needs)
+            //{
+            //    var need = db.Needs.FirstOrDefault(x => item.Name == x.Name);
+            //    if (need == null)
+            //    {
+            //        need = new Need
+            //        {
+            //            Name = item.Name,
+            //        };
+            //    }
+
+            //    job.Needs.Add(new JobNeed
+            //    {
+            //        Need = need,
+            //        Description = item.Description
+            //    });
+            //}
+            db.Jobs.Add(job);
+            db.SaveChanges();
+
+            return this.Redirect("/");
+        }
+        public IActionResult ById(int id)
+        {
+            var model = db.Jobs.Where(x => id == x.Id).Select(x => new InputJobModel
+            {
+                //otlyavo modeli otdyasno bazatadanni
+                Name = x.Name,
+                DeadLine = x.DeadLine,
+                Price = x.Price,
+                CategoryId = x.CategoryId,
+                Description = x.Description,
+                Progress = x.Progress,
+                ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}",
+                Needs = x.Needs.Select(x => new InputJobNeedModel
+                {
+                    Name = x.Need.Name,
+                    Description = x.Description
+                }).ToList()
+            }).FirstOrDefault();
+            //var category = db.Categories.Where(x => model.CategoryId == x.Id).FirstOrDefault();
+            return this.View(model);
+        }
+    }
+}

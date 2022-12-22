@@ -1,0 +1,112 @@
+﻿@model IEnumerable<MVC_Freelancer.Models.InputJobModel>
+
+@*<div class="bg" ></div>*@
+
+<div class="btn-group">
+    <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Добави обява</button>
+    <ul class="dropdown-menu" style="">
+        <li><a class="dropdown-item" href="#">Търся работа</a></li>
+        <li><a class="dropdown-item" asp-controller="Job" asp-action="Add">Предлагам работа</a></li>
+    </ul>
+</div>
+<hr />
+
+<h3>Услуги</h3>
+
+<div class=" d-flex flex-wrap justify-content-around">
+
+    <div class="category-cards">
+        <i class="bi bi-bug float-left"></i>
+        <h5 class="category-card-names"><b>Фиксиране на грешки</b> </h5>
+    </div>
+
+    <div class="category-cards">
+        <i class="bi bi-brush float-left"></i>
+        <h4 class="category-card-names"><b>Уеб дизайн </b></h4>
+    </div>
+
+    <div class="category-cards">
+        <i class="bi bi-display float-left"></i>
+        <h4 class="category-card-names"><b> Уеб приложения</b></h4>
+    </div>
+
+    <div class="category-cards">
+        <i class="bi bi-camera2 float-left"></i>
+        <h4 class="category-card-names"><b>Фотошоп услуги</b></h4>
+    </div>
+</div>
+<hr />
+
+
+<div class=" d-flex flex-wrap justify-content-around">
+    @foreach (var item in Model)
+    {
+        <div class="card" style="width: 18rem;margin-bottom:15px;">
+            <img id="job-img" class="card-img-top" src="@item.ImgURL">
+            <div class="card-body ">
+                <h5 class="card-title d-flex justify-content-center">@item.Name</h5>
+                <h5 class="card-title d-flex justify-content-center">@item.Price</h5>
+                <p class="card-text d-flex justify-content-center">@item.Description</p>
+                <a asp-action="ById" asp-route-id="@item.Id" class="btn btn-primary d-flex justify-content-center">Подробности</a>
+                @*<a asp-action="ById" asp-route-id="@item.Id">@item.Name</a>*@
+
+            </div>
+        </div>
+    }
+
+</div>
+
+
+
+<style>
+    .card:hover {
+        box-shadow: 1px 8px 20px grey;
+        -webkit-transition: box-shadow .2s ease-in;
+    }
+
+    .btn {
+        background-color: #d9232d;
+        border-color: #d9232d;
+    }
+
+        .btn:hover {
+            background-color: #dd5057;
+            border-color: #dd5057;
+        }
+
+    #job-img {
+        height: 200px;
+    }
+
+    .category-cards {
+        width: 260px;
+        height: 110px;
+        background-color: #fff6f6;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        font-family: "Open Sans", sans-serif;
+        display:grid;
+        place-items:center;
+    }
+
+    .category-cards:hover {
+            color: #d9232d;
+            transition:ease-in-out 0.01s;
+            cursor:pointer;
+        }
+
+    .float-left {
+        float: left;
+    }
+    .bi {
+        color: #d9232d;
+        font-size: 34px;
+        margin-right: 10px;
+        margin-left: 8px;
+    }
+
+    .category-card-names
+    {
+        padding-top:11px;
+    }
+</style>
