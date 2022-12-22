@@ -1,5 +1,53 @@
 ﻿@model MVC_Freelancer.Models.InputJobModel
 
-<img src="@Model.ImgURL" style="width:800px;">
-<h2 class="item-title">@Model.Name</h2>
-<p>@Model.Price</p>
+<div >
+
+    <div >
+        <h2 class="item-title">@Model.Name</h2>
+        <img src="@Model.ImgURL" style="width:600px;">
+        <p>@Model.Price</p>
+        <p>@Model.DeadLine.Year</p>
+        <p>@Model.Progress</p>
+        <p>@Model.Description</p>
+    </div>
+
+    <div id="info" class="float-right">
+        <p>Крайна дата: @Model.DeadLine</p>
+        <p>Цена: @Model.Price лв.</p>
+        <p>@Model.Description</p>
+        <hr>
+        <p><i class="bi bi-check"></i> Слайдъри</p>
+        <p><i class="bi bi-check"></i> Админ панел</p>
+        <p><i class="bi bi-check"></i> Хостване</p>
+        <p><i class="bi bi-check"></i> Над 20 страници</p>
+        <a class="btn  d-flex justify-content-center">Приеми</a>
+    </div>
+</div>
+
+<style>
+    #info {
+        width: 300px;
+        height: auto;
+        background-color: white;
+        align-items: center;
+        /*float: right;*/
+    }
+
+    .btn {
+        background-color: #d9232d;
+        border-color: #d9232d;
+        width: 200px;
+        color: white;
+    }
+
+        .btn:hover {
+            background-color: #dd5057;
+            border-color: #dd5057;
+        }
+
+    .bi {
+        font-size: 23px;
+        color: #6dce6a;
+        padding-top: 20px;
+    }
+</style>
