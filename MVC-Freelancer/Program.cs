@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MVC_Freelancer.Data;
@@ -27,6 +28,11 @@ namespace MVC_Freelancer
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
+            //builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            //    .AddCookie(x=>
+            //    {
+            //        x.LogoutPath = "/Home/index/";
+            //    });
             if (app.Environment.IsDevelopment())
             {
                 app.UseMigrationsEndPoint();

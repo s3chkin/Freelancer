@@ -101,6 +101,7 @@ namespace MVC_Freelancer.Controllers
             {
                 //otlyavo modeli otdyasno bazatadanni
                 Name = x.Name,
+                CategoryName = x.Categories.Name,
                 DeadLine = x.DeadLine,
                 Price = x.Price,
                 CategoryId = x.CategoryId,
@@ -115,6 +116,14 @@ namespace MVC_Freelancer.Controllers
             }).FirstOrDefault();
             //var category = db.Categories.Where(x => model.CategoryId == x.Id).FirstOrDefault();
             return this.View(model);
+        }
+
+        public IActionResult Delete(int id)
+        {
+            var job = db.Categories.Where(s => s.Id == id).FirstOrDefault(); //търсене
+            db.Categories.Remove(job);
+            db.SaveChanges();
+            return this.RedirectToAction("Index");
         }
     }
 }

@@ -1,36 +1,55 @@
 ﻿@model MVC_Freelancer.Models.InputJobModel
 
-<div >
-
-    <div >
-        <h2 class="item-title">@Model.Name</h2>
-        <img src="@Model.ImgURL" style="width:600px;">
-        <p>@Model.Price</p>
-        <p>@Model.DeadLine.Year</p>
-        <p>@Model.Progress</p>
-        <p>@Model.Description</p>
+<div class="d-flex justify-content-center">
+    <div class="float-left" id="container">
+        <img src="@Model.ImgURL" style="width:100%;">
+        <br><br>
+        <h3><b>За обявата</b></h3>
+        <br>
+        <h5 class="item-title">@Model.Name</h5>
+        <br>
+        <p style="color: #8b95a1;">@Model.Description</p>
     </div>
 
-    <div id="info" class="float-right">
+    <div class="float-left" id="info">
         <p>Крайна дата: @Model.DeadLine</p>
         <p>Цена: @Model.Price лв.</p>
-        <p>@Model.Description</p>
+        <p>Категория: @Model.CategoryId</p>
         <hr>
         <p><i class="bi bi-check"></i> Слайдъри</p>
         <p><i class="bi bi-check"></i> Админ панел</p>
         <p><i class="bi bi-check"></i> Хостване</p>
         <p><i class="bi bi-check"></i> Над 20 страници</p>
-        <a class="btn  d-flex justify-content-center">Приеми</a>
+        <a class="btn d-flex justify-content-center">Приеми</a>
+
     </div>
 </div>
 
+
+
 <style>
+    #container {
+        width: 700px;
+        background-color: #fff;
+        border: 1px solid #eaedf2;
+        padding: 25px 25px 20px;
+
+    }
+
     #info {
-        width: 300px;
-        height: auto;
-        background-color: white;
-        align-items: center;
-        /*float: right;*/
+        width: 393px;
+        background-color: #fff;
+        border: 1px solid #eaedf2;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        margin-bottom: 16px;
+        margin-left:40px;
+        height:400px;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top:20px;
+
     }
 
     .btn {
