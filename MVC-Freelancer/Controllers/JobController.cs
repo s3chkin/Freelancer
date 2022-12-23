@@ -101,7 +101,7 @@ namespace MVC_Freelancer.Controllers
             {
                 //otlyavo modeli otdyasno bazatadanni
                 Name = x.Name,
-                CategoryName = x.Categories.Name,
+                //CategoryName = x.Categories.Name,
                 DeadLine = x.DeadLine,
                 Price = x.Price,
                 CategoryId = x.CategoryId,

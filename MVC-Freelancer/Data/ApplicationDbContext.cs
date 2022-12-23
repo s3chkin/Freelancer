@@ -16,5 +16,6 @@ namespace MVC_Freelancer.Data
         public DbSet<Image> Images { get; set; }
         public DbSet<Need> Needs { get; set; }
         public DbSet<JobNeed> JobNeeds { get; set; }
+        public DbSet<AppUser> AppUser { get; set; }
     }
 }
