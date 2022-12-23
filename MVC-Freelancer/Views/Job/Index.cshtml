@@ -3,7 +3,7 @@
 @*<div class="bg" ></div>*@
 
 <div class="btn-group">
-    <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Добави обява</button>
+    <button type="button" class="site-btn  dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Добави обява</button>
     <ul class="dropdown-menu" style="">
         <li><a class="dropdown-item" href="#">Търся работа</a></li>
         <li><a class="dropdown-item" asp-controller="Job" asp-action="Add">Предлагам работа</a></li>
@@ -68,7 +68,7 @@
                 <h5 class="card-title d-flex justify-content-center">@item.Name</h5>
                 <h5 class="card-title d-flex justify-content-center">@item.Price</h5>
                 <p class="card-text d-flex justify-content-center">@item.Description</p>
-                <a asp-action="ById" asp-route-id="@item.Id" class="btn btn-primary d-flex justify-content-center">Подробности</a>
+                <a asp-action="ById" asp-route-id="@item.Id" class="site-btn d-flex justify-content-center">Подробности</a>
                 @*<a asp-action="ById" asp-route-id="@item.Id">@item.Name</a>*@
 
             </div>
@@ -159,14 +159,27 @@
             transition: .2s;
         }
 
-    .btn {
+    .site-btn {
         background-color: #d9232d;
         border-color: #d9232d;
+        display: inline-block;
+        font-weight: 400;
+        line-height: 1.5;
+        text-align: center;
+        text-decoration: none;
+        vertical-align: middle;
+        cursor: pointer;
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        border-radius: 0.25rem;
+        transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        color:white;
     }
 
-        .btn:hover {
+        .site-btn:hover {
             background-color: #dd5057;
             border-color: #dd5057;
+            color:white;
         }
 
     #job-img {
