@@ -118,10 +118,40 @@ namespace MVC_Freelancer.Controllers
             return this.View(model);
         }
 
+        public IActionResult Edit(int id)
+        {
+
+            var job = db.Jobs.Where(s => s.Id == id).FirstOrDefault();
+            var model = new InputJobModel
+            {
+                Id = job.Id,
+                Name = job.Name,
+                DeadLine = job.DeadLine,
+                Description = job.Description,
+                Price = job.Price,
+                Categories = (List<SelectListItem>)job.Categories,
+            };
+            return this.View(model);
+        }
+        [HttpPost]
+        public IActionResult Edit(InputJobModel model) //update
+        {
+            var job = db.Jobs.Where(s => s.Id == model.Id).FirstOrDefault(); //търсене
+            job.Id = model.Id;
+            job.Name = model.Name;
+            job.DeadLine = model.DeadLine;
+            job.Description = model.Description;
+            job.Price = model.Price;
+            job.Categories = (ICollection<Category>)model.Categories;
+            //job.Images = (ICollection<Image>)model.Image;
+            db.SaveChanges();
+            return this.RedirectToAction("Index");
+        }
+
         public IActionResult Delete(int id)
         {
-            var job = db.Categories.Where(s => s.Id == id).FirstOrDefault(); //търсене
-            db.Categories.Remove(job);
+            var job = db.Jobs.Where(s => s.Id == id).FirstOrDefault(); //търсене
+            db.Jobs.Remove(job);
             db.SaveChanges();
             return this.RedirectToAction("Index");
         }

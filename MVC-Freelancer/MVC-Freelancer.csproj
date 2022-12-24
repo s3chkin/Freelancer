@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Controllers\JobController.cs~RFe4b99ba.TMP" />
     <None Remove="Views\Job\Add.cshtml~RFaa8a534.TMP" />
   </ItemGroup>
 

@@ -39,5 +39,13 @@ namespace MVC_Freelancer.Controllers
             db.SaveChanges();
             return this.Redirect("Index");
         }
+
+        public IActionResult Delete(int id)
+        {
+            var job = db.Categories.Where(s => s.Id == id).FirstOrDefault(); //търсене
+            db.Categories.Remove(job);
+            db.SaveChanges();
+            return this.RedirectToAction("Index");
+        }
     }
 }

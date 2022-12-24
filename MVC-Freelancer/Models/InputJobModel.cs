@@ -18,5 +18,6 @@ namespace MVC_Freelancer.Models
         public List<SelectListItem> Categories { get; set; }
         public List<InputJobNeedModel> Needs { get; set; }
         public string ImgURL { get; set; }
+
     }
 }
