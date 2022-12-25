@@ -1,8 +1,305 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model IEnumerable<MVC_Freelancer.Models.InputJobModel>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<section class="header-section home-one">
+    <header class="header-area">
+    </header>
+    <div class="container">
+        <div class="row section-gap header-content">
+            <div class="col-lg-7 col-md-8 header-text-wrap">
+                <h1>
+                    Запознайте се с "работния" модел на бъдещето още днес.
+                </h1>
+                <p>
+                    Покажи си таланта и печели пари <br>
+                    или открий други таланти и те за да печелят пари.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Start services section -->
+<section class="services-section section-gap home-one">
+    <div class="container">
+        <div class="row d-flex justify-content-center section-title">
+            <div class="col-lg-6 col-md-8 col-12">
+                <h1>
+                    Всякакви ИТ услуги 
+                    за теб  
+                </h1>
+                <p>
+                    Избираш ти - или си шефа, или си имаш шеф. Зависи от теб, ако имаш нижда от услуги,
+                    значи си шеф. Най-добрата българска онлайн работна среда.
+                </p>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-4 col-md-6 col-12">
+                <div data-tilt class="single-service text-center">
+                    <img src="./ImageRepository/s1.png" =>
+                    <h4>Онлайн маркетинг</h4>
+                    <p>
+                        Практика да се използват уеб-базирани канали, за да се 
+                        разпространи съобщение за ИТ сферата.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-12">
+                <div class="single-service text-center">
+                    <img src="./ImageRepository/s2.png" =>
+                    <h4>SEO Service</h4>
+                    <p>
+                        Finished her are its honoured drawings nor. Pretty see mutual thrown all not edward Particular
+                        anboisterous up.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-12">
+                <div class="single-service text-center">
+                    <img src="./ImageRepository/s3.png" =>
+                    <h4>Уеб разраотка</h4>
+                    <p>
+                        Too cultivated use solicitude frequently. Dashwood likewise up consider continue entrance.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End services section -->
+
+
+<div class="btn-group">
+    <button type="button" class="site-btn  dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Добави обява</button>
+    <ul class="dropdown-menu" style="">
+        <li><a class="dropdown-item" href="#">Търся работа</a></li>
+        <li><a class="dropdown-item" asp-controller="Job" asp-action="Add">Предлагам работа</a></li>
+    </ul>
 </div>
+<hr />
+<div class="d-flex justify-content-center boxContainer">
+
+    <div class="boxes float-left" style=" margin-right: 15px;">
+        <p style="margin-left:20px;margin-right:20px;"><b>Създай заявка</b> по най-лесния начин</p>
+        <img class="box-img" src="~/ImageRepository/undraw_Investor_update_re_qnuu.png">
+        <p class="box-text">Имаш проблем с намирането на работник или Freelancer, който търсиш? </p>
+        <button class="box-btn"><b>Създай заявка</b></button>
+    </div>
+
+    <div class="boxes float-left" style=" margin-right: 15px;">
+        <p style="margin-left:20px;margin-right:20px;"><b>Стани Freelancer</b>, работи по най-свободния начин</p>
+        <img class="box-img" src="~/ImageRepository/undraw_Freelancer_re_irh4.png">
+        <p class="box-text">Имаш нужда от работа, но не знаеш от къде и как да започнeш? Ние сме тук, за да ти помогнем.</p>
+        <button class="box-btn"><b>Стани Freelancer</b></button>
+    </div>
+
+    <div class="boxes">
+        <p style="margin-left:30px;margin-right:30px;"><b>Намери си Freelancer</b>, който да ти върши услуги</p>
+        <img class="box-img" src="~/ImageRepository/undraw_Join_re_w1lh.png">
+        <p class="box-text">Имаш нужда от работник, но не знаеш от къде и как да го намериш? Ние сме тук, за да ти помогнем.</p>
+        <button class="box-btn"><b>Намери Freelancer</b></button>
+    </div>
+</div>
+
+<section class="info-two-section section-gap home-one">
+    <div class="container-fluid">
+        <div class="row d-flex align-items-center position-relative">
+            <img class="pattern" src="~/ImageRepository/info2-pattern.png" alt=>
+            <div class="col-lg-6 col-md-10 col-12 info-left">
+                <div class="info-left-wrap">
+                    <h1>
+                        Growth strategy with <br>
+                        robust implementation
+                    </h1>
+                    <p class="sub-text">
+                        There are many variations of passages of passage available the
+                        majority you are going rassing to use a passage of you need to
+                        sure versions over the years.
+                    </p>
+                    <div class="row bottom-txt-wrap">
+                        <div class="col-md-6 col-12 single-bottom-wrap">
+                            <img src="~/ImageRepository/i5.png" alt=>
+                            <h4>Innovative Ideas</h4>
+                            <p>Must you with him from him her were more. In eldest be it result should remark.</p>
+                        </div>
+                        <div class="col-md-6 col-12 single-bottom-wrap">
+                            <img src="~/ImageRepository/i6.png" alt=>
+                            <h4>Certified Solutions</h4>
+                            <p>Unpleasant especially assistance sufficient he comparison so inquietude.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 info-right">
+                <img src="~/ImageRepository/i2.png" alt=>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<br>
+<div class="d-flex justify-content-center">
+    <div>
+        <div class="float-left" style="width:550px; margin-right:30px;">
+            <i style="font-size:20px; color:black;" class="bi bi-check2-circle"><b> Бърза и качествена работа</b> </i>
+            <p style="font-size:18px;">Намерете правилния фрийлансър, за да започнете да работите по вашия проект в рамките на минути.</p>
+            <br>
+            <i style="font-size:20px;  color:black;" class="bi bi-check2-circle"><b> Защитено плащане </b></i>
+            <p style="font-size:18px;">Плащанията се извършат по най-защитения начин. Личните данни остават запазени.</p>
+            <br>
+            <i style="font-size:20px;  color:black; padding-right:20px;" class="bi bi-check2-circle"><b> За всеки бюджет</b> </i>
+            <p style="font-size:18px;">Намерете висококачествени услуги на всяка цена. С безопасно и сигурно плащане.</p>
+
+        </div>
+    </div>
+    <img width="550px;" src="~/ImageRepository/entrepreneur-593362_1920.jpg">
+</div>
+<br>
+<br>
+<br>
+
+<!-- Start team section -->
+<section class="team-section section-gap">
+    <div class="container">
+        <h1 class="title text-center">
+            We’r dynamic team of talented people <br>
+            of innovative & marketing expert.
+        </h1>
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-3 col-md-6">
+                <div class="single-team">
+                    <div class="thumb">
+                        <img class="img-fluid" src="/ImageRepository/t1.jpg" alt="">
+                    </div>
+                    <div class="details text-center yellow">
+                        <h4>Магдален Попов</h4>
+                        <p>Уеб разработчик</p>
+                        <ul>
+                            <li><a href="http://facebook.com/"><i class="bi bi-facebook"></i></a></li>
+                            <li><a href="http://twitter.com/"><i class="bi bi-twitter"></i></a></li>
+                            <li><a href="http://instagram.com/"><i class="bi bi-instagram"></i></a></li>
+                            <li><a href="http://linkedin.com/"><i class="bi bi-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="single-team">
+                    <div class="thumb">
+                        <img src="/ImageRepository/t2.jpg" alt="">
+                    </div>
+                    <div class="details text-center purple">
+                        <h4>Катерина Климентска</h4>
+                        <p>Разработчик на приложения</p>
+                        <ul>
+                            <li><a href="http://facebook.com/"><i class="bi bi-facebook"></i></a></li>
+                            <li><a href="http://twitter.com/"><i class="bi bi-twitter"></i></a></li>
+                            <li><a href="http://instagram.com/"><i class="bi bi-instagram"></i></a></li>
+                            <li><a href="http://linkedin.com/"><i class="bi bi-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="single-team">
+                    <div class="thumb">
+                        <img src="/ImageRepository/t3.jpg" alt="">
+                    </div>
+                    <div class="details text-center purple2">
+                        <h4>Филип Сръбсков</h4>
+                        <p>Project Manager</p>
+                        <ul>
+                            <li><a href="http://facebook.com/"><i class="bi bi-facebook"></i></a></li>
+                            <li><a href="http://twitter.com/"><i class="bi bi-twitter"></i></a></li>
+                            <li><a href="http://instagram.com/"><i class="bi bi-instagram"></i></a></li>
+                            <li><a href="http://linkedin.com/"><i class="bi bi-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="single-team">
+                    <div class="thumb">
+                        <img src="/ImageRepository/t4.jpg" alt="">
+                    </div>
+                    <div class="details text-center green">
+                        <h4>Рутер Саламов</h4>
+                        <p>Marketing Manager</p>
+                        <ul>
+                            <li><a href="http://facebook.com/"><i class="bi bi-facebook"></i></a></li>
+                            <li><a href="http://twitter.com/"><i class="bi bi-twitter"></i></a></li>
+                            <li><a href="http://instagram.com/"><i class="bi bi-instagram"></i></a></li>
+                            <li><a href="http://linkedin.com/"><i class="bi bi-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End team section -->
+
+
+
+<style>
+
+
+    #list, a {
+        list-style: none;
+        text-decoration: none;
+    }
+
+        #list li {
+            text-align: center;
+            /* line-height: 50px; */
+            opacity: 0;
+            margin-top: 90px;
+            font-size: 40px;
+            font-weight: 700;
+            margin-right: 20px;
+        }
+
+            #list li:nth-child(2) {
+                animation-delay: 0.5s;
+            }
+
+            #list li:nth-child(3) {
+                animation-delay: 0.9s;
+            }
+
+            #list li:nth-child(4) {
+                animation-delay: 2s;
+            }
+
+
+    @@keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translate3d(0, -30%, 0);
+        }
+
+        to {
+            opacity: 1;
+            transform: translate3d(0, 10%, 10%);
+        }
+
+        0% {
+            top: 0px;
+        }
+
+        25% {
+            top: 200px;
+        }
+
+        75% {
+            top: 50px
+        }
+
+        100% {
+            top: 100px;
+        }
+    }
+
+    }
+</style>

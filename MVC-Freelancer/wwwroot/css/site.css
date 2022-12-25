@@ -16,6 +16,7 @@ html {
 
 body {
     margin-bottom: 60px;
+    padding:0;
     /*background-color: #253a4d;*/
 }
 
@@ -373,13 +374,6 @@ a {
     float: left;
 }
 
-.bi {
-    color: #d9232d;
-    font-size: 34px;
-    margin-right: 10px;
-    margin-left: 8px;
-}
-
 .category-card-names {
     padding-top: 11px;
 }
@@ -468,4 +462,272 @@ a {
 .section-gap {
     padding: 100px 0px;
 }
+/*----------------------------------------*/
+
+/*----------------------------------------*/
+/*  7. Services Section Style
+/*----------------------------------------*/
+.services-section.home-two {
+    background: url(../img/service2-bg.jpg);
+    background-color: #f9fdff;
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding-bottom: 70px;
+}
+
+.services-section .single-service {
+    border: 1px solid #e2eaf6;
+    border-radius: 3px;
+    padding: 40px 25px;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    width: 320px;
+    margin: 0 auto;
+}
+
+    .services-section .single-service:hover {
+        -webkit-box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.1);
+        box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.1);
+        -webkit-transform: scale(1.06);
+        transform: scale(1.06);
+        cursor: pointer;
+    }
+
+    .services-section .single-service img {
+        width: 90px;
+    }
+
+    .services-section .single-service p {
+        margin-bottom: 0px;
+        width: 230px;
+        margin: 0 auto;
+    }
+
+    .services-section .single-service h4 {
+        margin: 0px;
+        padding: 20px 0px;
+    }
+
+.services-section .single-service-two {
+    background: #fff;
+    border: 1px solid #f3f3f3;
+    padding: 30px 40px;
+    margin-bottom: 30px;
+    border-radius: 3px;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+
+    .services-section .single-service-two:hover {
+        cursor: pointer;
+    }
+
+        .services-section .single-service-two:hover .overlay-bg {
+            opacity: 1;
+        }
+
+        .services-section .single-service-two:hover h4,
+        .services-section .single-service-two:hover p,
+        .services-section .single-service-two:hover i {
+            color: #fff !important;
+        }
+
+    .services-section .single-service-two .overlay-bg {
+        -webkit-transition: all 0.2s ease-in-out;
+        transition: all 0.2s ease-in-out;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        opacity: 0;
+        background-image: linear-gradient(-34deg, #5818f5, #a838ff);
+    }
+
+    .services-section .single-service-two h4,
+    .services-section .single-service-two p {
+        margin-bottom: 0px;
+        -webkit-transition: all 0.2s ease-in-out;
+        transition: all 0.2s ease-in-out;
+        position: relative;
+    }
+
+    .services-section .single-service-two i {
+        font-size: 35px;
+        margin-right: 10px;
+        color: #621cf6;
+        position: relative;
+    }
+
+    .services-section .single-service-two p {
+        margin-top: 20px;
+    }
+.section-title {
+    text-align: center;
+    margin-bottom: 80px;
+}
+/*----------------------------------------*/
+
+
+/*  22. Footer Section 
+/*----------------------------------------*/
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.section-gap-top {
+    padding-top: 100px;
+}
+.footer-section.home-one {
+    background: url(../ImageRepository/footer-bg.jpg);
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+    .footer-section.home-one a,
+    .footer-section.home-one h4,
+    .footer-section.home-one p,
+    .footer-section.home-one h1 {
+        color: #fff;
+    }
+
+    .footer-section.home-one .footer-top ul li a:hover {
+        color: #fff !important;
+    }
+
+    .footer-section.home-one .copyright-bottom {
+        border-top: 1px solid #eee3;
+    }
+
+.footer-section.home-two {
+    background: #f6f8fc;
+    padding-top: 150px;
+}
+
+    .footer-section.home-two .footer-top ul li a:hover {
+        color: #333 !important;
+    }
+
+    .footer-section.home-two .social-lists li a {
+        border-color: #333 !important;
+    }
+
+    .footer-section.home-two .copyright-bottom {
+        border-top: 1px solid #ead7ff;
+    }
+
+        .footer-section.home-two .copyright-bottom ul li a {
+            color: #6a7c92;
+            border-color: #6a7c92;
+        }
+
+            .footer-section.home-two .copyright-bottom ul li a:hover {
+                color: #621cf6 !important;
+            }
+
+.footer-section .footer-top ul li a:hover {
+    color: #fff !important;
+}
+
+.footer-section .footer-top .wiget-title,
+.footer-section .footer-top .footer-logo {
+    margin-bottom: 20px;
+}
+
+.footer-section .footer-top .social-lists {
+    margin-top: 30px;
+}
+
+    .footer-section .footer-top .social-lists li {
+        display: inline-block;
+    }
+
+        .footer-section .footer-top .social-lists li a {
+            font-size: 14px;
+            border: 1px solid #fff;
+            padding: 8px 10px;
+            border-radius: 20px;
+            margin-right: 5px;
+        }
+
+.footer-section .footer-bottom {
+    padding-bottom: 50px;
+}
+
+    .footer-section .footer-bottom .btn-style {
+        color: #fff;
+        padding: 0px 20px;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+        margin-left: -8px;
+        z-index: 999;
+    }
+
+    .footer-section .footer-bottom .form-control {
+        background: #68b6fd;
+        border-color: #8fc3ff;
+        color: #fff;
+        border-radius: 3px;
+        font-size: 14px;
+        padding: 20px;
+    }
+
+        .footer-section .footer-bottom .form-control:focus {
+            -webkit-box-shadow: none;
+            box-shadow: none;
+        }
+
+        .footer-section .footer-bottom .form-control::-webkit-input-placeholder {
+            color: #fff;
+        }
+
+        .footer-section .footer-bottom .form-control:-ms-input-placeholder {
+            color: #fff;
+        }
+
+        .footer-section .footer-bottom .form-control::-ms-input-placeholder {
+            color: #fff;
+        }
+
+        .footer-section .footer-bottom .form-control::placeholder {
+            color: #fff;
+        }
+
+.footer-section .copyright-bottom {
+    padding: 20px 0px;
+}
+
+    .footer-section .copyright-bottom p {
+        margin-bottom: 0px;
+    }
+
+    .footer-section .copyright-bottom ul {
+        text-align: right;
+    }
+
+        .footer-section .copyright-bottom ul li {
+            display: inline-block;
+        }
+
+            .footer-section .copyright-bottom ul li:first-child a {
+                border: none;
+                margin-left: 0;
+                padding-left: 0;
+            }
+
+            .footer-section .copyright-bottom ul li a {
+                -webkit-transition: all .5s ease-in-out;
+                transition: all .5s ease-in-out;
+                margin-left: 10px;
+                padding-left: 10px;
+                border-left: 1px solid #fff;
+            }
+
 /*----------------------------------------*/
