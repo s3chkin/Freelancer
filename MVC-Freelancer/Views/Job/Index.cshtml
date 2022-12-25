@@ -10,7 +10,26 @@
 </div>*@
 @*<img src="~/ImageRepository/pexels-fauxels-3183132.jpg">*@
 
-<div style="margin-top:75px;" class="d-flex justify-content-center">
+<section class="header-section home-one">
+        <header class="header-area">
+        </header>
+        <div class="container">
+            <div class="row section-gap header-content">
+                <div class="col-lg-7 col-md-8 header-text-wrap">
+                    <h1>
+                        Запознайте се с "работния" модел на бъдещето още днес.
+                    </h1>
+                    <p>
+                        Покажи си таланта и печели пари <br>
+                        или открий други таланти и те за да печелят пари.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+@*<div style="margin-top:75px;" class="d-flex justify-content-center">
     <div class="float-left">
         <ul id="list" style="color:#d9232d; font-size:50px; " class="d-flex justify-content-center">
             <li style="animation: fadeIn 0.9s ease-in both; width:600px;">Запознайте се с "работния" модел на бъдещето още днес.</li>
@@ -19,7 +38,7 @@
     </div>
 
     <img width="350px;" style="margin-left:20px; animation: fadeIn 1s ease-in both;" src="~/ImageRepository/undraw_co-working_re_w93t.svg">
-</div>
+</div>*@
 
 
 <div class="btn-group">
@@ -54,9 +73,44 @@
     </div>
 </div>
 
+<section class="info-two-section section-gap home-one">
+    <div class="container-fluid">
+      <div class="row d-flex align-items-center position-relative">
+        <img class="pattern" src="~/ImageRepository/info2-pattern.png" alt=>
+        <div class="col-lg-6 col-md-10 col-12 info-left">
+          <div class="info-left-wrap">
+            <h1>Growth strategy with <br>
+              robust implementation</h1>
+            <p class="sub-text">
+              There are many variations of passages of passage available the
+              majority you are going rassing to use a passage of you need to
+              sure versions over the years.
+            </p>
+            <div class="row bottom-txt-wrap">
+              <div class="col-md-6 col-12 single-bottom-wrap">
+                            <img src="~/ImageRepository/i5.png" alt=>
+                <h4>Innovative Ideas</h4>
+                <p>Must you with him from him her were more. In eldest be it result should remark.</p>
+              </div>
+              <div class="col-md-6 col-12 single-bottom-wrap">
+                            <img src="~/ImageRepository/i6.png" alt=>
+                <h4>Certified Solutions</h4>
+                <p>Unpleasant especially assistance sufficient he comparison so inquietude.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-12 info-right">
+                <img src="~/ImageRepository/i2.png" alt=>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
 <h5><i><b>Предлагани:</b></i> </h5>
 
-<div class=" d-flex flex-wrap justify-content-around">
+<div class=" d-flex flex-wrap justify-content-around " >
     @foreach (var item in Model)
     {
         <div class="container float-left" style="margin-top:20px; width:25%;">
@@ -104,153 +158,90 @@
 <br>
 <br>
 <br>
-<h5>Как работи?</h5>
 
-<head>
-    <meta charset='utf-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <title>Snippet - GoSNippets</title>
-    <link href='https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css' rel='stylesheet'>
-    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css' rel='stylesheet'>
-    <style></style>
-    <script type='text/javascript' src=''></script>
-    <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js'></script>
-    <script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js'></script>
-</head>
-
-<section class="pt-5 pb-5">
+<!-- Start team section -->
+<section class="team-section section-gap">
     <div class="container">
-        <div class="row">
-            <div class="col-6">
-                <h3 class="mb-3">Carousel cards title </h3>
+        <h1 class="title text-center">
+            We’r dynamic team of talented people <br>
+            of innovative & marketing expert.
+        </h1>
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-3 col-md-6">
+                <div class="single-team">
+                    <div class="thumb">
+                        <img class="img-fluid" src="/ImageRepository/t1.jpg" alt="">
+                    </div>
+                    <div class="details text-center yellow">
+                        <h4>Magdalen Pappas</h4>
+                        <p>Web Developer</p>
+                        <ul>
+                            <li><a href="http://facebook.com/"><i class="icofont-facebook"></i></a></li>
+                            <li><a href="http://twitter.com/"><i class="icofont-twitter"></i></a></li>
+                            <li><a href="http://instagram.com/"><i class="icofont-instagram"></i></a></li>
+                            <li><a href="http://linkedin.com/"><i class="icofont-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div class="col-6 text-right">
-                <a class="btn btn-primary mb-3 mr-1" href="#carouselExampleIndicators2" role="button" data-slide="prev">
-                    <i class="fa fa-arrow-left"></i>
-                </a>
-                <a class="btn btn-primary mb-3 " href="#carouselExampleIndicators2" role="button" data-slide="next">
-                    <i class="fa fa-arrow-right"></i>
-                </a>
+            <div class="col-lg-3 col-md-6">
+                <div class="single-team">
+                    <div class="thumb">
+                        <img src="/ImageRepository/t2.jpg" alt="">
+                    </div>
+                    <div class="details text-center purple">
+                        <h4>Gertude Clement</h4>
+                        <p>Apps Developer</p>
+                        <ul>
+                            <li><a href="http://facebook.com/"><i class="icofont-facebook"></i></a></li>
+                            <li><a href="http://twitter.com/"><i class="icofont-twitter"></i></a></li>
+                            <li><a href="http://instagram.com/"><i class="icofont-instagram"></i></a></li>
+                            <li><a href="http://linkedin.com/"><i class="icofont-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div class="col-12">
-                <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
-
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <div class="row">
-
-                                <div class="col-md-4 mb-3">
-                                    <div class="card">
-                                        <img class="img-fluid" alt="100%x280" src="https://images.unsplash.com/photo-1532781914607-2031eca2f00d?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=7c625ea379640da3ef2e24f20df7ce8d">
-                                        <div class="card-body">
-                                            <h4 class="card-title">Special title treatment</h4>
-                                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <div class="card">
-                                        <img class="img-fluid" alt="100%x280" src="https://images.unsplash.com/photo-1517760444937-f6397edcbbcd?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=42b2d9ae6feb9c4ff98b9133addfb698">
-                                        <div class="card-body">
-                                            <h4 class="card-title">Special title treatment</h4>
-                                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <div class="card">
-                                        <img class="img-fluid" alt="100%x280" src="https://images.unsplash.com/photo-1532712938310-34cb3982ef74?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=3d2e8a2039c06dd26db977fe6ac6186a">
-                                        <div class="card-body">
-                                            <h4 class="card-title">Special title treatment</h4>
-                                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="row">
-
-                                <div class="col-md-4 mb-3">
-                                    <div class="card">
-                                        <img class="img-fluid" alt="100%x280" src="https://images.unsplash.com/photo-1532771098148-525cefe10c23?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=3f317c1f7a16116dec454fbc267dd8e4">
-                                        <div class="card-body">
-                                            <h4 class="card-title">Special title treatment</h4>
-                                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <div class="card">
-                                        <img class="img-fluid" alt="100%x280" src="https://images.unsplash.com/photo-1532715088550-62f09305f765?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=ebadb044b374504ef8e81bdec4d0e840">
-                                        <div class="card-body">
-                                            <h4 class="card-title">Special title treatment</h4>
-                                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <div class="card">
-                                        <img class="img-fluid" alt="100%x280" src="https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=0754ab085804ae8a3b562548e6b4aa2e">
-                                        <div class="card-body">
-                                            <h4 class="card-title">Special title treatment</h4>
-                                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="row">
-
-                                <div class="col-md-4 mb-3">
-                                    <div class="card">
-                                        <img class="img-fluid" alt="100%x280" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=ee8417f0ea2a50d53a12665820b54e23">
-                                        <div class="card-body">
-                                            <h4 class="card-title">Special title treatment</h4>
-                                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <div class="card">
-                                        <img class="img-fluid" alt="100%x280" src="https://images.unsplash.com/photo-1532777946373-b6783242f211?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=8ac55cf3a68785643998730839663129">
-                                        <div class="card-body">
-                                            <h4 class="card-title">Special title treatment</h4>
-                                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <div class="card">
-                                        <img class="img-fluid" alt="100%x280" src="https://images.unsplash.com/photo-1532763303805-529d595877c5?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=5ee4fd5d19b40f93eadb21871757eda6">
-                                        <div class="card-body">
-                                            <h4 class="card-title">Special title treatment</h4>
-                                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="single-team">
+                    <div class="thumb">
+                        <img src="/ImageRepository/t3.jpg" alt="">
+                    </div>
+                    <div class="details text-center purple2">
+                        <h4>Fiona Sanborn</h4>
+                        <p>Project Manager</p>
+                        <ul>
+                            <li><a href="http://facebook.com/"><i class="icofont-facebook"></i></a></li>
+                            <li><a href="http://twitter.com/"><i class="icofont-twitter"></i></a></li>
+                            <li><a href="http://instagram.com/"><i class="icofont-instagram"></i></a></li>
+                            <li><a href="http://linkedin.com/"><i class="icofont-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="single-team">
+                    <div class="thumb">
+                        <img src="/ImageRepository/t4.jpg" alt="">
+                    </div>
+                    <div class="details text-center green">
+                        <h4>Ruthe Seaman</h4>
+                        <p>Marketing Manager</p>
+                        <ul>
+                            <li><a href="http://facebook.com/"><i class="icofont-facebook"></i></a></li>
+                            <li><a href="http://twitter.com/"><i class="icofont-twitter"></i></a></li>
+                            <li><a href="http://instagram.com/"><i class="icofont-instagram"></i></a></li>
+                            <li><a href="http://linkedin.com/"><i class="icofont-linkedin"></i></a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+<!-- End team section -->
+
+
+
 <style>
  
 

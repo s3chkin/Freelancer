@@ -6,7 +6,7 @@
 <form style="display:grid; place-items:center;" method="post" enctype="multipart/form-data">
     <div class="form-group">
         <label asp-for="Name" class="control-label">Какво предлагаш?</label>
-        <input asp-for="Name" id="jobInfo" class="form-control" placeholder="Например: Правя сайтове" />
+        <input asp-for="Name" id="jobInfo" class="form-control" placeholder="Например: Сайт за бизнес/ Фиксиране на грешки... " />
         <span asp-validation-for="Name" class="text-danger"></span>
     </div>
 
@@ -18,7 +18,7 @@
 
     <div class="form-group">
         <label asp-for="Price" class="control-label">Цена*</label>
-        <input asp-for="Price" id="jobPrice" class="form-control" />
+        <input asp-for="Price" id="jobPrice" class="form-control"  />
         <span asp-validation-for="Price" class="text-danger"></span>
     </div>
 

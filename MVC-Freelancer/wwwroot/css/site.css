@@ -23,6 +23,39 @@ body {
     height: 100%;
     margin: 0;font-style: normal;
 }*/
+.header-section {
+    overflow: hidden;
+}
+
+    .header-section.home-one {
+        background: url(../ImageRepository/header-bg.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: right;
+        padding-top:85px;
+    }
+
+        .header-section.home-one .header-content {
+            padding: 150px 0px;
+        }
+
+            .header-section.home-one .header-content .header-text-wrap h1,
+            .header-section.home-one .header-content .header-text-wrap p,
+            .header-section.home-one .header-content .header-text-wrap a {
+                color: #fff;
+            }
+
+            .header-section.home-one .header-content .header-text-wrap h1 {
+                font-size: 60px;
+                font-weight: 700;
+                margin-bottom: 0px;
+            }
+
+            .header-section.home-one .header-content .header-text-wrap p {
+                font-weight: 600;
+                margin-bottom: 0px;
+                padding: 30px 0px;
+            }
 
 .site-btn {
     background-color: #d9232d;
@@ -53,57 +86,65 @@ nav {
     padding-left: 110px;
     padding-right: 110px;
     background-color: #fdd156;
-    color:white;
+    color: white;
 }
 
 .nav-item:hover {
     color: #d9232d;
 }
 
-.hero-image {
-    /*background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("~/ImageRepository/pexels-fauxels-3183132.jpg");*/
-    background-image: url("../ImageRepository/entrepreneur-593362_1920.jpg");
-    background-color: red;
-    /*height: 100%;*/
-    /*width:auto;*/
-    /*  background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;*/
-    position: relative;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: grid;
-    justify-items: center;
-    align-items: center;
-    align-content: center;
+
+/*  12. Info-two Section Style
+/*----------------------------------------*/
+.info-two-section {
+    overflow: hidden;
 }
 
-.hero-text {
-    text-align: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-}
-
-    .hero-text button {
-        border: none;
-        outline: 0;
-        display: inline-block;
-        padding: 10px 25px;
-        color: black;
-        background-color: #ddd;
-        text-align: center;
-        cursor: pointer;
+    .info-two-section .pattern {
+        position: absolute;
+        top: 0;
+        width: 225px;
+        left: 50px;
     }
 
-        .hero-text button:hover {
-            background-color: #555;
-            color: white;
+    .info-two-section .info-left .sub-text {
+        width: 455px !important;
+        margin-bottom: 20px;
+    }
+
+    .info-two-section .info-left p {
+        width: 200px;
+    }
+
+    .info-two-section.home-one .info-right {
+        padding-right: 0px;
+    }
+
+        .info-two-section.home-one .info-right img {
+            float: right;
         }
 
+    .info-two-section.home-one .info-left-wrap {
+        max-width: 485px;
+        float: right;
+    }
+
+    .info-two-section.home-one .bottom-txt-wrap img {
+        width: 50px;
+        margin-bottom: 20px;
+    }
+
+    .info-two-section.home-two .info-right-wrap {
+        max-width: 485px;
+    }
+
+    .info-two-section.home-two .info-right .blue-btn {
+        background: #621cf6;
+        border-radius: 30px;
+        padding: 10px 38px;
+    }
+
+/*----------------------------------------*/
 
 
 #list {
@@ -342,3 +383,89 @@ a {
 .category-card-names {
     padding-top: 11px;
 }
+/*  18. Team Section 
+/*----------------------------------------*/
+.team-section {
+    background: url(/ImageRepository/team-bg.jpg);
+    background-size: cover;
+    background-position: center center;
+}
+
+    .team-section .title {
+        color: #fff;
+        margin-bottom: 80px;
+    }
+
+    .team-section .single-team {
+        position: relative;
+        border-radius: 3px;
+        overflow: hidden;
+        -webkit-transform: translateY(0px);
+        transform: translateY(0px);
+        -webkit-transition: all 0.2s ease-in-out;
+        transition: all 0.2s ease-in-out;
+    }
+
+        .team-section .single-team:hover {
+            cursor: pointer;
+            -webkit-box-shadow: 0px 4px 25px rgba(255, 255, 255, 0.22);
+            box-shadow: 0px 4px 25px rgba(255, 255, 255, 0.22);
+            -webkit-transform: translateY(-6px);
+            transform: translateY(-6px);
+        }
+
+        .team-section .single-team .thumb {
+            position: relative;
+        }
+
+            .team-section .single-team .thumb img {
+                width: 100%;
+            }
+
+        .team-section .single-team .details {
+            padding: 20px 0px;
+        }
+
+            .team-section .single-team .details h4,
+            .team-section .single-team .details p {
+                margin-bottom: 0px;
+                color: #fff;
+            }
+
+            .team-section .single-team .details ul {
+                margin-top: 8px;
+            }
+
+                .team-section .single-team .details ul li {
+                    display: inline-block;
+                }
+
+                    .team-section .single-team .details ul li a {
+                        font-size: 18px;
+                        color: #fff;
+                        padding: 5px;
+                    }
+
+                        .team-section .single-team .details ul li a:hover {
+                            color: #fff !important;
+                        }
+
+    .team-section .details.yellow {
+        background: #ffc000;
+    }
+
+    .team-section .details.purple {
+        background: #621cf6;
+    }
+
+    .team-section .details.purple2 {
+        background: #9f34fe;
+    }
+
+    .team-section .details.green {
+        background: #32b46d;
+    }
+.section-gap {
+    padding: 100px 0px;
+}
+/*----------------------------------------*/

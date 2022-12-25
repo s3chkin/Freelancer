@@ -15,6 +15,7 @@
   <ItemGroup>
     <None Remove="Controllers\JobController.cs~RFe4b99ba.TMP" />
     <None Remove="Views\Job\Add.cshtml~RFaa8a534.TMP" />
+    <None Remove="Views\Job\Index.cshtml~RF140ce59b.TMP" />
   </ItemGroup>
 
   <ItemGroup>
