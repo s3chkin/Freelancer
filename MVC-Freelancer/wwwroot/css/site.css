@@ -573,6 +573,34 @@ a {
 
 /*  22. Footer Section 
 /*----------------------------------------*/
+.btn-style {
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    border-radius: 3px;
+    padding: 10px 25px;
+    display: inline-block;
+    background-size: 300% 100%;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    background-color:red;
+    border-style:none;
+}
+.form-control {
+    height:40px;
+    width:350px;
+}
+/*.red-btn {
+    background-image: -webkit-gradient(linear, left top, right top, from(#ff3c68), color-stop(#fa9ba0), color-stop(#fa9ba0), to(#ff3c68));
+    background-image: linear-gradient(to right, #ff3c68, #fa9ba0, #fa9ba0, #ff3c68);
+}*/
+.btn-style:hover {
+    color: #fff !important;
+    background-position: 100% 0;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
 ul {
     margin: 0;
     padding: 0;

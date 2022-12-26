@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] Търсене и предлагане на услуги</title>
-    <link rel="icon" href="~/ImageRepository/Logo.png">
+    <link rel="icon" href="~/ImageRepository/lo">
 
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
@@ -18,11 +18,11 @@
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="assets/css/odometer-theme-default.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
-   
+
 </head>
 <body>
     <header>
-        <nav  class="navbar fixed-top navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar fixed-top navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Фриленсър</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -45,66 +45,102 @@
     </header>
 
 
-    
 
 
-        <main >
-            @RenderBody()
-        </main>
 
-    @*<footer class="footer-section section-gap-top home-one">
+    <main>
+        @RenderBody()
+    </main>
+
+    <footer class="footer-section section-gap-top home-one">
         <div class="container">
             <div class="row footer-top d-flex justify-content-between">
                 <div class="col-lg-4 col-md-6 col-6 footer-widgets">
                     <p>
-                        It is a long established fact that
-                        reader will be distracted the readable
-                        content of a page when looking at its
-                        point of using desktop.
+                        Мечтайте, работете и не се отказвайте 
+                        от мечтите си! НЕ слушайте отрицателните хора и техните коментари,
+                        дори и да са роднини!
                     </p>
                     <ul class="social-lists">
-                        <li><a href="#"><i class="icofont-facebook"></i></a></li>
-                        <li><a href="#"><i class="icofont-twitter"></i></a></li>
-                        <li><a href="#"><i class="icofont-instagram"></i></a></li>
-                        <li><a href="#"><i class="icofont-linkedin"></i></a></li>
+                        <li><a href="#"><i class="bi bi-facebook"></i></a></li>
+                        <li><a href="#"><i class="bi bi-twitter"></i></a></li>
+                        <li><a href="#"><i class="bi bi-instagram"></i></a></li>
+                        <li><a href="#"><i class="bi bi-linkedin"></i></a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2 col-md-6 col-6 footer-widgets">
                     <div class="single-widget">
-                        <h4 class="wiget-title">About</h4>
+                        <h4 class="wiget-title">Основател</h4>
+                        <h3 style="color:white;">Сечкин Рахим</h3>
+                        <p>Bulgaria</p>
+                        <p>Телефон: NULL</p>
+                        <p>G-mail: seckins191@gmail.com</p>
+                        
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 col-6 footer-widgets">
+                    <div class="single-widget">
+                        <h4 class="wiget-title">Услуги</h4>
                         <ul>
-                            <li><a href="#">About us</a></li>
-                            <li><a href="#">Partners</a></li>
-                            <li><a href="#">Career</a></li>
-                            <li><a href="#">Reviews</a></li>
-                            <li><a href="#">Conditions</a></li>
-                            <li><a href="#">Help</a></li>
+                            <li>
+                                <a href=" ">
+                                    <i class="bi bi-chevron-right "></i>Блог сайтове
+                                </a>
+                            </li>
+                            <br>
+                            <li>
+                                <a href=" ">
+                                    <i class="bi bi-chevron-right "></i>Фитнес уеб сайтове
+                                </a>
+                            </li>
+                            <br>
+                            <li>
+                                <a href=" ">
+                                    <i class="bi bi-chevron-right "></i>Строителни уеб сайтове
+                                </a>
+                            </li>
+                            <br>
+                            <li>
+                                <a href=" ">
+                                    <i class="bi bi-chevron-right "></i>Рекламни уеб сайтове
+                                </a>
+                            </li>
+                            <br>
+                            <li>
+                                <a href=" ">
+                                    <i class="bi bi-chevron-right "></i>и други
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-6 col-6 footer-widgets">
                     <div class="single-widget">
-                        <h4 class="wiget-title">Services</h4>
+                        <h4 class="wiget-title">Навигация</h4>
                         <ul>
-                            <li><a href="#">Official lottery</a></li>
-                            <li><a href="#">100% Safe Secure</a></li>
-                            <li><a href="#">Instant Payout </a></li>
-                            <li><a href="#">Performance Bonus</a></li>
-                            <li><a href="#">Dedicated Support</a></li>
-                            <li><a href="#">No commission</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-6 col-6 footer-widgets">
-                    <div class="single-widget">
-                        <h4 class="wiget-title">Company</h4>
-                        <ul>
-                            <li><a href="#">Blog</a></li>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">Customers</a></li>
-                            <li><a href="#">Apps</a></li>
-                            <li><a href="#">Lottery</a></li>
-                            <li><a href="#">Bonues</a></li>
+                            <a href="index.html">
+                            <li><i class="bi bi-chevron-right "></i>Начало</li>
+                            </a>
+                            <br>
+                            <a href="forMe.html">
+                            <li><i class="bi bi-chevron-right "></i>За нас</li>
+                            </a>
+                            <br>
+
+                            <a href="projects.html">
+                            <li><i class="bi bi-chevron-right "></i>Проекти</li>
+                            </a>
+                            <br>
+
+                            <a href="founder.html">
+                            <li><i class="bi bi-chevron-right "></i>Основател</li>
+                            </a>
+                            <br>
+
+                            <a href="contact.html">
+                            <li><i class="bi bi-chevron-right "></i>Контакти</li>
+                            </a>
+
                         </ul>
                     </div>
                 </div>
@@ -112,115 +148,18 @@
             <div class="row footer-bottom section-gap-top d-flex align-items-center">
                 <div class="col-md-6">
                     <h1>
-                        Don't wanna miss Update? <br>
-                        Let us Subscribe.
+                        Бюлетин
                     </h1>
                 </div>
                 <div class="col-md-6">
                     <div class="input-group subscribe-wrap">
-                        <input class="form-control" type="email" placeholder="Enter Your Email">
-                        <button class="btn-style red-btn">Subscribe Now</button>
+                        <input class="form-control" type="email" placeholder="(Не е активен)">
+                        <button class="btn-style red-btn">Готово</button>
                     </div>
                 </div>
             </div>
-            <div class="row copyright-bottom d-flex align-items-center">
-                <div class="col-md-6">
-                    <p><a href="templateshub.net">Templates Hub</a></p>
-                </div>
-                <div class="col-md-6">
-                    <ul>
-                        <li><a href="#">Sitemap</a></li>
-                        <li><a href="#">Privecy Policy</a></li>
-                        <li><a href="#">Terms & Conditions</a></li>
-                    </ul>
-                </div>
-            </div>
+
         </div>
-    </footer>*@
-    <footer class="footer-section section-gap-top home-one">
-            <div class="container">
-                <div class="row footer-top d-flex justify-content-between">
-                    <div class="col-lg-4 col-md-6 col-6 footer-widgets">
-                        <p>
-                            It is a long established fact that
-                            reader will be distracted the readable
-                            content of a page when looking at its
-                            point of using desktop.
-                        </p>
-                        <ul class="social-lists">
-                            <li><a href="#"><i class="icofont-facebook"></i></a></li>
-                            <li><a href="#"><i class="icofont-twitter"></i></a></li>
-                            <li><a href="#"><i class="icofont-instagram"></i></a></li>
-                            <li><a href="#"><i class="icofont-linkedin"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-2 col-md-6 col-6 footer-widgets">
-                        <div class="single-widget">
-                            <h4 class="wiget-title">About</h4>
-                            <ul>
-                                <li><a href="#">About us</a></li>
-                                <li><a href="#">Partners</a></li>
-                                <li><a href="#">Career</a></li>
-                                <li><a href="#">Reviews</a></li>
-                                <li><a href="#">Conditions</a></li>
-                                <li><a href="#">Help</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-6 col-6 footer-widgets">
-                        <div class="single-widget">
-                            <h4 class="wiget-title">Services</h4>
-                            <ul>
-                                <li><a href="#">Official lottery</a></li>
-                                <li><a href="#">100% Safe Secure</a></li>
-                                <li><a href="#">Instant Payout </a></li>
-                                <li><a href="#">Performance Bonus</a></li>
-                                <li><a href="#">Dedicated Support</a></li>
-                                <li><a href="#">No commission</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-6 col-6 footer-widgets">
-                        <div class="single-widget">
-                            <h4 class="wiget-title">Company</h4>
-                            <ul>
-                                <li><a href="#">Blog</a></li>
-                                <li><a href="#">Contact</a></li>
-                                <li><a href="#">Customers</a></li>
-                                <li><a href="#">Apps</a></li>
-                                <li><a href="#">Lottery</a></li>
-                                <li><a href="#">Bonues</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="row footer-bottom section-gap-top d-flex align-items-center">
-                    <div class="col-md-6">
-                        <h1>
-                            Don't wanna miss Update? <br>
-                            Let us Subscribe.
-                        </h1>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="input-group subscribe-wrap">
-                            <input class="form-control" type="email" placeholder="Enter Your Email">
-                            <button class="btn-style red-btn">Subscribe Now</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="row copyright-bottom d-flex align-items-center">
-                    <div class="col-md-6">
-                        <p><a href="templateshub.net">Templates Hub</a></p>
-                    </div>
-                    <div class="col-md-6">
-                        <ul>
-                            <li><a href="#">Sitemap</a></li>
-                            <li><a href="#">Privecy Policy</a></li>
-                            <li><a href="#">Terms & Conditions</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
