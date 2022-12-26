@@ -1,0 +1,140 @@
+﻿@model MVC_Freelancer.Models.InputJobModel
+
+<section class="header-section page-header" style="margin-top:50px;">
+    <div class="container">
+        <div class="row section-gap">
+            <div class="col-md-12">
+                <h1 style="color:white;">За нас</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+@*<div style="margin-top:40px ; margin-bottom:700px;" class="d-flex justify-content-center">
+    <img class="float-left" width="700px;" src="~/ImageRepository/undraw_team_spirit_re_yl1v.svg">
+    <p style="width: 400px; margin-left: 40px;">
+        Аз съм Сечкин, уча в ПГМЕТТ (Професионална гимназия по механотехника, електроника,
+        телекомуникации и транспорт) „Христо Ботев“.
+        Сайтът е изготвен лично от мен. Използвани са някои помощни елементи като
+        снимките и някои елемнети от дизайна. Приложението е програмиран с езиците C#, .Net Core, HTML, CSS
+        и JavaScript. Благодаря на всички учители, които до сега ме учиха и продължават да ме учат.
+        Най-вече на госпожа Н. Йорданова и господин Н. Христов.
+    </p>
+</div>*@
+
+
+<section class="overview-section section-gap">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-12 tab-left">
+                <div class="nav float-left flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <div onclick="forMe()" style="cursor:pointer;">
+                        <a class="nav-link active" id="v-pills-overview-tab" data-toggle="pill" 
+                           aria-controls="v-pills-overview" aria-selected="true">
+                            <img src="~/ImageRepository/aa1.png" alt="">
+                            <h4 style="color:black;">За мен</h4>
+                        </a>
+                    </div>
+                    <br>
+                    <div onclick="forSite()" style="cursor:pointer;">
+                        <a class="nav-link" id="v-pills-mission-tab" data-toggle="pill" 
+                           aria-controls="v-pills-mission" aria-selected="false">
+                            <img src="~/ImageRepository/aa2.png" alt="">
+                            <h4>За сайта</h4>
+                        </a>
+                    </div>
+                    <br>
+                    <div style="cursor:pointer;">
+                        <a class="nav-link" id="v-pills-vision-tab" data-toggle="pill"  
+                           aria-controls="v-pills-vision" aria-selected="false">
+                            <img src="~/ImageRepository/aa3.png" alt="">
+                            <h4>Vission of Xeolit</h4>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-8 col-md-12 tab-right">
+                <div class="tab-content" id="v-pills-tabContent">
+                    <div class="tab-pane fade show active" id="v-pills-overview" role="tabpanel"
+                         aria-labelledby="v-pills-overview-tab">
+                        <h2>
+                            We’ve helped some amazing startups
+                            rebrand, redesign and get to market
+                            to a successful business.
+                        </h2>
+                        <p>
+                            Аз съм Сечкин, уча в ПГМЕТТ (Професионална гимназия по механотехника, електроника,
+                            телекомуникации и транспорт) „Христо Ботев“. Занимавам се с програмиране. На <span id="AdminYears">0</span>
+                            години съм.Обичам да преследвам мечтите и целите си.
+                        </p>
+                        <p>
+                            Благодаря на абсолютно всички учители, които ме научиха и най-вече на госпожа Н. Йорданова и
+                            господин Н. Христов. 
+                        </p>
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-mission" role="tabpanel" aria-labelledby="v-pills-mission-tab">
+                        <h2>
+                            Growth strategy with
+                            robust Implementation.
+                        </h2>
+                        <p>
+                            On the other hand, we denounce with righteous indignation and dislike men who are so beguie
+                            and demoralized by the charms of pleasure of the by desire, that they cannot foresee the pain
+                            and trouble that are bound to ensue; and blame longs to those who fail in their duty through is
+                            weakness of will, which is the same as saying through shrinking from toile and pain these cases
+                            them perfectly and easy to distinguish and blame longs to those who fail in their duty through
+                            weakness of will, which is the same as saying.
+                        </p>
+                        <p>
+                            On the other hand, we denounce with righteous indignation and dislike men who are so beguie
+                            and demoralized by the charms of pleasure of the by desire, that they cannot foresee the pain
+                            and trouble that are bound to ensue;.
+                        </p>
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-vision" role="tabpanel" aria-labelledby="v-pills-vision-tab">
+                        <h2>Provide the best quality services Our Working Process.</h2>
+                        <p>
+                            On the other hand, we denounce with righteous indignation and dislike men who are so beguie
+                            and demoralized by the charms of pleasure of the by desire, that they cannot foresee the pain
+                            and trouble that are bound to ensue; and blame longs to those who fail in their duty through is
+                            weakness of will, which is the same as saying through shrinking from toile and pain these cases
+                            them perfectly and easy to distinguish and blame longs to those who fail in their duty through
+                            weakness of will, which is the same as saying.
+                        </p>
+                        <p>
+                            On the other hand, we denounce with righteous indignation and dislike men who are so beguie
+                            and demoralized by the charms of pleasure of the by desire, that they cannot foresee the pain
+                            and trouble that are bound to ensue;.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+            @*<div>
+            <div id="adminData">
+            <p>
+            Аз съм Сечкин, уча в ПГМЕТТ (Професионална гимназия по механотехника, електроника,
+            телекомуникации и транспорт) „Христо Ботев“. Занимавам се с програмиране. На <span id="AdminYears">a</span>
+            години съм.
+            </p>
+            </div>
+            <div id="webSiteData">
+            <p>
+            Сайтът е програмиран с езиците HTML, CSS, JavaScript, C# и .Net Core.
+            </p>
+            </div>
+            </div>*@
+        </div>
+    </div>
+</section>
+
+
+@section Scripts
+    {
+    <script>
+
+
+    </script>
+}

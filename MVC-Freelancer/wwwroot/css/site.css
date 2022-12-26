@@ -16,7 +16,7 @@ html {
 
 body {
     margin-bottom: 60px;
-    padding:0;
+    padding: 0;
     /*background-color: #253a4d;*/
 }
 
@@ -33,7 +33,7 @@ body {
         background-size: cover;
         background-repeat: no-repeat;
         background-position: right;
-        padding-top:85px;
+        padding-top: 85px;
     }
 
         .header-section.home-one .header-content {
@@ -459,6 +459,7 @@ a {
     .team-section .details.green {
         background: #32b46d;
     }
+
 .section-gap {
     padding: 100px 0px;
 }
@@ -564,6 +565,7 @@ a {
     .services-section .single-service-two p {
         margin-top: 20px;
     }
+
 .section-title {
     text-align: center;
     margin-bottom: 80px;
@@ -573,6 +575,8 @@ a {
 
 /*  22. Footer Section 
 /*----------------------------------------*/
+
+
 .btn-style {
     font-size: 14px;
     font-weight: 600;
@@ -583,12 +587,13 @@ a {
     background-size: 300% 100%;
     -webkit-transition: all .4s ease-in-out;
     transition: all .4s ease-in-out;
-    background-color:red;
-    border-style:none;
+    background-color: red;
+    border-style: none;
 }
+
 .form-control {
-    height:40px;
-    width:350px;
+    height: 40px;
+    width: 350px;
 }
 /*.red-btn {
     background-image: -webkit-gradient(linear, left top, right top, from(#ff3c68), color-stop(#fa9ba0), color-stop(#fa9ba0), to(#ff3c68));
@@ -606,9 +611,11 @@ ul {
     padding: 0;
     list-style: none;
 }
+
 .section-gap-top {
     padding-top: 100px;
 }
+
 .footer-section.home-one {
     background: url(../ImageRepository/footer-bg.jpg);
     background-size: cover;
@@ -822,4 +829,73 @@ ul {
             float: right;
         }
 
+/*----------------------------------------*/
+/*  23. About Us Page Styles
+/*----------------------------------------*/
+.page-header {
+    background: url("../ImageRepository/page-header.jpg");
+    background-size: cover;
+    background-position: right;
+}
+
+
+
+.overview-section .nav-link {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 15px;
+  border: 1px solid #f4f4f4;
+  background: #f7fbfe;
+  padding: 20px;
+}
+
+.overview-section .nav-link:last-child {
+  margin-bottom: 0px;
+}
+
+.overview-section .nav-link:hover {
+  color: #000 !important;
+}
+
+.overview-section .nav-link.active {
+  background: -webkit-gradient(linear, left top, right top, from(#0172d0), to(#19a9fe));
+  background: linear-gradient(to right, #0172d0, #19a9fe);
+}
+
+.overview-section .nav-link.active h4 {
+  color: #fff;
+}
+
+.overview-section .nav-link img {
+  width: 70px;
+}
+
+.overview-section .nav-link h4 {
+  font-size: 20px;
+  margin-bottom: 0px;
+  margin-left: 20px;
+}
+
+.overview-section .tab-pane h2 {
+  font-weight: 700;
+  margin-bottom: 20px;
+  font-size: 28px;
+}
+
+.overview-section .tab-pane p:last-child {
+  margin-bottom: 0px;
+}
+
+.overview-section .tab-right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
 /*----------------------------------------*/

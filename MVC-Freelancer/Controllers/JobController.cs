@@ -156,5 +156,9 @@ namespace MVC_Freelancer.Controllers
             db.SaveChanges();
             return this.RedirectToAction("Index");
         }
+        public IActionResult AboutUs()
+        {
+            return this.View();
+        }
     }
 }

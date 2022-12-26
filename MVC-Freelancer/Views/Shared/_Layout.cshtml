@@ -32,32 +32,36 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Job" asp-action="Index">Начало</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Job" asp-action="Index">Обяви</a>
                         </li>
                         <li class="">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Job" asp-action="Add">Add Job</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Job" asp-action="Add">Добави обява</a>
+                        </li>
+                        <li class="">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Job" asp-action="AboutUs">За нас</a>
+                        </li>
+                        <li class="">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Job" asp-action="Add">Контакти</a>
                         </li>
                     </ul>
+
+
                     <partial name="_LoginPartial" />
                 </div>
             </div>
         </nav>
     </header>
 
-
-
-
-
     <main>
         @RenderBody()
     </main>
 
-    <footer class="footer-section section-gap-top home-one">
-        <div class="container">
+    <footer class="footer-section fixed-botom section-gap-top home-one">
+        <div class="container fixed-botom">
             <div class="row footer-top d-flex justify-content-between">
                 <div class="col-lg-4 col-md-6 col-6 footer-widgets">
                     <p>
-                        Мечтайте, работете и не се отказвайте 
+                        Мечтайте, работете и не се отказвайте
                         от мечтите си! НЕ слушайте отрицателните хора и техните коментари,
                         дори и да са роднини!
                     </p>
@@ -75,7 +79,7 @@
                         <p>Bulgaria</p>
                         <p>Телефон: NULL</p>
                         <p>G-mail: seckins191@gmail.com</p>
-                        
+
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-6 col-6 footer-widgets">
@@ -118,11 +122,11 @@
                     <div class="single-widget">
                         <h4 class="wiget-title">Навигация</h4>
                         <ul>
-                            <a href="index.html">
+                            <a asp-controller="Job" asp-action="Index">
                             <li><i class="bi bi-chevron-right "></i>Начало</li>
                             </a>
                             <br>
-                            <a href="forMe.html">
+                            <a asp-controller="Job" asp-action="AboutUs">
                             <li><i class="bi bi-chevron-right "></i>За нас</li>
                             </a>
                             <br>
@@ -137,7 +141,7 @@
                             </a>
                             <br>
 
-                            <a href="contact.html">
+                            <a asp-controller="Job" asp-action="Contacts">
                             <li><i class="bi bi-chevron-right "></i>Контакти</li>
                             </a>
 
