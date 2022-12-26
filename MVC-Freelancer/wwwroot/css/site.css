@@ -731,3 +731,67 @@ ul {
             }
 
 /*----------------------------------------*/
+
+/*  8. Info Section Style
+/*----------------------------------------*/
+.info-section {
+    overflow: hidden;
+}
+
+    .info-section.home-one .info-left {
+        padding-left: 0px;
+    }
+
+    .info-section.home-one .info-right h1 {
+        max-width: 540px;
+    }
+
+    .info-section.home-one .info-right ul li {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        margin-top: 30px;
+    }
+
+        .info-section.home-one .info-right ul li p {
+            margin-bottom: 0px;
+            max-width: 430px;
+        }
+
+        .info-section.home-one .info-right ul li .list-icon {
+            margin-right: 30px;
+        }
+
+            .info-section.home-one .info-right ul li .list-icon img {
+                width: 14px;
+            }
+
+    .info-section.home-two .info-left-wrap {
+        max-width: 485px;
+        float: right;
+    }
+
+    .info-section.home-two .info-left h1 {
+        font-size: 35px;
+        margin-bottom: 30px;
+    }
+
+    .info-section.home-two .info-left ul li {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+    }
+
+        .info-section.home-two .info-left ul li .list-icon {
+            margin-right: 20px;
+        }
+
+    .info-section.home-two .info-right {
+        padding-right: 0px;
+    }
+
+        .info-section.home-two .info-right img {
+            float: right;
+        }
+
+/*----------------------------------------*/
