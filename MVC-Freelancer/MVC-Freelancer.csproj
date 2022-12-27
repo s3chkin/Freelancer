@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\css\site.css~RFc2262.TMP" />
     <Content Remove="wwwroot\ImageRepository\pexels-fauxels-3183132.jpg" />
   </ItemGroup>
 

@@ -829,6 +829,63 @@ ul {
             float: right;
         }
 
+
+
+
+/*  24. Services Page Styles
+/*----------------------------------------*/
+.service-list-section {
+    padding-top: 70px;
+}
+
+    .service-list-section .single-service {
+        margin-top: 30px;
+        border: 2px solid #f3f3f3;
+        padding: 30px;
+        height: 92%;
+        position: relative;
+        border-radius: 3px;
+        -webkit-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+    }
+
+        .service-list-section .single-service a:hover {
+            color: #000 !important;
+        }
+
+        .service-list-section .single-service h4,
+        .service-list-section .single-service p {
+            -webkit-transform: translateZ(20px);
+            transform: translateZ(20px);
+            margin-bottom: 0px;
+            display: block;
+        }
+
+        .service-list-section .single-service h4 {
+            padding: 20px 0px;
+            -webkit-transition: all 0.2s ease-in-out;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .service-list-section .single-service .btns-style {
+            -webkit-transition: all 0.2s ease-in-out;
+            transition: all 0.2s ease-in-out;
+            position: relative;
+            color: #6a7c92;
+            border: 2px solid #6a7c92;
+            padding: 10px 12px;
+            display: inline-block;
+            margin-top: 18px;
+            border-radius:100%;
+        }
+            .service-list-section .single-service .btns-style
+            .service-list-section {
+                padding-top: 20px;
+            }
+        .service-list-section .single-service:hover {
+            background-color: #f4f8ff;
+        }
+/*----------------------------------------*/
 /*----------------------------------------*/
 /*  23. About Us Page Styles
 /*----------------------------------------*/

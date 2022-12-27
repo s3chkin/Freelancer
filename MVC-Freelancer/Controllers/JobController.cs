@@ -23,7 +23,7 @@ namespace MVC_Freelancer.Controllers
             var model = db.Jobs.Select(x => new InputJobModel
             {
                 Name = x.Name,
-                Price= x.Price,
+                Price = x.Price,
                 Id = x.Id,
                 ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}", //четене на снимката от базата данни
             }
@@ -156,9 +156,14 @@ namespace MVC_Freelancer.Controllers
             db.SaveChanges();
             return this.RedirectToAction("Index");
         }
+        public IActionResult Services()
+        {
+            return this.View();
+        }
         public IActionResult AboutUs()
         {
             return this.View();
         }
+
     }
 }
