@@ -885,15 +885,20 @@ ul {
         .service-list-section .single-service:hover {
             background-color: #f4f8ff;
         }
+
+        .service-list-section .single-service .btns-style:hover {
+            background-color: #afd2f6;
+            color: white;
+        }
+        /*----------------------------------------*/
+        /*----------------------------------------*/
+        /*  23. About Us Page Styles
 /*----------------------------------------*/
-/*----------------------------------------*/
-/*  23. About Us Page Styles
-/*----------------------------------------*/
-.page-header {
-    background: url("../ImageRepository/page-header.jpg");
-    background-size: cover;
-    background-position: right;
-}
+        .page-header {
+            background: url("../ImageRepository/page-header.jpg");
+            background-size: cover;
+            background-position: right;
+        }
 
 
 
