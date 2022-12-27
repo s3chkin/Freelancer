@@ -17,26 +17,26 @@
             <div class="col-lg-4 col-md-12 tab-left">
                 <div class="nav float-left flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <div  onmouseover="mouseOver()" onmouseout="mouseOut()" onclick="forMe()" style="cursor:pointer;">
-                        <a class="nav-link active" id="v-pills-overview-tab" data-toggle="pill" 
+                        <a style="color:black" class="nav-link active" id="v-pills-overview-tab" data-toggle="pill" 
                            aria-controls="v-pills-overview" aria-selected="true">
                             <img src="~/ImageRepository/aa2.png" alt="">
-                            <h4 id="h4Txt">За мен</h4>
+                            <h4 style="transition:0.2s;" id="h4Txt">За мен</h4>
                         </a>
                     </div>
                     <br>
                     <div onclick="forSite()" style="cursor:pointer;">
-                        <a class="nav-link" id="v-pills-mission-tab" data-toggle="pill" 
+                        <a style="color:black" class="nav-link" id="v-pills-mission-tab" data-toggle="pill"
                            aria-controls="v-pills-mission" aria-selected="false">
                             <img src="~/ImageRepository/aa3.png" alt="">
-                            <h4>За сайта</h4>
+                            <h4 style="transition:0.2s;" >За сайта</h4>
                         </a>
                     </div>
                     <br>
-                    <div onclick="infoBlock3" style="cursor:pointer;">
-                        <a class="nav-link" id="v-pills-vision-tab" data-toggle="pill"  
+                    <div onclick="infoBlock3()" style="cursor:pointer;">
+                        <a style="color:black" class="nav-link" id="v-pills-vision-tab" data-toggle="pill"
                            aria-controls="v-pills-vision" aria-selected="false">
                             <img src="~/ImageRepository/aa1.png" alt="">
-                            <h4>Някаква информация</h4>
+                            <h4 style="transition:0.2s;">Някаква информация</h4>
                         </a>
                     </div>
                 </div>
@@ -44,7 +44,7 @@
             </div>
             <div class="col-lg-8 col-md-12 tab-right">
                 <div  class="tab-content" id="v-pills-tabContent">
-                    <div  class="tab-pane fade show active" id="v-pills-overview" 
+                    <div class="tab-pane fade show active" id="v-pills-overview"
                          aria-labelledby="v-pills-overview-tab">
                         <h2 id ="aboutUs-Info-Title">
                             Основател:

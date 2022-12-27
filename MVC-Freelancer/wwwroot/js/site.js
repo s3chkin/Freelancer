@@ -23,6 +23,8 @@ function forMe() {
     document.getElementById("v-pills-mission-tab").style.background = "#f7fbfe";
     document.getElementById("v-pills-mission-tab").style.color = "black";
 
+    document.getElementById("v-pills-vision-tab").style.background = "#f7fbfe";
+    document.getElementById("v-pills-vision-tab").style.color = "black";
 
     document.getElementById("aboutUs-Info-Title").innerHTML = "Основател:";
     document.getElementById("aboutUs-Info-Text").innerHTML =
@@ -45,6 +47,9 @@ function forSite() {
     document.getElementById("v-pills-overview-tab").style.background = "#f7fbfe";
     document.getElementById("v-pills-overview-tab").style.color = "black";
 
+    document.getElementById("v-pills-vision-tab").style.background = "#f7fbfe";
+    document.getElementById("v-pills-vision-tab").style.color = "black";
+
     document.getElementById("h4Txt").style.color = "black";
 
 
@@ -54,20 +59,17 @@ function forSite() {
 
 }
 
-//function mouseOver() {
-//    document.getElementById("v-pills-overview-tab").style.color = "white";
-//}
-
-//function mouseOut() {
-//    document.getElementById("v-pills-overview-tab").style.color = "white";
-//}
 
 function infoBlock3()
 {
     document.getElementById("v-pills-vision-tab").style.background = "linear-gradient(to right, #0172d0, #19a9fe)";
+    document.getElementById("v-pills-vision-tab").style.color = "white";
 
     document.getElementById("v-pills-mission-tab").style.background = "#f7fbfe";
     document.getElementById("v-pills-mission-tab").style.color = "black";
+
+    document.getElementById("v-pills-overview-tab").style.background = "#f7fbfe";
+    document.getElementById("h4Txt").style.color = "black";
 
 
     document.getElementById("aboutUs-Info-Title").innerHTML = "ТЕКСТ";
