@@ -857,13 +857,13 @@ ul {
   margin-bottom: 0px;
 }
 
-.overview-section .nav-link:hover {
+/*.overview-section .nav-link:hover {
   color: #000 !important;
-}
+}*/
 
 .overview-section .nav-link.active {
-  background: -webkit-gradient(linear, left top, right top, from(#0172d0), to(#19a9fe));
-  background: linear-gradient(to right, #0172d0, #19a9fe);
+    background: -webkit-gradient(linear, left top, right top, from(#0172d0), to(#19a9fe));
+    background: linear-gradient(to right, #0172d0, #19a9fe);
 }
 
 .overview-section .nav-link.active h4 {
