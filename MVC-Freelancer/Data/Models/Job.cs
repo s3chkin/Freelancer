@@ -24,6 +24,7 @@
         public virtual ICollection<Category> Categories { get; set; }
         public virtual ICollection<Image> Images { get; set; }
         public virtual ICollection<JobNeed> Needs { get; set; }
+        public int  PackageId { get; set; }
         public virtual ICollection<Package> Packages { get; set; }
 
     }

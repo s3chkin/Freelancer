@@ -97,6 +97,7 @@ namespace MVC_Freelancer.Controllers
             return this.Redirect("/");
         }
 
+        [HttpGet]
         public IActionResult AddPackage(InputPackageModel model)
         {
             var package = new Package
@@ -104,7 +105,7 @@ namespace MVC_Freelancer.Controllers
                 PacketName1 = model.PackageName1,
                 PacketName2 = model.PackageName2,
                 PacketName3 = model.PackageName3,
-                PacketDescription1= model.PacketDescription1,
+                PacketDescription1 = model.PacketDescription1,
                 PacketDescription2 = model.PacketDescription2,
                 PacketDescription3 = model.PacketDescription3,
                 DeliveryTime1 = model.DeliveryTime1,
@@ -117,9 +118,13 @@ namespace MVC_Freelancer.Controllers
                 Revision2 = model.Revision2,
                 Revision3 = model.Revision3
             };
+
             db.Packages.Add(package);
             db.SaveChanges();
-            return View(model);
+            //return this.Redirect("/");
+            return this.View(model);
+
+
 
         }
 
