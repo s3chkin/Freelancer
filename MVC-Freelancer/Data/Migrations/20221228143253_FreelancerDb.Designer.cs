@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVC_Freelancer.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221223222749_Reservator")]
-    partial class Reservator
+    [Migration("20221228143253_FreelancerDb")]
+    partial class FreelancerDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -358,9 +358,6 @@ namespace MVC_Freelancer.Data.Migrations
                     b.Property<int>("NeedId")
                         .HasColumnType("int");
 
-                    b.Property<int>("RecipeId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("JobId");
@@ -385,6 +382,75 @@ namespace MVC_Freelancer.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Needs");
+                });
+
+            modelBuilder.Entity("MVC_Freelancer.Data.Models.Package", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("DeliveryTime1")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DeliveryTime2")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DeliveryTime3")
+                        .HasColumnType("int");
+
+                    b.Property<int>("JobId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PacketDescription1")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PacketDescription2")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PacketDescription3")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PacketName1")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PacketName2")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PacketName3")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Price1")
+                        .HasColumnType("float");
+
+                    b.Property<double>("Price2")
+                        .HasColumnType("float");
+
+                    b.Property<double>("Price3")
+                        .HasColumnType("float");
+
+                    b.Property<int>("Revision1")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Revision2")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Revision3")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("JobId");
+
+                    b.ToTable("Packages");
                 });
 
             modelBuilder.Entity("MVC_Freelancer.Data.Models.AppUser", b =>
@@ -521,11 +587,24 @@ namespace MVC_Freelancer.Data.Migrations
                     b.Navigation("Need");
                 });
 
+            modelBuilder.Entity("MVC_Freelancer.Data.Models.Package", b =>
+                {
+                    b.HasOne("MVC_Freelancer.Data.Models.Job", "Job")
+                        .WithMany("Packages")
+                        .HasForeignKey("JobId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Job");
+                });
+
             modelBuilder.Entity("MVC_Freelancer.Data.Models.Job", b =>
                 {
                     b.Navigation("Images");
 
                     b.Navigation("Needs");
+
+                    b.Navigation("Packages");
                 });
 
             modelBuilder.Entity("MVC_Freelancer.Data.Models.Need", b =>

@@ -4,7 +4,7 @@
 
 namespace MVC_Freelancer.Data.Migrations
 {
-    public partial class ReservatorDBB : Migration
+    public partial class FreelancerDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
