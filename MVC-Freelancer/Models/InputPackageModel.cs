@@ -2,9 +2,6 @@
 {
     public class InputPackageModel
     {
-        public int Id { get; set; }
-
-
         public string PackageName1 { get; set; }
         public string PacketDescription1 { get; set; }
         public int DeliveryTime1 { get; set; }
@@ -22,5 +19,8 @@
         public int DeliveryTime3 { get; set; }
         public double Price3 { get; set; }
         public int Revision3 { get; set; }
+
+        public int JobId { get; set; }
+
     }
 }

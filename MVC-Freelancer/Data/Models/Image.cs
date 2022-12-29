@@ -10,5 +10,6 @@
         public string Extention { get; set; }
         public int JobId { get; set; }
         public virtual Job Job { get; set; }
+        
     }
 }

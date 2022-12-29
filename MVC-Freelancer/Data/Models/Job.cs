@@ -6,7 +6,8 @@
         {
             this.Images = new HashSet<Image>();
             this.Needs = new HashSet<JobNeed>();
-            //this.Packages= new HashSet<Package>();
+            this.Packages = new HashSet<Package>();
+            this.Categories= new HashSet<Category>();   
         }
         public int Id { get; set; }
         public string Name { get; set; }
@@ -15,6 +16,8 @@
         public DateTime DeadLine { get; set; }
         public bool IsDeleted { get; set; }
         public string Progress { get; set; }
+        public string Type { get; set; } // търси / предлага
+
         //public string GiverId { get; set; }
         //public virtual AppUser Giver { get; set; }
 
@@ -24,7 +27,6 @@
         public virtual ICollection<Category> Categories { get; set; }
         public virtual ICollection<Image> Images { get; set; }
         public virtual ICollection<JobNeed> Needs { get; set; }
-        public int  PackageId { get; set; }
         public virtual ICollection<Package> Packages { get; set; }
 
     }
