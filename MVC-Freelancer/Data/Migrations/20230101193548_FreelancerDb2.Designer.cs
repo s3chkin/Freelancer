@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVC_Freelancer.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221229151118_FreelancerrDb4")]
-    partial class FreelancerrDb4
+    [Migration("20230101193548_FreelancerDb2")]
+    partial class FreelancerDb2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -334,7 +334,6 @@ namespace MVC_Freelancer.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Type")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

@@ -197,6 +197,10 @@ namespace MVC_Freelancer.Controllers
         {
             return this.View();
         }
+        public IActionResult Contacts()
+        {
+            return this.View();
+        }
 
     }
 }

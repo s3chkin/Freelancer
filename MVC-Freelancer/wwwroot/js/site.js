@@ -60,8 +60,7 @@ function forSite() {
 }
 
 
-function infoBlock3()
-{
+function infoBlock3() {
     document.getElementById("v-pills-vision-tab").style.background = "linear-gradient(to right, #0172d0, #19a9fe)";
     document.getElementById("v-pills-vision-tab").style.color = "white";
 
@@ -76,3 +75,10 @@ function infoBlock3()
     document.getElementById("aboutUs-Info-Text").innerHTML =
         `ИНФОРМАЦИЯ....`;
 }
+
+/*.........Contact Form.............*/
+//function ContactsForm()
+//{
+//    document.getElementById("name").style.borderBottomColor = "blue";
+//    document.getElementById("e-mail").style.borderColor = "blue";
+//}

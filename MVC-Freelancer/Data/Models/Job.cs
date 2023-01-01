@@ -16,7 +16,7 @@
         public DateTime DeadLine { get; set; }
         public bool IsDeleted { get; set; }
         public string Progress { get; set; }
-        public string Type { get; set; } // търси / предлага
+        public string? Type { get; set; } // търси / предлага
 
         //public string GiverId { get; set; }
         //public virtual AppUser Giver { get; set; }

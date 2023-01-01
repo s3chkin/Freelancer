@@ -4,6 +4,19 @@
 <hr />
 
 <form style="display:grid; place-items:center;" method="post" enctype="multipart/form-data">
+   
+    <div class="form-group">
+        <label asp-for="Type" class="control-label">Предлага / търси</label>
+        <input asp-for="Type" id="jobInfo" class="form-control" placeholder="Търси/предлага" value="Предлага" />
+        <span asp-validation-for="Type" class="text-danger"></span>
+    </div>
+
+    <div class="form-group" style="display:none;">
+        <label asp-for="Progress" class="control-label"></label>
+        <input asp-for="Progress" class="form-control" value="null" id="jobProgress " />
+        <span asp-validation-for="Progress" class="text-danger"></span>
+    </div>
+
     <div class="form-group">
         <label asp-for="Name" class="control-label">Какво предлагаш?</label>
         <input asp-for="Name" id="jobInfo" class="form-control" placeholder="Например: Сайт за бизнес/ Фиксиране на грешки... " />

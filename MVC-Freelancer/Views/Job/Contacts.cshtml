@@ -1,0 +1,76 @@
+﻿@model MVC_Freelancer.Models.InputJobModel
+
+<section class="header-section page-header" style="margin-top:50px;">
+    <div class="container">
+        <div class="row section-gap">
+            <div class="col-md-12">
+                <h1 style="color:white;">Контакти</h1>
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+<br>
+<section>
+    <h2 class="text-center h1-responsive font-weight-bold">Свържете се с мен</h2>
+    <br>
+    <p class="text-center w-responsive mx-auto mb-5">
+        Имате въпрос? Моля, не се колебайте да се свържете
+        директно с мен. <br> До няколко часа ще получите отговор...
+    </p>
+    <br>
+    <center>
+        <div class="d-flex justify-content-center">
+            <input onclick="ContactsForm()" id="name" class="contactInputs form-control float-left" type="text" placeholder="Собствено име">
+            <input onclick="ContactsForm()" id="e-mail" class="contactInputs form-control" type="email" placeholder="E-mail">
+        </div>
+        <br><br>
+        <input onclick="ContactsForm()" id="theme" class="contactInputs form-control" type="text" placeholder="Тема">
+        <br><br>
+        <textarea onclick="ContactsForm()" id="msg" class="contactInputs  form-control md-textarea" placeholder="Вашето съобщение"></textarea>
+        <br><br>
+        <input type="submit" id="btn">
+    </center>
+</section>
+<br>
+<br>
+
+<style>
+    .contactInputs {
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-bottom: 1px solid #ced4da;
+        border-radius: 0;
+        margin-left: 10px;
+    }
+
+        .contactInputs:focus {
+            outline: none;
+            box-shadow: none;
+        }
+
+    #name, #e-mail {
+        width: 280px;
+    }
+
+    #theme, #msg {
+        width: 570px;
+    }
+
+    #btn {
+        background-color: #1996fa;
+        color: white;
+        width: 170px;
+        height: 50px;
+        font-size: 18px;
+        border: none;
+        border-radius: 8px;
+        transition: .2s;
+    }
+
+        #btn:hover {
+            background-color: #4eb0ff;
+        }
+
+</style>
