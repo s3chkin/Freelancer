@@ -64,7 +64,6 @@
         <div style="margin-top: 50px;">
             <form id="account" method="post">
                 <div>
-                    @*<input type="text" placeholder="Your name" class="icon1" id="inputs">*@
                     <label asp-for="Input.Email"></label>
                     <br>
                     <input asp-for="Input.Email" placeholder="Email" id="inputs" autocomplete="username" aria-required="true" />
@@ -72,20 +71,18 @@
                     <span asp-validation-for="Input.Email" class=" text-danger"></span>
                 </div>
                 <br>
-                @*<input type="password" placeholder="Password" class="icon2" id="inputs">*@
-
                 <label asp-for="Input.Password">Парола</label>
-                <input asp-for="Input.Password" id="inputs" placeholder="Парола" class="form-control" autocomplete="current-password" aria-required="true" />
+                <br>
+                <input asp-for="Input.Password" id="inputs" placeholder="Парола"  autocomplete="current-password" aria-required="true" />
                 <span asp-validation-for="Input.Password" class="text-danger"></span>
                 <br><br>
-                @* <input type="checkbox" style="margin-left: 0px; margin-top: 5.5px; width: 25px;" class="float-left" name="" id="">
-                <p class="float-left" style="margin-left: 5px; font-size: 17x;"> Forgot me </p>*@
 
                 <div>
                     <div class="checkbox">
-                        <label asp-for="Input.RememberMe" class="form-label">
-                            <input class="form-check-input" asp-for="Input.RememberMe" />
-                            @Html.DisplayNameFor(m => m.Input.RememberMe)
+                        <label asp-for="Input.RememberMe"  class="form-label">
+                            <input class="form-check-input"  asp-for="Input.RememberMe" />
+                            @*@Html.DisplayNameFor(m => m.Input.RememberMe)*@
+                           Запомни ме
                         </label>
                     </div>
                 </div>

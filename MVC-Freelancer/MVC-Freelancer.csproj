@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Areas\Identity\Pages\Account\Register.cshtml~RF4204b02.TMP" />
     <None Remove="Controllers\JobController.cs~RFe4b99ba.TMP" />
     <None Remove="Views\Job\Add.cshtml~RFaa8a534.TMP" />
     <None Remove="Views\Job\AddPackage.cshtml~RF49120ff.TMP" />
