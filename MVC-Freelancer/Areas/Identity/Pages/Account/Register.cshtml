@@ -1,0 +1,155 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@*<div class="row">
+    <div class="col-md-4">
+        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+            <h2>Създай нов акаунт.</h2>
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-floating">
+                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
+                <label asp-for="Input.Email"></label>
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
+                <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" />
+                <label asp-for="Input.Password"></label>
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
+                <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" />
+                <label asp-for="Input.ConfirmPassword"></label>
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            </div>
+            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
+        </form>
+    </div>
+
+</div>*@
+
+
+<div class="container d-flex justify-content-center">
+    <div class="img float-left">
+        <img src="~/ImageRepository/undraw_secure_login_pdn4.svg" id="imgSettings">
+    </div>
+
+    <div class="formBody float-left">
+        <h2>Създай нов акаунт</h2>
+        <div style="margin-top: 50px;">
+            <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                <div>
+                    <br>
+                    <input asp-for="Input.FirstName" placeholder="FirstName" id="inputs" autocomplete="username" aria-required="true" />
+                    <br>
+                    <span asp-validation-for="Input.FirstName" class=" text-danger"></span>
+                </div>
+                
+                <div>
+                    <br>
+                    <input asp-for="Input.Email" placeholder="Email" id="inputs" autocomplete="username" aria-required="true" />
+                    <br>
+                    <span asp-validation-for="Input.Email" class=" text-danger"></span>
+                </div>
+                <br>
+
+                <input asp-for="Input.Password" id="inputs" placeholder="Парола"  autocomplete="new-password" aria-required="true" />
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+                <br>
+                <br>
+
+                <input asp-for="Input.ConfirmPassword" id="inputs" placeholder="Повтори паролата"  autocomplete="new-password" aria-required="true" />
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+
+                <br><br>
+
+                @*<div >
+                <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" />
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <div >
+                <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" />
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            </div>*@
+
+
+                <button type="submit" id="registerSubmit" class="btn">Регистриране</button>
+            </form>
+        </div>
+        <br><br>
+
+    </div>
+</div>
+
+<style>
+    .formBody {
+        width: 450px;
+        background-color: #ffffff;
+        padding-top: 40px;
+    }
+
+    .icon1 {
+        padding-left: 35px;
+        background-image: url("~/ImageRepository/5dcc4a26-2c5f-474e-bd07-7433aa4e6225.jpg");
+        background-size: 20px;
+    }
+
+    .icon2 {
+        padding-left: 35px;
+        background: url("./icons8-password-50.png") no-repeat left;
+        background-size: 20px;
+    }
+
+    #imgSettings {
+        width: 500px;
+        margin-right: 50px;
+        margin-top:85px;
+    }
+
+    .container {
+        margin-top: 85px;
+    }
+
+    #inputs {
+        width: 300px;
+        height: 40px;
+        border: 0;
+        border-bottom: 0.5px black;
+        border-top: 0;
+        border-style: inset;
+        margin-top: 10px;
+        border-radius:0;
+    }
+    #inputs:focus
+    {
+            outline: none;
+    }
+    .btn {
+        margin-top: 25px;
+        width: auto;
+        height: 50px;
+        background-color: #6c63ff;
+        color: #ffffff;
+        font-size: 20px;
+    }
+
+    .socialMedias {
+        margin-top: 3px;
+        font-size: 17px;
+    }
+
+    .bi-facebook,
+    .bi-google,
+    .bi-github {
+        margin-left: 10px;
+        font-size: 20px;
+    }
+</style>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

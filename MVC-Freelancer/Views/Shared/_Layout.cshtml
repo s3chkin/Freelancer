@@ -1,0 +1,177 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] Търсене и предлагане на услуги</title>
+    <link rel="icon" href="~/ImageRepository/Logo.png">
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/MVC_Freelancer.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="assets/css/owl.theme.default.min.css" />
+    <link rel="stylesheet" href="assets/css/icofont.min.css" />
+    <link rel="stylesheet" href="assets/css/animate.css" />
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/odometer-theme-default.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+</head>
+<body>
+    <header>
+        <nav class="navbar fixed-top navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Фриленсър</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Job" asp-action="Index">Обяви</a>
+                        </li>
+                        <li class="">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Job" asp-action="Add">Добави обява</a>
+                        </li>
+                        <li class="">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Job" asp-action="Services">Услуги</a>
+                        </li>
+                        <li class="">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Job" asp-action="AboutUs">За нас</a>
+                        </li>
+                        <li class="">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Job" asp-action="Contacts">Контакти</a>
+                        </li>
+                    </ul>
+
+
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        @RenderBody()
+    </main>
+
+    <footer class="footer-section fixed-botom section-gap-top home-one">
+        <div class="container fixed-botom">
+            <div class="row footer-top d-flex justify-content-between">
+                <div class="col-lg-4 col-md-6 col-6 footer-widgets">
+                    <p>
+                        Мечтайте, работете и не се отказвайте
+                        от мечтите си! НЕ слушайте отрицателните хора и техните коментари,
+                        дори и да са роднини!
+                    </p>
+                    <ul class="social-lists">
+                        <li><a href="#"><i class="bi bi-facebook"></i></a></li>
+                        <li><a href="#"><i class="bi bi-twitter"></i></a></li>
+                        <li><a href="#"><i class="bi bi-instagram"></i></a></li>
+                        <li><a href="#"><i class="bi bi-linkedin"></i></a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 col-6 footer-widgets">
+                    <div class="single-widget">
+                        <h4 class="wiget-title">Основател</h4>
+                        <h3 style="color:white;">Сечкин Рахим</h3>
+                        <p>Bulgaria</p>
+                        <p>Телефон: NULL</p>
+                        <p>G-mail: seckins191@gmail.com</p>
+
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 col-6 footer-widgets">
+                    <div class="single-widget">
+                        <h4 class="wiget-title">Услуги</h4>
+                        <ul>
+                            <li>
+                                <a href=" ">
+                                    <i class="bi bi-chevron-right "></i> Блог сайтове
+                                </a>
+                            </li>
+                            <br>
+                            <li>
+                                <a href=" ">
+                                    <i class="bi bi-chevron-right "></i> Фитнес уеб сайтове
+                                </a>
+                            </li>
+                            <br>
+                            <li>
+                                <a href=" ">
+                                    <i class="bi bi-chevron-right "></i>Строителни уеб сайтове
+                                </a>
+                            </li>
+                            <br>
+                            <li>
+                                <a href=" ">
+                                    <i class="bi bi-chevron-right "></i> Рекламни уеб сайтове
+                                </a>
+                            </li>
+                            <br>
+                            <li>
+                                <a href=" ">
+                                    <i class="bi bi-chevron-right "></i> и други
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 col-6 footer-widgets">
+                    <div class="single-widget">
+                        <h4 class="wiget-title">Навигация</h4>
+                        <ul>
+                            <a asp-controller="Job" asp-action="Index">
+                            <li><i class="bi bi-chevron-right "></i> Начало</li>
+                            </a>
+                            <br>
+                            <a asp-controller="Job" asp-action="AboutUs">
+                            <li><i class="bi bi-chevron-right "></i> За нас</li>
+                            </a>
+                            <br>
+
+                            <a href="projects.html">
+                            <li><i class="bi bi-chevron-right "></i> Проекти</li>
+                            </a>
+                            <br>
+
+                            <a href="founder.html">
+                            <li><i class="bi bi-chevron-right "></i> Основател</li>
+                            </a>
+                            <br>
+
+                            <a asp-controller="Job" asp-action="Contacts">
+                            <li><i class="bi bi-chevron-right "></i> Контакти</li>
+                            </a>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row footer-bottom section-gap-top d-flex align-items-center">
+                <div class="col-md-6">
+                    <h1>
+                        Бюлетин
+                    </h1>
+                </div>
+                <div class="col-md-6">
+                    <div class="input-group subscribe-wrap">
+                        <input class="form-control" type="email" placeholder="(Не е активен)">
+                        <button class="btn-style red-btn">Готово</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,163 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Вход";
+}
+
+<h1>@ViewData["Title"]</h1>
+<div class="row">
+    <@*div class="col-md-4">
+           <section>
+           <form id="account" method="post">
+           <h2>Use a local account to log in.</h2>
+           <hr />
+           <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+           <div class="form-floating">
+           <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
+           <label asp-for="Input.Email" class="form-label"></label>
+           <span asp-validation-for="Input.Email" class="text-danger"></span>
+           </div>
+           <div class="form-floating">
+           <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" />
+           <label asp-for="Input.Password" class="form-label"> Парола</label>
+           <span asp-validation-for="Input.Password" class="text-danger"></span>
+           </div>
+           <div>
+           <div class="checkbox">
+           <label asp-for="Input.RememberMe" class="form-label">
+           <input class="form-check-input" asp-for="Input.RememberMe" />
+           @Html.DisplayNameFor(m => m.Input.RememberMe)
+           </label>
+           </div>
+           </div>
+           <div>
+           <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
+           </div>
+           <div>
+           <p>
+           <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+           </p>
+           <p>
+           <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
+           </p>
+           <p>
+           <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation</a>
+           </p>
+           </div>
+           </form>
+           </section>
+           </div>*@
+
+</div>
+
+
+@*<img src="~/ImageRepository/icons8-human-67.png"></img>*@
+
+<div class="container d-flex justify-content-center">
+    <div class="img float-left">
+        <img src="~/ImageRepository/image.png" id="imgSettings">
+    </div>
+
+    <div class="formBody float-left">
+        <h2>Вход</h2>
+        <div style="margin-top: 50px;">
+            <form id="account" method="post">
+               
+
+                <div>
+                    <label asp-for="Input.Email"></label>
+                    <br>
+                    <input asp-for="Input.Email" placeholder="Email" id="inputs" autocomplete="username" aria-required="true" />
+                    <br>
+                    <span asp-validation-for="Input.Email" class=" text-danger"></span>
+                </div>
+                <br>
+                <label asp-for="Input.Password">Парола</label>
+                <br>
+                <input asp-for="Input.Password" id="inputs" placeholder="Парола"  autocomplete="current-password" aria-required="true" />
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+                <br><br>
+
+                <div>
+                    <div class="checkbox">
+                        <label asp-for="Input.RememberMe"  class="form-label">
+                            <input class="form-check-input"  asp-for="Input.RememberMe" />
+                            @*@Html.DisplayNameFor(m => m.Input.RememberMe)*@
+                           Запомни ме
+                        </label>
+                    </div>
+                </div>
+                <button type="submit" class="btn">Вход</button>
+            </form>
+        </div>
+        <br><br>
+
+    </div>
+</div>
+
+
+<style>
+    .formBody {
+        width: 450px;
+        background-color: #ffffff;
+        padding-top: 40px;
+    }
+
+    .icon1 {
+        padding-left: 35px;
+        background-image: url("~/ImageRepository/5dcc4a26-2c5f-474e-bd07-7433aa4e6225.jpg");
+        background-size: 20px;
+    }
+
+    .icon2 {
+        padding-left: 35px;
+        background: url("./icons8-password-50.png") no-repeat left;
+        background-size: 20px;
+    }
+
+    #imgSettings {
+        width: 600px;
+    }
+
+    .container {
+        margin-top: 85px;
+    }
+
+    #inputs {
+        width: 300px;
+        height: 40px;
+        border: 0;
+        border-bottom: 0.5px black;
+        border-top: 0;
+        border-style: inset;
+        margin-top: 10px;
+    }
+
+    .btn {
+        margin-top: 25px;
+        width: 130px;
+        height: 50px;
+        background-color: #6c63ff;
+        color: #ffffff;
+        font-size: 20px;
+    }
+
+    .socialMedias {
+        margin-top: 3px;
+        font-size: 17px;
+    }
+
+    .bi-facebook,
+    .bi-google,
+    .bi-github {
+        margin-left: 10px;
+        font-size: 20px;
+    }
+</style>
+
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

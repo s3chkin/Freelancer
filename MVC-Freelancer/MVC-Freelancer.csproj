@@ -1,0 +1,52 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>aspnet-MVC_Freelancer-d7f7213d-de2b-465e-9baa-03d00dbf02ca</UserSecretsId>
+    <RootNamespace>MVC_Freelancer</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="assets\**" />
+    <Content Remove="assets\**" />
+    <EmbeddedResource Remove="assets\**" />
+    <None Remove="assets\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\css\site.css~RFc2262.TMP" />
+    <Content Remove="wwwroot\ImageRepository\pexels-fauxels-3183132.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Areas\Identity\Pages\Account\Register.cshtml~RF4204b02.TMP" />
+    <None Remove="Controllers\JobController.cs~RFe4b99ba.TMP" />
+    <None Remove="Views\Job\Add.cshtml~RFaa8a534.TMP" />
+    <None Remove="Views\Job\AddPackage.cshtml~RF49120ff.TMP" />
+    <None Remove="Views\Job\Index.cshtml~RF140ce59b.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.11" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.12" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.12" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.12" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.12">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.11" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\img\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\ImageRepository\pexels-fauxels-3183132.jpg" />
+  </ItemGroup>
+
+</Project>

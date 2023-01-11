@@ -1,0 +1,134 @@
+﻿@model MVC_Freelancer.Models.InputJobModel
+
+<div style="margin-left:80px; margin-right:80px;">
+    <div>
+        <a asp-controller="Job" asp-action="Edit" asp-route-id="@Model.Id" type="button" id="userButton" class="btn ">Редактирай</a>
+        <a asp-action="Delete" asp-route-id="@Model.Id" style="background-color: #dc3545; border-color: #dc3545;" type="button" class="btn ">
+            Изтрий
+        </a>
+    </div>
+    <br>
+    <div class="d-flex ">
+        <div class="float-left" id="container">
+            <img src="@Model.ImgURL" style="width:100%;">
+            <br><br>
+            <h3><b>За обявата</b></h3>
+            <br>
+            <h5 class="item-title">@Model.Name</h5>
+            <br>
+            <p style="color: #8b95a1;">@Model.Description</p>
+        </div>
+
+        <div class="float-left" id="info">
+            <p>Крайна дата: @Model.DeadLine</p>
+            <p>Цена: @Model.Price лв.</p>
+            <p>Категория: @Model.CategoryName</p>
+            <hr>
+            <p><i class="bi bi-check"></i> Слайдъри</p>
+            <p><i class="bi bi-check"></i> Админ панел</p>
+            <p><i class="bi bi-check"></i> Хостване</p>
+            <p><i class="bi bi-check"></i> Над 20 страници</p>
+            <a class="btn d-flex justify-content-center">Приеми</a>
+
+        </div>
+    </div>
+
+    <div style=" margin-top:50px;">
+
+        <div id="tableContainer">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col" class="tableTh"></th>
+                        <th scope="col" class="tableTh">Pro - @Model.Price</th>
+                        <th scope="col" class="tableTh">Standart - @Model.Price</th>
+                        <th scope="col" class="tableTh">Basic - @Model.Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Описание</th>
+                        <td>Най-качествено</td>
+                        <td>Добро</td>
+                        <td>Средно</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Брой страници</th>
+                        <td>10</td>
+                        <td>3</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Време за предаване</th>
+                        <td>@Model.DeadLine</td>
+                        <td>@Model.DeadLine</td>
+                        <td>@Model.DeadLine</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+<style>
+    #userButton
+    {
+        background-color: #ffc107; border-color: #ffc107; color:black; 
+    }
+    #userButton:hover
+    {
+        color:white;
+    }
+
+    #container {
+        width: 700px;
+        background-color: #fff;
+        border: 1px solid #eaedf2;
+        padding: 25px 25px 20px;
+    }
+
+    #info {
+        width: 393px;
+        background-color: #fff;
+        border: 1px solid #eaedf2;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        margin-bottom: 16px;
+        margin-left: 40px;
+        height: 450px;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 20px;
+    }
+
+    .btn {
+        background-color: #d9232d;
+        border-color: #d9232d;
+        width: 200px;
+        color: white;
+    }
+
+        .btn:hover {
+            background-color: #dd5057;
+            border-color: #dd5057;
+        }
+
+    .bi {
+        padding-top: 20px;
+    }
+
+    #tableContainer {
+        width: 700px;
+        background-color: white;
+    }
+
+    .tableTh {
+        width: 100px;
+        height: 90px;
+        /*background-color: #f4f5f780;*/
+    }
+
+</style>
