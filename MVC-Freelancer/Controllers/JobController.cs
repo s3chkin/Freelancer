@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using MVC_Freelancer.Data;
 using MVC_Freelancer.Data.Models;
 using MVC_Freelancer.Models;
+using System.Net;
+using System.Net.Mail;
 
 namespace MVC_Freelancer.Controllers
 {
@@ -197,10 +199,66 @@ namespace MVC_Freelancer.Controllers
         {
             return this.View();
         }
+
+        [HttpGet]
         public IActionResult Contacts()
         {
-            return this.View();
+            return View();
         }
+
+        [HttpPost]
+        public IActionResult Contacts(InputSendMailModel model)
+        {
+            if (!ModelState.IsValid) return View();
+
+            try
+            {
+                MailMessage mail = new MailMessage();
+                // you need to enter your mail address
+                mail.From = new MailAddress("seckins191@gmail.com");
+
+                //To Email Address - your need to enter your to email address
+                mail.To.Add("seckins191@gmail.com");
+
+                mail.Subject = model.Subject;
+
+                //you can specify also CC and BCC - i will skip this
+                //mail.CC.Add("");
+                //mail.Bcc.Add("");
+
+                mail.IsBodyHtml = true;
+
+                string content = "Name : " + model.Name;
+                content += "<br/> Message : " + model.Message;
+
+                mail.Body = content;
+
+
+                //create SMTP instant
+
+                //you need to pass mail server address and you can also specify the port number if you required
+                SmtpClient smtpClient = new SmtpClient("sechkin.rahim@pgmett.com");
+
+                //Create nerwork credential and you need to give from email address and password
+                NetworkCredential networkCredential = new NetworkCredential("sechkin.rahim@pgmett.com", "Fv!21384");
+                smtpClient.UseDefaultCredentials = false;
+                smtpClient.Credentials = networkCredential;
+                smtpClient.Port = 25; // this is default port number - you can also change this
+                smtpClient.EnableSsl = false; // if ssl required you need to enable it
+                smtpClient.Send(mail);
+
+                ViewBag.Message = "Mail Send";
+
+                ModelState.Clear();
+
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message.ToString();
+            }
+            return View(model);
+        }
+
 
     }
 }

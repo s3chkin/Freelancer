@@ -1,4 +1,4 @@
-﻿@model MVC_Freelancer.Models.InputJobModel
+﻿@model MVC_Freelancer.Models.InputSendMailModel
 
 <section class="header-section page-header" style="margin-top:50px;">
     <div class="container">
@@ -11,27 +11,29 @@
 </section>
 <br>
 <br>
-<section>
-    <h2 class="text-center h1-responsive font-weight-bold">Свържете се с мен</h2>
-    <br>
-    <p class="text-center w-responsive mx-auto mb-5">
-        Имате въпрос? Моля, не се колебайте да се свържете
-        директно с мен. <br> До няколко часа ще получите отговор...
-    </p>
-    <br>
-    <center>
-        <div class="d-flex justify-content-center">
-            <input onclick="ContactsForm()" id="name" class="contactInputs form-control float-left" type="text" placeholder="Собствено име">
-            <input onclick="ContactsForm()" id="e-mail" class="contactInputs form-control" type="email" placeholder="E-mail">
-        </div>
-        <br><br>
-        <input onclick="ContactsForm()" id="theme" class="contactInputs form-control" type="text" placeholder="Тема">
-        <br><br>
-        <textarea onclick="ContactsForm()" id="msg" class="contactInputs  form-control md-textarea" placeholder="Вашето съобщение"></textarea>
-        <br><br>
-        <input type="submit" id="btn">
-    </center>
-</section>
+<form method="post">
+    <section>
+        <h2 class="text-center h1-responsive font-weight-bold">Свържете се с мен</h2>
+        <br>
+        <p class="text-center w-responsive mx-auto mb-5">
+            Имате въпрос? Моля, не се колебайте да се свържете
+            директно с мен. <br> До няколко часа ще получите отговор...
+        </p>
+        <br>
+        <center>
+            <div class="d-flex justify-content-center">
+                <input asp-for="@Model.Name" onclick="ContactsForm()" id="name" class="contactInputs form-control float-left" type="text" placeholder="Собствено име">
+                <input asp-for="@Model.Email" onclick="ContactsForm()" id="e-mail" class="contactInputs form-control" type="email" placeholder="E-mail">
+            </div>
+            <br><br>
+            <input asp-for="@Model.Subject" onclick="ContactsForm()" id="theme" class="contactInputs form-control" type="text" placeholder="Тема">
+            <br><br>
+            <textarea asp-for="@Model.Message" onclick="ContactsForm()" id="msg" class="contactInputs  form-control md-textarea" placeholder="Вашето съобщение"></textarea>
+            <br><br>
+            <input type="submit" id="btn">
+        </center>
+    </section>
+</form>
 <br>
 <br>
 
@@ -72,5 +74,4 @@
         #btn:hover {
             background-color: #4eb0ff;
         }
-
 </style>
