@@ -237,7 +237,7 @@ namespace MVC_Freelancer.Controllers
                 TempData["Message"] = "Greshka pri izprshtaneto!" + ex.Message;
             }
 
-            return View(model);
+            return View();
         }
 
 
