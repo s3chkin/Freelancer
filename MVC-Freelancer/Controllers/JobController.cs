@@ -209,53 +209,34 @@ namespace MVC_Freelancer.Controllers
         [HttpPost]
         public IActionResult Contacts(InputSendMailModel model)
         {
-            if (!ModelState.IsValid) return View();
+            //if (!ModelState.IsValid) return View();
 
+            MailMessage mail = new MailMessage();
+            mail.To.Add("seckins191@gmail.com");
+            mail.From = new MailAddress("seckins191@gmail.com");
+            mail.Subject = "Имате съобщение от сайта Freelancer. " + model.Subject;
+            mail.Body = "От " + model.Name + "имате съобщение: <br>" + model.Message;
+            mail.IsBodyHtml = true;
+
+
+            SmtpClient smtp = new SmtpClient();
+            smtp.Credentials = new NetworkCredential("seckins191@gmail.com", "seckins191");
+            smtp.Port = 25;
+            smtp.Host = "smtp.gmail.com";
+            smtp.EnableSsl = true;
             try
             {
-                MailMessage mail = new MailMessage();
-                // you need to enter your mail address
-                mail.From = new MailAddress("seckins191@gmail.com");
+                smtp.Send(mail);
+                TempData["Message"] = "Uspeshno izprateno!";
 
-                //To Email Address - your need to enter your to email address
-                mail.To.Add("seckins191@gmail.com");
-
-                mail.Subject = model.Subject;
-
-                //you can specify also CC and BCC - i will skip this
-                //mail.CC.Add("");
-                //mail.Bcc.Add("");
-
-                mail.IsBodyHtml = true;
-
-                string content = "Name : " + model.Name;
-                content += "<br/> Message : " + model.Message;
-
-                mail.Body = content;
-
-
-                //create SMTP instant
-
-                //you need to pass mail server address and you can also specify the port number if you required
-                SmtpClient smtpClient = new SmtpClient("sechkin.rahim@pgmett.com");
-
-                //Create nerwork credential and you need to give from email address and password
-                NetworkCredential networkCredential = new NetworkCredential("sechkin.rahim@pgmett.com", "Fv!21384");
-                smtpClient.UseDefaultCredentials = false;
-                smtpClient.Credentials = networkCredential;
-                smtpClient.Port = 25; // this is default port number - you can also change this
-                smtpClient.EnableSsl = false; // if ssl required you need to enable it
-                smtpClient.Send(mail);
-
-                ViewBag.Message = "Mail Send";
-
-                ModelState.Clear();
 
             }
             catch (Exception ex)
             {
-                ViewBag.Message = ex.Message.ToString();
+
+                TempData["Message"] = "Greshka pri izprshtaneto!" + ex.Message;
             }
+
             return View(model);
         }
 
