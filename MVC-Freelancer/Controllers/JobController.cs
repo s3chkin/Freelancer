@@ -203,43 +203,35 @@ namespace MVC_Freelancer.Controllers
         [HttpGet]
         public IActionResult Contacts()
         {
-            return View();
+            return this.View();
         }
-
         [HttpPost]
         public IActionResult Contacts(InputSendMailModel model)
         {
-            //if (!ModelState.IsValid) return View();
-
-            MailMessage mail = new MailMessage();
-            mail.To.Add("seckins191@gmail.com");
-            mail.From = new MailAddress("seckins191@gmail.com");
-            mail.Subject = "Имате съобщение от сайта Freelancer. " + model.Subject;
-            mail.Body = "От " + model.Name + "имате съобщение: <br>" + model.Message;
-            mail.IsBodyHtml = true;
-
-
-            SmtpClient smtp = new SmtpClient();
-            smtp.Credentials = new NetworkCredential("seckins191@gmail.com", "seckins191");
-            smtp.Port = 25;
-            smtp.Host = "smtp.gmail.com";
-            smtp.EnableSsl = true;
-            try
+            var contact = new ContactUs
             {
-                smtp.Send(mail);
-                TempData["Message"] = "Uspeshno izprateno!";
+                Name = model.Name,
+                Message = model.Message,
+                Email = model.Email,
+                Subject = model.Subject
+            };
+            db.ContactUs.Add(contact);
+            db.SaveChanges();
+            return this.Redirect("Index");
+            //return this.View(model);
 
-
-            }
-            catch (Exception ex)
-            {
-
-                TempData["Message"] = "Greshka pri izprshtaneto!" + ex.Message;
-            }
-
-            return View();
         }
-
-
+        public IActionResult AdminPanel()
+        {
+            var panel = db.ContactUs.Select(x => new InputSendMailModel
+            {
+                Name = x.Name,
+                Email = x.Email,
+                Message = x.Message,
+                Subject = x.Subject
+            }).ToList();
+            return View(panel);
+        }
     }
 }
+

@@ -7,7 +7,8 @@
             this.Images = new HashSet<Image>();
             this.Needs = new HashSet<JobNeed>();
             this.Packages = new HashSet<Package>();
-            this.Categories= new HashSet<Category>();   
+            this.Categories = new HashSet<Category>();
+            this.ContactUs= new HashSet<ContactUs>();
         }
         public int Id { get; set; }
         public string Name { get; set; }
@@ -28,6 +29,11 @@
         public virtual ICollection<Image> Images { get; set; }
         public virtual ICollection<JobNeed> Needs { get; set; }
         public virtual ICollection<Package> Packages { get; set; }
+        public int ContactUsId { get; set; }
+        public virtual ICollection<ContactUs> ContactUs { get; set; }
+
+        //public virtual ContactUs ContactUs { get; set; }
+
 
     }
 }

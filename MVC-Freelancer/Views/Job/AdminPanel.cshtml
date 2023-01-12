@@ -1,0 +1,31 @@
+﻿@model IEnumerable<MVC_Freelancer.Models.InputSendMailModel>
+
+
+<h1>Admin panel</h1>
+
+
+
+
+@foreach (var item in Model)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">First</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Email</td>
+                <td>@item.Subject</td>
+                <td>@item.Message</td>
+            </tr>
+        </tbody>
+    </table>
+}
+
+
