@@ -99,32 +99,30 @@ namespace MVC_Freelancer.Controllers
             return this.Redirect("/");
         }
 
+
+
         [HttpGet]
-        public IActionResult AddPackage(InputPackageModel model)
+        public IActionResult AddPackage()
+        {
+            return this.View();
+        }
+
+        [HttpPost]
+        public IActionResult AddPackage(InputJobPackageModel model)
         {
             var package = new Package
             {
-                PacketName1 = model.PackageName1,
-                PacketName2 = model.PackageName2,
-                PacketName3 = model.PackageName3,
-                PacketDescription1 = model.PacketDescription1,
-                PacketDescription2 = model.PacketDescription2,
-                PacketDescription3 = model.PacketDescription3,
-                DeliveryTime1 = model.DeliveryTime1,
-                DeliveryTime2 = model.DeliveryTime2,
-                DeliveryTime3 = model.DeliveryTime3,
-                Price1 = model.Price1,
-                Price2 = model.Price2,
-                Price3 = model.Price3,
-                Revision1 = model.Revision1,
-                Revision2 = model.Revision2,
-                Revision3 = model.Revision3
-            };
+                PackageName = model.PackageName,
+                DeliveryTime = model.DeliveryTime,
+                PacketDescription = model.PacketDescription,
+                Price = model.Price,
+                Revision = model.Revision,
+                Name = model.Name,
+                            };
 
             db.Packages.Add(package);
             db.SaveChanges();
-            //return this.Redirect("/");
-            return this.View(model);
+            return this.Redirect("Index");
 
 
 

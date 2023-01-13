@@ -21,5 +21,6 @@ namespace MVC_Freelancer.Data
         public DbSet<ContactUs>  ContactUs { get; set; }
         public DbSet<UserSkill> UserSkills{ get; set; }
         public DbSet<Skill> Skills { get; set; }
+        public DbSet<JobPackage> jobPackages { get; set; }
     }
 }

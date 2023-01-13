@@ -1,140 +1,152 @@
 ﻿@model MVC_Freelancer.Models.InputJobModel
+@*@model MVC_Freelancer.Models.ViewModel*@
 
-<h1 style="font-family: Geomanist,Arial,sans-serif;">Обява за работа</h1>
-<hr />
+    <h1 style="font-family: Geomanist,Arial,sans-serif;">Обява за работа</h1>
+    <hr />
 
-<form style="display:grid; place-items:center;" method="post" enctype="multipart/form-data">
-   
-    <div class="form-group">
-        <label asp-for="Type" class="control-label">Предлага / търси</label>
-        <input asp-for="Type" id="jobInfo" class="form-control" placeholder="Търси/предлага" value="Предлага" />
-        <span asp-validation-for="Type" class="text-danger"></span>
-    </div>
+    <form style="display:grid; place-items:center;" method="post" enctype="multipart/form-data">
 
-    <div class="form-group" style="display:none;">
-        <label asp-for="Progress" class="control-label"></label>
-        <input asp-for="Progress" class="form-control" value="null" id="jobProgress " />
-        <span asp-validation-for="Progress" class="text-danger"></span>
-    </div>
+        <div class="form-group">
+            <label asp-for="Type" class="control-label">Предлага / търси</label>
+            <input asp-for="Type" id="jobInfo" class="form-control" placeholder="Търси/предлага" value="Предлага" />
+            <span asp-validation-for="Type" class="text-danger"></span>
+        </div>
 
-    <div class="form-group">
-        <label asp-for="Name" class="control-label">Какво предлагаш?</label>
-        <input asp-for="Name" id="jobInfo" class="form-control" placeholder="Например: Сайт за бизнес/ Фиксиране на грешки... " />
-        <span asp-validation-for="Name" class="text-danger"></span>
-    </div>
+        <div class="form-group" style="display:none;">
+            <label asp-for="Progress" class="control-label"></label>
+            <input asp-for="Progress" class="form-control" value="null" id="jobProgress " />
+            <span asp-validation-for="Progress" class="text-danger"></span>
+        </div>
 
-    <div class="form-group">
-        <label asp-for="DeadLine" class="control-label">Крайна дата за предаване* (Валидност на обявата)</label>
-        <input asp-for="DeadLine" id="jobDate" class="form-control" />
-        <span asp-validation-for="DeadLine" class="text-danger"></span>
-    </div>
+        <div class="form-group">
+            <label asp-for="Name" class="control-label">Какво предлагаш?</label>
+            <input asp-for="Name" id="jobInfo" class="form-control" placeholder="Например: Сайт за бизнес/ Фиксиране на грешки... " />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
 
-    <div class="form-group">
-        <label asp-for="Price" class="control-label">Цена*</label>
-        <input asp-for="Price" id="jobPrice" class="form-control"  />
-        <span asp-validation-for="Price" class="text-danger"></span>
-    </div>
+        <div class="form-group">
+            <label asp-for="DeadLine" class="control-label">Крайна дата за предаване* (Валидност на обявата)</label>
+            <input asp-for="DeadLine" id="jobDate" class="form-control" />
+            <span asp-validation-for="DeadLine" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Price" class="control-label">Цена*</label>
+            <input asp-for="Price" id="jobPrice" class="form-control" />
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
 
 
-    <div class="form-group">
-        <label asp-for="Description" class="control-label">Описание*</label>
-        <textarea asp-for="Description" id="jobDescription" class="form-control" placeholder="Аз мога да направя... (подробна информация)"><</textarea>
-        <span asp-validation-for="Description" class="text-danger"></span>
-    </div>
+        <div class="form-group">
+            <label asp-for="Description" class="control-label">Описание*</label>
+            <textarea asp-for="Description" id="jobDescription" class="form-control" placeholder="Аз мога да направя... (подробна информация)"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
 
-    
 
-    <div class="form-group" style="display:none;">
-        <label asp-for="Progress" class="control-label"></label>
-        <input asp-for="Progress" class="form-control" value="null" id="jobProgress " />
-        <span asp-validation-for="Progress" class="text-danger"></span>
-    </div>
 
-    <div class="form-group">
-        <label asp-for="CategoryId" class="control-label">Категория</label>
-        <select asp-for="CategoryId" id="jobCategory" class="form-control" asp-items="@Model.Categories"></select>
-    </div>
-    <br>
+        <div class="form-group" style="display:none;">
+            <label asp-for="Progress" class="control-label"></label>
+            <input asp-for="Progress" class="form-control" value="null" id="jobProgress " />
+            <span asp-validation-for="Progress" class="text-danger"></span>
+        </div>
 
-    <div class="form-group">
-        <label asp-for="Image" class="control-label" style="display:none;"></label>
-        @*<input asp-for="Image" type="file"  class="form-control" id="jobImg"/>*@
-        <input asp-for="Image" style="display:none;" type="file" id="file" />
-        <label id="file2" onclick="func()" for="file" style="display:grid; place-items:center; cursor:pointer;"><i id="imgLogo2" class="bi bi-check" style="display:none;"></i><i class="bi bi-camera" id="imgLogo1"></i></label>
-        <span asp-validation-for="Image" class="text-danger"></span>
-    </div>
-    @*
+        <div class="form-group">
+            <label asp-for="CategoryId" class="control-label">Категория</label>
+            <div>
+                <select class="float-left" style="margin-right:30px; " asp-for="CategoryId" id="jobCategory" class="form-control" asp-items="@Model.Categories"></select>
+                <a asp-controller="Category" asp-action="Add" style="height:55px; width:55px;">
+                    +
+
+                </a>
+            </div>
+
+        </div>
+        <br>
+
+        <div class="form-group">
+            <label asp-for="Image" class="control-label" style="display:none;"></label>
+            @*<input asp-for="Image" type="file"  class="form-control" id="jobImg"/>*@
+            <input asp-for="Image" style="display:none;" type="file" id="file" />
+            <label id="file2" onclick="func()" for="file" style="display:grid; place-items:center; cursor:pointer;"><i id="imgLogo2" class="bi bi-check" style="display:none;"></i><i class="bi bi-camera" id="imgLogo1"></i></label>
+            <span asp-validation-for="Image" class="text-danger"></span>
+        </div>
+        @*
     <div id="Need" class="form-group">
     <label asp-for="Needs" class="control-label"></label>
     <a class="btn btn-success" onclick="AddNeed()">+</a>
     </div>*@
 
-    <br>
-   @* <a asp-controller="Job" asp-action="AddPackage" class="site-btn">Напред
+        <br>
+        @* <a asp-controller="Job" asp-action="AddPackage" class="site-btn">Напред
 
     </a>*@
 
-    <input class="site-btn" type="submit" value="Добави обява" />
-</form>
+        <input class="site-btn" type="submit" value="Добави обява" />
+    </form>
 
-<style>
-    #file + label {
-        font-size: 2em;
-        font-weight: 700;
-        color: black;
-        background-color: white;
-        width: 200px;
-        height: 200px;
-    }
-
-        #file:focus + label,
-        #file + label:hover {
-            background-color: #fbfbfb;
+    <style>
+        #file + label {
+            font-size: 2em;
+            font-weight: 700;
+            color: black;
+            background-color: white;
+            width: 200px;
+            height: 200px;
         }
 
-    .form-control {
-    }
+            #file:focus + label,
+            #file + label:hover {
+                background-color: #fbfbfb;
+            }
 
-    #jobInfo, #jobDate, #jobPrice, #jobCategory, #jobImg, #jobProgress {
-        width: 400px;
-        height: 55px;
-        margin-bottom: 20px;
-    }
-
-    #jobDescription {
-        margin-bottom: 20px;
-        width: 400px;
-        height: 300px;
-    }
-</style>
-
-@section Scripts
-    {
-    <script>
-
-
-        function func() {
-            setTimeout(() => { document.getElementById('imgLogo2').style.display = 'block'; }, 3500);
-            document.getElementById('file2').style.color = 'green';
-            document.getElementById('imgLogo1').style.display = 'none';
-
-            document.getElementById('file2').style.backgroundImage = '@Model.ImgURL';
+        .form-control {
         }
-        //function func()
-        //     {
-        //         document.getElementById('file2').style.backgroundImage=@Model.Image;
-        //         //document.getElementById('file').style.color='blue';
-        //     }
-    </script>
 
-    <script>
-
-        var needIndex = 0;
-
-        function AddNeed() {
-            $("#Need")
-                .append("<div> Name:<input type='text' name='Need[" + needIndex + "].Name'/> Description: <input type='text' name='Need[" + needIndex + "].Description'/> </div>");
-            needIndex++;
+        #jobInfo, #jobDate, #jobPrice, #jobCategory, #jobImg, #jobProgress {
+            width: 400px;
+            height: 55px;
+            margin-bottom: 20px;
         }
-    </script>
-}
+
+        #jobDescription {
+            margin-bottom: 20px;
+            width: 400px;
+            height: 300px;
+        }
+    </style>
+
+    @section Scripts
+        {
+        <script>
+
+
+            function func() {
+                setTimeout(() => { document.getElementById('imgLogo2').style.display = 'block'; }, 3500);
+                document.getElementById('file2').style.color = 'green';
+                document.getElementById('imgLogo1').style.display = 'none';
+
+                document.getElementById('file2').style.backgroundImage = '@Model.ImgURL';
+            }
+            //function func()
+            //     {
+            //         document.getElementById('file2').style.backgroundImage=@Model.Image;
+            //         //document.getElementById('file').style.color='blue';
+            //     }
+        </script>
+
+        <script>
+
+            var needIndex = 0;
+
+            function AddNeed() {
+                $("#Need")
+                    .append("<div> Name:<input type='text' name='Need[" + needIndex + "].Name'/> Description: <input type='text' name='Need[" + needIndex + "].Description'/> </div>");
+                needIndex++;
+            }
+        </script>
+    }
+
+
+
+

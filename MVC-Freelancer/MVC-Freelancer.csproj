@@ -22,19 +22,21 @@
 
   <ItemGroup>
     <None Remove="Areas\Identity\Pages\Account\Register.cshtml~RF4204b02.TMP" />
+    <None Remove="Controllers\CategoryController.cs~RF1f8b9f.TMP" />
     <None Remove="Controllers\JobController.cs~RFe4b99ba.TMP" />
     <None Remove="Views\Job\Add.cshtml~RFaa8a534.TMP" />
     <None Remove="Views\Job\AddPackage.cshtml~RF49120ff.TMP" />
+    <None Remove="Views\Job\ById.cshtml~RF393023.TMP" />
     <None Remove="Views\Job\Index.cshtml~RF140ce59b.TMP" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.11" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.12" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.12" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.13" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.13" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.12" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.12">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.13" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.13">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>

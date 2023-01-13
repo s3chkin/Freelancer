@@ -1,6 +1,8 @@
 ﻿@model MVC_Freelancer.Models.InputJobModel
 
-<div style="margin-left:80px; margin-right:80px;">
+<div class="d-flex justify-content-center">
+
+<div  style="margin-top:80px;margin-left:80px; margin-right:80px;">
     <div>
         <a asp-controller="Job" asp-action="Edit" asp-route-id="@Model.Id" type="button" id="userButton" class="btn ">Редактирай</a>
         <a asp-action="Delete" asp-route-id="@Model.Id" style="background-color: #dc3545; border-color: #dc3545;" type="button" class="btn ">
@@ -68,6 +70,7 @@
             </table>
         </div>
     </div>
+</div>
 </div>
 
 
