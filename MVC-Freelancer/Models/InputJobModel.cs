@@ -16,11 +16,38 @@ namespace MVC_Freelancer.Models
         public int CategoryId { get; set; }
         public string? Type { get; set; } // търси / предлага
         public string CategoryName { get; set; }
+        public string ImgURL { get; set; }
+
+        //пакети:
+        public string PackageName { get; set; }
+        public string PacketDescription { get; set; }
+        public int DeliveryTime { get; set; }
+        public double PacketPrice { get; set; }
+        public int Revision { get; set; }
+        public string? ExtraInfo { get; set; }
+
+
+        //за втора таблица
+        public string PackageName2 { get; set; }
+        public string PacketDescription2 { get; set; }
+        public int DeliveryTime2 { get; set; }
+        public double PacketPrice2 { get; set; }
+        public int Revision2 { get; set; }
+        public string? ExtraInfo2 { get; set; }
+
+
+        //за трета таблица
+        public string PackageName3 { get; set; }
+        public string PacketDescription3 { get; set; }
+        public int DeliveryTime3 { get; set; }
+        public double PacketPrice3 { get; set; }
+        public int Revision3 { get; set; }
+        public string? ExtraInfo3 { get; set; }
+
+
         public List<SelectListItem> Categories { get; set; }
-        public List<InputJobNeedModel> Needs { get; set; }
         public List<InputJobPackageModel> Package { get; set; }
 
-        public string ImgURL { get; set; }
 
     }
 }

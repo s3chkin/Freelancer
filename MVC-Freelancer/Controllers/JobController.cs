@@ -61,6 +61,28 @@ namespace MVC_Freelancer.Controllers
                 Description = model.Description,
                 Progress = model.Progress,
 
+
+                PackageName = model.PackageName,
+                DeliveryTime = model.DeliveryTime,
+                PacketDescription = model.PacketDescription,
+                PacketPrice = model.PacketPrice,
+                Revision = model.Revision,
+                ExtraInfo = model.ExtraInfo,
+
+                PackageName2 = model.PackageName2,
+                DeliveryTime2 = model.DeliveryTime2,
+                PacketDescription2 = model.PacketDescription2,
+                PacketPrice2 = model.PacketPrice2,
+                Revision2 = model.Revision2,
+                ExtraInfo2 = model.ExtraInfo2,
+
+                PackageName3 = model.PackageName3,
+                DeliveryTime3 = model.DeliveryTime3,
+                PacketDescription3 = model.PacketDescription3,
+                PacketPrice3 = model.PacketPrice3,
+                Revision3 = model.Revision3,
+                ExtraInfo3 = model.ExtraInfo3,
+
             };
             // от името на прикачения файл получаваме неговото разширение   .png
             var extention = Path.GetExtension(model.Image.FileName).TrimStart('.');
@@ -97,37 +119,7 @@ namespace MVC_Freelancer.Controllers
             db.SaveChanges();
 
             return this.Redirect("/");
-        }
-
-
-
-        [HttpGet]
-        public IActionResult AddPackage()
-        {
-            return this.View();
-        }
-
-        [HttpPost]
-        public IActionResult AddPackage(InputJobPackageModel model)
-        {
-            var package = new Package
-            {
-                PackageName = model.PackageName,
-                DeliveryTime = model.DeliveryTime,
-                PacketDescription = model.PacketDescription,
-                Price = model.Price,
-                Revision = model.Revision,
-                Name = model.Name,
-                            };
-
-            db.Packages.Add(package);
-            db.SaveChanges();
-            return this.Redirect("Index");
-
-
-
-        }
-
+        }   
 
         public IActionResult ById(int id)
         {
@@ -141,12 +133,29 @@ namespace MVC_Freelancer.Controllers
                 CategoryId = x.CategoryId,
                 Description = x.Description,
                 Progress = x.Progress,
+                
                 ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}",
-                Needs = x.Needs.Select(x => new InputJobNeedModel
-                {
-                    Name = x.Need.Name,
-                    Description = x.Description
-                }).ToList()
+
+                PackageName = x.PackageName,
+                DeliveryTime = x.DeliveryTime,
+                PacketDescription = x.PacketDescription,
+                PacketPrice = x.PacketPrice,
+                Revision = x.Revision,
+                ExtraInfo = x.ExtraInfo,
+
+                PackageName2 = x.PackageName2,
+                DeliveryTime2 = x.DeliveryTime2,
+                PacketDescription2 = x.PacketDescription2,
+                PacketPrice2 = x.PacketPrice2,
+                Revision2 = x.Revision2,
+                ExtraInfo2 = x.ExtraInfo2,
+
+                PackageName3 = x.PackageName3,
+                DeliveryTime3 = x.DeliveryTime3,
+                PacketDescription3 = x.PacketDescription3,
+                PacketPrice3 = x.PacketPrice3,
+                Revision3 = x.Revision3,
+                ExtraInfo3 = x.ExtraInfo3,
             }).FirstOrDefault();
             //var category = db.Categories.Where(x => model.CategoryId == x.Id).FirstOrDefault();
             return this.View(model);

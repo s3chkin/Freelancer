@@ -5,8 +5,6 @@
         public Job()
         {
             this.Images = new HashSet<Image>();
-            this.Needs = new HashSet<JobNeed>();
-            this.Packages = new HashSet<JobPackage>();
             this.Categories = new HashSet<Category>();
             this.ContactUs= new HashSet<ContactUs>();
         }
@@ -19,6 +17,35 @@
         public string Progress { get; set; }
         public string? Type { get; set; } // търси / предлага
 
+        //пакети:
+        public string PackageName { get; set; }
+        public string PacketDescription { get; set; }
+        public int DeliveryTime { get; set; }
+        public double PacketPrice { get; set; }
+        public int Revision { get; set; }
+        public string? ExtraInfo { get; set; }
+
+
+        //за втория пакет
+        public string PackageName2 { get; set; }
+        public string PacketDescription2 { get; set; }
+        public int DeliveryTime2 { get; set; }
+        public double PacketPrice2 { get; set; }
+        public int Revision2 { get; set; }
+        public string? ExtraInfo2 { get; set; }
+
+
+        //за третия пакет
+        public string PackageName3 { get; set; }
+        public string PacketDescription3 { get; set; }
+        public int DeliveryTime3 { get; set; }
+        public double PacketPrice3 { get; set; }
+        public int Revision3 { get; set; }
+        public string? ExtraInfo3 { get; set; }
+
+
+
+
         //public string GiverId { get; set; }
         //public virtual AppUser Giver { get; set; }
 
@@ -27,13 +54,9 @@
         public int CategoryId { get; set; }
         public virtual ICollection<Category> Categories { get; set; }
         public virtual ICollection<Image> Images { get; set; }
-        public virtual ICollection<JobNeed> Needs { get; set; }
-        //public virtual ICollection<Package> Packages { get; set; }
         public int ContactUsId { get; set; }
         public virtual ICollection<ContactUs> ContactUs { get; set; }
-        public virtual ICollection<JobPackage> Packages { get; set; }
 
-        //public virtual ContactUs ContactUs { get; set; }
 
 
     }

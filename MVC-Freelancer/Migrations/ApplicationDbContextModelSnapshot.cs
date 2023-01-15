@@ -17,7 +17,7 @@ namespace MVC_Freelancer.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.12")
+                .HasAnnotation("ProductVersion", "6.0.13")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -360,8 +360,26 @@ namespace MVC_Freelancer.Migrations
                     b.Property<DateTime>("DeadLine")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("DeliveryTime")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DeliveryTime2")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DeliveryTime3")
+                        .HasColumnType("int");
+
                     b.Property<string>("Description")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ExtraInfo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ExtraInfo2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ExtraInfo3")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
@@ -371,12 +389,54 @@ namespace MVC_Freelancer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("PackageName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PackageName2")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PackageName3")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PacketDescription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PacketDescription2")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PacketDescription3")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("PacketPrice")
+                        .HasColumnType("float");
+
+                    b.Property<double>("PacketPrice2")
+                        .HasColumnType("float");
+
+                    b.Property<double>("PacketPrice3")
+                        .HasColumnType("float");
+
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
                     b.Property<string>("Progress")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Revision")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Revision2")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Revision3")
+                        .HasColumnType("int");
 
                     b.Property<string>("Type")
                         .HasColumnType("nvarchar(max)");
@@ -386,33 +446,6 @@ namespace MVC_Freelancer.Migrations
                     b.HasIndex("AppUserId");
 
                     b.ToTable("Jobs");
-                });
-
-            modelBuilder.Entity("MVC_Freelancer.Data.Models.JobNeed", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("JobId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("NeedId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("JobId");
-
-                    b.HasIndex("NeedId");
-
-                    b.ToTable("JobNeeds");
                 });
 
             modelBuilder.Entity("MVC_Freelancer.Data.Models.JobPackage", b =>
@@ -441,23 +474,6 @@ namespace MVC_Freelancer.Migrations
                     b.ToTable("jobPackages");
                 });
 
-            modelBuilder.Entity("MVC_Freelancer.Data.Models.Need", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Needs");
-                });
-
             modelBuilder.Entity("MVC_Freelancer.Data.Models.Package", b =>
                 {
                     b.Property<int>("Id")
@@ -469,10 +485,30 @@ namespace MVC_Freelancer.Migrations
                     b.Property<int>("DeliveryTime")
                         .HasColumnType("int");
 
-                    b.Property<string>("Name")
+                    b.Property<int>("DeliveryTime2")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DeliveryTime3")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ExtraInfo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ExtraInfo2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ExtraInfo3")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PackageName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PackageName2")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PackageName3")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -480,10 +516,30 @@ namespace MVC_Freelancer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("PacketDescription2")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PacketDescription3")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
+                    b.Property<double>("Price2")
+                        .HasColumnType("float");
+
+                    b.Property<double>("Price3")
+                        .HasColumnType("float");
+
                     b.Property<int>("Revision")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Revision2")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Revision3")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -660,25 +716,6 @@ namespace MVC_Freelancer.Migrations
                         .HasForeignKey("AppUserId");
                 });
 
-            modelBuilder.Entity("MVC_Freelancer.Data.Models.JobNeed", b =>
-                {
-                    b.HasOne("MVC_Freelancer.Data.Models.Job", "Job")
-                        .WithMany("Needs")
-                        .HasForeignKey("JobId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MVC_Freelancer.Data.Models.Need", "Need")
-                        .WithMany("Jobs")
-                        .HasForeignKey("NeedId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Job");
-
-                    b.Navigation("Need");
-                });
-
             modelBuilder.Entity("MVC_Freelancer.Data.Models.JobPackage", b =>
                 {
                     b.HasOne("MVC_Freelancer.Data.Models.Job", "Job")
@@ -719,14 +756,7 @@ namespace MVC_Freelancer.Migrations
                 {
                     b.Navigation("Images");
 
-                    b.Navigation("Needs");
-
                     b.Navigation("Packages");
-                });
-
-            modelBuilder.Entity("MVC_Freelancer.Data.Models.Need", b =>
-                {
-                    b.Navigation("Jobs");
                 });
 
             modelBuilder.Entity("MVC_Freelancer.Data.Models.Package", b =>
