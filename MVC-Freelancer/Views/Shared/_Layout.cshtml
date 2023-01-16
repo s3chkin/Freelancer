@@ -47,6 +47,14 @@
                         <li class="">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Job" asp-action="Contacts">Контакти</a>
                         </li>
+
+                        <div class="dropdown">
+                            <button class="dropbtn" style="margin-top:7px;">Портфолио <i class="fa-solid fa-angle-down"></i></button>
+                            <div class="dropdown-content">
+                                <a href="#">Моите поръчки</a>
+                                <a href="#">Моите заявки</a>
+                            </div>
+                        </div>
                     </ul>
 
 
@@ -176,3 +184,43 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+
+<style>
+    .dropbtn {
+        color: black;
+        font-size: 16px;
+        border: none;
+            background: none;
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+            .dropdown-content a:hover {
+                background-color: #ddd;
+            }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    
+</style>

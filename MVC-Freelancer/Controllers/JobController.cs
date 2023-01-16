@@ -27,7 +27,7 @@ namespace MVC_Freelancer.Controllers
                 Name = x.Name,
                 Price = x.Price,
                 Id = x.Id,
-                ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}", //четене на снимката от базата данни
+                ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}", //прочитене на снимката от базата данни
             }
              ).ToList();
             return View(model);
@@ -98,23 +98,6 @@ namespace MVC_Freelancer.Controllers
                 model.Image.CopyTo(fs);
             }
             job.Images.Add(image);
-            //foreach (var item in model.Needs)
-            //{
-            //    var need = db.Needs.FirstOrDefault(x => item.Name == x.Name);
-            //    if (need == null)
-            //    {
-            //        need = new Need
-            //        {
-            //            Name = item.Name,
-            //        };
-            //    }
-
-            //    job.Needs.Add(new JobNeed
-            //    {
-            //        Need = need,
-            //        Description = item.Description
-            //    });
-            //}
             db.Jobs.Add(job);
             db.SaveChanges();
 

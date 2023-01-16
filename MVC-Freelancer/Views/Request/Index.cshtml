@@ -1,0 +1,100 @@
+﻿@model IEnumerable<MVC_Freelancer.Models.InputRequestModel>
+
+<br>
+<br>
+<br>
+<br>
+<a asp-controller="Request" asp-action="Add"> Създай нова заявка</a>
+
+@foreach (var item in Model)
+{
+    <div class="row">
+        <div class="column">
+            <div class="card">
+                <div>
+                    <p class="float-start">Моята заявка</p>
+                    <div class="float-end">
+                        <i class="fa-solid fa-trash-can float-left " style="margin-right: 10px;" ></i>
+                        <i class="fa-solid fa-pencil float-left"></i>
+                    </div>
+                </div>
+                <h3 class="float-end"><b>@item.Title</b></h3>
+                <p>@item.Description</p>
+                <p>@item.Sum</p>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    @*<div style="width:840px; box-shadow: 0 -1px 0 0 #eaedf2;">
+            <div id="CardTitle">
+                <div class="float-start">
+                    <p>Моята заявка</p>
+                </div>
+                <div class="float-end">
+                    <p class="float-left" style="background-color: green; width:115px; border-radius: 10px; color:white;">Публикувано</p>
+                    <i class="fa-solid fa-trash-can float-left"></i>
+                    <i class="fa-solid fa-pencil float-left"></i>
+                </div>
+            </div>
+            <div id="CardBody">
+                <p>@item.CategoryName</p>
+                <br><br>
+                <h5><b>@item.Title</b></h5>
+                <br><br>
+                <h5>@item.Description</h5>
+            </div>
+            <div id="CardFooter">
+                <div>
+                    <p>@item.Sum</p>
+                    <p>@item.DeadLine</p>
+                </div>
+
+            </div>
+        </div>*@
+}
+<br>
+<br>
+
+<style>
+
+
+
+    body {
+        background-color: #f4f5f7;
+    }
+
+    .column {
+        float: left;
+        width: 35%;
+        padding: 0 10px;
+    }
+
+    .row {
+        margin: 0 -5px;
+    }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+    @@media screen and (max-width: 600px) {
+        .column {
+            width: 100%;
+            display: block;
+            margin-bottom: 20px;
+        }
+    }
+
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        padding: 16px;
+        /*text-align: center;*/
+        background-color: #f1f1f1;
+    }
+
+</style>

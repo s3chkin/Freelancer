@@ -1,0 +1,49 @@
+﻿@model MVC_Freelancer.Models.InputRequestModel
+<br><br>
+<br><br>
+<h4>От каква работа имаш нужда?</h4>
+
+<form style="display:grid; place-items:center;" method="post" enctype="multipart/form-data">
+
+<div class="form-group">
+        <label asp-for="CategoryId" class="control-label">Избери категория </label>
+        <div>
+            <select class="float-left" style="margin-right:30px; " asp-for="CategoryId" id="jobCategory" class="form-control" asp-items="@Model.Categories"></select>
+            <a asp-controller="Category" asp-action="Add" style="height:55px; width:55px; font-size:32px;" title="Добави нова категория">
+                +
+            </a>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Title" class="control-label">Какво предлагаш?</label>
+        <input asp-for="Title" id="jobInfo" class="form-control" placeholder="Например: Сайт за бизнес/ Фиксиране на грешки... " />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Sum" class="control-label">Какво предлагаш?</label>
+        <input asp-for="Sum" id="jobInfo" class="form-control" />
+        <span asp-validation-for="Sum" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Description" class="control-label">Какво предлагаш?</label>
+        <input asp-for="Description" id="jobInfo" class="form-control" placeholder="Опишете внимателно и подробно вашата нужда!"/>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="DeadLine" class="control-label">Какво предлагаш?</label>
+        <input asp-for="DeadLine" id="jobInfo" class="form-control" />
+        <span asp-validation-for="DeadLine" class="text-danger"></span>
+    </div>
+
+    <br>
+
+   
+
+    <br>
+    <input type="submit"  class="site-btn" value="Добави обява" />
+
+</form>
