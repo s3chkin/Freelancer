@@ -18,36 +18,40 @@
     </div>
 </section>
 
-
-<div class="btn-group">
+<br>
+<br>
+<div class="btn-group float-end" style="margin-right:80px;">
     <button type="button" class="site-btn  dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Добави обява</button>
     <ul class="dropdown-menu" style="">
         <li><a class="dropdown-item" href="#">Търся работа</a></li>
         <li><a class="dropdown-item" asp-controller="Job" asp-action="Add">Предлагам работа</a></li>
     </ul>
 </div>
-<hr />
+
+<br>
+<br>
+
 <div class="d-flex justify-content-center boxContainer">
 
     <div class="boxes float-left" style=" margin-right: 15px;">
         <p style="margin-left:20px;margin-right:20px;"><b>Създай заявка</b> по най-лесния начин</p>
         <img class="box-img" src="~/ImageRepository/undraw_Investor_update_re_qnuu.png">
         <p class="box-text">Имаш проблем с намирането на работник или Freelancer, който търсиш? </p>
-        <button class="box-btn"><b>Създай заявка</b></button>
+        <a asp-controller="Request" asp-action="Index" class="box-btn"><b>Създай заявка</b></a>
     </div>
 
     <div class="boxes float-left" style=" margin-right: 15px;">
         <p style="margin-left:20px;margin-right:20px;"><b>Стани Freelancer</b>, работи по най-свободния начин</p>
         <img class="box-img" src="~/ImageRepository/undraw_Freelancer_re_irh4.png">
         <p class="box-text">Имаш нужда от работа, но не знаеш от къде и как да започнeш? Ние сме тук, за да ти помогнем.</p>
-        <button class="box-btn"><b>Стани Freelancer</b></button>
+        <a asp-controller="Job" asp-action="Add" class="box-btn"><b>Стани Freelancer</b></a>
     </div>
 
     <div class="boxes">
         <p style="margin-left:30px;margin-right:30px;"><b>Намери си Freelancer</b>, който да ти върши услуги</p>
         <img class="box-img" src="~/ImageRepository/undraw_Join_re_w1lh.png">
         <p class="box-text">Имаш нужда от работник, но не знаеш от къде и как да го намериш? Ние сме тук, за да ти помогнем.</p>
-        <button class="box-btn"><b>Намери Freelancer</b></button>
+        <a asp-controller="Job" asp-action="Services" class="box-btn"><b>Намери Freelancer</b></a>
     </div>
 </div>
 

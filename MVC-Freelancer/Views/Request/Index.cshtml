@@ -4,71 +4,104 @@
 <br>
 <br>
 <br>
-<a asp-controller="Request" asp-action="Add"> Създай нова заявка</a>
-
-@foreach (var item in Model)
-{
-    <div class="row">
-        <div class="column">
-            <div class="card">
-                <div>
-                    <p class="float-start">Моята заявка</p>
-                    <div class="float-end">
-                        <i class="fa-solid fa-trash-can float-left " style="margin-right: 10px;" ></i>
-                        <i class="fa-solid fa-pencil float-left"></i>
+<div id="IndexBody">
+    <div>
+        <div class="float-start">
+            <h4><b>Създайте специална заявка</b></h4>
+            <p>Имате проблем с намирането на услуги или фрийленсъри?<br>Тогава създайде заявка и фрийленсърите да Ви намерят.</p>
+        </div>
+        <a class="float-end" id="newRequestBtn" asp-controller="Request" asp-action="Add"> Създай нова заявка</a>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="d-flex justify-content-center">
+        <img width="400px;" src="/ImageRepository/undraw_accept_request_re_d81h.svg">
+    </div>
+    <br>
+    <br>
+    @foreach (var item in Model)
+    {
+        <div class="row d-flex justify-content-center">
+            <div class="column">
+                <div class="card">
+                    <div>
+                        <p class="float-start">Моята заявка</p>
+                        <div class="float-end">
+                            <p id="progress" class="float-left">Публикувано</p>
+                            <i class="requestDeleteBtn fa-solid fa-trash-can float-left" style="margin-right: 10px;margin-left: 10px;"></i>
+                            <i class="requestEditBtn fa-solid fa-pencil float-left"></i>
+                        </div>
                     </div>
+                    <h3 class="float-end">Заглавие: <b>@item.Title</b></h3>
+                    <p>Описание: @item.Description</p>
+                    <p>Бюджет: @item.Sum лева</p>
+                    <p>Срок: @item.DeadLine</p>
                 </div>
-                <h3 class="float-end"><b>@item.Title</b></h3>
-                <p>@item.Description</p>
-                <p>@item.Sum</p>
+                <br><br>
             </div>
         </div>
-    </div>
-
-
-
-
-    @*<div style="width:840px; box-shadow: 0 -1px 0 0 #eaedf2;">
-            <div id="CardTitle">
-                <div class="float-start">
-                    <p>Моята заявка</p>
-                </div>
-                <div class="float-end">
-                    <p class="float-left" style="background-color: green; width:115px; border-radius: 10px; color:white;">Публикувано</p>
-                    <i class="fa-solid fa-trash-can float-left"></i>
-                    <i class="fa-solid fa-pencil float-left"></i>
-                </div>
-            </div>
-            <div id="CardBody">
-                <p>@item.CategoryName</p>
-                <br><br>
-                <h5><b>@item.Title</b></h5>
-                <br><br>
-                <h5>@item.Description</h5>
-            </div>
-            <div id="CardFooter">
-                <div>
-                    <p>@item.Sum</p>
-                    <p>@item.DeadLine</p>
-                </div>
-
-            </div>
-        </div>*@
-}
-<br>
-<br>
-
-<style>
-
-
-
-    body {
-        background-color: #f4f5f7;
     }
+    <br>
+    <br>
+</div>
+<style>
+    #IndexBody{
+         margin-left: 80px;
+            margin-right: 80px;
+    }
+    body {
+       
+        background-color: none;
+    }
+
+    #newRequestBtn {
+        background-color: #fdd92a;
+        color: black;
+        padding: 10px;
+        border-radius: 8px;
+    }
+
+    #progress {
+        border-radius: 7px;
+        background-color: #2fb92f;
+        padding: 3.5px;
+    }
+
+    .requestDeleteBtn {
+        width: 30px;
+        height: 30px;
+        background-color: red;
+        color: white;
+        display: grid;
+        justify-content: center;
+        align-content: center;
+        cursor: pointer;
+        font-size: 19px;
+        border-radius: 4px;
+    }
+
+    .requestEditBtn {
+        width: 30px;
+        height: 30px;
+        background-color: green;
+        color: white;
+        display: grid;
+        justify-content: center;
+        align-content: center;
+        cursor: pointer;
+        font-size: 19px;
+        border-radius: 4px;
+    }
+
+
 
     .column {
         float: left;
-        width: 35%;
+        width: 70%;
         padding: 0 10px;
     }
 
@@ -94,7 +127,8 @@
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
         padding: 16px;
         /*text-align: center;*/
-        background-color: #f1f1f1;
+        background-color: black;
+        color: white;
     }
 
 </style>

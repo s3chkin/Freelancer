@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVC_Freelancer.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230116151135_Freelancer")]
+    [Migration("20230117101751_Freelancer")]
     partial class Freelancer
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -475,10 +475,6 @@ namespace MVC_Freelancer.Migrations
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
-
-                    b.Property<string>("CategoryName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DeadLine")
                         .HasColumnType("datetime2");

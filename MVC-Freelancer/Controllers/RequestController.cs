@@ -26,19 +26,10 @@ namespace MVC_Freelancer.Controllers
                 Title = x.Title,
                 Description = x.Description,
                 CategoryId = x.CategoryId,
-                CategoryName =  x.CategoryName
 
             }
              ).ToList();
-            var categories = db.Categories.Select(x => new SelectListItem
-            {
-                Text = x.Name,
-                Value = x.Id.ToString()
-            }).ToList();
-            InputJobModel model2 = new InputJobModel
-            {
-                Categories = categories
-            };
+           
 
             return View(model);
             
@@ -76,7 +67,7 @@ namespace MVC_Freelancer.Controllers
             db.Requests.Add(request);
             db.SaveChanges();
 
-            return this.Redirect("/");
+            return this.RedirectToAction("Index");
         }
     }
 }

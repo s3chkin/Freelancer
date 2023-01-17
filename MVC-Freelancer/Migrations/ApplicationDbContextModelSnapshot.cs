@@ -474,10 +474,6 @@ namespace MVC_Freelancer.Migrations
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
-                    b.Property<string>("CategoryName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("DeadLine")
                         .HasColumnType("datetime2");
 
