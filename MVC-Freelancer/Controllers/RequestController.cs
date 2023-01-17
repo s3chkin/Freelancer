@@ -69,5 +69,14 @@ namespace MVC_Freelancer.Controllers
 
             return this.RedirectToAction("Index");
         }
+
+
+        public IActionResult Delete(int id)
+        {
+            var request = db.Requests.Where(s => s.Id == id).FirstOrDefault(); //търсене
+            db.Requests.Remove(request);
+            db.SaveChanges();
+            return this.RedirectToAction("Index");
+        }
     }
 }

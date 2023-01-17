@@ -1,49 +1,54 @@
 ﻿@model MVC_Freelancer.Models.InputRequestModel
-<br><br>
-<br><br>
-<h4>От каква работа имаш нужда?</h4>
+<br>
+<br>
+<br>
+<br>
+<h4 align="center">От каква работа имаш нужда?</h4>
+<br>
+
 
 <form style="display:grid; place-items:center;" method="post" enctype="multipart/form-data">
 
-<div class="form-group">
-        <label asp-for="CategoryId" class="control-label">Избери категория </label>
+    <img src="~/ImageRepository/undraw_travel_together_re_kjf2.svg" width="300px;">
+    <br>
+    <div class="form-group">
+        <label asp-for="CategoryId" class="control-label">Избери категория <span style="color:red; font-size:20px;">*</span> </label>
         <div>
-            <select class="float-left" style="margin-right:30px; " asp-for="CategoryId" id="jobCategory" class="form-control" asp-items="@Model.Categories"></select>
-            <a asp-controller="Category" asp-action="Add" style="height:55px; width:55px; font-size:32px;" title="Добави нова категория">
-                +
-            </a>
+            <select class="float-left" style="width: 600px;height: 55px;margin-bottom: 20px;" asp-for="CategoryId" id="jobCategory" class="form-control" asp-items="@Model.Categories"></select>
         </div>
     </div>
 
     <div class="form-group">
-        <label asp-for="Title" class="control-label">Какво предлагаш?</label>
-        <input asp-for="Title" id="jobInfo" class="form-control" placeholder="Например: Сайт за бизнес/ Фиксиране на грешки... " />
+        <label asp-for="Title" class="control-label">Заглавие <span style="color:red; font-size:20px;">*</span></label>
+        <input asp-for="Title" style="width: 600px;height: 55px;margin-bottom: 20px; id="jobInfo" class="form-control" placeholder="Например: Сайт за бизнес/ Фиксиране на грешки... " />
         <span asp-validation-for="Title" class="text-danger"></span>
     </div>
 
     <div class="form-group">
-        <label asp-for="Sum" class="control-label">Какво предлагаш?</label>
-        <input asp-for="Sum" id="jobInfo" class="form-control" />
+        <label asp-for="Sum" class="control-label">Сума <span style="color:red; font-size:20px;">*</span></label>
+        <input asp-for="Sum" style="width: 600px;height: 55px;margin-bottom: 20px; id="jobInfo" class="form-control" />
         <span asp-validation-for="Sum" class="text-danger"></span>
     </div>
 
+
     <div class="form-group">
-        <label asp-for="Description" class="control-label">Какво предлагаш?</label>
-        <input asp-for="Description" id="jobInfo" class="form-control" placeholder="Опишете внимателно и подробно вашата нужда!"/>
+        <label asp-for="Description" class="control-label">Описание <span style="color:red; font-size:20px;">*</span></label>
+        <textarea asp-for="Description" style="margin-bottom: 20px; width: 600px;height: 300px;" id="jobDescription" class="form-control" placeholder="Опишете внимателно и подробно вашата нужда!"></textarea>
         <span asp-validation-for="Description" class="text-danger"></span>
     </div>
 
+
     <div class="form-group">
-        <label asp-for="DeadLine" class="control-label">Какво предлагаш?</label>
-        <input asp-for="DeadLine" id="jobInfo" class="form-control" />
+        <label asp-for="DeadLine" class="control-label">Срок <span style="color:red; font-size:20px;">*</span></label>
+        <input type="date" value="@DateTime.Now"  asp-for="DeadLine.Date" style="width: 600px;height: 55px;margin-bottom: 20px; id="jobInfo" class="form-control" />
         <span asp-validation-for="DeadLine" class="text-danger"></span>
     </div>
 
     <br>
 
-   
+
 
     <br>
-    <input type="submit"  class="site-btn" value="Добави обява" />
-
+    <input type="submit" class="site-btn" value="Добави обява" />
+    <br><br>
 </form>

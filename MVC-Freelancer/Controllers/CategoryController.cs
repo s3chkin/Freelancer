@@ -42,8 +42,8 @@ namespace MVC_Freelancer.Controllers
 
         public IActionResult Delete(int id)
         {
-            var job = db.Categories.Where(s => s.Id == id).FirstOrDefault(); //търсене
-            db.Categories.Remove(job);
+            var category = db.Categories.Where(s => s.Id == id).FirstOrDefault(); //търсене
+            db.Categories.Remove(category);
             db.SaveChanges();
             return this.RedirectToAction("Index");
         }

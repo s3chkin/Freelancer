@@ -101,7 +101,7 @@ namespace MVC_Freelancer.Controllers
             db.Jobs.Add(job);
             db.SaveChanges();
 
-            return this.Redirect("/");
+            return this.RedirectToAction("Index");
         }   
 
         public IActionResult ById(int id)

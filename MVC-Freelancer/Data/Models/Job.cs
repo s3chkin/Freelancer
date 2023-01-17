@@ -13,9 +13,7 @@
         public string Description { get; set; }
         public double Price { get; set; }
         public DateTime DeadLine { get; set; }
-        public bool IsDeleted { get; set; }
         public string Progress { get; set; }
-        public string? Type { get; set; } // търси / предлага
 
         //пакети:
         public string PackageName { get; set; }

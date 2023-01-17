@@ -397,9 +397,6 @@ namespace MVC_Freelancer.Migrations
                     b.Property<string>("ExtraInfo3")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -452,9 +449,6 @@ namespace MVC_Freelancer.Migrations
 
                     b.Property<int>("Revision3")
                         .HasColumnType("int");
-
-                    b.Property<string>("Type")
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
