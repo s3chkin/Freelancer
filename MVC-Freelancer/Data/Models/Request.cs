@@ -1,4 +1,6 @@
 ﻿using Microsoft.CodeAnalysis.Options;
+using System.ComponentModel.DataAnnotations;
+using System.Xml.Linq;
 
 namespace MVC_Freelancer.Data.Models
 {

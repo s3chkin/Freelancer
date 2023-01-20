@@ -65,13 +65,12 @@
 
         @foreach (var item in Model)
         {
-            <div class="container float-left" style="margin-top:20px; width:25%;">
+            <div class="container container2 float-left" style="">
                 <div class="card-sl ">
                     <div class="card-image">
-                        <img height="220px;" src="@item.ImgURL" />
+                        <img id="image" height="220px;" src="@item.ImgURL" />
                     </div>
 
-                    <a class="card-action" href="#"><i class="bi bi-heart-fill" style="font-size:20px;"></i></a>
                     <div class="card-heading">
                         @item.Name
                     </div>
@@ -93,6 +92,65 @@
 
 
 <style>
+    .container2 {
+        margin-top: 20px;
+        width: 25%;
+    }
+
+    @@media screen and (max-width: 1240px) {
+        .container2 {
+            width: 28%;
+            justify-content: center;
+            display: grid;
+            align-items: center;
+        }
+    }
+     @@media screen and (max-width: 1080px) {
+        .container2 {
+            width: 33%;
+            justify-content: center;
+        }
+    }
+
+    @@media screen and (max-width: 1000px) {
+        .container2 {
+            width: 40%;
+            justify-content: center;
+        }
+    }
+    @@media screen and (max-width: 830px) {
+        .container2 {
+            width: 50%;
+            justify-content: center;
+        }
+        #image
+        {
+            width:100%;
+        }
+    }
+
+    @@media screen and (max-width: 660px) {
+        .container2 {
+            width: 50%;
+            justify-content: center;
+        }
+
+        #image {
+            width: 100%;
+            height: auto;
+        }
+    }
+    @@media screen and (max-width: 600px) {
+        .container2 {
+            width: 100%;
+            justify-content: center;
+            
+        }
+        #image
+        {
+            width:100%;
+        }
+    }
 
 
     #list, a {
@@ -151,5 +209,4 @@
         }
     }
 
-    }
 </style>

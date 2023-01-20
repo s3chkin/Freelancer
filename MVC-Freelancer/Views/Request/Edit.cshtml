@@ -3,9 +3,9 @@
 <br>
 <br>
 <br>
-<h4 align="center">От каква работа имаш нужда?</h4>
 <br>
-
+<br>
+<h1 style="font-family: Geomanist,Arial,sans-serif;">Редактиране</h1>
 
 <form style="display:grid; place-items:center;" method="post" enctype="multipart/form-data">
 
@@ -20,27 +20,27 @@
 
     <div class="form-group">
         <label asp-for="Title" class="control-label">Заглавие <span style="color:red; font-size:20px;">*</span></label>
-        <input asp-for="Title" style="width: 600px;height: 55px;margin-bottom: 20px; id="jobInfo" class="form-control" placeholder="Например: Сайт за бизнес/ Фиксиране на грешки... " />
+        <input asp-for="Title" value="@Model.Title" style="width: 600px;height: 55px;margin-bottom: 20px; id="jobInfo" class="form-control" placeholder="Например: Сайт за бизнес/ Фиксиране на грешки... " />
         <span asp-validation-for="Title" class="text-danger"></span>
     </div>
 
     <div class="form-group">
         <label asp-for="Sum" class="control-label">Сума <span style="color:red; font-size:20px;">*</span></label>
-        <input asp-for="Sum" style="width: 600px;height: 55px;margin-bottom: 20px; id="jobInfo" class="form-control" />
+        <input asp-for="Sum" value="@Model.Sum" style="width: 600px;height: 55px;margin-bottom: 20px; id="jobInfo" class="form-control" />
         <span asp-validation-for="Sum" class="text-danger"></span>
     </div>
 
 
     <div class="form-group">
         <label asp-for="Description" class="control-label">Описание <span style="color:red; font-size:20px;">*</span></label>
-        <textarea asp-for="Description" style="margin-bottom: 20px; width: 600px;height: 300px;" id="jobDescription" class="form-control" placeholder="Опишете внимателно и подробно вашата нужда!"></textarea>
+        <textarea asp-for="Description" value="@Model.Description" style="margin-bottom: 20px; width: 600px;height: 300px;" id="jobDescription" class="form-control" placeholder="Опишете внимателно и подробно вашата нужда!"></textarea>
         <span asp-validation-for="Description" class="text-danger"></span>
     </div>
 
 
     <div class="form-group">
         <label asp-for="DeadLine" class="control-label">Срок <span style="color:red; font-size:20px;">*</span></label>
-        <input asp-for="DeadLine.Date" style="width: 600px;height: 55px;margin-bottom: 20px; id="jobInfo" class="form-control" />
+        <input type="date" value="@Model.DeadLine.Date" asp-for="DeadLine" style="width: 600px;height: 55px;margin-bottom: 20px; id="jobInfo" class="form-control" />
         <span asp-validation-for="DeadLine" class="text-danger"></span>
     </div>
 

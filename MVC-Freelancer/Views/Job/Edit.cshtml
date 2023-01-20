@@ -12,7 +12,7 @@
 
     <div class="form-group">
         <label asp-for="DeadLine" class="control-label">Крайна дата за предаване* (Валидност на обявата)</label>
-        <input asp-for="DeadLine" id="jobDate" class="form-control" value="@Model.DeadLine" />
+        <input type="date" value="@Model.DeadLine.Date" asp-for="DeadLine" id="jobDate" class="form-control" value="@Model.DeadLine" />
         <span asp-validation-for="DeadLine" class="text-danger"></span>
     </div>
 

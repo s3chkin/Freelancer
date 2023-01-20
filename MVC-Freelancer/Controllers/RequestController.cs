@@ -29,10 +29,10 @@ namespace MVC_Freelancer.Controllers
 
             }
              ).ToList();
-           
+
 
             return View(model);
-            
+
         }
         [HttpGet]
         public IActionResult Add()
@@ -63,7 +63,7 @@ namespace MVC_Freelancer.Controllers
                 CategoryId = model.CategoryId,
 
             };
-           
+
             db.Requests.Add(request);
             db.SaveChanges();
 
@@ -75,6 +75,47 @@ namespace MVC_Freelancer.Controllers
         {
             var request = db.Requests.Where(s => s.Id == id).FirstOrDefault(); //търсене
             db.Requests.Remove(request);
+            db.SaveChanges();
+            return this.RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+
+            var request = db.Requests.Where(s => s.Id == id).FirstOrDefault();
+
+            var model = new InputRequestModel
+            {
+                Id = request.Id,
+                Title = request.Title,
+                DeadLine = request.DeadLine,
+                Description = request.Description,
+                Sum = request.Sum,
+                CategoryId = request.CategoryId,
+                //Categories = (List<SelectListItem>)request.Categories,
+
+            };
+            var categories = db.Categories.Select(x =>
+            new SelectListItem
+            {
+                Text = x.Name,
+                Value = x.Id.ToString()
+            }).ToList();
+            model.Categories = categories;
+            return this.View(model);
+        }
+        [HttpPost]
+        public IActionResult Edit(int id, InputRequestModel model) //update
+        {
+            var request = db.Requests.Where(s => s.Id == model.Id).FirstOrDefault(); //търсене
+            request.Id = model.Id;
+            request.Title = model.Title;
+            request.DeadLine = model.DeadLine;
+            request.Description = model.Description;
+            request.Sum = model.Sum;
+            request.CategoryId = model.CategoryId;
+
             db.SaveChanges();
             return this.RedirectToAction("Index");
         }

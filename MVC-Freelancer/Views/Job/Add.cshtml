@@ -21,7 +21,7 @@
 
 
         <label asp-for="DeadLine.Date" class="control-label">Крайна дата за предаване<span style="color:red; font-size:20px;">*</span> (Валидност на обявата)</label>
-        <input type="date" value="@DateTime.Now" asp-for="DeadLine.Date" id="jobDate" class="form-control" />
+        <input type="date" asp-for="DeadLine.Date" id="jobDate" class="form-control" />
         <span asp-validation-for="DeadLine.Date" class="text-danger"></span>
     </div>
 

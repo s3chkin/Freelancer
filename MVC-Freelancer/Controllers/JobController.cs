@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using MVC_Freelancer.Data;
 using MVC_Freelancer.Data.Models;
 using MVC_Freelancer.Models;
+using Recipes.Services;
 using System.Net;
 using System.Net.Mail;
 
@@ -12,12 +13,15 @@ namespace MVC_Freelancer.Controllers
     {
         private readonly ApplicationDbContext db;
         private readonly IWebHostEnvironment webHostEnvironment;
+        private readonly object shortStringService;
         private string[] allowedExtention = new[] { "png", "jpg", "jpeg" };
 
-        public JobController(ApplicationDbContext db, IWebHostEnvironment webHostEnvironment)
+        public JobController(ApplicationDbContext db, IWebHostEnvironment webHostEnvironment, IShortStringService shortStringService)
         {
             this.db = db;
             this.webHostEnvironment = webHostEnvironment;
+            this.shortStringService = shortStringService; //injektirane
+
         }
 
         public IActionResult Index()
@@ -102,7 +106,7 @@ namespace MVC_Freelancer.Controllers
             db.SaveChanges();
 
             return this.RedirectToAction("Index");
-        }   
+        }
 
         public IActionResult ById(int id)
         {
@@ -116,7 +120,7 @@ namespace MVC_Freelancer.Controllers
                 CategoryId = x.CategoryId,
                 Description = x.Description,
                 Progress = x.Progress,
-                
+
                 ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}",
 
                 PackageName = x.PackageName,
@@ -144,6 +148,7 @@ namespace MVC_Freelancer.Controllers
             return this.View(model);
         }
 
+        [HttpGet]
         public IActionResult Edit(int id)
         {
 
@@ -155,12 +160,41 @@ namespace MVC_Freelancer.Controllers
                 DeadLine = job.DeadLine,
                 Description = job.Description,
                 Price = job.Price,
-                Categories = (List<SelectListItem>)job.Categories,
+
+                DeliveryTime = job.DeliveryTime,
+                DeliveryTime2 = job.DeliveryTime2,
+                DeliveryTime3 = job.DeliveryTime3,
+                PackageName = job.PackageName,
+                PackageName2 = job.PackageName2,
+                PackageName3 = job.PackageName3,
+
+                PacketDescription = job.Description,
+                PacketDescription2 = job.PacketDescription2,
+                PacketDescription3 = job.PacketDescription3,
+
+                PacketPrice = job.PacketPrice,
+                PacketPrice2 = job.PacketPrice2,
+                PacketPrice3 = job.PacketPrice3,
+
+                ExtraInfo = job.ExtraInfo,
+                ExtraInfo2 = job.ExtraInfo2,
+                ExtraInfo3 = job.ExtraInfo3,
+
+                Revision = job.Revision,
+                Revision2 = job.Revision2,
+                Revision3 = job.Revision3,
             };
+            var categories = db.Categories.Select(x =>
+             new SelectListItem
+             {
+                 Text = x.Name,
+                 Value = x.Id.ToString()
+             }).ToList();
+            model.Categories = categories;
             return this.View(model);
         }
         [HttpPost]
-        public IActionResult Edit(InputJobModel model) //update
+        public IActionResult Edit(int id, InputJobModel model) //update
         {
             var job = db.Jobs.Where(s => s.Id == model.Id).FirstOrDefault(); //търсене
             job.Id = model.Id;
@@ -168,8 +202,31 @@ namespace MVC_Freelancer.Controllers
             job.DeadLine = model.DeadLine;
             job.Description = model.Description;
             job.Price = model.Price;
-            job.Categories = (ICollection<Category>)model.Categories;
-            //job.Images = (ICollection<Image>)model.Image;
+            job.CategoryId = model.CategoryId;
+
+            job.PackageName = model.PackageName;
+            job.PackageName2 = model.PackageName2;
+            job.PackageName3 = model.PackageName3;
+
+            job.PacketDescription = model.PacketDescription;
+            job.PacketDescription2 = model.PacketDescription2;
+            job.PacketDescription3 = model.PacketDescription3;
+
+            job.PacketPrice = model.PacketPrice;
+            job.PacketPrice2 = model.PacketPrice2;
+            job.PacketPrice3 = model.PacketPrice3;
+
+            job.Revision = model.Revision;
+            job.Revision2 = model.Revision2;
+            job.Revision3 = model.Revision3;
+
+            job.ExtraInfo = model.ExtraInfo;
+            job.ExtraInfo2 = model.ExtraInfo2;
+            job.ExtraInfo3 = model.ExtraInfo3;
+
+            job.DeliveryTime = model.DeliveryTime;
+            job.DeliveryTime2 = model.DeliveryTime2;
+            job.DeliveryTime3 = model.DeliveryTime3;
             db.SaveChanges();
             return this.RedirectToAction("Index");
         }

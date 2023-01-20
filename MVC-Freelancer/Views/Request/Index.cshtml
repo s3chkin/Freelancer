@@ -31,15 +31,24 @@
                     <div>
                         <p class="float-start">Моята заявка</p>
                         <div class="float-end">
-                            <p id="progress" class="float-left">Публикувано</p>
+                            @if (item.DeadLine >= DateTime.Today)
+                            {
+                                <p id="progress" class="float-left">Публикувано</p>
+
+                            }
+                            else
+                            {
+                                <p id="progress2" class="float-left">Срокът е изтекъл</p>
+                                
+                            }
                             <a asp-action="Delete" asp-route-id="@item.Id"><i class="requestDeleteBtn fa-solid fa-trash-can float-left" style="margin-right: 10px;margin-left: 10px;"></i></a>
-                            <i class="requestEditBtn fa-solid fa-pencil float-left"></i>
+                            <a asp-action="Edit" asp-route-id="@item.Id"><i class="requestEditBtn fa-solid fa-pencil float-left"></i></a>
                         </div>
                     </div>
                     <h3 class="float-end">Заглавие: <b>@item.Title</b></h3>
                     <p>Описание: @item.Description</p>
                     <p>Бюджет: @item.Sum лева</p>
-                    <p>Срок: @item.DeadLine</p>
+                    <p>Срок: @item.DeadLine.ToString("dd/MM/yyyy")</p>
                 </div>
                 <br><br>
             </div>
@@ -49,12 +58,12 @@
     <br>
 </div>
 <style>
-    #IndexBody{
-         margin-left: 80px;
-            margin-right: 80px;
+    #IndexBody {
+        margin-left: 80px;
+        margin-right: 80px;
     }
+
     body {
-       
         background-color: none;
     }
 
@@ -68,6 +77,12 @@
     #progress {
         border-radius: 7px;
         background-color: #2fb92f;
+        padding: 3.5px;
+    }
+
+    #progress2 {
+        border-radius: 7px;
+        background-color: orangered;
         padding: 3.5px;
     }
 
