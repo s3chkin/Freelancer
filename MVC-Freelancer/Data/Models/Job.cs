@@ -54,7 +54,7 @@
         public virtual ICollection<Image> Images { get; set; }
         public int ContactUsId { get; set; }
         public virtual ICollection<ContactUs> ContactUs { get; set; }
-
+        public List<Comment>CommentState { get; set; }
 
 
     }

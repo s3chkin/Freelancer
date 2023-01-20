@@ -13,14 +13,14 @@ namespace MVC_Freelancer.Controllers
     {
         private readonly ApplicationDbContext db;
         private readonly IWebHostEnvironment webHostEnvironment;
-        private readonly object shortStringService;
+        //private readonly object shortStringService;
         private string[] allowedExtention = new[] { "png", "jpg", "jpeg" };
 
-        public JobController(ApplicationDbContext db, IWebHostEnvironment webHostEnvironment, IShortStringService shortStringService)
+        public JobController(ApplicationDbContext db, IWebHostEnvironment webHostEnvironment/*, IShortStringService shortStringService*/)
         {
             this.db = db;
             this.webHostEnvironment = webHostEnvironment;
-            this.shortStringService = shortStringService; //injektirane
+            //this.shortStringService = shortStringService; //injektirane
 
         }
 
