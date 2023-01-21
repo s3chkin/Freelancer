@@ -482,6 +482,9 @@ namespace MVC_Freelancer.Migrations
                     b.Property<int>("Revision3")
                         .HasColumnType("int");
 
+                    b.Property<bool?>("Status")
+                        .HasColumnType("bit");
+
                     b.HasKey("Id");
 
                     b.HasIndex("AppUserId");

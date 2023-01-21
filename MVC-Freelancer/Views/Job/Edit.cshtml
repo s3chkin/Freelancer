@@ -4,36 +4,47 @@
 <hr />
 
 <form style="display:grid; place-items:center;" method="post" enctype="multipart/form-data">
+    <img style="width:560px; margin-top:80px;" src="~/ImageRepository/undraw_add_tasks_re_s5yj.svg">
+    <br><br>
+    <div class="form-group" style="display:none;">
+        <label asp-for="Progress" class="control-label"></label>
+        <input asp-for="Progress" class="form-control" value="null" id="jobProgress " />
+        <span asp-validation-for="Progress" class="text-danger"></span>
+    </div>
+
     <div class="form-group">
-        <label asp-for="Name" class="control-label">Какво предлагаш?</label>
-        <input asp-for="Name" id="jobInfo" class="form-control" value="@Model.Name" />
+        <label asp-for="Name" class="control-label">Какво предлагаш? <span style="color:red; font-size:20px;">*</span></label>
+        <input asp-for="Name" id="jobInfo" class="form-control" placeholder="Например: Сайт за бизнес/ Фиксиране на грешки... " />
         <span asp-validation-for="Name" class="text-danger"></span>
     </div>
 
     <div class="form-group">
-        <label asp-for="DeadLine" class="control-label">Крайна дата за предаване* (Валидност на обявата)</label>
-        <input type="date" value="@Model.DeadLine.Date" asp-for="DeadLine" id="jobDate" class="form-control" value="@Model.DeadLine" />
+        <label asp-for="DeadLine" class="control-label">Крайна дата за предаване<span style="color:red; font-size:20px;">*</span> (Валидност на обявата)</label>
+        <input type="date" value="@Model.DeadLine.Date" asp-for="DeadLine" id="jobInfo" class="form-control" />
         <span asp-validation-for="DeadLine" class="text-danger"></span>
     </div>
 
+    
+
     <div class="form-group">
-        <label asp-for="Price" class="control-label">Цена*</label>
-        <input asp-for="Price" id="jobPrice" class="form-control" value="@Model.Price" />
+
+
+        <label asp-for="Price" class="control-label">Цена <span style="color:red; font-size:20px;">*</span></label>
+        <input asp-for="Price" id="jobPrice" class="form-control" />
         <span asp-validation-for="Price" class="text-danger"></span>
     </div>
 
+    <br>
+    <img width="560px;" src="~/ImageRepository/undraw_project_complete_lwss.svg">
+    <br><br>
 
     <div class="form-group">
-        <label asp-for="Description" class="control-label">Описание*</label>
-        <textarea asp-for="Description" id="jobDescription" class="form-control" placeholder="Аз мога да направя... (подробна информация)" >@Model.Description</textarea>
+        <label asp-for="Description" class="control-label">Описание <span style="color:red; font-size:20px;">*</span></label>
+        <textarea asp-for="Description" id="jobDescription" class="form-control" placeholder="Аз мога да направя... (подробна информация)"></textarea>
         <span asp-validation-for="Description" class="text-danger"></span>
     </div>
 
-    <div class="form-group">
-        <label asp-for="Description" class="control-label">Съдържанието на пакетите*</label>
-        <textarea asp-for="Description" id="jobPackages" class="form-control" placeholder="Админ панел ">@Model.Description</textarea>
-        <span asp-validation-for="Description" class="text-danger"></span>
-    </div>
+
 
     <div class="form-group" style="display:none;">
         <label asp-for="Progress" class="control-label"></label>
@@ -42,28 +53,169 @@
     </div>
 
     <div class="form-group">
-        <label asp-for="CategoryId" class="control-label">Категория</label>
-        <select asp-for="CategoryId" id="jobCategory" class="form-control" asp-items="@Model.Categories"> @Model.Categories</select>
+        <label asp-for="CategoryId" class="control-label">Категория <span style="color:red; font-size:20px;">*</span></label>
+        <div>
+            <select class="float-left" style="margin-right:30px; " asp-for="CategoryId" id="jobCategory" class="form-control" asp-items="@Model.Categories"></select>
+            <a asp-controller="Category" asp-action="Add" style="height:55px; width:55px; font-size:32px;" title="Добави нова категория">
+                +
+            </a>
+        </div>
+
     </div>
     <br>
 
-   
-
-     <div class="form-group">
+    <div class="form-group">
+        <div style="text-align:center;">
+            <label asp-for="CategoryId" class="control-label">Снимка <span style="color:red; font-size:20px;">*</span></label>
+        </div>
         <label asp-for="Image" class="control-label" style="display:none;"></label>
+        @*<input asp-for="Image" type="file"  class="form-control" id="jobImg"/>*@
         <input asp-for="Image" style="display:none;" type="file" id="file" />
         <label id="file2" onclick="func()" for="file" style="display:grid; place-items:center; cursor:pointer;"><i id="imgLogo2" class="bi bi-check" style="display:none;"></i><i class="bi bi-camera" id="imgLogo1"></i></label>
         <span asp-validation-for="Image" class="text-danger"></span>
     </div>
 
-    @*
-    <div id="Need" class="form-group">
-    <label asp-for="Needs" class="control-label"></label>
-    <a class="btn btn-success" onclick="AddNeed()">+</a>
-    </div>*@
 
     <br>
-    <input class="site-btn" type="submit" value="Редактирай" />
+
+    <div class="d-flex justify-content-center">
+        <div style="width:1100px; margin-top:80px;">
+
+
+            <div id="tableContainer">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="tableTh"></th>
+                            <th scope="col" class="tableTh"><h1>Pro</h1></th>
+                            <th scope="col" class="tableTh"><h1>Standart</h1></th>
+                            <th scope="col" class="tableTh"><h1>Basic</h1></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">
+
+                            </th>
+                            <td>
+                                <div class="form-group">
+                                    <input style="border:none; width:100%; height:100%;" asp-for="PackageName " id="PackageName1" class="form-control" placeholder="Наименование на пакета ">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <input style="border:none; width:100%; height:100%;" asp-for="PackageName2" id="PackageName1" class="form-control" placeholder="Наименование на пакета">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <input style="border:none; width:100%; height:100%;" asp-for="PackageName3" id="PackageName1" class="form-control" placeholder="Наименование на пакета">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Описание <span style="color:red; font-size:20px;">*</span></th>
+                            <td style="height:125px;">
+                                <div class="form-group">
+                                    <textarea style="border:none;  width:100%; height:108px;" asp-for="PacketDescription" id="PacketDescription1" class="form-control" placeholder="Аз мога да направя... (подробна информация)"></textarea>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <textarea style="border:none; width:100%; height:108px" asp-for="PacketDescription2" id="PacketDescription2" class="form-control" placeholder="Аз мога да направя... (подробна информация)"></textarea>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <textarea style="border:none;width:100%; height:108px" asp-for="PacketDescription3" id="PacketDescription3" class="form-control" placeholder="Аз мога да направя... (подробна информация)"></textarea>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Време за предаване <span style="color:red; font-size:20px;">*</span></th>
+                            <td>
+                                <div class="form-group">
+                                    <input style="border:none; width:100%; height:100%;" asp-for="DeliveryTime" id="DeliveryTime1" class="form-control" placeholder="Време за предаване(дни)">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <input style="border:none; width:100%; height:100%;" asp-for="DeliveryTime2" id="DeliveryTime2" class="form-control" placeholder="Време за предаване(дни)">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <input style="border:none; width:100%; height:100%;" asp-for="DeliveryTime3" id="DeliveryTime3" class="form-control" placeholder="Време за предаване(дни)">
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">Ревизия <span style="color:red; font-size:20px;">*</span></th>
+                            <td>
+                                <div class="form-group">
+                                    <input style="border:none; width:100%; height:100%;" asp-for="Revision" id="Revision1" class="form-control" placeholder="Цена на пакет 1">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <input style="border:none; width:100%; height:100%;" asp-for="Revision2" id="Revision2" class="form-control" placeholder="Цена на пакет 2">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <input style="border:none; width:100%; height:100%;" asp-for="Revision3" id="Revision3" class="form-control" placeholder="Цена на пакет 3">
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">Цена <span style="color:red; font-size:20px;">*</span></th>
+                            <td>
+                                <div class="form-group">
+                                    <input style="border:none; width:100%; height:100%;" asp-for="PacketPrice" id="Price1" class="form-control" placeholder="Цена на пакет 1">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <input style="border:none; width:100%; height:100%;" asp-for="PacketPrice2" id="Price2" class="form-control" placeholder="Цена на пакет 2">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <input style="border:none; width:100%; height:100%;" asp-for="PacketPrice3" id="Price3" class="form-control" placeholder="Цена на пакет 3">
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">Допълнителна информация</th>
+                            <td>
+                                <div class="form-group">
+                                    <input style="border:none; width:100%; height:100%;" asp-for="ExtraInfo" id="Price1" class="form-control" placeholder="Допълнителна информация">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <input style="border:none; width:100%; height:100%;" asp-for="ExtraInfo2" id="Price1" class="form-control" placeholder="Допълнителна информация">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <input style="border:none; width:100%; height:100%;" asp-for="ExtraInfo3" id="Price1" class="form-control" placeholder="Допълнителна информация">
+                                </div>
+                            </td>
+
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+    </div>
+    <input type="submit" class="site-btn" value="Запиши" />
 </form>
 
 <style>

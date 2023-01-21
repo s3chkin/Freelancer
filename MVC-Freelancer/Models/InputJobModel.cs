@@ -15,6 +15,8 @@ namespace MVC_Freelancer.Models
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
         public string ImgURL { get; set; }
+        public bool? Status { get; set; }
+
 
         //пакети:
         public string PackageName { get; set; }

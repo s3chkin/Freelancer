@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVC_Freelancer.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230120213433_Freelancer2")]
-    partial class Freelancer2
+    [Migration("20230121125614_freelancer")]
+    partial class freelancer
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -338,7 +338,7 @@ namespace MVC_Freelancer.Migrations
 
                     b.HasIndex("JobId");
 
-                    b.ToTable("Comment");
+                    b.ToTable("Comments");
                 });
 
             modelBuilder.Entity("MVC_Freelancer.Data.Models.ContactUs", b =>
@@ -483,6 +483,9 @@ namespace MVC_Freelancer.Migrations
 
                     b.Property<int>("Revision3")
                         .HasColumnType("int");
+
+                    b.Property<string>("Status")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

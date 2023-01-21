@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVC_Freelancer.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230120182100_Freelancer")]
-    partial class Freelancer
+    [Migration("20230121130439_Freelancer2")]
+    partial class Freelancer2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -309,6 +309,38 @@ namespace MVC_Freelancer.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("MVC_Freelancer.Data.Models.Comment", b =>
+                {
+                    b.Property<int>("CommentId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CommentId"), 1L, 1);
+
+                    b.Property<string>("CommentCintent")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CommentDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("CommentState")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("CommentUser")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("JobId")
+                        .HasColumnType("int");
+
+                    b.HasKey("CommentId");
+
+                    b.HasIndex("JobId");
+
+                    b.ToTable("Comments");
+                });
+
             modelBuilder.Entity("MVC_Freelancer.Data.Models.ContactUs", b =>
                 {
                     b.Property<int>("Id")
@@ -451,6 +483,9 @@ namespace MVC_Freelancer.Migrations
 
                     b.Property<int>("Revision3")
                         .HasColumnType("int");
+
+                    b.Property<bool?>("Status")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 
@@ -655,6 +690,17 @@ namespace MVC_Freelancer.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("MVC_Freelancer.Data.Models.Comment", b =>
+                {
+                    b.HasOne("MVC_Freelancer.Data.Models.Job", "Job")
+                        .WithMany("CommentState")
+                        .HasForeignKey("JobId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Job");
+                });
+
             modelBuilder.Entity("MVC_Freelancer.Data.Models.Image", b =>
                 {
                     b.HasOne("MVC_Freelancer.Data.Models.Job", "Job")
@@ -692,6 +738,8 @@ namespace MVC_Freelancer.Migrations
 
             modelBuilder.Entity("MVC_Freelancer.Data.Models.Job", b =>
                 {
+                    b.Navigation("CommentState");
+
                     b.Navigation("Images");
                 });
 

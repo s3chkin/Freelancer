@@ -3,12 +3,12 @@
 <div class="d-flex justify-content-center">
 
     <div style="margin-top:80px;margin-left:80px; margin-right:80px;">
-        <div>
+        @*<div>
             <a asp-action="Edit" asp-route-id="@Model.Id" type="button" id="userButton" class="btn ">Редактирай</a>
             <a asp-action="Delete" asp-route-id="@Model.Id" style="background-color: #dc3545; border-color: #dc3545;" type="button" class="btn ">
                 Изтрий
             </a>
-        </div>
+        </div>*@
         <br>
         <div class="d-flex ">
             <div class="float-left" id="container">
@@ -22,7 +22,7 @@
             </div>
 
             <div class="float-left" id="info">
-                <p>Крайна дата: @Model.DeadLine</p>
+                <p>Крайна дата: @Model.DeadLine.ToString("dd/MM/yyyy")</p>
                 <p>Цена: @Model.Price лв.</p>
                 <p>Категория: @Model.CategoryName</p>
                 <hr>
@@ -30,7 +30,7 @@
                 <p><i class="bi bi-check"></i> Админ панел</p>
                 <p><i class="bi bi-check"></i> Хостване</p>
                 <p><i class="bi bi-check"></i> Над 20 страници</p>
-                <a class="btn d-flex justify-content-center">Приеми</a>
+                <a asp-controller="Request" asp-action="Orders" asp-route-id="@Model.Id" class="btn d-flex justify-content-center">Приеми</a>
 
             </div>
         </div>

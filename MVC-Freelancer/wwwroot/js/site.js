@@ -99,3 +99,16 @@ function infoBlock3() {
 //    document.getElementById("name").style.borderBottomColor = "blue";
 //    document.getElementById("e-mail").style.borderColor = "blue";
 //}
+
+function pause() {
+
+    var x = document.getElementById('visibility');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+
+    document.getElementById("trueStatus").innerHTML = "true";
+
+}

@@ -79,8 +79,31 @@
                         влезте в самата обява,<br> като натиснете бутона "детайли".
                     </div>
                     <div class="card-text">
-                        @item.Price <i>BGN</i>
+                        <p class="float-start">@item.Price <i>BGN</i></p>
+
+                        @if (item.Status == true)
+                        {
+                            <p id="visibility" class="float-end" style=" background-color: orange;padding: 4px;border-radius: 5px;"><i><b>в пауза</b></i></p>
+                        }
+                        @* @if (item.DeadLine >= DateTime.Today)
+                    {
+                    <p id="visibility" class="float-end" style="background-color: green;color:white;padding: 4px;border-radius: 5px;"><i><b>публикувано</b></i></p>
+                    }
+                    else
+                    {
+                    <p id="visibility" class="float-end" style="background-color: orange;padding: 4px;border-radius: 5px;"><i><b>изтекъл</b></i></p>
+                    }*@
+
                     </div>
+                    <br>
+                    <br>
+                    <div class="d-flex justify-content-center">
+                        <a onclick="pause()"><i class="fa-solid fa-pause float-left" style="cursor:pointer; font-size:20px; color:blue;"></i></a>
+                        <a asp-action="Delete" asp-route-id="@item.Id"><i class="requestDeleteBtn fa-solid fa-trash-can float-left" style="margin-right: 15px;margin-left: 15px; font-size:20px; color:red;"></i></a>
+                        <a asp-action="Edit" asp-route-id="@item.Id"><i class="requestEditBtn fa-solid fa-pencil float-left" style="font-size:20px; color:green;"></i></a>
+                    </div>
+                    <br>
+
                     <a asp-action="ById" asp-route-id="@item.Id" class="card-button"> Детайли</a>
                 </div>
             </div>
@@ -105,7 +128,8 @@
             align-items: center;
         }
     }
-     @@media screen and (max-width: 1080px) {
+
+    @@media screen and (max-width: 1080px) {
         .container2 {
             width: 33%;
             justify-content: center;
@@ -118,14 +142,15 @@
             justify-content: center;
         }
     }
+
     @@media screen and (max-width: 830px) {
         .container2 {
             width: 50%;
             justify-content: center;
         }
-        #image
-        {
-            width:100%;
+
+        #image {
+            width: 100%;
         }
     }
 
@@ -140,15 +165,15 @@
             height: auto;
         }
     }
+
     @@media screen and (max-width: 600px) {
         .container2 {
             width: 100%;
             justify-content: center;
-            
         }
-        #image
-        {
-            width:100%;
+
+        #image {
+            width: 100%;
         }
     }
 
