@@ -27,8 +27,7 @@ namespace MVC_Freelancer.Controllers
                 Description = x.Description,
                 CategoryId = x.CategoryId,
 
-            }
-             ).ToList();
+            }).ToList();
 
 
             return View(model);

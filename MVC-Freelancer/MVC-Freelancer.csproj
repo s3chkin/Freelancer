@@ -24,6 +24,7 @@
   <ItemGroup>
     <None Remove="Areas\Identity\Pages\Account\Register.cshtml~RF4204b02.TMP" />
     <None Remove="Controllers\CategoryController.cs~RF1f8b9f.TMP" />
+    <None Remove="Controllers\JobController.cs~RF177af4b.TMP" />
     <None Remove="Controllers\JobController.cs~RF337259.TMP" />
     <None Remove="Controllers\JobController.cs~RFe4b99ba.TMP" />
     <None Remove="Controllers\RequestController.cs~RF27b70d.TMP" />

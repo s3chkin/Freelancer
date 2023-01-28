@@ -305,7 +305,7 @@ namespace MVC_Freelancer.Controllers
             jobFd.Rating = 0;
             db.Update(jobFd);
             db.SaveChanges();
-            return RedirectToAction("ById");
+            return RedirectToAction("Index");
         }
     }
 }

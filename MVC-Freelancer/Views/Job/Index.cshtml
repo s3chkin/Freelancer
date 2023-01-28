@@ -128,15 +128,21 @@
 
                     </div>
                     <br><br>
-                    <form method="post" asp-action="Rating">
-                        <label for="Rating">Рейтинг:</label>
 
-                        <select name="Rating" id="Rating">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
+                    <form method="post" asp-action="Rating">
+                        @*<fieldset>
+                            <input type="hidden" name="id" value="@item.Id" />
+                            <button type="submit" class="btn btn-warning"><i class="fa-solid fa-pause float-left"></i> </button>
+                        </fieldset>*@
+
+                        <label for="id">Рейтинг:</label>
+
+                        <select name="id" id="Rating">
+                            <option value="@item.Id">1</option>
+                            <option value="@item.Id">2</option>
+                            <option value="@item.Id">3</option>
+                            <option value="@item.Id">4</option>
+                            <option value="@item.Id">5</option>
                         </select>
 
 
