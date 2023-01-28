@@ -281,6 +281,22 @@ namespace MVC_Freelancer.Controllers
             }).ToList();
             return View(panel);
         }
+        [HttpPost]
+        public IActionResult Pause(int id)
+        {
+            Job jobFd = db.Jobs.FirstOrDefault(r => r.Id == id);
+            if (jobFd.Status == true)
+            {
+                jobFd.Status = false;
+            }
+            else
+            {
+                jobFd.Status = true;
+            }
+            db.Update(jobFd);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
 

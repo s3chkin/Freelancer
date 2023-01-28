@@ -98,9 +98,34 @@
                     <br>
                     <br>
                     <div class="d-flex justify-content-center">
-                        <a onclick="pause()"><i class="fa-solid fa-pause float-left" style="cursor:pointer; font-size:20px; color:blue;"></i></a>
-                        <a asp-action="Delete" asp-route-id="@item.Id"><i class="requestDeleteBtn fa-solid fa-trash-can float-left" style="margin-right: 15px;margin-left: 15px; font-size:20px; color:red;"></i></a>
-                        <a asp-action="Edit" asp-route-id="@item.Id"><i class="requestEditBtn fa-solid fa-pencil float-left" style="font-size:20px; color:green;"></i></a>
+                        @if (item.Status == false)
+                        {
+                            <form method="post" asp-action="Pause">
+                                <fieldset>
+                                    <input type="hidden" name="id" value="@item.Id" />
+                                    <button type="submit" class="btn btn-warning"><i class="fa-solid fa-pause float-left"></i> </button>
+                                </fieldset>
+                            </form>
+                        }
+                        else
+                        {
+                            <form method="post" asp-action="Pause">
+                                <fieldset>
+                                    <input type="hidden" name="id" value="@item.Id" />
+                                    <button type="submit" class="btn btn-warning"><i class="fa-solid fa-play float-left"></i> </button>
+                                </fieldset>
+                            </form>
+
+
+                        }
+                        <button class=" btn btn-success" style="margin-left:5px; margin-right:5px;">
+                            <a asp-action="Edit" asp-route-id="@item.Id"><i class="requestEditBtn fa-solid fa-pencil float-left" style="color:white;"></i></a>
+                        </button>
+
+                        <button class="btn btn-danger">
+                            <a asp-action="Delete" asp-route-id="@item.Id"><i class="requestDeleteBtn fa-solid fa-trash-can float-left" style="  color:white;"></i></a>
+                        </button>
+
                     </div>
                     <br>
 
