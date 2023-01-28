@@ -127,6 +127,21 @@
                         </button>
 
                     </div>
+                    <br><br>
+                    <form method="post" asp-action="Rating">
+                        <label for="Rating">Рейтинг:</label>
+
+                        <select name="Rating" id="Rating">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+
+
+                        <button type="submit">Публикувай</button>
+                    </form>
                     <br>
 
                     <a asp-action="ById" asp-route-id="@item.Id" class="card-button"> Детайли</a>

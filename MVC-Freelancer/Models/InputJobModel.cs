@@ -16,6 +16,7 @@ namespace MVC_Freelancer.Models
         public string CategoryName { get; set; }
         public string ImgURL { get; set; }
         public bool? Status { get; set; }
+        public int? Rating { get; set; }
 
 
         //пакети:
@@ -46,7 +47,6 @@ namespace MVC_Freelancer.Models
 
 
         public List<SelectListItem> Categories { get; set; }
-        public List<InputJobPackageModel> Package { get; set; }
 
 
     }

@@ -31,7 +31,7 @@ namespace MVC_Freelancer.Controllers
                 Name = x.Name,
                 Price = x.Price,
                 Id = x.Id,
-                Status= x.Status,
+                Status = x.Status,
                 ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}", //прочитене на снимката от базата данни
             }
              ).ToList();
@@ -65,7 +65,7 @@ namespace MVC_Freelancer.Controllers
                 CategoryId = model.CategoryId,
                 Description = model.Description,
                 Progress = model.Progress,
-                Status= model.Status,
+                Status = model.Status,
 
 
                 PackageName = model.PackageName,
@@ -296,6 +296,16 @@ namespace MVC_Freelancer.Controllers
             db.Update(jobFd);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public IActionResult Rating(int id)
+        {
+            Job jobFd = db.Jobs.FirstOrDefault(r => r.Id == id);
+            jobFd.Rating = 0;
+            db.Update(jobFd);
+            db.SaveChanges();
+            return RedirectToAction("ById");
         }
     }
 }
