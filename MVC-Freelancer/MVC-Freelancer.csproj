@@ -31,6 +31,7 @@
     <None Remove="Views\Job\Add.cshtml~RFaa8a534.TMP" />
     <None Remove="Views\Job\AddPackage.cshtml~RF49120ff.TMP" />
     <None Remove="Views\Job\ById.cshtml~RF393023.TMP" />
+    <None Remove="Views\Job\Contacts.cshtml~RF257aeeb.TMP" />
     <None Remove="Views\Job\Index.cshtml~RF140ce59b.TMP" />
     <None Remove="Views\Job\Index.cshtml~RF58170b6.TMP" />
     <None Remove="Views\Job\Index.cshtml~RFd085d6.TMP" />
