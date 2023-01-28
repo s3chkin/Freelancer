@@ -270,6 +270,18 @@ namespace MVC_Freelancer.Controllers
             //return this.View(model);
 
         }
+        public IActionResult Messages()
+        {
+            var msg = db.ContactUs.Select(x => new InputSendMailModel
+            {
+                Name = x.Name,
+                Email = x.Email,
+                Subject = x.Subject,
+                Message = x.Message,
+            }).ToList();
+            return View(msg);
+            return this.View();
+        }
         public IActionResult AdminPanel()
         {
             var panel = db.ContactUs.Select(x => new InputSendMailModel

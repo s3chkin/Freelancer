@@ -1,14 +1,22 @@
-﻿@model MVC_Freelancer.Models.InputJobModel
+﻿@model IEnumerable<MVC_Freelancer.Models.InputJobModel>
+
 
 <h4 style="margin-top: 80px; text-align:center;">Портфолио</h4>
 
 <div class="d-flex justify-content-center">
-    <button style="margin-left:10px;"  ype="button" class="btn btn-primary">Моите обяви</button>
-    <button style="margin-left:10px;"  ype="button" class="btn btn-success">Коментари</button>
+    <button style="margin-left:10px;" ype="button" class="btn btn-primary">Моите обяви</button>
+    <button style="margin-left:10px;" ype="button" class="btn btn-success">Коментари</button>
     <button style="margin-left:10px;" type="button" class="btn btn-warning">Поръчки</button>
 </div>
 
-@*------------------------ПОРЪЧКИ--------------------*@
-<div id="oders"> 
-
+<div id="oders">
 </div>
+@*@foreach (var item in Model)
+{
+    @if (item.Status == true)
+    {
+      
+      
+    }
+
+}*@

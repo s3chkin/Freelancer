@@ -1,0 +1,43 @@
+﻿@model IEnumerable<MVC_Freelancer.Models.InputSendMailModel>
+
+<br>
+<br>
+<br>
+<br>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Заглавие
+            </th>
+            <th>
+                Съобщение
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @item.Email
+                </td>
+                <td>
+                    @item.Subject
+                </td>
+                <td>
+                    @item.Message
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

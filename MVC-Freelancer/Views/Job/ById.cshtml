@@ -17,6 +17,10 @@
             </div>
 
             <div class="float-left" id="info">
+                @if (Model.DeadLine < DateTime.Today)
+                {
+                    <p style="color:red;">Срокът е изтекъл!</p>
+                }
                 <p>Крайна дата: @Model.DeadLine.ToString("dd/MM/yyyy")</p>
                 <p>Цена: @Model.Price лв.</p>
                 <p>Категория: @Model.CategoryName</p>
@@ -25,7 +29,16 @@
                 <p><i class="bi bi-check"></i> Админ панел</p>
                 <p><i class="bi bi-check"></i> Хостване</p>
                 <p><i class="bi bi-check"></i> Над 20 страници</p>
-                <a asp-controller="Request" asp-action="Orders" asp-route-id="@Model.Id" class="btn d-flex justify-content-center">Приеми</a>
+                @if (Model.DeadLine < DateTime.Today)
+                {
+                    @*<a  asp-action="Orders" asp-route-id="@Model.Id" class="btn d-flex justify-content-center" aria-disabled="true">Приеми</a>*@
+                    <a asp-controller="Request" id="btn" asp-route-id="@Model.Id" class="btn btn-primary btn-lg disabled" role="button" aria-disabled="true">Приеми</a>
+
+                }
+                else
+                {
+                    <a asp-controller="Request" id="btn" asp-action="Orders" asp-route-id="@Model.Id" class=" d-flex justify-content-center">Приеми</a>
+                }
 
             </div>
         </div>
@@ -187,7 +200,7 @@
             <br></br>
             <textarea style="width:700px; height:90px;" type="email" placeholder="Коментар"></textarea>
         </div>
-        
+
     </div>
 
 
@@ -232,14 +245,20 @@
         padding-top: 20px;
     }
 
-    .btn {
+    #btn {
         background-color: #d9232d;
         border-color: #d9232d;
         width: 200px;
         color: white;
+        height: 48px;
+        border-radius: 9px;
+        font-size: 19px;
+        display: grid;
+        justify-items: center;
+        align-items: center;
     }
 
-        .btn:hover {
+        #btn:hover {
             background-color: #dd5057;
             border-color: #dd5057;
         }
