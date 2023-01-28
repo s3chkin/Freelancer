@@ -4,21 +4,21 @@
 
 namespace MVC_Freelancer.Migrations
 {
-    public partial class freelancer : Migration
+    public partial class Freelancer : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<string>(
-                name: "Status",
+            migrationBuilder.AddColumn<int>(
+                name: "Rating",
                 table: "Jobs",
-                type: "nvarchar(max)",
+                type: "int",
                 nullable: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "Status",
+                name: "Rating",
                 table: "Jobs");
         }
     }

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVC_Freelancer.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230121130439_Freelancer2")]
-    partial class Freelancer2
+    [Migration("20230128101528_Freelancer")]
+    partial class Freelancer
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -474,6 +474,9 @@ namespace MVC_Freelancer.Migrations
                     b.Property<string>("Progress")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("Rating")
+                        .HasColumnType("int");
 
                     b.Property<int>("Revision")
                         .HasColumnType("int");

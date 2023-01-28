@@ -15,6 +15,7 @@
         public DateTime DeadLine { get; set; }
         public string Progress { get; set; }
         public bool? Status { get; set; }
+        public int? Rating { get; set; }
 
         //пакети:
         public string PackageName { get; set; }
