@@ -13,6 +13,13 @@ namespace MVC_Freelancer.Data.Models
             Claims = new HashSet<IdentityUserClaim<string>>();
             Logins = new HashSet<IdentityUserLogin<string>>();
             this.Id = Guid.NewGuid().ToString();
+
+
+            UserJobRatings = new HashSet<UserRating>();
+            GivenJobs = new HashSet<Job>();
+            TakenJobs = new HashSet<Job>();
+
+
         }
         public virtual ICollection<IdentityUserRole<string>> Roles { get; set; }
         public virtual ICollection<IdentityUserClaim<string>> Claims { get; set; }
@@ -23,6 +30,12 @@ namespace MVC_Freelancer.Data.Models
         //public virtual ICollection<Job> JobsGiven { get; set; }
         public virtual ICollection<Job> Jobs { get; set; }
         public virtual ICollection<UserSkill> Skills { get; set; }
+
+
+
+        public virtual ICollection<UserRating> UserJobRatings { get; set; }
+        public virtual ICollection<Job> GivenJobs { get; set; }
+        public virtual ICollection<Job> TakenJobs { get; set; }
 
     }
 }

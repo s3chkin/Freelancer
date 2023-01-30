@@ -8,18 +8,18 @@ namespace MVC_Freelancer.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<int>(
-                name: "Rating",
-                table: "Jobs",
-                type: "int",
-                nullable: true);
+            migrationBuilder.DropColumn(
+                name: "MyProperty",
+                table: "Jobs");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "Rating",
-                table: "Jobs");
+            migrationBuilder.AddColumn<int>(
+                name: "MyProperty",
+                table: "Jobs",
+                type: "int",
+                nullable: true);
         }
     }
 }

@@ -68,26 +68,26 @@ namespace MVC_Freelancer.Controllers
                 Status = model.Status,
 
 
-                PackageName = model.PackageName,
-                DeliveryTime = model.DeliveryTime,
-                PacketDescription = model.PacketDescription,
-                PacketPrice = model.PacketPrice,
-                Revision = model.Revision,
-                ExtraInfo = model.ExtraInfo,
+                //PackageName = model.PackageName,
+                //DeliveryTime = model.DeliveryTime,
+                //PacketDescription = model.PacketDescription,
+                //PacketPrice = model.PacketPrice,
+                //Revision = model.Revision,
+                //ExtraInfo = model.ExtraInfo,
 
-                PackageName2 = model.PackageName2,
-                DeliveryTime2 = model.DeliveryTime2,
-                PacketDescription2 = model.PacketDescription2,
-                PacketPrice2 = model.PacketPrice2,
-                Revision2 = model.Revision2,
-                ExtraInfo2 = model.ExtraInfo2,
+                //PackageName2 = model.PackageName2,
+                //DeliveryTime2 = model.DeliveryTime2,
+                //PacketDescription2 = model.PacketDescription2,
+                //PacketPrice2 = model.PacketPrice2,
+                //Revision2 = model.Revision2,
+                //ExtraInfo2 = model.ExtraInfo2,
 
-                PackageName3 = model.PackageName3,
-                DeliveryTime3 = model.DeliveryTime3,
-                PacketDescription3 = model.PacketDescription3,
-                PacketPrice3 = model.PacketPrice3,
-                Revision3 = model.Revision3,
-                ExtraInfo3 = model.ExtraInfo3,
+                //PackageName3 = model.PackageName3,
+                //DeliveryTime3 = model.DeliveryTime3,
+                //PacketDescription3 = model.PacketDescription3,
+                //PacketPrice3 = model.PacketPrice3,
+                //Revision3 = model.Revision3,
+                //ExtraInfo3 = model.ExtraInfo3,
 
             };
             // от името на прикачения файл получаваме неговото разширение   .png
@@ -257,7 +257,7 @@ namespace MVC_Freelancer.Controllers
         [HttpPost]
         public IActionResult Contacts(InputSendMailModel model)
         {
-            var contact = new ContactUs
+            var contact = new Opinion
             {
                 Name = model.Name,
                 Message = model.Message,
