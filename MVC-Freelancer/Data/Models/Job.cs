@@ -35,9 +35,8 @@ namespace MVC_Freelancer.Data.Models
         public string GiverId { get; set; }
         public virtual AppUser Giver { get; set; }
 
-
         [ForeignKey(nameof(AppUser))]
-        public string TakerId { get; set; }
+        public string? TakerId { get; set; }
         public virtual AppUser Taker { get; set; }
 
 

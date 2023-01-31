@@ -5,7 +5,7 @@ using MVC_Freelancer.Models;
 
 namespace MVC_Freelancer.Controllers
 {
-    public class CategoryController : Controller
+    public class CategoryController : BaseController
     {
         public readonly ApplicationDbContext db;
 
@@ -29,11 +29,11 @@ namespace MVC_Freelancer.Controllers
             return this.View();
         }
         [HttpPost]
-        public IActionResult Add(InputCategoryModel model)
+        public IActionResult Add(string name)
         {
             var category = new Category
             {
-                Name = model.Name
+                Name = name
             };
             db.Categories.Add(category);
             db.SaveChanges();

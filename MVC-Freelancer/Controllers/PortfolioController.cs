@@ -2,7 +2,7 @@
 
 namespace MVC_Freelancer.Controllers
 {
-    public class PortfolioController : Controller
+    public class PortfolioController : BaseController
     {
         public IActionResult Index()
         {
