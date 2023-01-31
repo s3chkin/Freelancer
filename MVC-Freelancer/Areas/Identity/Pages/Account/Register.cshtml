@@ -18,15 +18,9 @@
             <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
                 <div>
                     <br>
-                    <input asp-for="Input.FirstName" placeholder="Първо име" id="inputs" autocomplete="username" aria-required="true" />
+                    <input asp-for="Input.FirstName" placeholder="Собствено име" id="inputs" autocomplete="username" aria-required="true" />
                     <br>
                     <span asp-validation-for="Input.FirstName" class=" text-danger"></span>
-                </div>
-                <div>
-                   <br>
-                    <input asp-for="Input.LastName" placeholder="Второ име" id="inputs" autocomplete="username" aria-required="true" />
-                    <br>
-                    <span asp-validation-for="Input.LastName" class=" text-danger"></span>
                 </div>
                 
                 <div>

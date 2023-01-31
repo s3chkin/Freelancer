@@ -4,7 +4,7 @@ using MVC_Freelancer.Data.Models;
 
 namespace MVC_Freelancer.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<AppUser>
+    public class ApplicationDbContext : IdentityDbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
@@ -13,31 +13,13 @@ namespace MVC_Freelancer.Data
         }
         public DbSet<Job> Jobs { get; set; }
         public DbSet<Category> Categories { get; set; }
-        public DbSet<Feature> Features { get; set; }
-        public DbSet<Opinion> Opinions { get; set; }
-        public DbSet<Opinion> ContactUs { get; set; }
+        public DbSet<Image> Images { get; set; }
+        public DbSet<AppUser> AppUser { get; set; }
+        public DbSet<ContactUs>  ContactUs { get; set; }
+        public DbSet<UserSkill> UserSkills{ get; set; }
         public DbSet<Skill> Skills { get; set; }
-        public DbSet<JobCategory> JobCategories { get; set; }
-        public DbSet<JobFeature> GetJobFeatures { get; set; }
-        public DbSet<UserRating> UserRatings { get; set; }
-        public DbSet<UserSkill> UserSkills { get; set; }
-
-        protected override void OnModelCreating(ModelBuilder builder)
-        {
-            builder.Entity<UserSkill>().HasKey(x => new { x.SkillId, x.AppUserId });// kompoziten klyuch
-            builder.Entity<JobCategory>().HasKey(x => new { x.JobId, x.CategoryId });// kompoziten klyuch
-            builder.Entity<JobFeature>().HasKey(x => new { x.JobId, x.FeatureId });// kompoziten klyuch
-            builder.Entity<UserRating>().HasKey(x => new { x.JobId, x.AppUserId });// kompoziten klyuch
-
-
-            builder.Entity<Job>().HasOne(j => j.Giver).WithMany(u => u.GivenJobs).HasForeignKey(j => j.GiverId)
-                .OnDelete(DeleteBehavior.NoAction);
-            builder.Entity<Job>().HasOne(j => j.Taker).WithMany(u => u.TakenJobs).HasForeignKey(j => j.TakerId).OnDelete(DeleteBehavior.NoAction);
-
-
-            base.OnModelCreating(builder);
-        }
+        public DbSet<Request> Requests { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        
     }
-
-
 }

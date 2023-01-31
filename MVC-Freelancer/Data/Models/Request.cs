@@ -4,18 +4,18 @@ using System.Xml.Linq;
 
 namespace MVC_Freelancer.Data.Models
 {
-    public class Feature
+    public class Request
     {
-        public Feature()
+        public Request()
         {
-            FeatureJobs = new HashSet<JobFeature>();
+            this.Categories = new HashSet<Category>();
         }
         public int Id { get; set; }
         public string Title { get; set; }
-        public int Prime { get; set; }
+        public int Sum { get; set; }
         public string Description{ get; set; }
-
-        public virtual ICollection<JobFeature> FeatureJobs { get; set; }
-    
+        public DateTime DeadLine { get; set; }
+        public int CategoryId { get; set; }
+        public virtual ICollection<Category> Categories { get; set; }
     }
 }
