@@ -150,5 +150,22 @@ namespace MVC_Freelancer.Controllers
              ).ToList();
             return this.View(model);
         }
+
+        public IActionResult Requests()
+        {
+            var model = db.Requests.Select(x => new InputRequestModel
+            {
+                Id = x.Id,
+                Sum = x.Sum,
+                DeadLine = x.DeadLine,
+                Title = x.Title,
+                Description = x.Description,
+                CategoryId = x.CategoryId,
+
+            }).ToList();
+
+
+            return View(model);
+        }
     }
 }

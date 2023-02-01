@@ -17,6 +17,13 @@
         </div>
     </div>
 </section>
+<br>
+<div class="d-flex justify-content-center">
+    <div>
+        <a style="font-size:19px; color:#62ff3a; border-color:#62ff3a;" class="btn btn-info" asp-controller="Job" asp-action="index"> Обяви </a>
+        <a style="font-size:19px; color:white;" class="btn btn-info" asp-controller="request" asp-action="requests"> Заявки </a>
+    </div>
+</div>
 
 <br>
 <br>
@@ -65,29 +72,29 @@
 
         @foreach (var item in Model)
         {
-            
 
-                <div class="container container2 float-left" style="">
-                    <div class="card-sl ">
-                        <div class="card-image">
-                            <img id="image" height="220px;" src="@item.ImgURL" />
-                        </div>
 
-                        <div class="card-heading">
-                            @item.Name
-                        </div>
-                        <div class="card-text">
-                            Цената е @item.Price лева. За по-подробна информация
-                            влезте в самата обява,<br> като натиснете бутона "детайли".
-                        </div>
-                        <div class="card-text">
-                            <p class="float-start">@item.Price <i>BGN</i></p>
+            <div class="container container2 float-left" style="">
+                <div class="card-sl ">
+                    <div class="card-image">
+                        <img id="image" height="220px;" src="@item.ImgURL" />
+                    </div>
 
-                            @if (item.Status == true)
-                            {
-                                <p id="visibility" class="float-end" style=" background-color: orange;padding: 4px;border-radius: 5px;"><i><b>в пауза</b></i></p>
-                            }
-                            @* @if (item.DeadLine >= DateTime.Today)
+                    <div class="card-heading">
+                        @item.Name
+                    </div>
+                    <div class="card-text">
+                        Цената е @item.Price лева. За по-подробна информация
+                        влезте в самата обява,<br> като натиснете бутона "детайли".
+                    </div>
+                    <div class="card-text">
+                        <p class="float-start">@item.Price <i>BGN</i></p>
+
+                        @if (item.Status == true)
+                        {
+                            <p id="visibility" class="float-end" style=" background-color: orange;padding: 4px;border-radius: 5px;"><i><b>в пауза</b></i></p>
+                        }
+                        @* @if (item.DeadLine >= DateTime.Today)
                     {
                     <p id="visibility" class="float-end" style="background-color: green;color:white;padding: 4px;border-radius: 5px;"><i><b>публикувано</b></i></p>
                     }
@@ -96,44 +103,44 @@
                     <p id="visibility" class="float-end" style="background-color: orange;padding: 4px;border-radius: 5px;"><i><b>изтекъл</b></i></p>
                     }*@
 
-                        </div>
-                        <br>
-                        <br>
-                        <div class="d-flex justify-content-center">
-                            @if (item.Status == false)
-                            {
-                                <form method="post" asp-action="Pause">
-                                    <fieldset>
-                                        <input type="hidden" name="id" value="@item.Id" />
-                                        <button type="submit" class="btn btn-warning"><i class="fa-solid fa-pause float-left"></i> </button>
-                                    </fieldset>
-                                </form>
-                            }
-                            else
-                            {
-                                <form method="post" asp-action="Pause">
-                                    <fieldset>
-                                        <input type="hidden" name="id" value="@item.Id" />
-                                        <button type="submit" class="btn btn-warning"><i class="fa-solid fa-play float-left"></i> </button>
-                                    </fieldset>
-                                </form>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="d-flex justify-content-center">
+                        @if (item.Status == false)
+                        {
+                            <form method="post" asp-action="Pause">
+                                <fieldset>
+                                    <input type="hidden" name="id" value="@item.Id" />
+                                    <button type="submit" class="btn btn-warning"><i class="fa-solid fa-pause float-left"></i> </button>
+                                </fieldset>
+                            </form>
+                        }
+                        else
+                        {
+                            <form method="post" asp-action="Pause">
+                                <fieldset>
+                                    <input type="hidden" name="id" value="@item.Id" />
+                                    <button type="submit" class="btn btn-warning"><i class="fa-solid fa-play float-left"></i> </button>
+                                </fieldset>
+                            </form>
 
 
-                            }
-                            <a asp-action="Edit" asp-route-id="@item.Id">
-                                <button class=" btn btn-success" style="margin-left:5px; margin-right:5px;">
-                                    <i class="requestEditBtn fa-solid fa-pencil float-left" style="color:white;"></i>
-                                </button>
-                            </a>
+                        }
+                        <a asp-action="Edit" asp-route-id="@item.Id">
+                            <button class=" btn btn-success" style="margin-left:5px; margin-right:5px;">
+                                <i class="requestEditBtn fa-solid fa-pencil float-left" style="color:white;"></i>
+                            </button>
+                        </a>
 
-                            <a asp-action="Delete" asp-route-id="@item.Id">
-                                <button class="btn btn-danger">
-                                    <i class="requestDeleteBtn fa-solid fa-trash-can float-left" style="  color:white;"></i>
-                                </button>
-                            </a>
+                        <a asp-action="Delete" asp-route-id="@item.Id">
+                            <button class="btn btn-danger">
+                                <i class="requestDeleteBtn fa-solid fa-trash-can float-left" style="  color:white;"></i>
+                            </button>
+                        </a>
 
-                        </div>
-                        @* <form method="post" asp-action="Rating">
+                    </div>
+                    @* <form method="post" asp-action="Rating">
                 <label for="id">Рейтинг:</label>
 
                 <select name="id" id="Rating">
@@ -147,11 +154,11 @@
 
                 <button type="submit">Публикувай</button>
                 </form>*@
-                        <br>
-                        <a asp-action="ById" asp-route-id="@item.Id" class="card-button"> Детайли</a>
-                    </div>
+                    <br>
+                    <a asp-action="ById" asp-route-id="@item.Id" class="card-button"> Детайли</a>
                 </div>
-            
+            </div>
+
         }
     </div>
 </div>

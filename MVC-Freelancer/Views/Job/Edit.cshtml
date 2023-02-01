@@ -14,7 +14,7 @@
 
     <div class="form-group">
         <label asp-for="Name" class="control-label">Какво предлагаш? <span style="color:red; font-size:20px;">*</span></label>
-        <input asp-for="Name" id="jobInfo" class="form-control" placeholder="Например: Сайт за бизнес/ Фиксиране на грешки... " />
+        <input asp-for="Name" maxlength="25" id="jobInfo" class="form-control" placeholder="Например: Сайт за бизнес/ Фиксиране на грешки... " />
         <span asp-validation-for="Name" class="text-danger"></span>
     </div>
 
