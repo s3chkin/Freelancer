@@ -1,14 +1,48 @@
 ﻿@model MVC_Freelancer.Models.InputJobModel
 @*@model MVC_Freelancer.Models.ViewModel*@
 
+<br>
+<br>
+<br>
+<br>
+@*<form action="/action_page.php">
+    <label for="cars">Choose a car:</label>
+    <select name="cars" id="cars">
+        <option value="volvo">Предлагам</option>
+        <option value="saab">Търся</option>
+    </select>
+    <br><br>
+    <input type="submit" value="Submit">
+</form>
+
+<form method="post" asp-action="Pause">
+    <fieldset>
+        <button type="submit" class="btn btn-warning"><i class="fa-solid fa-pause float-left"></i> </button>
+    </fieldset>
+</form>*@
 
 <form style="display:grid; place-items:center;" method="post" enctype="multipart/form-data">
+
+    <label for="cars">Choose a car:</label>
+    <select asp-for="WorkType" name="WorkType" >
+        <option value="Предлагам">Предлагам</option>
+        <option value="Търся">Търся</option>
+    </select>
+
+
+
     <img style="width:560px; margin-top:80px;" src="~/ImageRepository/undraw_add_tasks_re_s5yj.svg">
     <br><br>
     <div class="form-group" style="display:none;">
         <label asp-for="Progress" class="control-label"></label>
         <input asp-for="Progress" class="form-control" value="null" id="jobProgress " />
         <span asp-validation-for="Progress" class="text-danger"></span>
+    </div>
+
+    <div class="form-group" style="display:none;">
+        <label asp-for="Status" class="control-label"></label>
+        <input asp-for="Status" class="form-control" value="True" id="jobProgress " />
+        <span asp-validation-for="Status" class="text-danger"></span>
     </div>
 
     <div class="form-group">
@@ -62,8 +96,8 @@
     <br>
 
     <div class="form-group">
-        <div style ="text-align:center;">
-            <label asp-for="CategoryId" class="control-label" >Снимка <span style="color:red; font-size:20px;">*</span></label>
+        <div style="text-align:center;">
+            <label asp-for="CategoryId" class="control-label">Снимка <span style="color:red; font-size:20px;">*</span></label>
         </div>
         <label asp-for="Image" class="control-label" style="display:none;"></label>
         @*<input asp-for="Image" type="file"  class="form-control" id="jobImg"/>*@

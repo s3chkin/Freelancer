@@ -65,21 +65,23 @@
 
 
 
-
 <div class=" d-flex flex-wrap justify-content-around ">
     <div style=" width:1330px;">
         <h5><i><b>Предлагани:</b></i> </h5>
 
-        @foreach (var item in Model)
+        @foreach (var item in Model.Where(x => x.Status == true || x.WorkType == "Търся"))
         {
-
-
             <div class="container container2 float-left" style="">
                 <div class="card-sl ">
                     <div class="card-image">
                         <img id="image" height="220px;" src="@item.ImgURL" />
                     </div>
-
+                  @*  @if (item.WorkType == "Търся")
+                    {
+                        <p class="card-heading">
+                            Търсещ
+                        </p>
+                    }*@
                     <div class="card-heading">
                         @item.Name
                     </div>
@@ -90,18 +92,11 @@
                     <div class="card-text">
                         <p class="float-start">@item.Price <i>BGN</i></p>
 
-                        @if (item.Status == true)
+                        @*@if (item.Status == true)
                         {
                             <p id="visibility" class="float-end" style=" background-color: orange;padding: 4px;border-radius: 5px;"><i><b>в пауза</b></i></p>
-                        }
-                        @* @if (item.DeadLine >= DateTime.Today)
-                    {
-                    <p id="visibility" class="float-end" style="background-color: green;color:white;padding: 4px;border-radius: 5px;"><i><b>публикувано</b></i></p>
-                    }
-                    else
-                    {
-                    <p id="visibility" class="float-end" style="background-color: orange;padding: 4px;border-radius: 5px;"><i><b>изтекъл</b></i></p>
-                    }*@
+                        }*@
+                        
 
                     </div>
                     <br>
@@ -140,20 +135,7 @@
                         </a>
 
                     </div>
-                    @* <form method="post" asp-action="Rating">
-                <label for="id">Рейтинг:</label>
-
-                <select name="id" id="Rating">
-                <option value="@item.Id">1</option>
-                <option value="@item.Id">2</option>
-                <option value="@item.Id">3</option>
-                <option value="@item.Id">4</option>
-                <option value="@item.Id">5</option>
-                </select>
-
-
-                <button type="submit">Публикувай</button>
-                </form>*@
+                   
                     <br>
                     <a asp-action="ById" asp-route-id="@item.Id" class="card-button"> Детайли</a>
                 </div>

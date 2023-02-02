@@ -66,6 +66,7 @@ namespace MVC_Freelancer.Controllers
                 Description = model.Description,
                 Progress = model.Progress,
                 Status = model.Status,
+                 WorkType= model.WorkType,
 
 
                 PackageName = model.PackageName,

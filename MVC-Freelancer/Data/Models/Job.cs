@@ -16,6 +16,7 @@
         public string Progress { get; set; }
         public bool? Status { get; set; }
         public int? Rating { get; set; }
+        public string WorkType { get; set; }
 
         //пакети:
         public string PackageName { get; set; }
