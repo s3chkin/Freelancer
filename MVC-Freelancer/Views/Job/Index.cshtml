@@ -72,16 +72,16 @@
         @foreach (var item in Model.Where(x => x.Status == true || x.WorkType == "Търся"))
         {
             @*<form method="post" asp-action="Rating">
-                <label for="Rating">Рейтинг:</label>
-                <select asp-for="@item.Rating" name="Rating">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-                <button type="submit">Изпрати</button>
-            </form>*@
+        <label for="Rating">Рейтинг:</label>
+        <select asp-for="@item.Rating" name="Rating">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        </select>
+        <button type="submit">Изпрати</button>
+        </form>*@
 
             <div class="container container2 float-left" style="">
                 <div class="card-sl ">
@@ -111,40 +111,46 @@
 
 
                     </div>
-                    <br>
-                    <br>
-                    <div class="d-flex justify-content-center">
-                        @if (item.Status == false)
-                        {
-                            <form method="post" asp-action="Pause">
-                                <fieldset>
-                                    <input type="hidden" name="id" value="@item.Id" />
-                                    <button type="submit" class="btn btn-warning"><i class="fa-solid fa-play float-left"></i> </button>
-                                </fieldset>
-                            </form>
-                        }
-                        else
-                        {
-                            <form method="post" asp-action="Pause">
-                                <fieldset>
-                                    <input type="hidden" name="id" value="@item.Id" />
-                                    <button type="submit" class="btn btn-warning"><i class="fa-solid fa-pause float-left"></i> </button>
-                                </fieldset>
-                            </form>
-                        }
-                        <a asp-action="Edit" asp-route-id="@item.Id">
-                            <button class=" btn btn-success" style="margin-left:5px; margin-right:5px;">
-                                <i class="requestEditBtn fa-solid fa-pencil float-left" style="color:white;"></i>
-                            </button>
-                        </a>
+                    
 
-                        <a asp-action="Delete" asp-route-id="@item.Id">
-                            <button class="btn btn-danger">
-                                <i class="requestDeleteBtn fa-solid fa-trash-can float-left" style="  color:white;"></i>
-                            </button>
-                        </a>
+                    <form method="post" asp-action="Orders">
+                        <fieldset>
+                            <input type="hidden" name="id" value="@item.Id" />
+                            <button type="submit" class="btn btn-warning">Приеми </button>
+                        </fieldset>
+                    </form>
+                    @*<div class="d-flex justify-content-center">
+                @if (item.Status == false)
+                {
+                <form method="post" asp-action="Pause">
+                <fieldset>
+                <input type="hidden" name="id" value="@item.Id" />
+                <button type="submit" class="btn btn-warning"><i class="fa-solid fa-play float-left"></i> </button>
+                </fieldset>
+                </form>
+                }
+                else
+                {
+                <form method="post" asp-action="Pause">
+                <fieldset>
+                <input type="hidden" name="id" value="@item.Id" />
+                <button type="submit" class="btn btn-warning"><i class="fa-solid fa-pause float-left"></i> </button>
+                </fieldset>
+                </form>
+                }
+                <a asp-action="Edit" asp-route-id="@item.Id">
+                <button class=" btn btn-success" style="margin-left:5px; margin-right:5px;">
+                <i class="requestEditBtn fa-solid fa-pencil float-left" style="color:white;"></i>
+                </button>
+                </a>
 
-                    </div>
+                <a asp-action="Delete" asp-route-id="@item.Id">
+                <button class="btn btn-danger">
+                <i class="requestDeleteBtn fa-solid fa-trash-can float-left" style="  color:white;"></i>
+                </button>
+                </a>
+
+                </div>*@
 
                     <br>
                     <a asp-action="ById" asp-route-id="@item.Id" class="card-button"> Детайли</a>

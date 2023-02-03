@@ -119,37 +119,7 @@ namespace MVC_Freelancer.Controllers
             return this.RedirectToAction("Index");
         }
 
-        public IActionResult Orders(int id)
-        {
-            //var model = db.Jobs.Where(x => id == x.Id).Select(x => new InputJobModel
-            //{
-            //    Name = x.Name,
-            //    DeadLine = x.DeadLine,
-            //    Price = x.Price,
-            //    CategoryId = x.CategoryId,
-            //    Description = x.Description,
-            //    Progress = x.Progress,
-
-            //    ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}",
-
-            //}).ToList();
-
-            var model = db.Jobs.Where(x => id == x.Id).Select(x => new InputJobModel
-            {
-                Name = x.Name,
-                DeadLine = x.DeadLine,
-                Price = x.Price,
-                CategoryId = x.CategoryId,
-                Description = x.Description,
-                Progress = x.Progress,
-
-                ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}",
-
-
-            }
-             ).ToList();
-            return this.View(model);
-        }
+        
 
         public IActionResult Requests()
         {

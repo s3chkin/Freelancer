@@ -1,0 +1,31 @@
+﻿@model IEnumerable<MVC_Freelancer.Models.InputJobModel>
+<h1>dsf</h1>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+@foreach (var item in Model)
+{
+    <div class="d-flex justify-content-center">
+        <div id="myOrders">
+            <img src="@item.ImgURL">
+            <p>@item.Name</p>
+            <p>@item.Price</p>
+        </div>
+    </div>
+    <br>
+}
+<style>
+    img
+    {
+        width:350px;
+    }
+    #myOrders {
+        width: 600px;
+        background-color: red;
+    }
+</style>

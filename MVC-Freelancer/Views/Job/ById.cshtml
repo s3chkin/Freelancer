@@ -1,5 +1,9 @@
 ﻿@model MVC_Freelancer.Models.InputJobModel
 
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+</head>
+
 <div class="d-flex justify-content-center">
 
     <div style="margin-top:80px;margin-left:80px; margin-right:80px;">
@@ -37,8 +41,37 @@
                 }
                 else
                 {
-                    <a asp-controller="Request" id="btn" asp-action="Orders" asp-route-id="@Model.Id" class=" d-flex justify-content-center">Приеми</a>
+                    <form method="post" asp-action="Orders">
+                        <fieldset>
+                            @*<input type="hidden"  value="@Model.Id" />*@
+                            <button name="id" value="@Model.Id" type="submit" id="btn" class="d-flex justify-content-center">Приеми</button>
+                        </fieldset>
+
+                    </form>
+
+
+                    <a asp-action="GetJob" asp-route-id="@Model.Id">
+                        <button class=" btn btn-success" style="margin-left:5px; margin-right:5px;">
+                            <i class="requestEditBtn fa-solid fa-pencil float-left" style="color:white;"></i>
+                        </button>
+                    </a>
                 }
+
+
+                <div style="height: 500px;">
+                    <button onclick="fireSweetAlert()">Show sweet alert example</button>
+                </div>
+                <script>
+
+                    function fireSweetAlert() {
+                        Swal.fire(
+                            'Good job!',
+                            'You clicked the button!',
+                            'success'
+                        )
+                    }
+
+                </script>
 
             </div>
         </div>

@@ -152,6 +152,8 @@ namespace MVC_Freelancer.Controllers
             return this.View(model);
         }
 
+        
+
         [HttpGet]
         public IActionResult Edit(int id)
         {
@@ -310,6 +312,58 @@ namespace MVC_Freelancer.Controllers
             db.Update(jobFd);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+        public IActionResult MyJobs()
+        {
+            var model = db.Jobs.Select(x => new InputJobModel
+            {
+                Name = x.Name,
+                Price = x.Price,
+                Id = x.Id,
+                Status = x.Status,
+                ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}", //прочитене на снимката от базата данни
+            }
+             ).ToList();
+            return View(model);
+        }
+
+        public IActionResult GetJob(int id)
+        {
+            //Job jobFd = db.Jobs.FirstOrDefault(r => r.Id == id);
+
+            var model = db.Jobs.Where(x => id == x.Id).Select(x => new InputJobModel
+            {
+                //otlyavo modeli otdyasno bazatadanni
+                Name = x.Name,
+                Price = x.Price,
+                Id = x.Id,
+                Status = x.Status,
+                ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}", //прочитене на снимката от базата данни
+            }
+             ).ToList();
+            db.SaveChanges();
+            //return RedirectToAction("Index");
+            return View(model);
+        }
+
+        public IActionResult Orders(int id)
+        {
+
+            var model = db.Jobs.Where(x => id == x.Id).Select(x => new InputJobModel
+            {
+                Name = x.Name,
+                DeadLine = x.DeadLine,
+                Price = x.Price,
+                CategoryId = x.CategoryId,
+                Description = x.Description,
+                Progress = x.Progress,
+
+                ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}",
+
+
+            }
+             ).ToList();
+            return this.View(model);
         }
 
         [HttpPost]
