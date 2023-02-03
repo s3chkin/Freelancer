@@ -71,17 +71,29 @@
 
         @foreach (var item in Model.Where(x => x.Status == true || x.WorkType == "Търся"))
         {
+            @*<form method="post" asp-action="Rating">
+                <label for="Rating">Рейтинг:</label>
+                <select asp-for="@item.Rating" name="Rating">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <button type="submit">Изпрати</button>
+            </form>*@
+
             <div class="container container2 float-left" style="">
                 <div class="card-sl ">
                     <div class="card-image">
                         <img id="image" height="220px;" src="@item.ImgURL" />
                     </div>
-                  @*  @if (item.WorkType == "Търся")
-                    {
-                        <p class="card-heading">
-                            Търсещ
-                        </p>
-                    }*@
+                    @*  @if (item.WorkType == "Търся")
+                {
+                <p class="card-heading">
+                Търсещ
+                </p>
+                }*@
                     <div class="card-heading">
                         @item.Name
                     </div>
@@ -93,10 +105,10 @@
                         <p class="float-start">@item.Price <i>BGN</i></p>
 
                         @*@if (item.Status == true)
-                        {
-                            <p id="visibility" class="float-end" style=" background-color: orange;padding: 4px;border-radius: 5px;"><i><b>в пауза</b></i></p>
-                        }*@
-                        
+                    {
+                    <p id="visibility" class="float-end" style=" background-color: orange;padding: 4px;border-radius: 5px;"><i><b>в пауза</b></i></p>
+                    }*@
+
 
                     </div>
                     <br>
@@ -107,7 +119,7 @@
                             <form method="post" asp-action="Pause">
                                 <fieldset>
                                     <input type="hidden" name="id" value="@item.Id" />
-                                    <button type="submit" class="btn btn-warning"><i class="fa-solid fa-pause float-left"></i> </button>
+                                    <button type="submit" class="btn btn-warning"><i class="fa-solid fa-play float-left"></i> </button>
                                 </fieldset>
                             </form>
                         }
@@ -116,11 +128,9 @@
                             <form method="post" asp-action="Pause">
                                 <fieldset>
                                     <input type="hidden" name="id" value="@item.Id" />
-                                    <button type="submit" class="btn btn-warning"><i class="fa-solid fa-play float-left"></i> </button>
+                                    <button type="submit" class="btn btn-warning"><i class="fa-solid fa-pause float-left"></i> </button>
                                 </fieldset>
                             </form>
-
-
                         }
                         <a asp-action="Edit" asp-route-id="@item.Id">
                             <button class=" btn btn-success" style="margin-left:5px; margin-right:5px;">
@@ -135,7 +145,7 @@
                         </a>
 
                     </div>
-                   
+
                     <br>
                     <a asp-action="ById" asp-route-id="@item.Id" class="card-button"> Детайли</a>
                 </div>

@@ -66,7 +66,8 @@ namespace MVC_Freelancer.Controllers
                 Description = model.Description,
                 Progress = model.Progress,
                 Status = model.Status,
-                 WorkType= model.WorkType,
+                WorkType = model.WorkType,
+                Rating = model.Rating,
 
 
                 PackageName = model.PackageName,
@@ -312,13 +313,22 @@ namespace MVC_Freelancer.Controllers
         }
 
         [HttpPost]
-        public IActionResult Rating(int id)
+        public IActionResult Rating(int id/*, InputJobModel model*/)
         {
-            Job jobFd = db.Jobs.FirstOrDefault(r => r.Id == id);
-            jobFd.Rating = 0;
-            db.Update(jobFd);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            //var job = db.Jobs.Where(s => s.Id == model.Id).FirstOrDefault();
+            //job.Rating = model.Rating;
+            //db.Update(jobFd);
+            var model = db.Jobs.Where(x => id == x.Id).Select(x => new InputJobModel
+            {
+                //otlyavo modeli otdyasno bazatadanni
+                Rating= x.Rating,
+            }).FirstOrDefault();
+            //var category = db.Categories.Where(x => model.CategoryId == x.Id).FirstOrDefault();
+            //db.SaveChanges();
+            return this.View(model);
+
+
+            //return RedirectToAction("Index");
         }
     }
 }
