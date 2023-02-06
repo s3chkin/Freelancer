@@ -123,18 +123,16 @@ namespace MVC_Freelancer.Controllers
 
         public IActionResult Requests()
         {
-            var model = db.Requests.Select(x => new InputRequestModel
+            var model = db.Jobs.Select(x => new InputJobModel
             {
+                Name = x.Name,
+                Price = x.Price,
                 Id = x.Id,
-                Sum = x.Sum,
-                DeadLine = x.DeadLine,
-                Title = x.Title,
-                Description = x.Description,
-                CategoryId = x.CategoryId,
-
-            }).ToList();
-
-
+                Status = x.Status,
+                WorkType = x.WorkType,
+                ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}", //прочитене на снимката от базата данни
+            }
+            ).ToList();
             return View(model);
         }
     }

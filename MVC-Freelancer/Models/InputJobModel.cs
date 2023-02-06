@@ -17,7 +17,7 @@ namespace MVC_Freelancer.Models
         public string ImgURL { get; set; }
         public bool? Status { get; set; } 
         public double? Rating { get; set; }
-        public bool WorkType { get; set; } // true - търся
+        public string WorkType { get; set; } // true - търся
 
 
 

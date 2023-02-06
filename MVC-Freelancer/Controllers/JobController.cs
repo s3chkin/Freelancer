@@ -33,6 +33,7 @@ namespace MVC_Freelancer.Controllers
                 Id = x.Id,
                 Status = x.Status,
                 WorkType = x.WorkType,
+                DeadLine = x.DeadLine,
                 ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}", //прочитене на снимката от базата данни
             }
              ).ToList();

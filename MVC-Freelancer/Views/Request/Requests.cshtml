@@ -1,4 +1,4 @@
-﻿@model ICollection<MVC_Freelancer.Models.InputRequestModel>
+﻿@model ICollection<MVC_Freelancer.Models.InputJobModel>
 
 
 <section class="header-section home-one">
@@ -49,39 +49,52 @@
     </div>
 }*@
 
+
+
 <div class=" d-flex flex-wrap justify-content-around ">
     <div style=" width:1330px;">
         <h5><i><b>Предлагани:</b></i> </h5>
-@foreach (var item in Model)
-{
+
+        @foreach (var item in Model.Where(x => x.WorkType == "Търся" ))
+        {
+            <div class="container container2 float-left" style="">
+                <div class="card-sl ">
+                    <div class="card-image">
+                        <img id="image" height="220px;" src="@item.ImgURL" />
+                    </div>
+                    
+                    <div class="card-heading">
+                        @item.Name
+                    </div>
+                    <div class="card-text">
+                        Цената е @item.Price лева. За по-подробна информация
+                        влезте в самата обява,<br> като натиснете бутона "детайли".
+                    </div>
+                    <div class="card-text">
+                        <p class="float-start">@item.Price <i>BGN</i></p>
 
 
-    <div class="container container2 float-left" >
-        <div class="card-sl ">
-          @*  <div class="card-image">
-                <img id="image" height="220px;" src="@item.ImgURL" />
-            </div>*@
 
-            <div class="card-heading">
-                @item.Title
+                    </div>
+                    
+
+                    <form method="post" asp-action="Orders">
+                        <fieldset>
+                            <input type="hidden" name="id" value="@item.Id" />
+                            <button type="submit" class="btn btn-warning">Приеми </button>
+                        </fieldset>
+                    </form>
+                   
+
+                    <br>
+                    <a asp-action="ById" asp-route-id="@item.Id" class="card-button"> Детайли</a>
+                </div>
             </div>
-            <div class="card-text">
-                Цената е @item.Sum лева. За по-подробна информация
-                влезте в самата обява,<br> като натиснете бутона "детайли".
-            </div>
-            <div class="card-text">
-                <p class="float-start">@item.Sum <i>BGN</i></p>
-            </div>
-            <br>
-            <br>
-    </div>
-    </div>
 
-}
+        }
     </div>
 </div>
-<br>
-<br>
+
 </div>
 <style>
     .card-sl {
