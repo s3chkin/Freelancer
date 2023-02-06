@@ -5,7 +5,11 @@
 
 <form style="display:grid; place-items:center;" method="post" enctype="multipart/form-data">
 
-    
+     <label for="WorkType">Изберете:</label>
+    <select  style="width: 600px; height:55px;" asp-for="WorkType" name="WorkType" >
+        <option asp-for="WorkType" value="@Model.WorkType">Предлагам</option>
+        <option asp-for="WorkType" value="@Model.WorkType">Търся</option>
+    </select>
 
     <img style="width:560px; margin-top:80px;" src="~/ImageRepository/undraw_add_tasks_re_s5yj.svg">
     <br><br>
