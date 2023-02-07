@@ -168,6 +168,7 @@ namespace MVC_Freelancer.Controllers
                 DeadLine = job.DeadLine,
                 Description = job.Description,
                 Price = job.Price,
+                WorkType = job.WorkType,
 
                 DeliveryTime = job.DeliveryTime,
                 DeliveryTime2 = job.DeliveryTime2,
@@ -211,6 +212,7 @@ namespace MVC_Freelancer.Controllers
             job.Description = model.Description;
             job.Price = model.Price;
             job.CategoryId = model.CategoryId;
+            job.WorkType = model.WorkType;
 
             job.PackageName = model.PackageName;
             job.PackageName2 = model.PackageName2;

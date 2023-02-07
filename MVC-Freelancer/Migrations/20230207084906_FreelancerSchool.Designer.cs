@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVC_Freelancer.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230206121736_Freelancer")]
-    partial class Freelancer
+    [Migration("20230207084906_FreelancerSchool")]
+    partial class FreelancerSchool
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -490,8 +490,9 @@ namespace MVC_Freelancer.Migrations
                     b.Property<bool?>("Status")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("WorkType")
-                        .HasColumnType("bit");
+                    b.Property<string>("WorkType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

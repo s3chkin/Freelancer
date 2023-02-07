@@ -23,12 +23,13 @@
 
 <form style="display:grid; place-items:center;" method="post" enctype="multipart/form-data">
 
-    <label for="WorkType">Изберете:</label>
-    <select style="width: 600px; height:55px;" asp-for="WorkType" name="WorkType" >
+    <div class="form-group" >
+    <label asp-for="Name" class="control-label">Изберете: <span style="color:red; font-size:20px;">*</span></label>
+    <select class="form-control" style="width: 600px; height:55px;" asp-for="WorkType" name="WorkType">
         <option value="Предлагам">Предлагам</option>
         <option value="Търся">Търся</option>
     </select>
-
+    </div>
 
 
     <img style="width:560px; margin-top:80px;" src="~/ImageRepository/undraw_add_tasks_re_s5yj.svg">
@@ -46,7 +47,7 @@
     </div>
 
     <div class="form-group">
-        <label asp-for="Name" class="control-label">Какво предлагаш? <span style="color:red; font-size:20px;">*</span></label>
+        <label asp-for="Name" class="control-label">Какво предлагате/търсите (заглавие)? <span style="color:red; font-size:20px;">*</span></label>
         <input asp-for="Name" maxlength="25" id="jobInfo" class="form-control" placeholder="Например: Сайт за бизнес/ Фиксиране на грешки... " />
         <span asp-validation-for="Name" class="text-danger"></span>
     </div>
