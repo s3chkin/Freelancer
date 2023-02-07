@@ -52,7 +52,7 @@
                             <button class="dropbtn" style="margin-top:7px;">Портфолио <i class="fa-solid fa-angle-down"></i></button>
                             <div class="dropdown-content">
                                 <a asp-controller="Job" asp-action="Orders">Моите поръчки</a>
-                                <a asp-controller="Request" asp-action="Index">Моите заявки</a>
+                                @*<a asp-controller="Request" asp-action="Index">Моите заявки</a>*@
                                 <a asp-controller="Job" asp-action="MyJobs">Моите обяви</a>
                             </div>
                         </div>
@@ -135,25 +135,26 @@
                     <div class="single-widget">
                         <h4 class="wiget-title">Навигация</h4>
                         <ul>
-                            <a asp-controller="Job" asp-action="Index">
+                            <a asp-controller="Home" asp-action="Index">
                             <li><i class="bi bi-chevron-right "></i> Начало</li>
                             </a>
                             <br>
+
+                            <a asp-controller="Job" asp-action="Index">
+                            <li><i class="bi bi-chevron-right "></i> Обяви</li>
+                            </a>
+                            <br>
+
+                            <a asp-controller="Job" asp-action="Services">
+                            <li><i class="bi bi-chevron-right "></i> Услуги</li>
+                            </a>
+                            <br>
+
                             <a asp-controller="Job" asp-action="AboutUs">
                             <li><i class="bi bi-chevron-right "></i> За нас</li>
                             </a>
                             <br>
-
-                            <a href="projects.html">
-                            <li><i class="bi bi-chevron-right "></i> Проекти</li>
-                            </a>
-                            <br>
-
-                            <a href="founder.html">
-                            <li><i class="bi bi-chevron-right "></i> Основател</li>
-                            </a>
-                            <br>
-
+                            
                             <a asp-controller="Job" asp-action="Contacts">
                             <li><i class="bi bi-chevron-right "></i> Контакти</li>
                             </a>
