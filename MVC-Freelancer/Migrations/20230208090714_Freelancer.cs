@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MVC_Freelancer.Migrations
 {
-    public partial class FreelancerSchool : Migration
+    public partial class Freelancer : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
