@@ -55,7 +55,7 @@
     <div style=" width:1330px;">
         <h5><i><b>Заявки</b></i> </h5>
 
-        @foreach (var item in Model.Where(x => x.WorkType == "Търся" ))
+        @foreach (var item in Model.Where(x => x.WorkType == "Търся" && x.Status == true))
         {
             <div class="container container2 float-left" style="">
                 <div class="card-sl ">

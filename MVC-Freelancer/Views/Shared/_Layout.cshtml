@@ -47,15 +47,17 @@
                         <li class="">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Job" asp-action="Contacts">Контакти</a>
                         </li>
-
-                        <div class="dropdown">
-                            <button class="dropbtn" style="margin-top:7px;">Портфолио <i class="fa-solid fa-angle-down"></i></button>
-                            <div class="dropdown-content">
-                                <a asp-controller="Job" asp-action="Orders">Моите поръчки</a>
-                                @*<a asp-controller="Request" asp-action="Index">Моите заявки</a>*@
-                                <a asp-controller="Job" asp-action="MyJobs">Моите обяви</a>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <div class="dropdown">
+                                <button class="dropbtn" style="margin-top:7px;">Портфолио <i class="fa-solid fa-angle-down"></i></button>
+                                <div class="dropdown-content">
+                                    <a asp-controller="Job" asp-action="Orders">Моите поръчки</a>
+                                    @*<a asp-controller="Request" asp-action="Index">Моите заявки</a>*@
+                                    <a asp-controller="Job" asp-action="MyJobs">Моите обяви</a>
+                                </div>
                             </div>
-                        </div>
+                        }
                     </ul>
 
 
@@ -154,7 +156,7 @@
                             <li><i class="bi bi-chevron-right "></i> За нас</li>
                             </a>
                             <br>
-                            
+
                             <a asp-controller="Job" asp-action="Contacts">
                             <li><i class="bi bi-chevron-right "></i> Контакти</li>
                             </a>
@@ -192,7 +194,7 @@
         color: black;
         font-size: 16px;
         border: none;
-            background: none;
+        background: none;
     }
 
     .dropdown {
@@ -224,5 +226,4 @@
         display: block;
     }
 
-    
 </style>
