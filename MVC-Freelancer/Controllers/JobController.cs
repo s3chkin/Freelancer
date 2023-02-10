@@ -154,7 +154,7 @@ namespace MVC_Freelancer.Controllers
             return this.View(model);
         }
 
-        
+
 
         [HttpGet]
         public IActionResult Edit(int id)
@@ -350,24 +350,21 @@ namespace MVC_Freelancer.Controllers
             return View(model);
         }
 
-        public IActionResult Orders(int id)
+        public IActionResult Orders(int id, InputJobModel model)
         {
-
-            var model = db.Jobs.Where(x => id == x.Id).Select(x => new InputJobModel
-            {
-                Name = x.Name,
-                DeadLine = x.DeadLine,
-                Price = x.Price,
-                CategoryId = x.CategoryId,
-                Description = x.Description,
-                Progress = x.Progress,
-
-                ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}",
+            var order = db.Orders.Where(s => s.Id == model.Id).FirstOrDefault(); //търсене
+            order.Id = model.Id;
+            order.Name = model.Name;
+            order.DeadLine = model.DeadLine;
+            order.Description = model.Description;
+            order.Price = model.Price;
+            order.WorkType = model.WorkType;
+            order.Status = model.Status;
 
 
-            }
-             ).ToList();
-            return this.View(model);
+            db.Orders.Add(order);
+            db.SaveChanges();
+            return this.RedirectToAction("Index");
         }
 
         [HttpPost]
@@ -379,7 +376,7 @@ namespace MVC_Freelancer.Controllers
             var model = db.Jobs.Where(x => id == x.Id).Select(x => new InputJobModel
             {
                 //otlyavo modeli otdyasno bazatadanni
-                Rating= x.Rating,
+                Rating = x.Rating,
             }).FirstOrDefault();
             //var category = db.Categories.Where(x => model.CategoryId == x.Id).FirstOrDefault();
             //db.SaveChanges();

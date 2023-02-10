@@ -19,6 +19,7 @@ namespace MVC_Freelancer.Data
         public DbSet<UserSkill> UserSkills{ get; set; }
         public DbSet<Skill> Skills { get; set; }
         public DbSet<Request> Requests { get; set; }
+        public DbSet<Order> Orders{ get; set; }
         public DbSet<Comment> Comments { get; set; }
         
     }

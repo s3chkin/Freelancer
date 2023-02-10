@@ -6,7 +6,8 @@
         {
             this.Images = new HashSet<Image>();
             this.Categories = new HashSet<Category>();
-            this.ContactUs= new HashSet<ContactUs>();
+            this.ContactUs = new HashSet<ContactUs>();
+            this.Orders = new HashSet<Order>();
         }
         public int Id { get; set; }
         public string Name { get; set; }
@@ -16,7 +17,7 @@
         public string Progress { get; set; }
         public bool? Status { get; set; }
         public double? Rating { get; set; }
-        public string WorkType { get; set; } // true - търся
+        public string WorkType { get; set; }
 
 
         //пакети:
@@ -56,9 +57,10 @@
         public int CategoryId { get; set; }
         public virtual ICollection<Category> Categories { get; set; }
         public virtual ICollection<Image> Images { get; set; }
-        public int ContactUsId { get; set; }
+        //public int ContactUsId { get; set; }
         public virtual ICollection<ContactUs> ContactUs { get; set; }
-        public List<Comment>CommentState { get; set; }
+        public List<Comment> CommentState { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
 
 
     }

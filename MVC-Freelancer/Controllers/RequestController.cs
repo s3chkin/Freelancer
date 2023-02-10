@@ -119,7 +119,46 @@ namespace MVC_Freelancer.Controllers
             return this.RedirectToAction("Index");
         }
 
-        
+        public IActionResult ById(int id)
+        {
+            var model = db.Jobs.Where(x => id == x.Id).Select(x => new InputJobModel
+            {
+                //otlyavo modeli otdyasno bazatadanni
+                Name = x.Name,
+                //CategoryName = x.Categories.Name,
+                DeadLine = x.DeadLine,
+                Price = x.Price,
+                CategoryId = x.CategoryId,
+                Description = x.Description,
+                Progress = x.Progress,
+
+                ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}",
+
+                PackageName = x.PackageName,
+                DeliveryTime = x.DeliveryTime,
+                PacketDescription = x.PacketDescription,
+                PacketPrice = x.PacketPrice,
+                Revision = x.Revision,
+                ExtraInfo = x.ExtraInfo,
+
+                PackageName2 = x.PackageName2,
+                DeliveryTime2 = x.DeliveryTime2,
+                PacketDescription2 = x.PacketDescription2,
+                PacketPrice2 = x.PacketPrice2,
+                Revision2 = x.Revision2,
+                ExtraInfo2 = x.ExtraInfo2,
+
+                PackageName3 = x.PackageName3,
+                DeliveryTime3 = x.DeliveryTime3,
+                PacketDescription3 = x.PacketDescription3,
+                PacketPrice3 = x.PacketPrice3,
+                Revision3 = x.Revision3,
+                ExtraInfo3 = x.ExtraInfo3,
+            }).FirstOrDefault();
+            //var category = db.Categories.Where(x => model.CategoryId == x.Id).FirstOrDefault();
+            return this.View(model);
+        }
+
 
         public IActionResult Requests()
         {
