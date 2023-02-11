@@ -2,30 +2,219 @@
 <h1>dsf</h1>
 <br>
 <br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-@foreach (var item in Model)
-{
-    <div class="d-flex justify-content-center">
-        <div id="myOrders">
-            <img src="@item.ImgURL">
-            <p>@item.Name</p>
-            <p>@item.Price</p>
-        </div>
+
+<div class=" d-flex flex-wrap justify-content-around ">
+    <div style=" width:1330px;">
+        <h5><i><b>Приети:</b></i> </h5>
+
+        @foreach (var item in Model.Where(x => x.Accept == true))
+        {
+            <div class="container container2 float-left" style="">
+                <div class="card-sl ">
+                    <div class="card-image">
+                        <img id="image" height="220px;" src="@item.ImgURL" />
+                    </div>
+
+                    <div class="card-heading">
+                        @item.Name
+                    </div>
+                    <div class="card-text">
+                        <div class="skills">
+                            <div style="padding-bottom: 40px;">
+                                <div>
+                                    <p style="float: left;">Напредък (Прогрес)</p>
+                                    <p style="float: right;">@item.Progress%</p>
+                                </div>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar" style="width:@item.Progress%; "></div>
+
+                                
+
+
+                                @if (item.Progress <= 30)
+                                {
+                                    <style>
+                                        .progress-bar {
+                                            background-color: red;
+                                        }
+                                    </style>
+                                    
+                                }
+                                else if (item.Progress >= 31 && item.Progress <= 60)
+                                {
+                                    <style>
+                                        .progress-bar {
+                                            background-color: yellow;
+                                        }
+                                    </style>
+                                }
+                                 else if (item.Progress >= 61)
+                                {
+                                    <style>
+                                        .progress-bar {
+                                            background-color: green;
+                                        }
+                                    </style>
+                                }
+                            </div>
+
+                            @if (item.Progress <= 30)
+                            {
+                                        <p>Стартиране</p>
+                            }
+                            else if (item.Progress >= 61)
+                            {
+                                            <p>Приключване</p>
+                            }
+
+                        </div>
+                    </div>
+                    <div class="card-text">
+                        <p class="float-start">@item.Price <i>BGN</i></p>
+
+                    </div>
+
+                    <br>
+                    <a asp-action="ById" asp-route-id="@item.Id" class="card-button"> Детайли</a>
+                </div>
+            </div>
+
+        }
     </div>
-    <br>
-}
+</div>
 <style>
-    img
-    {
-        width:350px;
+
+    .progress {
+        height: 10px;
+        border-radius: 0px;
     }
-    #myOrders {
-        width: 600px;
-        background-color: red;
+
+    .skills {
+        padding-top: 25px;
     }
+/*
+    .progress-bar {
+        background-color: #fd6900eb;
+    }*/
+
+    .container2 {
+        margin-top: 20px;
+        width: 25%;
+    }
+
+    @@media screen and (max-width: 1240px) {
+        .container2 {
+            width: 28%;
+            justify-content: center;
+            display: grid;
+            align-items: center;
+        }
+    }
+
+    @@media screen and (max-width: 1080px) {
+        .container2 {
+            width: 33%;
+            justify-content: center;
+        }
+    }
+
+    @@media screen and (max-width: 1000px) {
+        .container2 {
+            width: 40%;
+            justify-content: center;
+        }
+    }
+
+    @@media screen and (max-width: 830px) {
+        .container2 {
+            width: 50%;
+            justify-content: center;
+        }
+
+        #image {
+            width: 100%;
+        }
+    }
+
+    @@media screen and (max-width: 660px) {
+        .container2 {
+            width: 50%;
+            justify-content: center;
+        }
+
+        #image {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    @@media screen and (max-width: 600px) {
+        .container2 {
+            width: 100%;
+            justify-content: center;
+        }
+
+        #image {
+            width: 100%;
+        }
+    }
+
+
+    #list, a {
+        list-style: none;
+        text-decoration: none;
+    }
+
+        #list li {
+            text-align: center;
+            /* line-height: 50px; */
+            opacity: 0;
+            margin-top: 90px;
+            font-size: 40px;
+            font-weight: 700;
+            margin-right: 20px;
+        }
+
+            #list li:nth-child(2) {
+                animation-delay: 0.5s;
+            }
+
+            #list li:nth-child(3) {
+                animation-delay: 0.9s;
+            }
+
+            #list li:nth-child(4) {
+                animation-delay: 2s;
+            }
+
+
+    @@keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translate3d(0, -30%, 0);
+        }
+
+        to {
+            opacity: 1;
+            transform: translate3d(0, 10%, 10%);
+        }
+
+        0% {
+            top: 0px;
+        }
+
+        25% {
+            top: 200px;
+        }
+
+        75% {
+            top: 50px
+        }
+
+        100% {
+            top: 100px;
+        }
+    }
+
 </style>

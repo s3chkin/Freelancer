@@ -10,14 +10,17 @@ namespace MVC_Freelancer.Models
         public string Description { get; set; }
         public double Price { get; set; }
         public DateTime DeadLine { get; set; }
-        public string Progress { get; set; }
         public IFormFile Image { get; set; }
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
         public string ImgURL { get; set; }
         public bool? Status { get; set; } 
         public double? Rating { get; set; }
-        public string WorkType { get; set; } // true - търся
+        public string WorkType { get; set; }
+        public bool Accept { get; set; }
+        public int Progress { get; set; }
+
+
 
 
 

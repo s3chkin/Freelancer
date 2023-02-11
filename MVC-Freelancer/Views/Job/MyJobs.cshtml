@@ -3,14 +3,14 @@
 <br>
 <br>
 <br>
-    <h4 align="center">Моите обяви</h4>
+<h4 align="center">Моите обяви</h4>
 <br>
 
 <div class=" d-flex flex-wrap justify-content-around ">
     <div style=" width:1330px;">
         <h5><i><b>Предлагани:</b></i> </h5>
 
-        @foreach (var item in Model)
+        @foreach (var item in Model.Where(x => x.DeadLine > DateTime.Today))
         {
 
             <div class="container container2 float-left" style="">
@@ -18,12 +18,7 @@
                     <div class="card-image">
                         <img id="image" height="220px;" src="@item.ImgURL" />
                     </div>
-                    @*  @if (item.WorkType == "Търся")
-                {
-                <p class="card-heading">
-                Търсещ
-                </p>
-                }*@
+
                     <div class="card-heading">
                         @item.Name
                     </div>
@@ -33,12 +28,6 @@
                     </div>
                     <div class="card-text">
                         <p class="float-start">@item.Price <i>BGN</i></p>
-
-                        @*@if (item.Status == true)
-                    {
-                    <p id="visibility" class="float-end" style=" background-color: orange;padding: 4px;border-radius: 5px;"><i><b>в пауза</b></i></p>
-                    }*@
-
 
                     </div>
                     <br>
@@ -80,129 +69,207 @@
                     <a asp-action="ById" asp-route-id="@item.Id" class="card-button"> Детайли</a>
                 </div>
             </div>
-
         }
     </div>
 </div>
 
-                        <style>
-    .container2 {
-        margin-top: 20px;
-        width: 25%;
-    }
 
-    @@media screen and (max-width: 1240px) {
+@*------*@
+
+<br></br>
+
+<div class=" d-flex flex-wrap justify-content-around ">
+    <div style=" width:1330px;">
+
+
+        <div style=" width:1330px;">
+            <h5><i><b>Изтекъл срок:</b></i> </h5>
+
+            @foreach (var item in Model.Where(x => x.DeadLine < DateTime.Today))
+            {
+
+                <div class="container container2 float-left" style="">
+                    <div class="card-sl ">
+                        <div class="card-image">
+                            <img id="image" height="220px;" src="@item.ImgURL" />
+                        </div>
+
+                        <div class="card-heading">
+                            @item.Name
+                        </div>
+                        <div class="card-text">
+                            Цената е @item.Price лева. За по-подробна информация
+                            влезте в самата обява,<br> като натиснете бутона "детайли".
+                        </div>
+                        <div class="card-text">
+                            <p class="float-start">@item.Price <i>BGN</i></p>
+
+                        </div>
+                        <br>
+                        <br>
+                        <div class="d-flex justify-content-center">
+                            @if (item.Status == false)
+                            {
+                                <form method="post" asp-action="Pause">
+                                    <fieldset>
+                                        <input type="hidden" name="id" value="@item.Id" />
+                                        <button type="submit" class="btn btn-warning"><i class="fa-solid fa-play float-left"></i> </button>
+                                    </fieldset>
+                                </form>
+                            }
+                            else
+                            {
+                                <form method="post" asp-action="Pause">
+                                    <fieldset>
+                                        <input type="hidden" name="id" value="@item.Id" />
+                                        <button type="submit" class="btn btn-warning"><i class="fa-solid fa-pause float-left"></i> </button>
+                                    </fieldset>
+                                </form>
+                            }
+                            <a asp-action="Edit" asp-route-id="@item.Id">
+                                <button class=" btn btn-success" style="margin-left:5px; margin-right:5px;">
+                                    <i class="requestEditBtn fa-solid fa-pencil float-left" style="color:white;"></i>
+                                </button>
+                            </a>
+
+                            <a asp-action="Delete" asp-route-id="@item.Id">
+                                <button class="btn btn-danger">
+                                    <i class="requestDeleteBtn fa-solid fa-trash-can float-left" style="  color:white;"></i>
+                                </button>
+                            </a>
+
+                        </div>
+
+                        <br>
+                        <a asp-action="ById" asp-route-id="@item.Id" class="card-button"> Детайли</a>
+                    </div>
+                </div>
+
+
+
+
+            }
+        </div>
+    </div>
+
+    <style>
         .container2 {
-            width: 28%;
-            justify-content: center;
-            display: grid;
-            align-items: center;
-        }
-    }
-
-    @@media screen and (max-width: 1080px) {
-        .container2 {
-            width: 33%;
-            justify-content: center;
-        }
-    }
-
-    @@media screen and (max-width: 1000px) {
-        .container2 {
-            width: 40%;
-            justify-content: center;
-        }
-    }
-
-    @@media screen and (max-width: 830px) {
-        .container2 {
-            width: 50%;
-            justify-content: center;
+            margin-top: 20px;
+            width: 25%;
         }
 
-        #image {
-            width: 100%;
-        }
-    }
-
-    @@media screen and (max-width: 660px) {
-        .container2 {
-            width: 50%;
-            justify-content: center;
+        @@media screen and (max-width: 1240px) {
+            .container2 {
+                width: 28%;
+                justify-content: center;
+                display: grid;
+                align-items: center;
+            }
         }
 
-        #image {
-            width: 100%;
-            height: auto;
-        }
-    }
-
-    @@media screen and (max-width: 600px) {
-        .container2 {
-            width: 100%;
-            justify-content: center;
+        @@media screen and (max-width: 1080px) {
+            .container2 {
+                width: 33%;
+                justify-content: center;
+            }
         }
 
-        #image {
-            width: 100%;
-        }
-    }
-
-
-    #list, a {
-        list-style: none;
-        text-decoration: none;
-    }
-
-        #list li {
-            text-align: center;
-            /* line-height: 50px; */
-            opacity: 0;
-            margin-top: 90px;
-            font-size: 40px;
-            font-weight: 700;
-            margin-right: 20px;
+        @@media screen and (max-width: 1000px) {
+            .container2 {
+                width: 40%;
+                justify-content: center;
+            }
         }
 
-            #list li:nth-child(2) {
-                animation-delay: 0.5s;
+        @@media screen and (max-width: 830px) {
+            .container2 {
+                width: 50%;
+                justify-content: center;
             }
 
-            #list li:nth-child(3) {
-                animation-delay: 0.9s;
+            #image {
+                width: 100%;
+            }
+        }
+
+        @@media screen and (max-width: 660px) {
+            .container2 {
+                width: 50%;
+                justify-content: center;
             }
 
-            #list li:nth-child(4) {
-                animation-delay: 2s;
+            #image {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        @@media screen and (max-width: 600px) {
+            .container2 {
+                width: 100%;
+                justify-content: center;
             }
 
-
-    @@keyframes fadeIn {
-        from {
-            opacity: 0;
-            transform: translate3d(0, -30%, 0);
+            #image {
+                width: 100%;
+            }
         }
 
-        to {
-            opacity: 1;
-            transform: translate3d(0, 10%, 10%);
+
+        #list, a {
+            list-style: none;
+            text-decoration: none;
         }
 
-        0% {
-            top: 0px;
+            #list li {
+                text-align: center;
+                /* line-height: 50px; */
+                opacity: 0;
+                margin-top: 90px;
+                font-size: 40px;
+                font-weight: 700;
+                margin-right: 20px;
+            }
+
+                #list li:nth-child(2) {
+                    animation-delay: 0.5s;
+                }
+
+                #list li:nth-child(3) {
+                    animation-delay: 0.9s;
+                }
+
+                #list li:nth-child(4) {
+                    animation-delay: 2s;
+                }
+
+
+        @@keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translate3d(0, -30%, 0);
+            }
+
+            to {
+                opacity: 1;
+                transform: translate3d(0, 10%, 10%);
+            }
+
+            0% {
+                top: 0px;
+            }
+
+            25% {
+                top: 200px;
+            }
+
+            75% {
+                top: 50px
+            }
+
+            100% {
+                top: 100px;
+            }
         }
 
-        25% {
-            top: 200px;
-        }
-
-        75% {
-            top: 50px
-        }
-
-        100% {
-            top: 100px;
-        }
-    }
-
-</style>
+    </style>

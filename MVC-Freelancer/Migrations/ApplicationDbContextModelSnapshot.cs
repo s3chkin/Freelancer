@@ -410,6 +410,9 @@ namespace MVC_Freelancer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<bool>("Accept")
+                        .HasColumnType("bit");
+
                     b.Property<string>("AppUserId")
                         .HasColumnType("nvarchar(450)");
 
@@ -481,9 +484,8 @@ namespace MVC_Freelancer.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
-                    b.Property<string>("Progress")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Progress")
+                        .HasColumnType("int");
 
                     b.Property<double?>("Rating")
                         .HasColumnType("float");

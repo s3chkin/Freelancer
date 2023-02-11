@@ -33,6 +33,8 @@
                 <p><i class="bi bi-check"></i> Админ панел</p>
                 <p><i class="bi bi-check"></i> Хостване</p>
                 <p><i class="bi bi-check"></i> Над 20 страници</p>
+
+
                 @if (Model.DeadLine < DateTime.Today)
                 {
                     @*<a  asp-action="Orders" asp-route-id="@Model.Id" class="btn d-flex justify-content-center" aria-disabled="true">Приеми</a>*@
@@ -41,14 +43,13 @@
                 }
                 else
                 {
-                    <form method="post" asp-action="Orders">
+                    <form method="post" asp-action="Accept">
                         <fieldset>
-                            @*<input type="hidden"  value="@Model.Id" />*@
-                            <button name="id" value="@Model.Id" type="submit" id="btn" class="d-flex justify-content-center">Приеми</button>
+                            <input type="hidden" name="id" value="@Model.Id" />
+                            <button type="submit" class="btn btn-warning">Приеми </button>
                         </fieldset>
-
                     </form>
-                    
+
                 }
 
 

@@ -33,6 +33,7 @@ namespace MVC_Freelancer.Controllers
                 Id = x.Id,
                 Status = x.Status,
                 WorkType = x.WorkType,
+                Accept = x.Accept,
                 DeadLine = x.DeadLine,
                 ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}", //прочитене на снимката от базата данни
             }
@@ -126,6 +127,9 @@ namespace MVC_Freelancer.Controllers
                 CategoryId = x.CategoryId,
                 Description = x.Description,
                 Progress = x.Progress,
+                Accept = x.Accept,
+                Status = x.Status,
+                Rating = x.Rating,
 
                 ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}",
 
@@ -317,6 +321,14 @@ namespace MVC_Freelancer.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        public IActionResult Accept(int id)
+        {
+            var jobFd = db.Jobs.FirstOrDefault(r => r.Id == id);
+            jobFd.Accept = true;
+            db.Update(jobFd);
+            db.SaveChanges();
+            return RedirectToAction("Orders");
+        }
         public IActionResult MyJobs()
         {
             var model = db.Jobs.Select(x => new InputJobModel
@@ -325,6 +337,7 @@ namespace MVC_Freelancer.Controllers
                 Price = x.Price,
                 Id = x.Id,
                 Status = x.Status,
+                DeadLine= x.DeadLine,
                 ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}", //прочитене на снимката от базата данни
             }
              ).ToList();
@@ -350,21 +363,24 @@ namespace MVC_Freelancer.Controllers
             return View(model);
         }
 
-        public IActionResult Orders(int id, InputJobModel model)
+        public IActionResult Orders()
         {
-            var order = db.Orders.Where(s => s.Id == model.Id).FirstOrDefault(); //търсене
-            order.Id = model.Id;
-            order.Name = model.Name;
-            order.DeadLine = model.DeadLine;
-            order.Description = model.Description;
-            order.Price = model.Price;
-            order.WorkType = model.WorkType;
-            order.Status = model.Status;
 
+            var model = db.Jobs.Select(x => new InputJobModel
+            {
+                Name = x.Name,
+                Price = x.Price,
+                Id = x.Id,
+                Status = x.Status,
+                WorkType = x.WorkType,
+                Accept = x.Accept,
+                Progress = x.Progress,
+                DeadLine = x.DeadLine,
+                ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}", //прочитене на снимката от базата данни
+            }
+            ).ToList();
+            return View(model);
 
-            db.Orders.Add(order);
-            db.SaveChanges();
-            return this.RedirectToAction("Index");
         }
 
         [HttpPost]

@@ -33,7 +33,7 @@
     <li><a class="dropdown-item" href="#">Търся работа</a></li>
     <li><a class="dropdown-item" asp-controller="Job" asp-action="Add">Предлагам работа</a></li>
     </ul>*@
-    <a  asp-controller="Job" asp-action="add">
+    <a asp-controller="Job" asp-action="add">
         <button class="site-btn">
             Добави обява
         </button>
@@ -93,12 +93,7 @@
                     <div class="card-image">
                         <img id="image" height="220px;" src="@item.ImgURL" />
                     </div>
-                    @*  @if (item.WorkType == "Търся")
-                {
-                <p class="card-heading">
-                Търсещ
-                </p>
-                }*@
+
                     <div class="card-heading">
                         @item.Name
                     </div>
@@ -109,54 +104,25 @@
                     <div class="card-text">
                         <p class="float-start">@item.Price <i>BGN</i></p>
 
-                        @*@if (item.Status == true)
-                    {
-                    <p id="visibility" class="float-end" style=" background-color: orange;padding: 4px;border-radius: 5px;"><i><b>в пауза</b></i></p>
-                    }*@
-
-
                     </div>
 
-
-                    <form method="post" asp-action="Orders">
-                        <fieldset>
-                            <input type="hidden" name="id" value="@item.Id" />
-                            <button type="submit" class="btn btn-warning">Приеми </button>
-                        </fieldset>
-                    </form>
-                    @*<div class="d-flex justify-content-center">
-                @if (item.Status == false)
-                {
-                <form method="post" asp-action="Pause">
-                <fieldset>
-                <input type="hidden" name="id" value="@item.Id" />
-                <button type="submit" class="btn btn-warning"><i class="fa-solid fa-play float-left"></i> </button>
-                </fieldset>
-                </form>
-                }
-                else
-                {
-                <form method="post" asp-action="Pause">
-                <fieldset>
-                <input type="hidden" name="id" value="@item.Id" />
-                <button type="submit" class="btn btn-warning"><i class="fa-solid fa-pause float-left"></i> </button>
-                </fieldset>
-                </form>
-                }
-                <a asp-action="Edit" asp-route-id="@item.Id">
-                <button class=" btn btn-success" style="margin-left:5px; margin-right:5px;">
-                <i class="requestEditBtn fa-solid fa-pencil float-left" style="color:white;"></i>
-                </button>
-                </a>
-
-                <a asp-action="Delete" asp-route-id="@item.Id">
-                <button class="btn btn-danger">
-                <i class="requestDeleteBtn fa-solid fa-trash-can float-left" style="  color:white;"></i>
-                </button>
-                </a>
-
-                </div>*@
-
+                    @if (item.Accept == true)
+                    {
+                        <div style="margin-top:30px;" class="d-flex justify-content-center">
+                            <button type="submit" class="btn btn-warning disabled">Прието </button>
+                        </div>
+                    }
+                    else
+                    {
+                        <div style="margin-top:30px;" class="d-flex justify-content-center">
+                            <form method="post" asp-action="Accept">
+                                <fieldset>
+                                    <input type="hidden" name="id" value="@item.Id" />
+                                    <button type="submit" class="btn btn-success">Приеми </button>
+                                </fieldset>
+                            </form>
+                        </div>
+                    }
                     <br>
                     <a asp-action="ById" asp-route-id="@item.Id" class="card-button"> Детайли</a>
                 </div>

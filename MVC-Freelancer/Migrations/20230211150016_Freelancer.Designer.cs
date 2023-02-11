@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVC_Freelancer.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230210212125_freelancer")]
-    partial class freelancer
+    [Migration("20230211150016_Freelancer")]
+    partial class Freelancer
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -397,14 +397,9 @@ namespace MVC_Freelancer.Migrations
                     b.Property<int>("JobId")
                         .HasColumnType("int");
 
-                    b.Property<int>("OrderId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("JobId");
-
-                    b.HasIndex("OrderId");
 
                     b.ToTable("Images");
                 });
@@ -416,6 +411,9 @@ namespace MVC_Freelancer.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<bool>("Accept")
+                        .HasColumnType("bit");
 
                     b.Property<string>("AppUserId")
                         .HasColumnType("nvarchar(450)");
@@ -488,9 +486,8 @@ namespace MVC_Freelancer.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
-                    b.Property<string>("Progress")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Progress")
+                        .HasColumnType("int");
 
                     b.Property<double?>("Rating")
                         .HasColumnType("float");
@@ -789,15 +786,7 @@ namespace MVC_Freelancer.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MVC_Freelancer.Data.Models.Order", "Order")
-                        .WithMany()
-                        .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Job");
-
-                    b.Navigation("Order");
                 });
 
             modelBuilder.Entity("MVC_Freelancer.Data.Models.Job", b =>

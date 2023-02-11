@@ -13,11 +13,7 @@
 
     <img style="width:560px; margin-top:80px;" src="~/ImageRepository/undraw_add_tasks_re_s5yj.svg">
     <br><br>
-    <div class="form-group" style="display:none;">
-        <label asp-for="Progress" class="control-label"></label>
-        <input asp-for="Progress" class="form-control" value="null" id="jobProgress " />
-        <span asp-validation-for="Progress" class="text-danger"></span>
-    </div>
+    
 
     <div class="form-group">
         <label asp-for="Name" class="control-label">Какво предлагаш? <span style="color:red; font-size:20px;">*</span></label>
@@ -51,14 +47,6 @@
         <span asp-validation-for="Description" class="text-danger"></span>
     </div>
 
-
-
-    <div class="form-group" style="display:none;">
-        <label asp-for="Progress" class="control-label"></label>
-        <input asp-for="Progress" class="form-control" value="null" id="jobProgress " />
-        <span asp-validation-for="Progress" class="text-danger"></span>
-    </div>
-
     <div class="form-group">
         <label asp-for="CategoryId" class="control-label">Категория <span style="color:red; font-size:20px;">*</span></label>
         <div>
@@ -76,7 +64,6 @@
             <label asp-for="CategoryId" class="control-label">Снимка <span style="color:red; font-size:20px;">*</span></label>
         </div>
         <label asp-for="Image" class="control-label" style="display:none;"></label>
-        @*<input asp-for="Image" type="file"  class="form-control" id="jobImg"/>*@
         <input asp-for="Image" style="display:none;" type="file" id="file" />
         <label id="file2" onclick="func()" for="file" style="display:grid; place-items:center; cursor:pointer;"><i id="imgLogo2" class="bi bi-check" style="display:none;"></i><i class="bi bi-camera" id="imgLogo1"></i></label>
         <span asp-validation-for="Image" class="text-danger"></span>
