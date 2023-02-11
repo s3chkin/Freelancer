@@ -26,12 +26,16 @@
                                     <p style="float: right;">@item.Progress%</p>
                                 </div>
                             </div>
+                            <form method="post" asp-action="Progress">
+                                <input asp-for="@item.Progress">
+                                <input type="submit" value="ok"/>
+                            </form>
+
                             <div class="progress">
                                 <div class="progress-bar" style="width:@item.Progress%; "></div>
 
                                 
-
-
+                                
                                 @if (item.Progress <= 30)
                                 {
                                     <style>

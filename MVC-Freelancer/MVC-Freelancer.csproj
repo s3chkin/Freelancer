@@ -40,6 +40,7 @@
     <None Remove="Views\Job\Index.cshtml~RF58170b6.TMP" />
     <None Remove="Views\Job\Index.cshtml~RFd085d6.TMP" />
     <None Remove="Views\Job\MyJobs.cshtml~RF20af04c9.TMP" />
+    <None Remove="Views\Job\Orders.cshtml~RF49d7939c.TMP" />
     <None Remove="Views\Request\Edit.cshtml~RF6da362.TMP" />
     <None Remove="Views\Request\Index.cshtml~RF57850c6.TMP" />
   </ItemGroup>

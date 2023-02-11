@@ -337,7 +337,7 @@ namespace MVC_Freelancer.Controllers
                 Price = x.Price,
                 Id = x.Id,
                 Status = x.Status,
-                DeadLine= x.DeadLine,
+                DeadLine = x.DeadLine,
                 ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}", //прочитене на снимката от базата данни
             }
              ).ToList();
@@ -381,6 +381,16 @@ namespace MVC_Freelancer.Controllers
             ).ToList();
             return View(model);
 
+        }
+        public IActionResult Progress(InputJobModel model)
+        {
+            var job = new Job
+            {
+                Progress = model.Progress,
+            };
+            db.Jobs.Add(job);
+            db.SaveChanges();
+            return this.RedirectToAction("Index");
         }
 
         [HttpPost]
