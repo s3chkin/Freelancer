@@ -55,14 +55,14 @@
     <div style=" width:1330px;">
         <h5><i><b>Заявки</b></i> </h5>
 
-        @foreach (var item in Model.Where(x => x.WorkType == "Търся" && x.Status == true))
+        @foreach (var item in Model.Where(x => x.WorkType == "Търся" && x.Status == true && x.DeadLine > DateTime.Today && x.Accept == false))
         {
             <div class="container container2 float-left" style="">
                 <div class="card-sl ">
                     <div class="card-image">
                         <img id="image" height="220px;" src="@item.ImgURL" />
                     </div>
-                    
+
                     <div class="card-heading">
                         @item.Name
                     </div>
@@ -73,19 +73,25 @@
                     <div class="card-text">
                         <p class="float-start">@item.Price <i>BGN</i></p>
 
-
-
                     </div>
-                    
 
-                    <form method="post" asp-action="Orders">
-                        <fieldset>
-                            <input type="hidden" name="id" value="@item.Id" />
-                            <button type="submit" class="btn btn-warning">Приеми </button>
-                        </fieldset>
-                    </form>
-                   
-
+                    @if (item.Accept == true)
+                    {
+                        <div style="margin-top:30px;" class="d-flex justify-content-center">
+                            <button type="submit" class="btn btn-warning disabled">Прието </button>
+                        </div>
+                    }
+                    else
+                    {
+                        <div style="margin-top:30px;" class="d-flex justify-content-center">
+                            <form method="post" asp-action="Accept">
+                                <fieldset>
+                                    <input type="hidden" name="id" value="@item.Id" />
+                                    <button type="submit" class="btn btn-success">Приеми </button>
+                                </fieldset>
+                            </form>
+                        </div>
+                    }
                     <br>
                     <a asp-action="ById" asp-route-id="@item.Id" class="card-button"> Детайли</a>
                 </div>

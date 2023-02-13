@@ -387,7 +387,12 @@ namespace MVC_Freelancer.Controllers
             var job = new Job
             {
                 Progress = model.Progress,
+                
             };
+            if (model.Accept == false)
+            {
+                model.Progress = 0;
+            }
             db.Jobs.Add(job);
             db.SaveChanges();
             return this.RedirectToAction("Index");

@@ -24,6 +24,8 @@ namespace MVC_Freelancer.Controllers
                 Sum = x.Sum,
                 DeadLine = x.DeadLine,
                 Title = x.Title,
+               
+
                 Description = x.Description,
                 CategoryId = x.CategoryId,
 
@@ -168,11 +170,23 @@ namespace MVC_Freelancer.Controllers
                 Price = x.Price,
                 Id = x.Id,
                 Status = x.Status,
+                Accept = x.Accept,
+                DeadLine = x.DeadLine,
                 WorkType = x.WorkType,
                 ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}", //прочитене на снимката от базата данни
             }
             ).ToList();
             return View(model);
+        }
+
+        public IActionResult Accept(int id)
+        {
+            var jobFd = db.Jobs.FirstOrDefault(r => r.Id == id);
+            jobFd.Accept = true;
+            db.Update(jobFd);
+            db.SaveChanges();
+            //return RedirectToAction("Orders");
+            return Redirect("Requests");
         }
     }
 }
