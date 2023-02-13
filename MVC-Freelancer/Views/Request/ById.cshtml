@@ -33,9 +33,8 @@
                 <p><i class="bi bi-check"></i> Админ панел</p>
                 <p><i class="bi bi-check"></i> Хостване</p>
                 <p><i class="bi bi-check"></i> Над 20 страници</p>
-                @if (Model.DeadLine < DateTime.Today)
+               @* @if (Model.DeadLine < DateTime.Today)
                 {
-                    @*<a  asp-action="Orders" asp-route-id="@Model.Id" class="btn d-flex justify-content-center" aria-disabled="true">Приеми</a>*@
                     <a asp-controller="Request" id="btn" asp-route-id="@Model.Id" class="btn btn-primary btn-lg disabled" role="button" aria-disabled="true">Приеми</a>
 
                 }
@@ -43,18 +42,17 @@
                 {
                     <form method="post" asp-action="Orders">
                         <fieldset>
-                            @*<input type="hidden"  value="@Model.Id" />*@
                             <button name="id" value="@Model.Id" type="submit" id="btn" class="d-flex justify-content-center">Приеми</button>
                         </fieldset>
 
                     </form>
                     
-                }
+                }*@
 
 
-                <div style="height: 500px;">
+                @*<div style="height: 500px;">
                     <button onclick="fireSweetAlert()">Show sweet alert example</button>
-                </div>
+                </div>*@
                 <script>
 
                     function fireSweetAlert() {

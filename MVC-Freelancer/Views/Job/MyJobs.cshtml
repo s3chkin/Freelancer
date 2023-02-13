@@ -26,9 +26,10 @@
                         Цената е @item.Price лева. За по-подробна информация
                         влезте в самата обява,<br> като натиснете бутона "детайли".
                     </div>
+                    
                     <div class="card-text">
                         <p class="float-start">@item.Price <i>BGN</i></p>
-
+                        <p class="float-end">@item.WorkType </p>
                     </div>
                     <br>
                     <br>
@@ -80,13 +81,16 @@
 
 <div class=" d-flex flex-wrap justify-content-around ">
     <div style=" width:1330px;">
-
-
+        @foreach (var item in Model.Where(x => x.DeadLine > DateTime.Today))
+        {
+            
+           
+        }
         <div style=" width:1330px;">
-            <h5><i><b>Изтекъл срок:</b></i> </h5>
 
             @foreach (var item in Model.Where(x => x.DeadLine < DateTime.Today))
             {
+                <h5><i><b>Изтекъл срок:</b></i> </h5>
 
                 <div class="container container2 float-left" style="">
                     <div class="card-sl ">

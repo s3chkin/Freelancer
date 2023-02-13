@@ -1,14 +1,31 @@
 ﻿@model IEnumerable<MVC_Freelancer.Models.InputJobModel>
-<h1>dsf</h1>
+
+<section class="header-section page-header" style="margin-top:50px;">
+    <div class="container">
+        <div class="row section-gap">
+            <div class="col-md-12">
+                <h1 style="color:white;">Моите поръчки</h1>
+            </div>
+        </div>
+    </div>
+</section>
 <br>
+@*<center>
+
+    <div>
+        <img width="250px;" src="~/ImageRepository/undraw_interview_re_e5jn.svg">
+        <h4>Вашите поръчки се появяват тук!</h4>
+    </div>
+</center>*@
 <br>
 
 <div class=" d-flex flex-wrap justify-content-around ">
     <div style=" width:1330px;">
-        <h5><i><b>Приети:</b></i> </h5>
 
         @foreach (var item in Model.Where(x => x.Accept == true))
         {
+            <h5><i><b>Приети:</b></i> </h5>
+
             <div class="container container2 float-left" style="">
                 <div class="card-sl ">
                     <div class="card-image">
@@ -28,15 +45,15 @@
                             </div>
                             <form method="post" asp-action="Progress">
                                 <input asp-for="@item.Progress">
-                                <input type="submit" value="ok"/>
+                                <input type="submit" value="ok" />
                             </form>
                             <br>
 
                             <div class="progress">
                                 <div class="progress-bar" style="width:@item.Progress%; "></div>
 
-                                
-                                
+
+
                                 @if (item.Progress <= 30)
                                 {
                                     <style>
@@ -44,7 +61,7 @@
                                             background-color: red;
                                         }
                                     </style>
-                                    
+
                                 }
                                 else if (item.Progress >= 31 && item.Progress <= 60)
                                 {
@@ -54,7 +71,7 @@
                                         }
                                     </style>
                                 }
-                                 else if (item.Progress >= 61)
+                                else if (item.Progress >= 61)
                                 {
                                     <style>
                                         .progress-bar {
@@ -66,11 +83,11 @@
 
                             @if (item.Progress <= 30)
                             {
-                                        <p>Стартиране</p>
+                                <p>Стартиране</p>
                             }
                             else if (item.Progress >= 61)
                             {
-                                            <p>Приключване</p>
+                                <p>Приключване</p>
                             }
 
                         </div>
@@ -98,10 +115,10 @@
     .skills {
         padding-top: 25px;
     }
-/*
-    .progress-bar {
-        background-color: #fd6900eb;
-    }*/
+    /*
+        .progress-bar {
+            background-color: #fd6900eb;
+        }*/
 
     .container2 {
         margin-top: 20px;
