@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVC_Freelancer.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230211150016_Freelancer")]
+    [Migration("20230213071152_Freelancer")]
     partial class Freelancer
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
