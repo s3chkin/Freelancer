@@ -29,10 +29,10 @@
 <br>
 <div class="btn-group float-end" style="margin-right:80px;">
     @* <button type="button" class="site-btn  dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Добави обява</button>
-    <ul class="dropdown-menu" style="">
-    <li><a class="dropdown-item" href="#">Търся работа</a></li>
-    <li><a class="dropdown-item" asp-controller="Job" asp-action="Add">Предлагам работа</a></li>
-    </ul>*@
+        <ul class="dropdown-menu" style="">
+        <li><a class="dropdown-item" href="#">Търся работа</a></li>
+        <li><a class="dropdown-item" asp-controller="Job" asp-action="Add">Предлагам работа</a></li>
+        </ul>*@
     <a asp-controller="Job" asp-action="add">
         <button class="site-btn">
             Добави обява
@@ -76,17 +76,6 @@
 
         @foreach (var item in Model.Where(x => x.WorkType == "Предлагам" && x.Status == true && x.DeadLine > DateTime.Today && x.Accept == false))
         {
-            @*<form method="post" asp-action="Rating">
-        <label for="Rating">Рейтинг:</label>
-        <select asp-for="@item.Rating" name="Rating">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        </select>
-        <button type="submit">Изпрати</button>
-        </form>*@
 
             <div class="container container2 float-left" style="">
                 <div class="card-sl ">
