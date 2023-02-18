@@ -1,33 +1,42 @@
 ﻿@model MVC_Freelancer.Models.InputCategoryModel
 
 @{
-    ViewData["Title"] = "Add";
+    ViewData["Title"] = "Категории - ";
 }
+<br>
+<br>
+<br>
+<br>
+<div class="d-flex justify-content-center">
+    <div>
+        <h4 class="d-flex justify-content-center">Добавяне на категория</h4>
+        <br>
+        <div>
+            <div >
+                <form asp-action="Add">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Name " class="control-label">Категория:</label>
+                        <input asp-for="Name" placeholder="front-end/ back-end..." class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <br>
 
-<h1>Add</h1>
-
-<h4>InputCategoryModel</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Add">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Name " class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+                    <div class="d-flex justify-content-center" >
+                    <div>
+                        <input type="submit" value="Добави" class="btn btn-success" />
+                    </div>
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <input  type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
+        <br>
+        <div class="d-flex justify-content-center">
+            <a asp-action="Index" class="btn btn-warning">Обратно към списъка с категории</a>
+        </div>
     </div>
 </div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
+<br>
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
