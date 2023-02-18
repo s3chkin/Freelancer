@@ -2,6 +2,7 @@
 using MVC_Freelancer.Data.Models;
 using MVC_Freelancer.Data;
 using MVC_Freelancer.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace MVC_Freelancer.Controllers
 {
@@ -40,6 +41,26 @@ namespace MVC_Freelancer.Controllers
             return this.Redirect("Index");
         }
 
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+
+            var category = db.Categories.Where(s => s.Id == id).FirstOrDefault();
+            var model = new InputCategoryModel
+            {
+                Id = category.Id,
+                Name = category.Name,
+            };
+            return this.View(model);
+        }
+        [HttpPost]
+        public IActionResult Edit(int id, InputCategoryModel model) //update
+        {
+            var category = db.Categories.Where(s => s.Id == model.Id).FirstOrDefault(); //търсене
+            category.Name = model.Name;
+            db.SaveChanges();
+            return this.RedirectToAction("Index");
+        }
         public IActionResult Delete(int id)
         {
             var category = db.Categories.Where(s => s.Id == id).FirstOrDefault(); //търсене

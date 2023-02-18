@@ -1,0 +1,31 @@
+﻿@model MVC_Freelancer.Models.InputCategoryModel
+<br></br>
+<br></br
+<div class="d-flex justify-content-center">
+    <div>
+        <h4 class="d-flex justify-content-center">Редактиране</h4>
+        <br>
+        <div>
+            <div>
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="d-flex justify-content-center">
+                        <div>
+                            <label asp-for="Name " class="control-label">Категория:</label>
+                            <input asp-for="Name" placeholder="front-end/ back-end..." class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <br>
+
+                    <div class="d-flex justify-content-center">
+                        <div>
+                            <input type="submit" value="Запази" class="btn btn-success" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <br>
+    </div>
+</div>

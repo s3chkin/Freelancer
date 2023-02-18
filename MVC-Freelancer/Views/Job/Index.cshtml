@@ -38,12 +38,19 @@
             Добави обява
         </button>
     </a>
+
+    @*<a href="../Areas/Identity/Pages/Account/Login.cshtml" >
+        <button class="site-btn">
+            Добави обява
+        </button>
+    </a>*@
 </div>
 
 <br>
 <br>
+<div id="boxContainer">
 
-<div class="d-flex justify-content-center boxContainer">
+<div  class="d-flex justify-content-center boxContainer">
 
     <div class="boxes float-left" style=" margin-right: 15px;">
         <p style="margin-left:20px;margin-right:20px;"><b>Създай заявка</b> по най-лесния начин</p>
@@ -65,6 +72,7 @@
         <p class="box-text">Имаш нужда от работник, но не знаеш от къде и как да го намериш? Ние сме тук, за да ти помогнем.</p>
         <a asp-controller="Job" asp-action="Services" class="box-btn"><b>Намери Freelancer</b></a>
     </div>
+</div>
 </div>
 
 
@@ -152,7 +160,11 @@
             justify-content: center;
         }
     }
-
+    @@media screen and (max-width: 880px) {
+        #boxContainer{
+            display:none;
+        }
+    }
     @@media screen and (max-width: 830px) {
         .container2 {
             width: 50%;
