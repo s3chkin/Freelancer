@@ -413,9 +413,6 @@ namespace MVC_Freelancer.Migrations
                     b.Property<bool>("Accept")
                         .HasColumnType("bit");
 
-                    b.Property<string>("AppUserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
@@ -443,6 +440,10 @@ namespace MVC_Freelancer.Migrations
 
                     b.Property<string>("ExtraInfo3")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("GiverId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -502,13 +503,18 @@ namespace MVC_Freelancer.Migrations
                     b.Property<bool?>("Status")
                         .HasColumnType("bit");
 
+                    b.Property<string>("TakerId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("WorkType")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AppUserId");
+                    b.HasIndex("GiverId");
+
+                    b.HasIndex("TakerId");
 
                     b.ToTable("Jobs");
                 });
@@ -789,9 +795,20 @@ namespace MVC_Freelancer.Migrations
 
             modelBuilder.Entity("MVC_Freelancer.Data.Models.Job", b =>
                 {
-                    b.HasOne("MVC_Freelancer.Data.Models.AppUser", null)
-                        .WithMany("Jobs")
-                        .HasForeignKey("AppUserId");
+                    b.HasOne("MVC_Freelancer.Data.Models.AppUser", "Giver")
+                        .WithMany("JobsGiven")
+                        .HasForeignKey("GiverId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("MVC_Freelancer.Data.Models.AppUser", "Taker")
+                        .WithMany("JobsTaken")
+                        .HasForeignKey("TakerId")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.Navigation("Giver");
+
+                    b.Navigation("Taker");
                 });
 
             modelBuilder.Entity("MVC_Freelancer.Data.Models.UserSkill", b =>
@@ -827,7 +844,9 @@ namespace MVC_Freelancer.Migrations
                 {
                     b.Navigation("Claims");
 
-                    b.Navigation("Jobs");
+                    b.Navigation("JobsGiven");
+
+                    b.Navigation("JobsTaken");
 
                     b.Navigation("Logins");
 

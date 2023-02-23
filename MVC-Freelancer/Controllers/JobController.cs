@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using MVC_Freelancer.Data;
 using MVC_Freelancer.Data.Models;
 using MVC_Freelancer.Models;
@@ -9,19 +12,18 @@ using System.Net.Mail;
 
 namespace MVC_Freelancer.Controllers
 {
-    public class JobController : Controller
+    public class JobController : BaseController
     {
         private readonly ApplicationDbContext db;
         private readonly IWebHostEnvironment webHostEnvironment;
         //private readonly object shortStringService;
         private string[] allowedExtention = new[] { "png", "jpg", "jpeg" };
 
-        public JobController(ApplicationDbContext db, IWebHostEnvironment webHostEnvironment/*, IShortStringService shortStringService*/)
+        public JobController(ApplicationDbContext db, IWebHostEnvironment webHostEnvironment/*, IShortStringService shortStringService*/, UserManager<AppUser> um) :base(um)
         {
             this.db = db;
             this.webHostEnvironment = webHostEnvironment;
             //this.shortStringService = shortStringService; //injektirane
-
         }
 
         public IActionResult Index()
@@ -36,6 +38,7 @@ namespace MVC_Freelancer.Controllers
                 Accept = x.Accept,
                 DeadLine = x.DeadLine,
                 ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}", //прочитене на снимката от базата данни
+                Author=x.Giver
             }
              ).ToList();
             return View(model);
@@ -56,8 +59,9 @@ namespace MVC_Freelancer.Controllers
             return View(model);
         }
 
+        [Authorize]
         [HttpPost]
-        public IActionResult Add(InputJobModel model)
+        public async Task<IActionResult> Add(InputJobModel model)
         {
             //Добавяне на 1 обява в базата данни
             var job = new Job
@@ -93,6 +97,7 @@ namespace MVC_Freelancer.Controllers
                 PacketPrice3 = model.PacketPrice3,
                 Revision3 = model.Revision3,
                 ExtraInfo3 = model.ExtraInfo3,
+                Giver=await GetCurrentUserAsync()
 
             };
             // от името на прикачения файл получаваме неговото разширение   .png
@@ -109,8 +114,8 @@ namespace MVC_Freelancer.Controllers
                 model.Image.CopyTo(fs);
             }
             job.Images.Add(image);
-            db.Jobs.Add(job);
-            db.SaveChanges();
+           await db.Jobs.AddAsync(job);
+           await db.SaveChangesAsync();
 
             return this.RedirectToAction("Index");
         }
@@ -329,9 +334,14 @@ namespace MVC_Freelancer.Controllers
             db.SaveChanges();
             return RedirectToAction("Orders");
         }
-        public IActionResult MyJobs()
+       
+        [Authorize]
+        
+        public async Task<IActionResult> MyJobs()
         {
-            var model = db.Jobs.Select(x => new InputJobModel
+            string myId = (await GetCurrentUserAsync()).Id;
+            var model =await db.Jobs.Where(j=>j.GiverId==myId||j.TakerId==myId)
+                .Select(x => new InputJobModel
             {
                 Name = x.Name,
                 Price = x.Price,
@@ -341,7 +351,7 @@ namespace MVC_Freelancer.Controllers
                 DeadLine = x.DeadLine,
                 ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}", //прочитене на снимката от базата данни
             }
-             ).ToList();
+             ).ToListAsync();
             return View(model);
         }
 

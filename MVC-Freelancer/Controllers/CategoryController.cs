@@ -3,14 +3,15 @@ using MVC_Freelancer.Data.Models;
 using MVC_Freelancer.Data;
 using MVC_Freelancer.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Identity;
 
 namespace MVC_Freelancer.Controllers
 {
-    public class CategoryController : Controller
+    public class CategoryController : BaseController
     {
         public readonly ApplicationDbContext db;
 
-        public CategoryController(ApplicationDbContext db)
+        public CategoryController(ApplicationDbContext db, UserManager<AppUser> um) : base(um)
         {
             this.db = db;
         }

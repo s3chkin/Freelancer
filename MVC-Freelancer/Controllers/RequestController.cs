@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using MVC_Freelancer.Data;
 using MVC_Freelancer.Data.Models;
@@ -6,12 +7,12 @@ using MVC_Freelancer.Models;
 
 namespace MVC_Freelancer.Controllers
 {
-    public class RequestController : Controller
+    public class RequestController : BaseController
     {
         private readonly ApplicationDbContext db;
         private readonly IWebHostEnvironment webHostEnvironment;
         private string[] allowedExtention = new[] { "png", "jpg", "jpeg" };
-        public RequestController(ApplicationDbContext db, IWebHostEnvironment webHostEnvironment)
+        public RequestController(ApplicationDbContext db, IWebHostEnvironment webHostEnvironment, UserManager<AppUser> um) : base(um)
         {
             this.db = db;
             this.webHostEnvironment = webHostEnvironment;

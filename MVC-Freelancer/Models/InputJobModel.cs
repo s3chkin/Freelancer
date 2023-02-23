@@ -52,7 +52,6 @@ namespace MVC_Freelancer.Models
 
 
         public List<SelectListItem> Categories { get; set; }
-
-
+        public AppUser Author { get; internal set; }
     }
 }

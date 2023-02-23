@@ -117,13 +117,14 @@
                     </div>
                     <div class="card-text">
                         <p class="float-start">@item.Price <i>BGN</i></p>
-
+                        <p class="float-end">@item.Author.FirstName</p>
+                       
                     </div>
 
                     @if (item.Accept == true)
                     {
                         <div style="margin-top:30px;" class="d-flex justify-content-center">
-                            <button type="submit" class="btn btn-warning disabled">Прието </button>
+                            <button type="submit" class="btn btn-warning disabled">Прието</button>
                         </div>
                     }
                     else
