@@ -33,16 +33,33 @@
     <li><a class="dropdown-item" href="#">Търся работа</a></li>
     <li><a class="dropdown-item" asp-controller="Job" asp-action="Add">Предлагам работа</a></li>
     </ul>*@
-    <a asp-controller="Job" asp-action="add">
+   @* <a asp-controller="Job" asp-action="add">
         <button class="site-btn">
             Добави обява
         </button>
-    </a>
+    </a>*@
+
+    @if (User.Identity.IsAuthenticated)
+    {
+        <a asp-controller="Job" asp-action="add">
+            <button class="site-btn">
+                Добави обява
+            </button>
+        </a>
+    }
+    else
+    {
+        <a asp-area="Identity" asp-page="/Account/Login">
+            <button class="site-btn">
+                Добави обява
+            </button>
+        </a>
+    }
 
     @*<a href="../Areas/Identity/Pages/Account/Login.cshtml" >
-        <button class="site-btn">
-            Добави обява
-        </button>
+    <button class="site-btn">
+    Добави обява
+    </button>
     </a>*@
 </div>
 
@@ -50,29 +67,29 @@
 <br>
 <div id="boxContainer">
 
-<div  class="d-flex justify-content-center boxContainer">
+    <div class="d-flex justify-content-center boxContainer">
 
-    <div class="boxes float-left" style=" margin-right: 15px;">
-        <p style="margin-left:20px;margin-right:20px;"><b>Създай заявка</b> по най-лесния начин</p>
-        <img class="box-img" src="~/ImageRepository/undraw_Investor_update_re_qnuu.png">
-        <p class="box-text">Имаш проблем с намирането на работник или Freelancer, който търсиш? </p>
-        <a asp-controller="Job" asp-action="Add" class="box-btn"><b>Създай заявка</b></a>
-    </div>
+        <div class="boxes float-left" style=" margin-right: 15px;">
+            <p style="margin-left:20px;margin-right:20px;"><b>Създай заявка</b> по най-лесния начин</p>
+            <img class="box-img" src="~/ImageRepository/undraw_Investor_update_re_qnuu.png">
+            <p class="box-text">Имаш проблем с намирането на работник или Freelancer, който търсиш? </p>
+            <a asp-controller="Job" asp-action="Add" class="box-btn"><b>Създай заявка</b></a>
+        </div>
 
-    <div class="boxes float-left" style=" margin-right: 15px;">
-        <p style="margin-left:20px;margin-right:20px;"><b>Стани Freelancer</b>, работи по най-свободния начин</p>
-        <img class="box-img" src="~/ImageRepository/undraw_Freelancer_re_irh4.png">
-        <p class="box-text">Имаш нужда от работа, но не знаеш от къде и как да започнeш? Ние сме тук, за да ти помогнем.</p>
-        <a asp-controller="Job" asp-action="Add" class="box-btn"><b>Стани Freelancer</b></a>
-    </div>
+        <div class="boxes float-left" style=" margin-right: 15px;">
+            <p style="margin-left:20px;margin-right:20px;"><b>Стани Freelancer</b>, работи по най-свободния начин</p>
+            <img class="box-img" src="~/ImageRepository/undraw_Freelancer_re_irh4.png">
+            <p class="box-text">Имаш нужда от работа, но не знаеш от къде и как да започнeш? Ние сме тук, за да ти помогнем.</p>
+            <a asp-controller="Job" asp-action="Add" class="box-btn"><b>Стани Freelancer</b></a>
+        </div>
 
-    <div class="boxes">
-        <p style="margin-left:30px;margin-right:30px;"><b>Намери си Freelancer</b>, който да ти върши услуги</p>
-        <img class="box-img" src="~/ImageRepository/undraw_Join_re_w1lh.png">
-        <p class="box-text">Имаш нужда от работник, но не знаеш от къде и как да го намериш? Ние сме тук, за да ти помогнем.</p>
-        <a asp-controller="Job" asp-action="Services" class="box-btn"><b>Намери Freelancer</b></a>
+        <div class="boxes">
+            <p style="margin-left:30px;margin-right:30px;"><b>Намери си Freelancer</b>, който да ти върши услуги</p>
+            <img class="box-img" src="~/ImageRepository/undraw_Join_re_w1lh.png">
+            <p class="box-text">Имаш нужда от работник, но не знаеш от къде и как да го намериш? Ние сме тук, за да ти помогнем.</p>
+            <a asp-controller="Job" asp-action="Services" class="box-btn"><b>Намери Freelancer</b></a>
+        </div>
     </div>
-</div>
 </div>
 
 
@@ -84,7 +101,7 @@
 
         @foreach (var item in Model.Where(x => x.WorkType == "Предлагам" && x.Status == true && x.DeadLine > DateTime.Today && x.Accept == false))
         {
-            
+
             <div class="container container2 float-left" style="">
                 <div class="card-sl ">
                     <div class="card-image">
@@ -160,11 +177,13 @@
             justify-content: center;
         }
     }
+
     @@media screen and (max-width: 880px) {
-        #boxContainer{
-            display:none;
+        #boxContainer {
+            display: none;
         }
     }
+
     @@media screen and (max-width: 830px) {
         .container2 {
             width: 50%;
