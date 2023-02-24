@@ -112,3 +112,11 @@ function pause() {
     document.getElementById("trueStatus").innerHTML = "true";
 
 }
+
+function fireSweetAlert() {
+    Swal.fire(
+        'Good job!',
+        'You clicked the button!',
+        'success'
+    )
+}

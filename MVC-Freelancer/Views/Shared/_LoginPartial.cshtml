@@ -8,8 +8,18 @@
     @if (SignInManager.IsSignedIn(User))
     {
         @*<li class="nav-item">
-            <a class="nav-link text-dark" asp-controller="Portfolio" asp-action="Portfolio" title="Portfolio"><i class="fa-solid fa-money-check-dollar" style="font-size:25px;"></i></a>
+    <a class="nav-link text-dark" asp-controller="Portfolio" asp-action="Portfolio" title="Portfolio"><i class="fa-solid fa-money-check-dollar" style="font-size:25px;"></i></a>
+    </li>*@
+
+       @* <li class="nav-item">
+            <a class="nav-link text-dark" id="searchBar"><i style="font-size:25px; margin-left:10px;" class="fas fa-search"></i></a>
         </li>*@
+
+        @*<div>
+            <button onclick="fireSweetAlert()"><i style="font-size:25px; margin-left:10px;" class="fas fa-search"></i></button>
+        </div>*@
+       
+  
 
         <li class="nav-item">
             <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"><i class="fa-solid fa-user" style="font-size:25px; margin-left:10px;"></i></a>
@@ -20,14 +30,19 @@
                 <button type="submit" class="nav-link btn btn-link text-dark"><i class="fa-solid fa-right-from-bracket" style="font-size:25px; margin-left:10px;"></i></button>
             </form>
         </li>
+
+
     }
     else
     {
         <li class="nav-item">
-            <a  class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Регистрация</a>
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Регистрация</a>
         </li>
         <li class="nav-item">
             <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Вход</a>
+        </li>
+        <li>
+            <div> <i style="font-size:25px; margin-left:10px;" class="fas fa-search"></i></div>
         </li>
     }
 </ul>

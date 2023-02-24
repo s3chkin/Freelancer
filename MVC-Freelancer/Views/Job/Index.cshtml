@@ -33,10 +33,10 @@
     <li><a class="dropdown-item" href="#">Търся работа</a></li>
     <li><a class="dropdown-item" asp-controller="Job" asp-action="Add">Предлагам работа</a></li>
     </ul>*@
-   @* <a asp-controller="Job" asp-action="add">
-        <button class="site-btn">
-            Добави обява
-        </button>
+    @* <a asp-controller="Job" asp-action="add">
+    <button class="site-btn">
+    Добави обява
+    </button>
     </a>*@
 
     @if (User.Identity.IsAuthenticated)
@@ -118,7 +118,7 @@
                     <div class="card-text">
                         <p class="float-start">@item.Price <i>BGN</i></p>
                         <p class="float-end">@item.Author.FirstName</p>
-                       
+
                     </div>
 
                     @if (item.Accept == true)
@@ -130,12 +130,47 @@
                     else
                     {
                         <div style="margin-top:30px;" class="d-flex justify-content-center">
+                            @*<form method="post" asp-action="Accept">
+                    <fieldset>
+                    <input type="hidden" name="id" value="@item.Id" />
+                    <button type="submit" class="btn btn-success">Приеми </button>
+                    </fieldset>
+                    </form>*@
+
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <form method="post" asp-action="Accept">
+                                    <fieldset>
+                                        <input type="hidden" name="id" value="@item.Id" />
+                                        <button type="submit" class="btn btn-success">Приеми </button>
+                                    </fieldset>
+                                </form>
+                            }
+
+                            else
+                            {
+                                @*<a asp-area="Identity" asp-page="/Account/Login">
+                    <button class="site-btn">
+                    Добави обява
+                    </button></a>*@
+                                <form asp-area="Identity" asp-page="/Account/Login">
+                                    <fieldset>
+                                        <input type="hidden" name="id" value="@item.Id" />
+                                        <button type="submit" class="btn btn-success">Приеми </button>
+                                    </fieldset>
+                                </form>
+
+                            }
+
+                           @* @if (User.Identity.IsAuthenticated && item.Author.Email == item.Author.Email)
+                            {
                             <form method="post" asp-action="Accept">
                                 <fieldset>
                                     <input type="hidden" name="id" value="@item.Id" />
-                                    <button type="submit" class="btn btn-success">Приеми </button>
+                                    <button type="submit" class="btn btn-success">Собствена </button>
                                 </fieldset>
                             </form>
+                            }*@
                         </div>
                     }
                     <br>

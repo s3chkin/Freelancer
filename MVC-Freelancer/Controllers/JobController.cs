@@ -19,7 +19,7 @@ namespace MVC_Freelancer.Controllers
         //private readonly object shortStringService;
         private string[] allowedExtention = new[] { "png", "jpg", "jpeg" };
 
-        public JobController(ApplicationDbContext db, IWebHostEnvironment webHostEnvironment/*, IShortStringService shortStringService*/, UserManager<AppUser> um) :base(um)
+        public JobController(ApplicationDbContext db, IWebHostEnvironment webHostEnvironment/*, IShortStringService shortStringService*/, UserManager<AppUser> um) : base(um)
         {
             this.db = db;
             this.webHostEnvironment = webHostEnvironment;
@@ -38,7 +38,7 @@ namespace MVC_Freelancer.Controllers
                 Accept = x.Accept,
                 DeadLine = x.DeadLine,
                 ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}", //прочитене на снимката от базата данни
-                Author=x.Giver
+                Author = x.Giver
             }
              ).ToList();
             return View(model);
@@ -97,7 +97,7 @@ namespace MVC_Freelancer.Controllers
                 PacketPrice3 = model.PacketPrice3,
                 Revision3 = model.Revision3,
                 ExtraInfo3 = model.ExtraInfo3,
-                Giver=await GetCurrentUserAsync()
+                Giver = await GetCurrentUserAsync()
 
             };
             // от името на прикачения файл получаваме неговото разширение   .png
@@ -114,8 +114,8 @@ namespace MVC_Freelancer.Controllers
                 model.Image.CopyTo(fs);
             }
             job.Images.Add(image);
-           await db.Jobs.AddAsync(job);
-           await db.SaveChangesAsync();
+            await db.Jobs.AddAsync(job);
+            await db.SaveChangesAsync();
 
             return this.RedirectToAction("Index");
         }
@@ -326,31 +326,32 @@ namespace MVC_Freelancer.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-        public IActionResult Accept(int id)
+        //[Authorize]
+        public async Task<IActionResult> Accept(int id)
         {
-            var jobFd = db.Jobs.FirstOrDefault(r => r.Id == id);
+            string myId = (await GetCurrentUserAsync()).Id;
+            var jobFd = db.Jobs.FirstOrDefault(r => /*r.Id == id ||*/ r.GiverId != myId || r.TakerId != myId);
             jobFd.Accept = true;
             db.Update(jobFd);
-            db.SaveChanges();
-            return RedirectToAction("Orders");
+            await db.SaveChangesAsync();
+            return RedirectToAction("Index");
         }
-       
+
         [Authorize]
-        
         public async Task<IActionResult> MyJobs()
         {
             string myId = (await GetCurrentUserAsync()).Id;
-            var model =await db.Jobs.Where(j=>j.GiverId==myId||j.TakerId==myId)
+            var model = await db.Jobs.Where(j => j.GiverId == myId || j.TakerId == myId)
                 .Select(x => new InputJobModel
-            {
-                Name = x.Name,
-                Price = x.Price,
-                Id = x.Id,
-                WorkType = x.WorkType,
-                Status = x.Status,
-                DeadLine = x.DeadLine,
-                ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}", //прочитене на снимката от базата данни
-            }
+                {
+                    Name = x.Name,
+                    Price = x.Price,
+                    Id = x.Id,
+                    WorkType = x.WorkType,
+                    Status = x.Status,
+                    DeadLine = x.DeadLine,
+                    ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}", //прочитене на снимката от базата данни
+                }
              ).ToListAsync();
             return View(model);
         }
@@ -398,7 +399,7 @@ namespace MVC_Freelancer.Controllers
             var job = new Job
             {
                 Progress = model.Progress,
-                
+
             };
             if (model.Accept == false)
             {
