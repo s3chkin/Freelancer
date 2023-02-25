@@ -7,6 +7,7 @@ using MVC_Freelancer.Data;
 using MVC_Freelancer.Data.Models;
 using MVC_Freelancer.Models;
 using Recipes.Services;
+using System.Diagnostics.Eventing.Reader;
 using System.Net;
 using System.Net.Mail;
 
@@ -26,7 +27,8 @@ namespace MVC_Freelancer.Controllers
             //this.shortStringService = shortStringService; //injektirane
         }
 
-        public IActionResult Index()
+
+        public IActionResult Index(string SearchString)
         {
             var model = db.Jobs.Select(x => new InputJobModel
             {
@@ -39,10 +41,12 @@ namespace MVC_Freelancer.Controllers
                 DeadLine = x.DeadLine,
                 ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}", //прочитене на снимката от базата данни
                 Author = x.Giver
-            }
-             ).ToList();
+            }).ToList();
+
             return View(model);
         }
+
+
         [HttpGet]
         public IActionResult Add()
         {
@@ -334,10 +338,19 @@ namespace MVC_Freelancer.Controllers
             jobFd.Accept = true;
             db.Update(jobFd);
             await db.SaveChangesAsync();
-            return RedirectToAction("Index");
+            return RedirectToAction("Orders");
+        }
+        //Refuse
+        public async Task<IActionResult> Refuse(int id)
+        {
+            string myId = (await GetCurrentUserAsync()).Id;
+            var jobFd = db.Jobs.FirstOrDefault(r => r.Id == id);
+            jobFd.Accept = false;
+            db.Update(jobFd);
+            await db.SaveChangesAsync();
+            return RedirectToAction("Orders");
         }
 
-        [Authorize]
         public async Task<IActionResult> MyJobs()
         {
             string myId = (await GetCurrentUserAsync()).Id;

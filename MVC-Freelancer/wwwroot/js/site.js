@@ -29,7 +29,7 @@ function forMe() {
     document.getElementById("aboutUs-Info-Title").innerHTML = "Основател:";
     document.getElementById("aboutUs-Info-Text").innerHTML =
         `Аз съм Сечкин, уча в ПГМЕТТ (Професионална гимназия по механотехника, електроника,
-                            телекомуникации и транспорт) „Христо Ботев“. Занимавам се с програмиране. На ${year - 2004-1}
+                            телекомуникации и транспорт) „Христо Ботев“. Занимавам се с програмиране. На ${year - 2004 - 1}
                             години съм.Обичам да преследвам мечтите и целите си. Още от първи клас съм изключително старателен ученик.
                             Известен съм с предаването на абсолютно всички домашни на време и се гордея с това. В началото не обичах
                             да уча, може би защото имахме много безсмислени предмети като Човекът и обществото, това е предметът, който ме затрудняваше супер много,
@@ -87,7 +87,7 @@ function infoBlock3() {
 
     document.getElementById("aboutUs-Info-Title").innerHTML = "Свъжете се с мен";
     document.getElementById("aboutUs-Info-Text").innerHTML =
-`<a href="https://www.facebook.com/seckin.salim"><i class="fa-brands fa-facebook"  style="font-size:60px;  margin-left:30px; margin-top:30px; color:blue;"></i> </a>
+        `<a href="https://www.facebook.com/seckin.salim"><i class="fa-brands fa-facebook"  style="font-size:60px;  margin-left:30px; margin-top:30px; color:blue;"></i> </a>
 <a href="https://www.instagram.com/__sechkin__/"><i class="fa-brands fa-instagram" style="font-size:60px;  margin-left:30px; margin-top:30px; color:pink;"></i></a>
 <a href="https://twitter.com/Sekin21044194"><i class="fa-brands fa-twitter"    style="font-size:60px;  margin-left:30px; margin-top:30px; color:lightblue;"></i></a>
 <a href="https://github.com/s3chkin"><i class="fa-brands fa-github"     style="font-size:60px;  margin-left:30px; margin-top:30px; color:black;"></i></a>`;
@@ -112,11 +112,46 @@ function pause() {
     document.getElementById("trueStatus").innerHTML = "true";
 
 }
-
-function fireSweetAlert() {
-    Swal.fire(
-        'Good job!',
-        'You clicked the button!',
-        'success'
-    )
+function search() { //отказване на поръчки
+    Swal.fire({
+        title: 'Какво търсите?',
+        input: 'text',
+        inputAttributes: {
+            autocapitalize: 'off'
+        },
+        showCancelButton: true,
+        confirmButtonText: 'Търси',
+        showLoaderOnConfirm: true,
+        cancelButtonText: 'Отказ',
+        
+        
+        allowOutsideClick: () => !Swal.isLoading()
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire({
+                title: `Няма намерени резултати...`,
+            })
+        }
+    })
+}
+function refuse() { //отказване на поръчки
+    Swal.fire({
+        title: 'Сигурен ли сте?',
+        text: "Наистина ли искате да откажете поръчката?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Да, отказвам!',
+        cancelButtonText: 'Назад'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire(
+                'Поръчката е отказана!',
+                'Можете да разгледате другите обяви.',
+                'success'
+            )
+            document.getElementById("refuseBtn").submit()
+        }
+    })
 }

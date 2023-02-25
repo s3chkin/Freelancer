@@ -95,6 +95,13 @@
                     <div class="card-text">
                         <p class="float-start">@item.Price <i>BGN</i></p>
 
+                        <form method="post" asp-action="Refuse">
+                            <div class="float-end">
+                                <input type="hidden" name="id" value="@item.Id" />
+                            </div>
+                        </form>
+                                <button id="refuseBtn" onclick="refuse()">Отказвам</button>
+
                     </div>
 
                     <br>
@@ -116,9 +123,9 @@
         padding-top: 25px;
     }
     /*
-        .progress-bar {
-            background-color: #fd6900eb;
-        }*/
+                                .progress-bar {
+                                    background-color: #fd6900eb;
+                                }*/
 
     .container2 {
         margin-top: 20px;

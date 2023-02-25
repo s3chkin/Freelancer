@@ -4,9 +4,9 @@ using MVC_Freelancer.Data.Models;
 
 namespace MVC_Freelancer.Controllers
 {
-    public class PortfolioController : BaseController
+    public class AdminController : BaseController
     {
-        public PortfolioController( UserManager<AppUser> um) : base(um)
+        public AdminController( UserManager<AppUser> um) : base(um)
         {
 
         }

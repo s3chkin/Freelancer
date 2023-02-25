@@ -7,12 +7,12 @@
 <ul class="navbar-nav">
     @if (SignInManager.IsSignedIn(User))
     {
-        @*<li class="nav-item">
-    <a class="nav-link text-dark" asp-controller="Portfolio" asp-action="Portfolio" title="Portfolio"><i class="fa-solid fa-money-check-dollar" style="font-size:25px;"></i></a>
-    </li>*@
+        <li class="nav-item">
+    <a class="nav-link text-dark" asp-controller="Admin" asp-action="Index" title="AdminPanel"><i class="fa-solid fa-money-check-dollar" style="font-size:25px;"></i></a>
+    </li>
 
-       @* <li class="nav-item">
-            <a class="nav-link text-dark" id="searchBar"><i style="font-size:25px; margin-left:10px;" class="fas fa-search"></i></a>
+      @*  <li class="nav-item">
+            <button style="border:none; background:none;" onclick="search()" class="nav-link text-dark" id="searchBar"><i style="font-size:25px; margin-left:10px;" class="fas fa-search"></i></button>
         </li>*@
 
         @*<div>
