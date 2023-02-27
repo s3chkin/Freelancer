@@ -28,7 +28,7 @@ namespace MVC_Freelancer.Controllers
         }
 
 
-        public IActionResult Index(string SearchString)
+        public IActionResult Index()
         {
             var model = db.Jobs.Select(x => new InputJobModel
             {
@@ -349,6 +349,25 @@ namespace MVC_Freelancer.Controllers
             db.Update(jobFd);
             await db.SaveChangesAsync();
             return RedirectToAction("Orders");
+        }
+
+        public async Task<IActionResult> Search(string querry)
+        {
+            var jobsFd = db.Jobs.Where(x => x.Name.Contains(querry)).Select(x => new InputJobModel
+            {
+                Name = x.Name,
+                Price = x.Price,
+                Id = x.Id,
+                Status = x.Status,
+                WorkType = x.WorkType,
+                Accept = x.Accept,
+                DeadLine = x.DeadLine,
+                ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}", //прочитене на снимката от базата данни
+                Author = x.Giver
+            }).ToList();
+
+            ViewData["Search"] = querry;
+            return View("Index", jobsFd);
         }
 
         public async Task<IActionResult> MyJobs()

@@ -24,6 +24,13 @@
         <a style="font-size:19px; color:white;" class="btn btn-info" asp-controller="request" asp-action="requests"> Заявки </a>
     </div>
 </div>
+<br></br>
+<form asp-action="Search" method="get">
+    <div class="d-flex justify-content-center">
+        <input type="search" name="querry" style="width:50%; height: 30px;" class="">
+        <input type="submit"  value="Търси" class="btn btn-warning">
+    </div>
+</form>
 
 <br>
 <br>
@@ -104,8 +111,16 @@
 
 <div class=" d-flex flex-wrap justify-content-around ">
     <div style=" width:1330px;">
-        <h5><i><b>Предлагани:</b></i> </h5>
+        @if (ViewData.ContainsKey("Search"))
+        {
+            <h5><i><b>Резултатите от търсенето на @(ViewData["Search"]) са:</b></i> </h5> 
 
+
+        }
+        
+        else{
+        <h5><i><b>Предлагани:</b></i> </h5>
+        }
         @foreach (var item in Model.Where(x => x.WorkType == "Предлагам" && x.Status == true && x.DeadLine > DateTime.Today && x.Accept == false))
         {
 
@@ -169,15 +184,15 @@
 
                             }
 
-                           @* @if (User.Identity.IsAuthenticated && item.Author.Email == item.Author.Email)
-                            {
-                            <form method="post" asp-action="Accept">
-                                <fieldset>
-                                    <input type="hidden" name="id" value="@item.Id" />
-                                    <button type="submit" class="btn btn-success">Собствена </button>
-                                </fieldset>
-                            </form>
-                            }*@
+                            @* @if (User.Identity.IsAuthenticated && item.Author.Email == item.Author.Email)
+                    {
+                    <form method="post" asp-action="Accept">
+                    <fieldset>
+                    <input type="hidden" name="id" value="@item.Id" />
+                    <button type="submit" class="btn btn-success">Собствена </button>
+                    </fieldset>
+                    </form>
+                    }*@
                         </div>
                     }
                     <br>

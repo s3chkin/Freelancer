@@ -98,9 +98,9 @@
                         <form method="post" asp-action="Refuse">
                             <div class="float-end">
                                 <input type="hidden" name="id" value="@item.Id" />
+                                <button id="refuseBtn" onclick="refuse()">Отказвам</button>
                             </div>
                         </form>
-                                <button id="refuseBtn" onclick="refuse()">Отказвам</button>
 
                     </div>
 
@@ -123,9 +123,9 @@
         padding-top: 25px;
     }
     /*
-                                .progress-bar {
-                                    background-color: #fd6900eb;
-                                }*/
+                                    .progress-bar {
+                                        background-color: #fd6900eb;
+                                    }*/
 
     .container2 {
         margin-top: 20px;
