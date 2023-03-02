@@ -271,11 +271,13 @@ namespace MVC_Freelancer.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult Contacts()
         {
             return this.View();
         }
         [HttpPost]
+        [Authorize]
         public IActionResult Contacts(InputSendMailModel model)
         {
             var contact = new ContactUs
@@ -287,8 +289,8 @@ namespace MVC_Freelancer.Controllers
             };
             db.ContactUs.Add(contact);
             db.SaveChanges();
-            return this.Redirect("Index");
-            //return this.View(model);
+
+            return RedirectToAction("Index");
 
         }
         public IActionResult Messages()
@@ -301,7 +303,6 @@ namespace MVC_Freelancer.Controllers
                 Message = x.Message,
             }).ToList();
             return View(msg);
-            return this.View();
         }
         public IActionResult AdminPanel()
         {

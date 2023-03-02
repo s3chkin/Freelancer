@@ -1,0 +1,64 @@
+﻿@model IEnumerable<MVC_Freelancer.Models.UserViewModel>
+<br><br>
+<br><br>
+
+<div class="d-flex justify-content-center">
+    <div>
+        <a asp-controller="job" asp-action="messages" class="btn btn-warning">Съобщения</a>
+    </div>
+    <div style="margin-left:5px;">
+        <a asp-controller="Admin" asp-action="UsersList" class="btn btn-success">Потребители</a>
+    </div>
+</div>
+<br>
+
+<div class="panel panel-primary" style="margin-left:30px;margin-right:30px;">
+    <div class="panel-heading">
+        <h3 class="box-title">
+            <b>Потребители и роли</b>
+        </h3>
+    </div>
+    <!-- /.box-header -->
+    <div class="panel-body">
+        <table class="table table-hover table-bordered table-condensed" id="UsersWithRoles">
+            <thead>
+                <tr>
+                    <td><b>Потребителско име</b></td>
+                    <td><b>Email</b></td>
+                    <td><b>Роля</b></td>
+                </tr>
+            </thead>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.Username</td>
+                    <td>@user.Email</td>
+                    <td>@user.Role</td>
+
+                </tr>
+            }
+        </table>
+    </div>
+
+    <div class="panel-footer">
+        <p class="box-title"><b>Създадените профили на потребителите до @String.Format("{0 : dddd, MMMM d, yyyy}", DateTime.Now)  : са </b><span class="label label-primary">@Model.Count()</span></p>
+    </div>
+</div>
+
+
+
+@section Scripts{
+    <script>
+
+        $(function () {
+            $('#UsersWithRoles').DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": true
+            });
+        });
+    </script>
+}  

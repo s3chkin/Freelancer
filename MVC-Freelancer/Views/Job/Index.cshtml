@@ -95,7 +95,10 @@
 
 
         }
-
+        else if (ViewData.ContainsKey("Search"))
+        {
+            <h5 style="margin-left:10px;"><i><b>няма намерени резултати:</b></i> </h5>
+        }
         else
         {
             <h5 style="margin-left:10px;"><i><b>Предлагани:</b></i> </h5>

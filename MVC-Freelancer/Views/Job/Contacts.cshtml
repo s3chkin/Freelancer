@@ -17,24 +17,34 @@
         <h2 class="text-center h1-responsive font-weight-bold">Свържете се с мен</h2>
         <br>
         <p class="text-center w-responsive mx-auto mb-5">
-            Имате въпрос? Моля, не се колебайте да се свържете
-            директно с мен. <br> Много скоро ще получите отговор...
+            Имате въпрос? Моля, не се колебайте да се <br>свържете
+            директно с мен.  
         </p>
         <div style="display:none;" class="alert alert-info">@TempData["Message"]</div>
 
         <br>
+        @{
+            var username = User.Identity.Name;
+            char[] gmail = { '@', 'g', 'm', 'a', 'i', 'l', '.', 'c', 'o', 'm' };
+            char[] email = { '@', 'a', 'b', 'v', '.', 'b', 'g' };
+            var onlyname = username.Trim(gmail);
+            onlyname = username.Trim(email);
+        }
         <center>
             <div class="d-flex justify-content-center">
-                <input asp-for="@Model.Name" onclick="ContactsForm()" id="name" class="contactInputs form-control float-left" type="text" placeholder="Собствено име">
-                <input asp-for="@Model.Email" onclick="ContactsForm()" id="e-mail" class="contactInputs form-control" type="email" placeholder="E-mail">
+                <input asp-for="@Model.Name" onclick="ContactsForm()" value="@onlyname" disabled id="name" class="contactInputs form-control float-left" type="text" placeholder="Собствено име">
+                <input asp-for="@Model.Email" onclick="ContactsForm()" value="@User.Identity.Name" disabled id="e-mail" class="contactInputs form-control" type="email" placeholder="E-mail" >
             </div>
             <br><br>
-            <input asp-for="@Model.Subject" onclick="ContactsForm()" id="theme" class="contactInputs form-control" type="text" placeholder="Тема">
+            <input asp-for="@Model.Subject" onclick="ContactsForm()" id="theme" class="contactInputs form-control" type="text" placeholder="Тема" required>
             <br><br>
-            <textarea asp-for="@Model.Message" onclick="ContactsForm()" id="msg" class="contactInputs  form-control md-textarea" placeholder="Вашето съобщение"></textarea>
+            <textarea asp-for="@Model.Message" onclick="ContactsForm()" id="msg" class="contactInputs  form-control md-textarea" placeholder="Вашето съобщение" required></textarea>
+            
+
             <br><br>
             <input type="submit" id="btn">
         </center>
+
     </section>
 </form>
 <br>
