@@ -1,18 +1,23 @@
 ﻿@model IEnumerable<MVC_Freelancer.Models.InputJobModel>
 
 <section class="header-section home-one">
-    <header class="header-area">
-    </header>
     <div class="container">
         <div class="row section-gap header-content">
-            <div class="col-lg-7 col-md-8 header-text-wrap">
-                <h1>
-                    Обяви
-                </h1>
-                <p>
+            <div class="  header-text-wrap">
+                @* <h1>
+                Обяви
+                </h1>*@
+                <div class="float-start">
+                    <h2 style="color:white; font-size:35px;"><b>Намерете най-добрата услуга <br> за вашия бизнес</b></h2>
                     <br>
+                    <form asp-action="Search" method="get">
+                        <div class="d-flex justify-content-center">
+                            <input type="search" class="form-control" placeholder="Опитайте 'Фиксиране на грешки'" name="querry" id="searchBar" style="">
+                            <input type="submit" style="margin:0; border:none; border-bottom-left-radius:0; border-top-left-radius:0; width:80px;" value="Търси" class="btn btn-danger">
+                        </div>
+                    </form>
+                </div>
 
-                </p>
             </div>
         </div>
     </div>
@@ -25,26 +30,11 @@
     </div>
 </div>
 <br></br>
-<form asp-action="Search" method="get">
-    <div class="d-flex justify-content-center">
-        <input type="search" name="querry" style="width:50%; height: 30px;" class="">
-        <input type="submit"  value="Търси" class="btn btn-warning">
-    </div>
-</form>
+
 
 <br>
 <br>
 <div class="btn-group float-end" style="margin-right:80px;">
-    @* <button type="button" class="site-btn  dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Добави обява</button>
-    <ul class="dropdown-menu" style="">
-    <li><a class="dropdown-item" href="#">Търся работа</a></li>
-    <li><a class="dropdown-item" asp-controller="Job" asp-action="Add">Предлагам работа</a></li>
-    </ul>*@
-    @* <a asp-controller="Job" asp-action="add">
-    <button class="site-btn">
-    Добави обява
-    </button>
-    </a>*@
 
     @if (User.Identity.IsAuthenticated)
     {
@@ -63,20 +53,8 @@
         </a>
     }
 
-    @*<a href="../Areas/Identity/Pages/Account/Login.cshtml" >
-    <button class="site-btn">
-    Добави обява
-    </button>
-    </a>*@
 </div>
 
-@*<form asp-action="Index" method="get">
-    <div class="form-group">
-        <label for="SearchString">Search by partial title:</label>
-        <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]"/>
-        <input type="submit" value="Search" class="btn btn-primary"/>
-    </div>
-</form>*@
 <br>
 <br>
 <div id="boxContainer">
@@ -113,13 +91,14 @@
     <div style=" width:1330px;">
         @if (ViewData.ContainsKey("Search"))
         {
-            <h5><i><b>Резултатите от търсенето на @(ViewData["Search"]) са:</b></i> </h5> 
+            <h5 style="margin-left:10px;"><i><b>Резултатите от търсенето за „@(ViewData["Search"])“ са:</b></i> </h5>
 
 
         }
-        
-        else{
-        <h5><i><b>Предлагани:</b></i> </h5>
+
+        else
+        {
+            <h5 style="margin-left:10px;"><i><b>Предлагани:</b></i> </h5>
         }
         @foreach (var item in Model.Where(x => x.WorkType == "Предлагам" && x.Status == true && x.DeadLine > DateTime.Today && x.Accept == false))
         {
@@ -206,8 +185,20 @@
 <br>
 
 
-
 <style>
+    #searchBar {
+        width: 450px;
+        height: 45px;
+        margin: 0;
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+    }
+
+        #searchBar:focus {
+            outline: none;
+        }
+
+
     .container2 {
         margin-top: 20px;
         width: 25%;
@@ -276,6 +267,17 @@
         }
     }
 
+    @@media screen and (max-width:550px) {
+        #searchBar {
+            width: 350px;
+        }
+    }
+
+    @@media screen and (max-width:450px) {
+        #searchBar {
+            width: 210px;
+        }
+    }
 
     #list, a {
         list-style: none;
