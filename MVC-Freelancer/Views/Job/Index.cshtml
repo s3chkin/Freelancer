@@ -141,7 +141,29 @@
                     </fieldset>
                     </form>*@
 
-                            @if (User.Identity.IsAuthenticated)
+                            @if (item.Author.UserName == User.Identity.Name)
+                            {
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <form method="post" >
+                                        <fieldset>
+                                            <button type="submit" class="btn btn-secondary" disabled>Собствена </button>
+                                        </fieldset>
+                                    </form>
+                                }
+                                else
+                                {
+
+                                    <form asp-area="Identity" asp-page="/Account/Login">
+                                        <fieldset>
+                                            <input type="hidden" name="id" value="@item.Id" />
+                                            <button type="submit" class="btn btn-success" >Приеми </button>
+                                        </fieldset>
+                                    </form>
+
+                                }
+                            }
+                            else
                             {
                                 <form method="post" asp-action="Accept">
                                     <fieldset>
@@ -151,30 +173,8 @@
                                 </form>
                             }
 
-                            else
-                            {
-                                @*<a asp-area="Identity" asp-page="/Account/Login">
-                    <button class="site-btn">
-                    Добави обява
-                    </button></a>*@
-                                <form asp-area="Identity" asp-page="/Account/Login">
-                                    <fieldset>
-                                        <input type="hidden" name="id" value="@item.Id" />
-                                        <button type="submit" class="btn btn-success">Приеми </button>
-                                    </fieldset>
-                                </form>
 
-                            }
 
-                            @* @if (User.Identity.IsAuthenticated && item.Author.Email == item.Author.Email)
-                    {
-                    <form method="post" asp-action="Accept">
-                    <fieldset>
-                    <input type="hidden" name="id" value="@item.Id" />
-                    <button type="submit" class="btn btn-success">Собствена </button>
-                    </fieldset>
-                    </form>
-                    }*@
                         </div>
                     }
                     <br>
