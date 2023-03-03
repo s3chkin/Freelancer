@@ -32,8 +32,8 @@
         }
         <center>
             <div class="d-flex justify-content-center">
-                <input asp-for="@Model.Name" onclick="ContactsForm()" value="@onlyname" disabled id="name" class="contactInputs form-control float-left" type="text" placeholder="Собствено име">
-                <input asp-for="@Model.Email" onclick="ContactsForm()" value="@User.Identity.Name" disabled id="e-mail" class="contactInputs form-control" type="email" placeholder="E-mail" >
+                <span> <input asp-for="@Model.Name" onclick="ContactsForm()" value="@onlyname" required id="name" readonly="readonly" class="contactInputs form-control float-left " type="text" placeholder="Собствено име"></span>
+                <input asp-for="@Model.Email" onclick="ContactsForm()" value="@User.Identity.Name" required id="e-mail" readonly="readonly" class="contactInputs form-control" type="email" placeholder="E-mail">
             </div>
             <br><br>
             <input asp-for="@Model.Subject" onclick="ContactsForm()" id="theme" class="contactInputs form-control" type="text" placeholder="Тема" required>

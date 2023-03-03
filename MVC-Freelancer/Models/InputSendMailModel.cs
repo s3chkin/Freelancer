@@ -5,6 +5,7 @@ namespace MVC_Freelancer.Models
 {
     public class InputSendMailModel
     {
+        public int Id { get; set; } //Айдито е за изтриването на съобщенията
         [Required]
         public string? Name { get; set; }
         [Required]

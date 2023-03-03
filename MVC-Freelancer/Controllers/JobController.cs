@@ -67,6 +67,10 @@ namespace MVC_Freelancer.Controllers
         [HttpPost]
         public async Task<IActionResult> Add(InputJobModel model)
         {
+            //if (!ModelState.IsValid)
+            //{
+            //    return this.View(model);
+            //}
             //Добавяне на 1 обява в базата данни
             var job = new Job
             {
@@ -261,6 +265,14 @@ namespace MVC_Freelancer.Controllers
             db.SaveChanges();
             return this.RedirectToAction("Index");
         }
+        public IActionResult DeleteMsg(int id)
+        {
+            var msg = db.ContactUs.Where(s => s.Id == id).FirstOrDefault(); //търсене
+            db.ContactUs.Remove(msg);
+            db.SaveChanges();
+            return this.RedirectToAction("Index");
+        }
+        
         public IActionResult Services()
         {
             return this.View();

@@ -23,7 +23,7 @@
 
     <div class="form-group">
         <label asp-for="DeadLine" class="control-label">Крайна дата за предаване<span style="color:red; font-size:20px;">*</span> (Валидност на обявата)</label>
-        <input type="date" value="@Model.DeadLine.Date" asp-for="DeadLine" id="jobInfo" class="form-control" />
+        <input required type="date" value="@Model.DeadLine.Date" asp-for="DeadLine" id="jobInfo" class="form-control" />
         <span asp-validation-for="DeadLine" class="text-danger"></span>
     </div>
 

@@ -1,21 +1,28 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using MVC_Freelancer.Data.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace MVC_Freelancer.Models
 {
     public class InputJobModel
     {
         public int Id { get; set; }
+        [Required]
         public string Name { get; set; }
+        [Required]
         public string Description { get; set; }
+        [Required]
         public double Price { get; set; }
+        [Required]
         public DateTime DeadLine { get; set; }
+        [Required]
         public IFormFile Image { get; set; }
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
         public string ImgURL { get; set; }
         public bool? Status { get; set; } 
         public double? Rating { get; set; }
+        [Required]
         public string WorkType { get; set; }
         public bool Accept { get; set; }
         public int Progress { get; set; }
@@ -25,28 +32,43 @@ namespace MVC_Freelancer.Models
 
 
         //пакети:
+        [Required]
         public string PackageName { get; set; }
+        [Required]
         public string PacketDescription { get; set; }
+        [Required]
         public int DeliveryTime { get; set; }
+        [Required]
         public double PacketPrice { get; set; }
+        [Required]
         public int Revision { get; set; }
         public string? ExtraInfo { get; set; }
 
 
-        //за втора таблица
+        //за втори пакет
+        [Required]
         public string PackageName2 { get; set; }
+        [Required]
         public string PacketDescription2 { get; set; }
+        [Required]
         public int DeliveryTime2 { get; set; }
+        [Required]
         public double PacketPrice2 { get; set; }
+        [Required]
         public int Revision2 { get; set; }
         public string? ExtraInfo2 { get; set; }
 
 
-        //за трета таблица
+        //за трети пакет
+        [Required]
         public string PackageName3 { get; set; }
+        [Required]
         public string PacketDescription3 { get; set; }
+        [Required]
         public int DeliveryTime3 { get; set; }
+        [Required]
         public double PacketPrice3 { get; set; }
+        [Required]
         public int Revision3 { get; set; }
         public string? ExtraInfo3 { get; set; }
 

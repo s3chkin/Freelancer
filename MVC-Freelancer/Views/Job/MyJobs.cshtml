@@ -8,7 +8,6 @@
 
 <div class=" d-flex flex-wrap justify-content-around ">
     <div style=" width:1330px;">
-        <h5><i><b>Предлагани:</b></i> </h5>
 
         @foreach (var item in Model.Where(x => x.DeadLine > DateTime.Today))
         {

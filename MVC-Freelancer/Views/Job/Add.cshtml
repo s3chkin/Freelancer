@@ -1,25 +1,9 @@
 ﻿@model MVC_Freelancer.Models.InputJobModel
-@*@model MVC_Freelancer.Models.ViewModel*@
 
 <br>
 <br>
 <br>
 <br>
-@*<form action="/action_page.php">
-    <label for="cars">Choose a car:</label>
-    <select name="cars" id="cars">
-        <option value="volvo">Предлагам</option>
-        <option value="saab">Търся</option>
-    </select>
-    <br><br>
-    <input type="submit" value="Submit">
-</form>
-
-<form method="post" asp-action="Pause">
-    <fieldset>
-        <button type="submit" class="btn btn-warning"><i class="fa-solid fa-pause float-left"></i> </button>
-    </fieldset>
-</form>*@
 
 <form style="display:grid; place-items:center;" method="post" enctype="multipart/form-data">
 
@@ -34,11 +18,11 @@
 
     <img style="width:560px; margin-top:80px;" src="~/ImageRepository/undraw_add_tasks_re_s5yj.svg">
     <br><br>
-    <div class="form-group" style="display:none;">
+    @*<div class="form-group" style="display:none;">
         <label asp-for="Progress" class="control-label"></label>
         <input asp-for="Progress" class="form-control" value="null" id="jobProgress " />
         <span asp-validation-for="Progress" class="text-danger"></span>
-    </div>
+    </div>*@
 
     <div class="form-group" style="display:none;">
         <label asp-for="Status" class="control-label"></label>
@@ -48,13 +32,13 @@
 
     <div class="form-group">
         <label asp-for="Name" class="control-label">Какво предлагате/търсите (заглавие)? <span style="color:red; font-size:20px;">*</span></label>
-        <input asp-for="Name" maxlength="25" id="jobInfo" class="form-control" placeholder="Например: Сайт за бизнес/ Фиксиране на грешки... " />
+        <input required asp-for="Name" maxlength="25" id="jobInfo" class="form-control" placeholder="Например: Сайт за бизнес/ Фиксиране на грешки... " />
         <span asp-validation-for="Name" class="text-danger"></span>
     </div>
 
     <div class="form-group">
-        <label asp-for="DeadLine" class="control-label">Срок <span style="color:red; font-size:20px;">*</span></label>
-        <input type="date" value="@Model.DeadLine.Date" asp-for="DeadLine" style="width: 600px;height: 55px;margin-bottom: 20px; id="jobInfo" class="form-control" />
+        <label  asp-for="DeadLine" class="control-label">Срок <span style="color:red; font-size:20px;">*</span></label>
+        <input required type="date" value="@Model.DeadLine.Date" asp-for="DeadLine" style="width: 600px;height: 55px;margin-bottom: 20px; id="jobInfo" class="form-control" />
         <span asp-validation-for="DeadLine" class="text-danger"></span>
     </div>
 
@@ -72,7 +56,7 @@
 
     <div class="form-group">
         <label asp-for="Description" class="control-label">Описание <span style="color:red; font-size:20px;">*</span></label>
-        <textarea asp-for="Description" id="jobDescription" class="form-control" placeholder="Аз мога да направя... (подробна информация)"></textarea>
+        <textarea required asp-for="Description" id="jobDescription" class="form-control" placeholder="Аз мога да направя... (подробна информация)"></textarea>
         <span asp-validation-for="Description" class="text-danger"></span>
     </div>
 
@@ -101,7 +85,6 @@
             <label asp-for="CategoryId" class="control-label">Снимка <span style="color:red; font-size:20px;">*</span></label>
         </div>
         <label asp-for="Image" class="control-label" style="display:none;"></label>
-        @*<input asp-for="Image" type="file"  class="form-control" id="jobImg"/>*@
         <input asp-for="Image" style="display:none;" type="file" id="file" />
         <label id="file2" onclick="func()" for="file" style="display:grid; place-items:center; cursor:pointer;"><i id="imgLogo2" class="bi bi-check" style="display:none;"></i><i class="bi bi-camera" id="imgLogo1"></i></label>
         <span asp-validation-for="Image" class="text-danger"></span>
@@ -131,17 +114,17 @@
                             </th>
                             <td>
                                 <div class="form-group">
-                                    <input style="border:none; width:100%; height:100%;" asp-for="PackageName " id="PackageName1" class="form-control" placeholder="Наименование на пакета ">
+                                    <input required style="border:none; width:100%; height:100%;" asp-for="PackageName " id="PackageName1" class="form-control" placeholder="Наименование на пакета ">
                                 </div>
                             </td>
                             <td>
                                 <div class="form-group">
-                                    <input style="border:none; width:100%; height:100%;" asp-for="PackageName2" id="PackageName1" class="form-control" placeholder="Наименование на пакета">
+                                    <input required style="border:none; width:100%; height:100%;" asp-for="PackageName2" id="PackageName1" class="form-control" placeholder="Наименование на пакета">
                                 </div>
                             </td>
                             <td>
                                 <div class="form-group">
-                                    <input style="border:none; width:100%; height:100%;" asp-for="PackageName3" id="PackageName1" class="form-control" placeholder="Наименование на пакета">
+                                    <input required style="border:none; width:100%; height:100%;" asp-for="PackageName3" id="PackageName1" class="form-control" placeholder="Наименование на пакета">
                                 </div>
                             </td>
                         </tr>
@@ -149,17 +132,17 @@
                             <th scope="row">Описание <span style="color:red; font-size:20px;">*</span></th>
                             <td style="height:125px;">
                                 <div class="form-group">
-                                    <textarea style="border:none;  width:100%; height:108px;" asp-for="PacketDescription" id="PacketDescription1" class="form-control" placeholder="Аз мога да направя... (подробна информация)"></textarea>
+                                    <textarea required style="border:none;  width:100%; height:108px;" asp-for="PacketDescription" id="PacketDescription1" class="form-control" placeholder="Аз мога да направя... (подробна информация)"></textarea>
                                 </div>
                             </td>
                             <td>
                                 <div class="form-group">
-                                    <textarea style="border:none; width:100%; height:108px" asp-for="PacketDescription2" id="PacketDescription2" class="form-control" placeholder="Аз мога да направя... (подробна информация)"></textarea>
+                                    <textarea required style="border:none; width:100%; height:108px" asp-for="PacketDescription2" id="PacketDescription2" class="form-control" placeholder="Аз мога да направя... (подробна информация)"></textarea>
                                 </div>
                             </td>
                             <td>
                                 <div class="form-group">
-                                    <textarea style="border:none;width:100%; height:108px" asp-for="PacketDescription3" id="PacketDescription3" class="form-control" placeholder="Аз мога да направя... (подробна информация)"></textarea>
+                                    <textarea required style="border:none;width:100%; height:108px" asp-for="PacketDescription3" id="PacketDescription3" class="form-control" placeholder="Аз мога да направя... (подробна информация)"></textarea>
                                 </div>
                             </td>
                         </tr>
