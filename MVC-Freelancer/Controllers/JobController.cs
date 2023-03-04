@@ -27,7 +27,7 @@ namespace MVC_Freelancer.Controllers
             //this.shortStringService = shortStringService; //injektirane
         }
 
-
+        [Authorize]
         public IActionResult Index()
         {
             var model = db.Jobs.Select(x => new InputJobModel
@@ -272,7 +272,7 @@ namespace MVC_Freelancer.Controllers
             db.SaveChanges();
             return this.RedirectToAction("Index");
         }
-        
+
         public IActionResult Services()
         {
             return this.View();
@@ -346,8 +346,8 @@ namespace MVC_Freelancer.Controllers
         //[Authorize]
         public async Task<IActionResult> Accept(int id)
         {
-            string myId = (await GetCurrentUserAsync()).Id;
-            var jobFd = db.Jobs.FirstOrDefault(r => /*r.Id == id ||*/ r.GiverId != myId || r.TakerId != myId);
+            string myId = (await GetCurrentUserAsync()).Id; //моето айди
+            var jobFd = db.Jobs.FirstOrDefault(r => r.Id == id /*|| r.GiverId != myId || r.TakerId != myId*/); //Търсене на обява по айди
             jobFd.Accept = true;
             db.Update(jobFd);
             await db.SaveChangesAsync();

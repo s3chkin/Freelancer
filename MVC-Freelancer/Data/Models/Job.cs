@@ -7,7 +7,6 @@
             this.Images = new HashSet<Image>();
             this.Categories = new HashSet<Category>();
             this.ContactUs = new HashSet<ContactUs>();
-            this.Orders = new HashSet<Order>();
         }
         public int Id { get; set; }
         public string Name { get; set; }
@@ -64,8 +63,6 @@
         public virtual ICollection<Image> Images { get; set; }
         //public int ContactUsId { get; set; }
         public virtual ICollection<ContactUs> ContactUs { get; set; }
-        public List<Comment> CommentState { get; set; }
-        public virtual ICollection<Order> Orders { get; set; }
 
 
     }
