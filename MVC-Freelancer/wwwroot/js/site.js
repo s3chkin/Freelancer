@@ -123,8 +123,8 @@ function search() { //отказване на поръчки
         confirmButtonText: 'Търси',
         showLoaderOnConfirm: true,
         cancelButtonText: 'Отказ',
-        
-        
+
+
         allowOutsideClick: () => !Swal.isLoading()
     }).then((result) => {
         if (result.isConfirmed) {
@@ -134,7 +134,7 @@ function search() { //отказване на поръчки
         }
     })
 }
-function refuse() { //отказване на поръчки
+function refuse(idCancelBtn) { //отказване на поръчки
     Swal.fire({
         title: 'Сигурен ли сте?',
         text: "Наистина ли искате да откажете поръчката?",
@@ -149,9 +149,15 @@ function refuse() { //отказване на поръчки
             Swal.fire(
                 'Поръчката е отказана!',
                 'Можете да разгледате другите обяви.',
-                'success'
-            )
-            document.getElementById("refuseBtn").submit()
+                'success',
+            );
+
+
+            //setTimeout(() => {
+            //    console.log("Delayed for 1 second.");
+            //}, 1000);
+            document.getElementById(idCancelBtn).submit()
         }
+
     })
 }

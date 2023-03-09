@@ -96,11 +96,14 @@
                     <div class="card-text">
                         <p class="float-start">@item.Price <i>BGN</i></p>
 
-                        <form method="post" asp-action="Refuse">
-                            <div class="float-end">
-                                <input type="hidden" name="id" value="@item.Id" />
-                                <button id="refuseBtn" onclick="refuse()">Отказвам</button>
-                            </div>
+                        @*  <form method="post" asp-action="Refuse"></form>*@
+                        <div class="float-end">
+                            <input type="hidden" name="id" value="@item.Id" />
+                            <button id="refuseBtn" onclick="refuse(@item.Id+'-cancel')">Отказвам</button>
+                        </div>
+
+                        <form id ="@(item.Id+"-cancel")" method="post" asp-action="Refuse" style="display:none">
+                            <input name="id" value="@item.Id" type="hidden">                         
                         </form>
 
                     </div>
@@ -124,9 +127,9 @@
         padding-top: 25px;
     }
     /*
-                                        .progress-bar {
-                                            background-color: #fd6900eb;
-                                        }*/
+                                            .progress-bar {
+                                                background-color: #fd6900eb;
+                                            }*/
 
     .container2 {
         margin-top: 20px;

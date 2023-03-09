@@ -357,7 +357,7 @@ namespace MVC_Freelancer.Controllers
         public async Task<IActionResult> Refuse(int id)
         {
             string myId = (await GetCurrentUserAsync()).Id;
-            var jobFd = db.Jobs.FirstOrDefault(r => r.Id == id);
+            var jobFd = db.Jobs.FirstOrDefault(j => j.Id == id);
             jobFd.Accept = false;
             db.Update(jobFd);
             await db.SaveChangesAsync();
