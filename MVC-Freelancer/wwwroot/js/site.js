@@ -146,11 +146,7 @@ function refuse(idCancelBtn) { //отказване на поръчки
         cancelButtonText: 'Назад'
     }).then((result) => {
         if (result.isConfirmed) {
-            Swal.fire(
-                'Поръчката е отказана!',
-                'Можете да разгледате другите обяви.',
-                'success',
-            );
+            
 
 
             //setTimeout(() => {

@@ -20,101 +20,112 @@
 <br>
 
 <div class=" d-flex flex-wrap justify-content-around ">
-    <div style=" width:1330px;">
-
+    @if (Model.Any())
+    {
         <h5><i><b>Приети:</b></i> </h5>
+        <div style=" width:1330px;">
 
-        @foreach (var item in Model.Where(x => x.Accept == true))
-        {
 
-            <div class="container container2 float-left" style="">
-                <div class="card-sl ">
-                    <div class="card-image">
-                        <img id="image" height="220px;" src="@item.ImgURL" />
-                    </div>
+            @foreach (var item in Model.Where(x => x.Accept == true))
+            {
 
-                    <div class="card-heading">
-                        @item.Name
-                    </div>
-                    <div class="card-text">
-                        <div class="skills">
-                            <div style="padding-bottom: 40px;">
-                                <div>
-                                    <p style="float: left;">Напредък (Прогрес)</p>
-                                    <p style="float: right;">@item.Progress%</p>
+                <div class="container container2 float-left" style="">
+                    <div class="card-sl ">
+                        <div class="card-image">
+                            <img id="image" height="220px;" src="@item.ImgURL" />
+                        </div>
+
+                        <div class="card-heading">
+                            @item.Name
+                        </div>
+                        <div class="card-text">
+                            <div class="skills">
+                                <div style="padding-bottom: 40px;">
+                                    <div>
+                                        <p style="float: left;">Напредък (Прогрес)</p>
+                                        <p style="float: right;">@item.Progress%</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <form method="post" asp-action="Progress">
-                                <input asp-for="@item.Progress">
-                                <input type="submit" value="ok" />
-                            </form>
-                            <br>
+                                <form method="post" asp-action="Progress">
+                                    <input asp-for="@item.Progress">
+                                    <input type="submit" value="ok" />
+                                </form>
+                                <br>
 
-                            <div class="progress">
-                                <div class="progress-bar" style="width:@item.Progress%; "></div>
+                                <div class="progress">
+                                    <div class="progress-bar" style="width:@item.Progress%; "></div>
 
 
+
+                                    @if (item.Progress <= 30)
+                                    {
+                                        <style>
+                                            .progress-bar {
+                                                background-color: red;
+                                            }
+                                        </style>
+
+                                    }
+                                    else if (item.Progress >= 31 && item.Progress <= 60)
+                                    {
+                                        <style>
+                                            .progress-bar {
+                                                background-color: yellow;
+                                            }
+                                        </style>
+                                    }
+                                    else if (item.Progress >= 61)
+                                    {
+                                        <style>
+                                            .progress-bar {
+                                                background-color: green;
+                                            }
+                                        </style>
+                                    }
+                                </div>
 
                                 @if (item.Progress <= 30)
                                 {
-                                    <style>
-                                        .progress-bar {
-                                            background-color: red;
-                                        }
-                                    </style>
-
-                                }
-                                else if (item.Progress >= 31 && item.Progress <= 60)
-                                {
-                                    <style>
-                                        .progress-bar {
-                                            background-color: yellow;
-                                        }
-                                    </style>
+                                    <p>Стартиране</p>
                                 }
                                 else if (item.Progress >= 61)
                                 {
-                                    <style>
-                                        .progress-bar {
-                                            background-color: green;
-                                        }
-                                    </style>
+                                    <p>Приключване</p>
                                 }
+
                             </div>
-
-                            @if (item.Progress <= 30)
-                            {
-                                <p>Стартиране</p>
-                            }
-                            else if (item.Progress >= 61)
-                            {
-                                <p>Приключване</p>
-                            }
-
                         </div>
-                    </div>
-                    <div class="card-text">
-                        <p class="float-start">@item.Price <i>BGN</i></p>
-
-                        @*  <form method="post" asp-action="Refuse"></form>*@
-                        <div class="float-end">
-                            <input type="hidden" name="id" value="@item.Id" />
-                            <button id="refuseBtn" onclick="refuse(@item.Id+'-cancel')">Отказвам</button>
+                        <div class="card-text">
+                            <p class="float-start">@item.Price <i>BGN</i></p>
+                        </div>
+                        <br><br>
+                        <div class="card-text">
+                            <div class="float-end">
+                                <input type="hidden" name="id" value="@item.Id" />
+                                <button class="btn btn-danger" id="refuseBtn" onclick="refuse(@item.Id+'-cancel')">Отказвам</button>
+                            </div>
+                            <form id="@(item.Id+"-cancel")" method="post" asp-action="Refuse" style="display:none">
+                                <input name="id" value="@item.Id" type="hidden">
+                            </form>
+                            <div class="float-start">
+                                <button class="btn btn-success" id="refuseBtn" >Предавам</button>
+                            </div>
+                            <br>
                         </div>
 
-                        <form id ="@(item.Id+"-cancel")" method="post" asp-action="Refuse" style="display:none">
-                            <input name="id" value="@item.Id" type="hidden">                         
-                        </form>
 
+                        <br>
+                        <a asp-action="ById" asp-route-id="@item.Id" class="card-button"> Детайли</a>
                     </div>
-
-                    <br>
-                    <a asp-action="ById" asp-route-id="@item.Id" class="card-button"> Детайли</a>
                 </div>
-            </div>
 
-        }
-    </div>
+            }
+        </div>
+    }
+    else
+    {
+        <p>Няма приети поръчки</p>
+    }
 </div>
 <style>
 
@@ -127,9 +138,9 @@
         padding-top: 25px;
     }
     /*
-                                            .progress-bar {
-                                                background-color: #fd6900eb;
-                                            }*/
+                                                                                .progress-bar {
+                                                                                    background-color: #fd6900eb;
+                                                                                }*/
 
     .container2 {
         margin-top: 20px;
