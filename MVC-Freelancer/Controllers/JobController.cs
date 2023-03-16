@@ -343,12 +343,14 @@ namespace MVC_Freelancer.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-        //[Authorize]
+        [Authorize]
         public async Task<IActionResult> Accept(int id)
         {
             string myId = (await GetCurrentUserAsync()).Id; //моето айди
             var jobFd = db.Jobs.FirstOrDefault(r => r.Id == id /*|| r.GiverId != myId || r.TakerId != myId*/); //Търсене на обява по айди
-            jobFd.Accept = true;
+            //jobFd.Accept = true;
+            jobFd.TakerId = myId;
+            //jobFd.Accept= jobFd.TakerId;
             db.Update(jobFd);
             await db.SaveChangesAsync();
             return RedirectToAction("Orders");
@@ -358,7 +360,7 @@ namespace MVC_Freelancer.Controllers
         {
             string myId = (await GetCurrentUserAsync()).Id;
             var jobFd = db.Jobs.FirstOrDefault(j => j.Id == id);
-            jobFd.Accept = false;
+            jobFd.TakerId = null;
             db.Update(jobFd);
             await db.SaveChangesAsync();
             return RedirectToAction("Orders");
@@ -420,10 +422,12 @@ namespace MVC_Freelancer.Controllers
             return View(model);
         }
 
-        public IActionResult Orders()
+        [Authorize]
+        public async Task<IActionResult> Orders()
         {
+            string myId = (await GetCurrentUserAsync()).Id;
 
-            var model = db.Jobs.Select(x => new InputJobModel
+            var model = await  db.Jobs.Where(j=>j.TakerId == myId).Select(x => new InputJobModel
             {
                 Name = x.Name,
                 Price = x.Price,
@@ -435,7 +439,7 @@ namespace MVC_Freelancer.Controllers
                 DeadLine = x.DeadLine,
                 ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}", //прочитене на снимката от базата данни
             }
-            ).ToList();
+            ).ToListAsync();
             return View(model);
 
         }
