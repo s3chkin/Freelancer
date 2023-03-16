@@ -40,7 +40,8 @@ namespace MVC_Freelancer.Controllers
                 Accept = x.Accept,
                 DeadLine = x.DeadLine,
                 ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}", //прочитене на снимката от базата данни
-                Author = x.Giver
+                Author = x.Giver,
+                TakerId = x.TakerId
             }).ToList();
 
             return View(model);

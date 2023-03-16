@@ -20,14 +20,16 @@ namespace MVC_Freelancer.Models
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
         public string ImgURL { get; set; }
-        public bool? Status { get; set; } 
+        public bool? Status { get; set; }
         public double? Rating { get; set; }
         [Required]
         public string WorkType { get; set; }
         public bool Accept { get; set; }
         public int Progress { get; set; }
 
-
+        public string GiverId { get; set; }
+        public string? TakerId { get; set; }
+      
 
 
 
