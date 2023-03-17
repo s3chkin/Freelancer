@@ -37,7 +37,7 @@ namespace MVC_Freelancer.Controllers
                 Id = x.Id,
                 Status = x.Status,
                 WorkType = x.WorkType,
-                Accept = x.Accept,
+                Finished = x.Finished,
                 DeadLine = x.DeadLine,
                 ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}", //прочитене на снимката от базата данни
                 Author = x.Giver,
@@ -46,6 +46,8 @@ namespace MVC_Freelancer.Controllers
 
             return View(model);
         }
+
+        
 
 
         [HttpGet]
@@ -141,7 +143,7 @@ namespace MVC_Freelancer.Controllers
                 CategoryId = x.CategoryId,
                 Description = x.Description,
                 Progress = x.Progress,
-                Accept = x.Accept,
+                Finished = x.Finished,
                 Status = x.Status,
                 Rating = x.Rating,
 
@@ -303,7 +305,7 @@ namespace MVC_Freelancer.Controllers
             db.ContactUs.Add(contact);
             db.SaveChanges();
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Contacts");
 
         }
         public IActionResult Messages()
@@ -357,6 +359,18 @@ namespace MVC_Freelancer.Controllers
             await db.SaveChangesAsync();
             return RedirectToAction("Orders");
         }
+
+        [Authorize]
+        public async Task<IActionResult>Finished(int id)
+        {
+            var jobFd = db.Jobs.FirstOrDefault(r => r.Id == id); //Търсене на обява по айди
+            jobFd.Finished = true;
+            //jobFd.Accept= jobFd.TakerId;
+            db.Update(jobFd);
+            await db.SaveChangesAsync();
+            return RedirectToAction("Orders");
+        }
+
         //Refuse
         public async Task<IActionResult> Refuse(int id)
         {
@@ -377,7 +391,7 @@ namespace MVC_Freelancer.Controllers
                 Id = x.Id,
                 Status = x.Status,
                 WorkType = x.WorkType,
-                Accept = x.Accept,
+                Finished = x.Finished,
                 DeadLine = x.DeadLine,
                 ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}", //прочитене на снимката от базата данни
                 Author = x.Giver
@@ -436,7 +450,7 @@ namespace MVC_Freelancer.Controllers
                 Id = x.Id,
                 Status = x.Status,
                 WorkType = x.WorkType,
-                Accept = x.Accept,
+                Finished = x.Finished,
                 Progress = x.Progress,
                 DeadLine = x.DeadLine,
                 ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}", //прочитене на снимката от базата данни
@@ -452,7 +466,7 @@ namespace MVC_Freelancer.Controllers
                 Progress = model.Progress,
 
             };
-            if (model.Accept == false)
+            if (model.Finished == false)
             {
                 model.Progress = 0;
             }

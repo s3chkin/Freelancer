@@ -17,7 +17,7 @@
         public bool? Status { get; set; }
         public double? Rating { get; set; }
         public string WorkType { get; set; }
-        public bool Accept { get; set; }
+        public bool Finished { get; set; }
         public string GiverId { get; set; }
         public virtual AppUser Giver { get; set; }
         public string? TakerId { get; set; }

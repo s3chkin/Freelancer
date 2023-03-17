@@ -18,7 +18,7 @@
         <br>
         <p class="text-center w-responsive mx-auto mb-5">
             Имате въпрос? Моля, не се колебайте да се <br>свържете
-            директно с мен.  
+            директно с мен.
         </p>
         <div style="display:none;" class="alert alert-info">@TempData["Message"]</div>
 
@@ -30,6 +30,18 @@
             var onlyname = username.Trim(gmail);
             onlyname = username.Trim(email);
         }
+
+        @*<div class="alert alert-success" role="alert">
+            This is a success alert—check it out!
+        </div>*@
+
+        <script>
+            function success() {
+                alert("Съобщението е успешно изпратено!");
+            }
+        </script>
+       
+
         <center>
             <div class="d-flex justify-content-center">
                 <span> <input asp-for="@Model.Name" onclick="ContactsForm()" value="@onlyname" required id="name" readonly="readonly" class="contactInputs form-control float-left " type="text" placeholder="Собствено име"></span>
@@ -39,10 +51,10 @@
             <input asp-for="@Model.Subject" onclick="ContactsForm()" id="theme" class="contactInputs form-control" type="text" placeholder="Тема" required>
             <br><br>
             <textarea asp-for="@Model.Message" onclick="ContactsForm()" id="msg" class="contactInputs  form-control md-textarea" placeholder="Вашето съобщение" required></textarea>
-            
+
 
             <br><br>
-            <input type="submit" id="btn">
+            <input onclick=success() type="submit" id="btn">
         </center>
 
     </section>

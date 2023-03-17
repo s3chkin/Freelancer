@@ -171,7 +171,7 @@ namespace MVC_Freelancer.Controllers
                 Price = x.Price,
                 Id = x.Id,
                 Status = x.Status,
-                Accept = x.Accept,
+                Finished = x.Finished,
                 DeadLine = x.DeadLine,
                 WorkType = x.WorkType,
                 ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}", //прочитене на снимката от базата данни
@@ -183,7 +183,7 @@ namespace MVC_Freelancer.Controllers
         public IActionResult Accept(int id)
         {
             var jobFd = db.Jobs.FirstOrDefault(r => r.Id == id);
-            jobFd.Accept = true;
+            jobFd.Finished = true;
             db.Update(jobFd);
             db.SaveChanges();
             //return RedirectToAction("Orders");

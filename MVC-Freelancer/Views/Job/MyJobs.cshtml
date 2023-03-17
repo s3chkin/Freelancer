@@ -25,7 +25,7 @@
                         Цената е @item.Price лева. За по-подробна информация
                         влезте в самата обява,<br> като натиснете бутона "детайли".
                     </div>
-                    
+
                     <div class="card-text">
                         <p class="float-start">@item.Price <i>BGN</i></p>
                         <p class="float-end">@item.WorkType </p>
@@ -33,35 +33,39 @@
                     <br>
                     <br>
                     <div class="d-flex justify-content-center">
-                        @if (item.Status == false)
-                        {
-                            <form method="post" asp-action="Pause">
-                                <fieldset>
-                                    <input type="hidden" name="id" value="@item.Id" />
-                                    <button type="submit" class="btn btn-warning"><i class="fa-solid fa-play float-left"></i> </button>
-                                </fieldset>
-                            </form>
-                        }
-                        else
-                        {
-                            <form method="post" asp-action="Pause">
-                                <fieldset>
-                                    <input type="hidden" name="id" value="@item.Id" />
-                                    <button type="submit" class="btn btn-warning"><i class="fa-solid fa-pause float-left"></i> </button>
-                                </fieldset>
-                            </form>
-                        }
-                        <a asp-action="Edit" asp-route-id="@item.Id">
-                            <button class=" btn btn-success" style="margin-left:5px; margin-right:5px;">
-                                <i class="requestEditBtn fa-solid fa-pencil float-left" style="color:white;"></i>
-                            </button>
-                        </a>
+                       
 
-                        <a asp-action="Delete" asp-route-id="@item.Id">
-                            <button class="btn btn-danger">
-                                <i class="requestDeleteBtn fa-solid fa-trash-can float-left" style="  color:white;"></i>
-                            </button>
-                        </a>
+                            @if (item.Status == false)
+                            {
+                                <form method="post" asp-action="Pause">
+                                    <fieldset>
+                                        <input type="hidden" name="id" value="@item.Id" />
+                                        <button type="submit" class="btn btn-warning"><i class="fa-solid fa-play float-left"></i> </button>
+                                    </fieldset>
+                                </form>
+                            }
+                            else
+                            {
+                                <form method="post" asp-action="Pause">
+                                    <fieldset>
+                                        <input type="hidden" name="id" value="@item.Id" />
+                                        <button type="submit" class="btn btn-warning"><i class="fa-solid fa-pause float-left"></i> </button>
+                                    </fieldset>
+                                </form>
+                            }
+                            <a asp-action="Edit" asp-route-id="@item.Id">
+                                <button class=" btn btn-success" style="margin-left:5px; margin-right:5px;">
+                                    <i class="requestEditBtn fa-solid fa-pencil float-left" style="color:white;"></i>
+                                </button>
+                            </a>
+
+                            <a asp-action="Delete" asp-route-id="@item.Id">
+                                <button class="btn btn-danger">
+                                    <i class="requestDeleteBtn fa-solid fa-trash-can float-left" style="  color:white;"></i>
+                                </button>
+                            </a>
+                        
+                       
 
                     </div>
 
@@ -80,11 +84,6 @@
 
 <div class=" d-flex flex-wrap justify-content-around ">
     <div style=" width:1330px;">
-        @foreach (var item in Model.Where(x => x.DeadLine > DateTime.Today))
-        {
-            
-           
-        }
         <div style=" width:1330px;">
 
             @foreach (var item in Model.Where(x => x.DeadLine < DateTime.Today))

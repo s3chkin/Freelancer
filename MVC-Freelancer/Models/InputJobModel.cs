@@ -24,7 +24,7 @@ namespace MVC_Freelancer.Models
         public double? Rating { get; set; }
         [Required]
         public string WorkType { get; set; }
-        public bool Accept { get; set; }
+        public bool Finished { get; set; }
         public int Progress { get; set; }
 
         public string GiverId { get; set; }
