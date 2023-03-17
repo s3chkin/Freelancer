@@ -47,7 +47,7 @@ namespace MVC_Freelancer.Controllers
             return View(model);
         }
 
-        
+
 
 
         [HttpGet]
@@ -135,6 +135,8 @@ namespace MVC_Freelancer.Controllers
         {
             var model = db.Jobs.Where(x => id == x.Id).Select(x => new InputJobModel
             {
+                Id = x.Id,
+                Author = x.Giver,
                 //otlyavo modeli otdyasno bazatadanni
                 Name = x.Name,
                 //CategoryName = x.Categories.Name,
@@ -361,7 +363,7 @@ namespace MVC_Freelancer.Controllers
         }
 
         [Authorize]
-        public async Task<IActionResult>Finished(int id)
+        public async Task<IActionResult> Finished(int id)
         {
             var jobFd = db.Jobs.FirstOrDefault(r => r.Id == id); //Търсене на обява по айди
             jobFd.Finished = true;
