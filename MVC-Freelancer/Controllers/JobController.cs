@@ -30,7 +30,7 @@ namespace MVC_Freelancer.Controllers
         [Authorize]
         public IActionResult Index()
         {
-            var model = db.Jobs.Select(x => new InputJobModel
+            var model = db.Jobs.Where(x => x.WorkType == "Предлагам" && x.Status == true && x.DeadLine > DateTime.Today && x.TakerId == null).Select(x => new InputJobModel
             {
                 Name = x.Name,
                 Price = x.Price,
@@ -271,7 +271,7 @@ namespace MVC_Freelancer.Controllers
             var msg = db.ContactUs.Where(s => s.Id == id).FirstOrDefault(); //търсене
             db.ContactUs.Remove(msg);
             db.SaveChanges();
-            return this.RedirectToAction("Index");
+            return this.RedirectToAction("messages");
         }
 
         public IActionResult Services()
@@ -310,6 +310,7 @@ namespace MVC_Freelancer.Controllers
         {
             var msg = db.ContactUs.Select(x => new InputSendMailModel
             {
+                Id = x.Id,
                 Name = x.Name,
                 Email = x.Email,
                 Subject = x.Subject,
@@ -428,7 +429,7 @@ namespace MVC_Freelancer.Controllers
         {
             string myId = (await GetCurrentUserAsync()).Id;
 
-            var model = await  db.Jobs.Where(j=>j.TakerId == myId).Select(x => new InputJobModel
+            var model = await db.Jobs.Where(j => j.TakerId == myId).Select(x => new InputJobModel
             {
                 Name = x.Name,
                 Price = x.Price,

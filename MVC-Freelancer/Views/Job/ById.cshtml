@@ -35,63 +35,7 @@
                 <p><i class="bi bi-check"></i> Над 20 страници</p>
 
 
-               @* @if (Model.DeadLine < DateTime.Today)
-                {
-                    <a asp-controller="Request" id="btn" asp-route-id="@Model.Id" class="btn btn-primary btn-lg disabled" role="button" aria-disabled="true">Приеми</a>
 
-                }
-                else
-                {
-                    <form method="post" asp-action="Accept">
-                        <fieldset>
-                            <input type="hidden" name="id" value="@Model.Id" />
-                            <button type="submit" class="btn btn-warning">Приеми </button>
-                        </fieldset>
-                    </form>
-
-                }*@
-
-
-               @* <div style="height: 500px;">
-                    <button onclick="fireSweetAlert()">Show sweet alert example</button>
-                </div>*@
-                <script>
-
-                    function fireSweetAlert() {
-                        Swal.fire(
-                            'Good job!',
-                            'You clicked the button!',
-                            'success'
-                        )
-                    }
-
-                </script>
-
-                <div class="float-end">
-                    <button type="button" onclick="refuse()">Отказвам</button>
-                </div>
-
-                <script>
-                    function refuse() {
-                        Swal.fire({
-                            title: 'Are you sure?',
-                            text: "You won't be able to revert this!",
-                            icon: 'warning',
-                            showCancelButton: true,
-                            confirmButtonColor: '#3085d6',
-                            cancelButtonColor: '#d33',
-                            confirmButtonText: 'Yes, delete it!'
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                Swal.fire(
-                                    'Deleted!',
-                                    'Your file has been deleted.',
-                                    'success'
-                                )
-                            }
-                        })
-                    }
-                </script>
 
 
             </div>
@@ -243,16 +187,6 @@
             </div>
 
 
-        </div>
-
-        <br><br>
-        <p>Добавете коментар</p>
-        <div class="commentSystem">
-            <input style="width:700px; height:50px;" type="text" placeholder="Потребителско име">
-            <br></br>
-            <input style="width:700px; height:50px;" type="email" placeholder="E-mail">
-            <br></br>
-            <textarea style="width:700px; height:90px;" type="email" placeholder="Коментар"></textarea>
         </div>
 
     </div>

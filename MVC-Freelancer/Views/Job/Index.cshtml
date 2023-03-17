@@ -103,7 +103,7 @@
         {
             <h5 style="margin-left:10px;"><i><b>Предлагани:</b></i> </h5>
         }
-        @foreach (var item in Model.Where(x => x.WorkType == "Предлагам" && x.Status == true && x.DeadLine > DateTime.Today && x.TakerId == null))
+        @foreach (var item in Model)
         {
 
             <div class="container container2 float-left" style="">
