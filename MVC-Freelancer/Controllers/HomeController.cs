@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using MVC_Freelancer.Data.Models;
 using MVC_Freelancer.Models;
+using MVC_Freelancer.Services;
 using System.Diagnostics;
 
 namespace MVC_Freelancer.Controllers
@@ -9,10 +10,13 @@ namespace MVC_Freelancer.Controllers
     public class HomeController : BaseController
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IDataBaseSeeder dbSeeder;
 
-        public HomeController(ILogger<HomeController> logger, UserManager<AppUser> um) : base(um)
+        public HomeController(ILogger<HomeController> logger, UserManager<AppUser> um, IDataBaseSeeder dbSeeder) : base(um)
         {
             _logger = logger;
+            this.dbSeeder = dbSeeder;
+
         }
 
         public IActionResult Index()

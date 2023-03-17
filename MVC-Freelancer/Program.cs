@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MVC_Freelancer.Data;
 using MVC_Freelancer.Data.Models;
+using MVC_Freelancer.Services;
 
 namespace MVC_Freelancer
 {
@@ -45,6 +46,8 @@ namespace MVC_Freelancer
             //    options.Password.RequireUppercase = false;
             //    options.Password.RequiredUniqueChars = 0;
             //});
+
+            builder.Services.AddTransient<IDataBaseSeeder, DataBaseSeeder>();
 
             var app = builder.Build();
 
