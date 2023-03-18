@@ -27,12 +27,14 @@
             var username = User.Identity.Name;
             char[] gmail = { '@', 'g', 'm', 'a', 'i', 'l', '.', 'c', 'o', 'm' };
             char[] email = { '@', 'a', 'b', 'v', '.', 'b', 'g' };
-            var onlyname = username.Trim(gmail);
+            char[] hotmail = { '@', 'h', 'o', 't', 'm', 'a', 'i', 'l', '.', 'c', 'o', 'm' };
+           var onlyname = username.Trim(hotmail);
             onlyname = username.Trim(email);
+             onlyname = username.Trim(gmail);
         }
 
         @*<div class="alert alert-success" role="alert">
-            This is a success alert—check it out!
+        This is a success alert—check it out!
         </div>*@
 
         <script>
@@ -40,7 +42,7 @@
                 alert("Съобщението е успешно изпратено!");
             }
         </script>
-       
+
 
         <center>
             <div class="d-flex justify-content-center">
@@ -54,7 +56,7 @@
 
 
             <br><br>
-            <input onclick=success() type="submit" id="btn">
+            <input onclick=success() value="Изпращане" type="submit" id="btn">
         </center>
 
     </section>
