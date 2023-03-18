@@ -10,6 +10,7 @@ using Recipes.Services;
 using System.Diagnostics.Eventing.Reader;
 using System.Net;
 using System.Net.Mail;
+using File = MVC_Freelancer.Data.Models.File;
 
 namespace MVC_Freelancer.Controllers
 {
@@ -19,6 +20,7 @@ namespace MVC_Freelancer.Controllers
         private readonly IWebHostEnvironment webHostEnvironment;
         //private readonly object shortStringService;
         private string[] allowedExtention = new[] { "png", "jpg", "jpeg" };
+        private string[] allowedExtention2 = new[] { "png", "jpg", "jpeg", "zip", "txt", "exe", "cs", "css", "js" };
 
         public JobController(ApplicationDbContext db, IWebHostEnvironment webHostEnvironment/*, IShortStringService shortStringService*/, UserManager<AppUser> um) : base(um)
         {
@@ -409,6 +411,7 @@ namespace MVC_Freelancer.Controllers
             var model = await db.Jobs.Where(j => j.GiverId == myId || j.TakerId == myId)
                 .Select(x => new InputJobModel
                 {
+                    Finished = x.Finished,
                     Name = x.Name,
                     Price = x.Price,
                     Id = x.Id,
@@ -458,9 +461,60 @@ namespace MVC_Freelancer.Controllers
                 ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}", //прочитене на снимката от базата данни
             }
             ).ToListAsync();
+
+
+
             return View(model);
 
         }
+
+        //качване на файл 
+        public async Task<IActionResult> SendFiles(InputJobModel model, int id)
+        {
+            var jobFd = db.Jobs.FirstOrDefault(j => j.Id == id);
+
+            var extention = Path.GetExtension(model.File.FileName).TrimStart('.');
+            var file2 = new File
+            {
+                Extention = extention
+            };
+            string path = $"{webHostEnvironment.WebRootPath}/file/{file2.Id}.{extention}";
+
+            using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate))
+            {
+                model.File.CopyTo(fs);
+            }
+            jobFd.Files.Add(file2);
+            db.Update(jobFd);
+            await db.SaveChangesAsync();
+            return RedirectToAction("Orders");
+        }
+
+
+        //public async Task<IActionResult> Orders(InputJobModel model)
+        //{
+            
+        //    // от името на прикачения файл получаваме неговото разширение   .png
+        //    var extention = Path.GetExtension(model.File.FileName).TrimStart('.');
+        //    //създаваме обект, който ще се запише в БД
+        //    var file2 = new File
+        //    {
+        //        Extention = extention
+        //    };
+        //    string path = $"{webHostEnvironment.WebRootPath}/file/{file2.Id}.{extention}";
+
+        //    using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate))
+        //    {
+        //        model.File.CopyTo(fs);
+        //    }
+        //    job.Files.Add(file2);
+        //    db.Update(job);
+
+        //    await db.SaveChangesAsync();
+
+        //    return this.RedirectToAction("Index");
+        //}
+
         public IActionResult Progress(InputJobModel model)
         {
             var job = new Job
@@ -495,6 +549,8 @@ namespace MVC_Freelancer.Controllers
 
             //return RedirectToAction("Index");
         }
+
+
     }
 }
 

@@ -21,6 +21,7 @@ namespace MVC_Freelancer.Data
         public DbSet<UserSkill> UserSkills { get; set; }
         public DbSet<Skill> Skills { get; set; }
         public DbSet<Request> Requests { get; set; }
+        public DbSet<Models.File> Files { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

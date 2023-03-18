@@ -39,7 +39,7 @@
                         <div class="card-heading">
                             @item.Name
                         </div>
-                        <div class="card-text">
+                      @*  <div class="card-text">
                             <div class="skills">
                                 <div style="padding-bottom: 40px;">
                                     <div>
@@ -95,7 +95,7 @@
                                 }
 
                             </div>
-                        </div>
+                        </div>*@
                         <div class="card-text">
                             <p class="float-start">@item.Price <i>BGN</i></p>
                         </div>
@@ -122,9 +122,19 @@
                         @*качване на извършената работа*@
                         @if (item.Finished == true)
                         {
-                            <form method="post">
-                                <label for="myfile">Изберете файл:</label>
-                                <input type="file" id="myfile" name="myfile"><br><br>
+                            <form method="post" asp-action="SendFiles">
+                              @*  <label for="myfile">Изберете файл:</label>
+                                <input type="file" id="myfile" name="myfile"><br><br>*@
+                                    <input name="id" value="@item.Id" type="hidden">
+
+                                <div class="form-group">
+                                    
+                                    <label asp-for="@item.File" class="control-label" style="display:none;"></label>
+                                    <input asp-for="@item.File" style="display:none;" type="file" id="file" />
+                                    <label id="file2" onclick="func()" for="file" style="display:grid; place-items:center; cursor:pointer;"><i id="imgLogo2" class="bi bi-check" style="display:none;"></i><i class="bi bi-camera" id="imgLogo1"></i></label>
+                                    <span asp-validation-for="@item.File" class="text-danger"></span>
+                                </div>
+
                                 <input value="Изпращане" type="submit">
                             </form>
                         }

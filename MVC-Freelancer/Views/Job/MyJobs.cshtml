@@ -33,7 +33,8 @@
                     <br>
                     <br>
                     <div class="d-flex justify-content-center">
-                       
+                        @if (item.Finished == false)
+                        {
 
                             @if (item.Status == false)
                             {
@@ -64,9 +65,20 @@
                                     <i class="requestDeleteBtn fa-solid fa-trash-can float-left" style="  color:white;"></i>
                                 </button>
                             </a>
-                        
-                       
 
+                        }
+                        else
+                        {
+                            <div>
+                                <p>Получено!</p>
+                            </div>
+
+                            <br>
+
+                            <div>
+                                <a href="../Controllers/BaseController.cs" download>Изтегляне на получените файлове</a>
+                            </div>
+                        }
                     </div>
 
                     <br>

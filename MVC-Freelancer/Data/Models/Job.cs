@@ -5,6 +5,7 @@
         public Job()
         {
             this.Images = new HashSet<Image>();
+            this.Files = new HashSet<File>();
             this.Categories = new HashSet<Category>();
             this.ContactUs = new HashSet<ContactUs>();
         }
@@ -61,6 +62,7 @@
         public int CategoryId { get; set; }
         public virtual ICollection<Category> Categories { get; set; }
         public virtual ICollection<Image> Images { get; set; }
+        public virtual ICollection<File> Files { get; set; }
         //public int ContactUsId { get; set; }
         public virtual ICollection<ContactUs> ContactUs { get; set; }
 

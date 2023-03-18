@@ -17,9 +17,11 @@ namespace MVC_Freelancer.Models
         public DateTime DeadLine { get; set; }
         [Required]
         public IFormFile Image { get; set; }
+        public IFormFile? File { get; set; }
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
         public string ImgURL { get; set; }
+        public string? FileURL { get; set; }
         public bool? Status { get; set; }
         public double? Rating { get; set; }
         [Required]
