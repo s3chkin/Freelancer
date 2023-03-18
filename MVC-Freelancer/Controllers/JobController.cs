@@ -408,7 +408,7 @@ namespace MVC_Freelancer.Controllers
         public async Task<IActionResult> MyJobs()
         {
             string myId = (await GetCurrentUserAsync()).Id;
-            var model = await db.Jobs.Where(j => j.GiverId == myId || j.TakerId == myId)
+            var model = await db.Jobs.Where(j => j.GiverId == myId /*|| j.TakerId == myId*/)
                 .Select(x => new InputJobModel
                 {
                     Finished = x.Finished,
