@@ -16,7 +16,7 @@ namespace MVC_Freelancer.Controllers
         {
             _logger = logger;
             this.dbSeeder = dbSeeder;
-
+         
         }
 
         public IActionResult Index()

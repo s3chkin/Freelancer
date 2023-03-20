@@ -72,10 +72,6 @@ namespace MVC_Freelancer.Controllers
         [HttpPost]
         public async Task<IActionResult> Add(InputJobModel model)
         {
-            //if (!ModelState.IsValid)
-            //{
-            //    return this.View(model);
-            //}
             //Добавяне на 1 обява в базата данни
             var job = new Job
             {
@@ -139,7 +135,7 @@ namespace MVC_Freelancer.Controllers
             {
                 Id = x.Id,
                 Author = x.Giver,
-                //otlyavo modeli otdyasno bazatadanni
+                //otlyavo modeli otdyasno bazata danni
                 Name = x.Name,
                 //CategoryName = x.Categories.Name,
                 DeadLine = x.DeadLine,
@@ -174,7 +170,6 @@ namespace MVC_Freelancer.Controllers
                 Revision3 = x.Revision3,
                 ExtraInfo3 = x.ExtraInfo3,
             }).FirstOrDefault();
-            //var category = db.Categories.Where(x => model.CategoryId == x.Id).FirstOrDefault();
             return this.View(model);
         }
 
@@ -459,20 +454,45 @@ namespace MVC_Freelancer.Controllers
                 Progress = x.Progress,
                 DeadLine = x.DeadLine,
                 ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}", //прочитене на снимката от базата данни
-            }
-            ).ToListAsync();
-
-
+            }).ToListAsync();
 
             return View(model);
-
         }
 
         //качване на файл 
-        public async Task<IActionResult> SendFiles(InputJobModel model, int id)
-        {
-            var jobFd = db.Jobs.FirstOrDefault(j => j.Id == id);
+        //[HttpGet]
+        //public async Task<IActionResult> SendFiles()
+        //{
+        //    string myId = (await GetCurrentUserAsync()).Id;
 
+        //    var model = await db.Jobs.Where(j => j.TakerId == myId).Select(x => new InputJobModel
+        //    {
+        //        Name = x.Name,
+        //        Price = x.Price,
+        //        Id = x.Id,
+        //        Status = x.Status,
+        //        WorkType = x.WorkType,
+        //        Finished = x.Finished,
+        //        Progress = x.Progress,
+        //        DeadLine = x.DeadLine,
+        //        ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}", //прочитене на снимката от базата данни
+        //    }).ToListAsync();
+
+        //    return View(model);
+        //}
+
+        [HttpGet]
+        public async Task<IActionResult> SendFiles()
+        {
+            return View();
+
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SendFiles(int id, InputJobModel model)
+        {
+            //var jobFd = db.Jobs.Where(j => id == j.Id).FirstOrDefault();
+            var jobFd = db.Jobs.Where(s => s.Id == id).FirstOrDefault();
             var extention = Path.GetExtension(model.File.FileName).TrimStart('.');
             var file2 = new File
             {
@@ -491,29 +511,7 @@ namespace MVC_Freelancer.Controllers
         }
 
 
-        //public async Task<IActionResult> Orders(InputJobModel model)
-        //{
-            
-        //    // от името на прикачения файл получаваме неговото разширение   .png
-        //    var extention = Path.GetExtension(model.File.FileName).TrimStart('.');
-        //    //създаваме обект, който ще се запише в БД
-        //    var file2 = new File
-        //    {
-        //        Extention = extention
-        //    };
-        //    string path = $"{webHostEnvironment.WebRootPath}/file/{file2.Id}.{extention}";
 
-        //    using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate))
-        //    {
-        //        model.File.CopyTo(fs);
-        //    }
-        //    job.Files.Add(file2);
-        //    db.Update(job);
-
-        //    await db.SaveChangesAsync();
-
-        //    return this.RedirectToAction("Index");
-        //}
 
         public IActionResult Progress(InputJobModel model)
         {

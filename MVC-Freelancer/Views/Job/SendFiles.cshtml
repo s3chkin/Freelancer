@@ -1,0 +1,17 @@
+﻿@model MVC_Freelancer.Models.InputJobModel
+<br></br>
+<br></br>
+<br></br>
+<form method="post" enctype="multipart/form-data" asp-route-id="Id">
+    <input name="id" value="Id" type="hidden">
+
+    <div class="form-group">
+
+        <label asp-for="File" class="control-label" style="display:none;"></label>
+        <input asp-for="File" style="display:none;" type="file" id="file" />
+        <label id="file2" onclick="func()" for="file" style="display:grid; place-items:center; cursor:pointer;"><i id="imgLogo2" class="bi bi-check" style="display:none;"></i><i class="bi bi-camera" id="imgLogo1"></i></label>
+        <span asp-validation-for="File" class="text-danger"></span>
+    </div>
+
+    <input value="Изпращане" type="submit">
+</form>
