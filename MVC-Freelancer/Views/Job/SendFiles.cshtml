@@ -3,7 +3,7 @@
 <br></br>
 <br></br>
 <form method="post" enctype="multipart/form-data">
-    <input name="id" value="Id" type="hidden">
+    <input asp-for="Id" type="hidden">
 
     <div class="form-group">
 
@@ -13,5 +13,6 @@
         <span asp-validation-for="File" class="text-danger"></span>
     </div>
 
-    <input value="Изпращане" type="submit">
+        <input type="submit" class="site-btn" value="Предай" />
+
 </form>

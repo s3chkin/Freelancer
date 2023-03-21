@@ -445,9 +445,9 @@ namespace MVC_Freelancer.Controllers
 
             var model = await db.Jobs.Where(j => j.TakerId == myId).Select(x => new InputJobModel
             {
+                Id = x.Id,
                 Name = x.Name,
                 Price = x.Price,
-                Id = x.Id,
                 Status = x.Status,
                 WorkType = x.WorkType,
                 Finished = x.Finished,
@@ -482,15 +482,16 @@ namespace MVC_Freelancer.Controllers
         //}
 
         [HttpGet]
-        public async Task<IActionResult> SendFiles()
+        public IActionResult SendFiles(int id)
         {
+            var job = db.Jobs.Where(s => s.Id == id).FirstOrDefault();
+            //id = job.Id;
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> SendFiles(int id, InputJobModel model)
+        public IActionResult SendFiles(int id, InputJobModel model)
         {
-            //var jobFd = db.Jobs.Where(j => id == j.Id).FirstOrDefault();
             var jobFd = db.Jobs.Where(s => s.Id == id).FirstOrDefault();
             var extention = Path.GetExtension(model.File.FileName).TrimStart('.');
             var file2 = new File
@@ -503,9 +504,9 @@ namespace MVC_Freelancer.Controllers
             {
                 model.File.CopyTo(fs);
             }
+
             jobFd.Files.Add(file2);
-            db.Update(jobFd);
-            await db.SaveChangesAsync();
+            db.SaveChanges();
             return RedirectToAction("Orders");
         }
 

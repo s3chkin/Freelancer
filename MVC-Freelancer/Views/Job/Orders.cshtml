@@ -116,7 +116,7 @@
 
                                 </div>
                             </form>
-                            <a value="Изпращане" asp-controller="Job" asp-action="SendFiles">Предавам</a>
+                            @*<a value="Изпращане" asp-controller="Job" asp-action="SendFiles">Предавам</a>*@
 
                             <br>
                         </div>
@@ -139,9 +139,10 @@
 
                                 </form>*@
                         }
+                        <br></br>
                         <a asp-action="SendFiles" asp-route-id="@item.Id">Изпращане</a>
                         <br>
-                        <a asp-action="ById" asp-route-id="@item.Id" class="card-button"> Детайли</a>
+                        <a asp-action="ById" asp-route-id="@item.Id" class="card-button">Детайли</a>
                     </div>
                 </div>
 
