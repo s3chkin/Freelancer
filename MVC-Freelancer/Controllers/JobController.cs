@@ -485,7 +485,6 @@ namespace MVC_Freelancer.Controllers
         public async Task<IActionResult> SendFiles()
         {
             return View();
-
         }
 
         [HttpPost]

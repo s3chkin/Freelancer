@@ -48,7 +48,6 @@ namespace MVC_Freelancer
             //});
 
             builder.Services.AddTransient<IDataBaseSeeder, DataBaseSeeder>();
-            DataBaseSeeder();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

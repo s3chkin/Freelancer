@@ -116,7 +116,7 @@
 
                                 </div>
                             </form>
-                                <a  value="Изпращане" asp-controller="Job" asp-action="SendFiles">Предавам</a>
+                            <a value="Изпращане" asp-controller="Job" asp-action="SendFiles">Предавам</a>
 
                             <br>
                         </div>
@@ -126,22 +126,22 @@
                         @if (item.Finished == true)
                         {
                             @*<form method="post" enctype="multipart/form-data" asp-action="SendFiles">
-                               
+
                                 <input name="id" value="@item.Id" type="hidden">
 
                                 <div class="form-group">
 
-                                    <label asp-for="@item.File" class="control-label" style="display:none;"></label>
-                                    <input asp-for="@item.File" style="display:none;" type="file" id="file" />
-                                    <label id="file2" onclick="func()" for="file" style="display:grid; place-items:center; cursor:pointer;"><i id="imgLogo2" class="bi bi-check" style="display:none;"></i><i class="bi bi-camera" id="imgLogo1"></i></label>
-                                    <span asp-validation-for="@item.File" class="text-danger"></span>
+                                <label asp-for="@item.File" class="control-label" style="display:none;"></label>
+                                <input asp-for="@item.File" style="display:none;" type="file" id="file" />
+                                <label id="file2" onclick="func()" for="file" style="display:grid; place-items:center; cursor:pointer;"><i id="imgLogo2" class="bi bi-check" style="display:none;"></i><i class="bi bi-camera" id="imgLogo1"></i></label>
+                                <span asp-validation-for="@item.File" class="text-danger"></span>
                                 </div>
 
-                            </form>*@
-                                <a  value="Изпращане" asp-controller="Job" asp-action="SendFiles" asp-route-id="@item.Id"></a>
+                                </form>*@
                         }
+                        <a asp-action="SendFiles" asp-route-id="@item.Id">Изпращане</a>
                         <br>
-                        <a  asp-action="SendFiles" asp-route-id="@item.Id" class="card-button"> Детайли</a>
+                        <a asp-action="ById" asp-route-id="@item.Id" class="card-button"> Детайли</a>
                     </div>
                 </div>
 
@@ -191,9 +191,9 @@
         padding-top: 25px;
     }
     /*
-                                                                                                                        .progress-bar {
-                                                                                                                            background-color: #fd6900eb;
-                                                                                                                        }*/
+                                                                                                                            .progress-bar {
+                                                                                                                                background-color: #fd6900eb;
+                                                                                                                            }*/
 
     .container2 {
         margin-top: 20px;
