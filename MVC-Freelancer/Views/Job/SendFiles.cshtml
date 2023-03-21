@@ -4,15 +4,25 @@
 <br></br>
 <form method="post" enctype="multipart/form-data">
     <input asp-for="Id" type="hidden">
-
-    <div class="form-group">
-
-        <label asp-for="File" class="control-label" style="display:none;"></label>
-        <input asp-for="File" style="display:none;" type="file" id="file" />
-        <label id="file2" onclick="func()" for="file" style="display:grid; place-items:center; cursor:pointer;"><i id="imgLogo2" class="bi bi-check" style="display:none;"></i><i class="bi bi-camera" id="imgLogo1"></i></label>
+    <div class="d-flex justify-content-center">
+        <label asp-for="File" class="control-label">За да качите извършената работа, натиснете полето отдолу:</label>
+    </div>
+    <br>
+    <div class="form-group d-flex justify-content-center" >
+        <input  asp-for="File" style="display:none;" type="file" id="file" required/>
+        <label id="file2" onclick="func()" for="file" style="display:grid; background-color:#d7d0d0; width:250px; height:250px; place-items:center; cursor:pointer;">
+            <i id="imgLogo2" class="bi bi-check" style="display:none;"></i>
+            <i class="bi bi-archive-fill" style="font-size:40px; color:#676f76;"></i>
+        </label>
         <span asp-validation-for="File" class="text-danger"></span>
     </div>
-
-        <input type="submit" class="site-btn" value="Предай" />
-
+    <br><br><br>
+    <div class="d-flex justify-content-center">
+        <input type="submit" class="btn btn-success" value="Предай" />
+    </div>
+    <br>
 </form>
+
+<style>
+
+</style>
