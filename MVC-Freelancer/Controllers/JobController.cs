@@ -21,7 +21,7 @@ namespace MVC_Freelancer.Controllers
         private readonly IWebHostEnvironment webHostEnvironment;
         //private readonly object shortStringService;
         private string[] allowedExtention = new[] { "png", "jpg", "jpeg" };
-        private string[] allowedExtention2 = new[] { "png", "jpg", "jpeg", "zip", "txt", "exe", "cs", "css", "js", "sln","rar" };
+        private string[] allowedExtention2 = new[] { "png", "jpg", "jpeg", "zip", "txt", "exe", "cs", "css", "js", "sln", "rar" };
 
         public JobController(ApplicationDbContext db, IWebHostEnvironment webHostEnvironment/*, IShortStringService shortStringService*/, UserManager<AppUser> um) : base(um)
         {
@@ -267,7 +267,8 @@ namespace MVC_Freelancer.Controllers
             var job = db.Jobs.Where(s => s.Id == id).FirstOrDefault(); //търсене
             db.Jobs.Remove(job);
             db.SaveChanges();
-            return this.RedirectToAction("Index");
+            return RedirectToAction("MyJobs");
+
         }
         public IActionResult DeleteMsg(int id)
         {
@@ -346,7 +347,8 @@ namespace MVC_Freelancer.Controllers
             }
             db.Update(jobFd);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("MyJobs");
+
         }
         [Authorize]
         public async Task<IActionResult> Accept(int id)
@@ -439,7 +441,7 @@ namespace MVC_Freelancer.Controllers
         {
             string myId = (await GetCurrentUserAsync()).Id;
 
-          
+
 
             var model = await db.Jobs.Where(j => j.TakerId == myId).Select(x => new InputJobModel
             {

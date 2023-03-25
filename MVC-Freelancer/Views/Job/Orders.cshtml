@@ -16,12 +16,13 @@
 <div class=" d-flex flex-wrap justify-content-around ">
     @if (Model.Any())
     {
-        <h5><i><b>Приети:</b></i> </h5>
 
         <div style=" width:1500px; margin-top:60px;">
 
 
-            @foreach (var item in Model)
+            <h5 class="d-flex justify-content-center"><i><b>Приети</b></i> </h5>
+
+            @foreach (var item in Model.Where(x => x.Finished == false))
             {
 
                 <div class="container container2 float-left" style="">
@@ -95,6 +96,76 @@
                         </div>
                         <br><br>
 
+
+                        <div class="card-text">
+                            <div class="float-end">
+                                <input type="hidden" name="id" value="@item.Id" />
+                                <button class="btn btn-danger" id="refuseBtn" onclick="refuse(@item.Id+'-cancel')">Отказвам</button>
+                            </div>
+                            <form id="@(item.Id+"-cancel")" method="post" asp-action="Refuse" style="display:none">
+                                <input name="id" value="@item.Id" type="hidden">
+                            </form>
+
+                            <div class="float-start">
+                                <a class="btn btn-success" asp-action="SendFiles" asp-route-id="@item.Id">Предаване</a>
+                            </div>
+
+                            <br>
+                        </div>
+
+
+
+                        <br>
+
+                        @*качване на извършената работа*@
+                        @if (item.Finished == true)
+                        {
+                            @*<form method="post" enctype="multipart/form-data" asp-action="SendFiles">
+
+                <input name="id" value="@item.Id" type="hidden">
+
+                <div class="form-group">
+
+                <label asp-for="@item.File" class="control-label" style="display:none;"></label>
+                <input asp-for="@item.File" style="display:none;" type="file" id="file" />
+                <label id="file2" onclick="func()" for="file" style="display:grid; place-items:center; cursor:pointer;"><i id="imgLogo2" class="bi bi-check" style="display:none;"></i><i class="bi bi-camera" id="imgLogo1"></i></label>
+                <span asp-validation-for="@item.File" class="text-danger"></span>
+                </div>
+
+                </form>*@
+                        }
+                        @*  <br></br>
+                <a asp-action="SendFiles" asp-route-id="@item.Id">Изпращане</a>*@
+                        <br>
+                        <a asp-action="ById" asp-route-id="@item.Id" class="card-button">Детайли</a>
+                    </div>
+                </div>
+
+            }
+        </div>
+
+        <div style=" width:1500px; margin-top:60px;">
+
+
+            @foreach (var item in Model.Where(x => x.Finished == true))
+            {
+                <h5 class="d-flex justify-content-center"><i><b>Извършени, предадени</b></i> </h5>
+
+                <div class="container container2 float-left" style="">
+                    <div class="card-sl ">
+                        <div class="card-image">
+                            <img id="image" height="220px;" src="@item.ImgURL" />
+                        </div>
+
+                        <div class="card-heading">
+                            @item.Name
+                        </div>
+
+                        <div class="card-text">
+                            <p class="float-start">@item.Price <i>BGN</i></p>
+                        </div>
+                        <br><br>
+
                         @if (item.Finished == false)
                         {
                             <div class="card-text">
@@ -120,28 +191,7 @@
                             </div>
                         }
 
-
                         <br>
-
-                        @*качване на извършената работа*@
-                        @if (item.Finished == true)
-                        {
-                            @*<form method="post" enctype="multipart/form-data" asp-action="SendFiles">
-
-                <input name="id" value="@item.Id" type="hidden">
-
-                <div class="form-group">
-
-                <label asp-for="@item.File" class="control-label" style="display:none;"></label>
-                <input asp-for="@item.File" style="display:none;" type="file" id="file" />
-                <label id="file2" onclick="func()" for="file" style="display:grid; place-items:center; cursor:pointer;"><i id="imgLogo2" class="bi bi-check" style="display:none;"></i><i class="bi bi-camera" id="imgLogo1"></i></label>
-                <span asp-validation-for="@item.File" class="text-danger"></span>
-                </div>
-
-                </form>*@
-                        }
-                        @*  <br></br>
-                <a asp-action="SendFiles" asp-route-id="@item.Id">Изпращане</a>*@
                         <br>
                         <a asp-action="ById" asp-route-id="@item.Id" class="card-button">Детайли</a>
                     </div>
@@ -193,9 +243,9 @@
         padding-top: 25px;
     }
     /*
-                                                                                                                                    .progress-bar {
-                                                                                                                                        background-color: #fd6900eb;
-                                                                                                                                    }*/
+                                                                                                                                                            .progress-bar {
+                                                                                                                                                                background-color: #fd6900eb;
+                                                                                                                                                            }*/
 
     .container2 {
         margin-top: 20px;

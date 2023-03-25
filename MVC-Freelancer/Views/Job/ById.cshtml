@@ -37,11 +37,12 @@
                             <input type="hidden" name="id" value="@Model.Id" />
                             @if (Model.TakerId != null)
                             {
-                                <button type="submit" class="btn btn-success">Приеми </button>
+                                <button type="submit" class="btn btn-warning disabled">Приета</button>
+
                             }
                             else
                             {
-                                <button type="submit" class="btn btn-warning disabled">Приета</button>
+                                <button type="submit" class="btn btn-success">Приеми</button>
 
                             }
                         </fieldset>
