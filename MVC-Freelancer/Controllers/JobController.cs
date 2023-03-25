@@ -21,7 +21,7 @@ namespace MVC_Freelancer.Controllers
         private readonly IWebHostEnvironment webHostEnvironment;
         //private readonly object shortStringService;
         private string[] allowedExtention = new[] { "png", "jpg", "jpeg" };
-        private string[] allowedExtention2 = new[] { "png", "jpg", "jpeg", "zip", "txt", "exe", "cs", "css", "js", "sln" };
+        private string[] allowedExtention2 = new[] { "png", "jpg", "jpeg", "zip", "txt", "exe", "cs", "css", "js", "sln","rar" };
 
         public JobController(ApplicationDbContext db, IWebHostEnvironment webHostEnvironment/*, IShortStringService shortStringService*/, UserManager<AppUser> um) : base(um)
         {
@@ -396,9 +396,10 @@ namespace MVC_Freelancer.Controllers
         public async Task<IActionResult> MyJobs()
         {
             string myId = (await GetCurrentUserAsync()).Id;
-            var model = await db.Jobs.Where(j => j.GiverId == myId /*|| j.TakerId == myId*/)
+            var model = await db.Jobs.Where(j => j.GiverId == myId)
                 .Select(x => new InputJobModel
                 {
+                    Author = x.Taker,
                     Finished = x.Finished,
                     Name = x.Name,
                     Price = x.Price,
@@ -437,6 +438,8 @@ namespace MVC_Freelancer.Controllers
         public async Task<IActionResult> Orders()
         {
             string myId = (await GetCurrentUserAsync()).Id;
+
+          
 
             var model = await db.Jobs.Where(j => j.TakerId == myId).Select(x => new InputJobModel
             {
