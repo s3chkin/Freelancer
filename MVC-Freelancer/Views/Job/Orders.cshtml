@@ -40,90 +40,93 @@
                             @item.Name
                         </div>
                         @*  <div class="card-text">
-                            <div class="skills">
-                            <div style="padding-bottom: 40px;">
-                            <div>
-                            <p style="float: left;">Напредък (Прогрес)</p>
-                            <p style="float: right;">@item.Progress%</p>
-                            </div>
-                            </div>
-                            <form method="post" asp-action="Progress">
-                            <input asp-for="@item.Progress">
-                            <input type="submit" value="ok" />
-                            </form>
-                            <br>
+                <div class="skills">
+                <div style="padding-bottom: 40px;">
+                <div>
+                <p style="float: left;">Напредък (Прогрес)</p>
+                <p style="float: right;">@item.Progress%</p>
+                </div>
+                </div>
+                <form method="post" asp-action="Progress">
+                <input asp-for="@item.Progress">
+                <input type="submit" value="ok" />
+                </form>
+                <br>
 
-                            <div class="progress">
-                            <div class="progress-bar" style="width:@item.Progress%; "></div>
+                <div class="progress">
+                <div class="progress-bar" style="width:@item.Progress%; "></div>
 
 
 
-                            @if (item.Progress <= 30)
-                            {
-                            <style>
-                            .progress-bar {
-                            background-color: red;
-                            }
-                            </style>
+                @if (item.Progress <= 30)
+                {
+                <style>
+                .progress-bar {
+                background-color: red;
+                }
+                </style>
 
-                            }
-                            else if (item.Progress >= 31 && item.Progress <= 60)
-                            {
-                            <style>
-                            .progress-bar {
-                            background-color: yellow;
-                            }
-                            </style>
-                            }
-                            else if (item.Progress >= 61)
-                            {
-                            <style>
-                            .progress-bar {
-                            background-color: green;
-                            }
-                            </style>
-                            }
-                            </div>
+                }
+                else if (item.Progress >= 31 && item.Progress <= 60)
+                {
+                <style>
+                .progress-bar {
+                background-color: yellow;
+                }
+                </style>
+                }
+                else if (item.Progress >= 61)
+                {
+                <style>
+                .progress-bar {
+                background-color: green;
+                }
+                </style>
+                }
+                </div>
 
-                            @if (item.Progress <= 30)
-                            {
-                            <p>Стартиране</p>
-                            }
-                            else if (item.Progress >= 61)
-                            {
-                            <p>Приключване</p>
-                            }
+                @if (item.Progress <= 30)
+                {
+                <p>Стартиране</p>
+                }
+                else if (item.Progress >= 61)
+                {
+                <p>Приключване</p>
+                }
 
-                            </div>
-                            </div>*@
+                </div>
+                </div>*@
                         <div class="card-text">
                             <p class="float-start">@item.Price <i>BGN</i></p>
                         </div>
                         <br><br>
-                        <div class="card-text">
-                            <div class="float-end">
-                                <input type="hidden" name="id" value="@item.Id" />
-                                <button class="btn btn-danger" id="refuseBtn" onclick="refuse(@item.Id+'-cancel')">Отказвам</button>
-                            </div>
-                            <form id="@(item.Id+"-cancel")" method="post" asp-action="Refuse" style="display:none">
-                                <input name="id" value="@item.Id" type="hidden">
-                            </form>
 
-                            @* <form method="post" asp-action="Finished">
-                                <div class="float-start">
-                                <input name="id" value="@item.Id" type="hidden">
-                                <button class="btn btn-success" id="refuseBtn">Предавам</button>
-
+                        @if (item.Finished == false)
+                        {
+                            <div class="card-text">
+                                <div class="float-end">
+                                    <input type="hidden" name="id" value="@item.Id" />
+                                    <button class="btn btn-danger" id="refuseBtn" onclick="refuse(@item.Id+'-cancel')">Отказвам</button>
                                 </div>
-                                </form>*@
-                            <div class="float-start">
-                                <a class="btn btn-success" asp-action="SendFiles" asp-route-id="@item.Id">Изпращане</a>
+                                <form id="@(item.Id+"-cancel")" method="post" asp-action="Refuse" style="display:none">
+                                    <input name="id" value="@item.Id" type="hidden">
+                                </form>
+
+                                <div class="float-start">
+                                    <a class="btn btn-success" asp-action="SendFiles" asp-route-id="@item.Id">Предаване</a>
+                                </div>
+
+                                <br>
                             </div>
+                        }
+                        else
+                        {
+                            <div class="d-flex justify-content-center">
+                                <p>Готово!</p>
+                            </div>
+                        }
 
-                            @*<a value="Изпращане" asp-controller="Job" asp-action="SendFiles">Предавам</a>*@
 
-                            <br>
-                        </div>
                         <br>
 
                         @*качване на извършената работа*@
@@ -131,20 +134,20 @@
                         {
                             @*<form method="post" enctype="multipart/form-data" asp-action="SendFiles">
 
-                                <input name="id" value="@item.Id" type="hidden">
+                <input name="id" value="@item.Id" type="hidden">
 
-                                <div class="form-group">
+                <div class="form-group">
 
-                                <label asp-for="@item.File" class="control-label" style="display:none;"></label>
-                                <input asp-for="@item.File" style="display:none;" type="file" id="file" />
-                                <label id="file2" onclick="func()" for="file" style="display:grid; place-items:center; cursor:pointer;"><i id="imgLogo2" class="bi bi-check" style="display:none;"></i><i class="bi bi-camera" id="imgLogo1"></i></label>
-                                <span asp-validation-for="@item.File" class="text-danger"></span>
-                                </div>
+                <label asp-for="@item.File" class="control-label" style="display:none;"></label>
+                <input asp-for="@item.File" style="display:none;" type="file" id="file" />
+                <label id="file2" onclick="func()" for="file" style="display:grid; place-items:center; cursor:pointer;"><i id="imgLogo2" class="bi bi-check" style="display:none;"></i><i class="bi bi-camera" id="imgLogo1"></i></label>
+                <span asp-validation-for="@item.File" class="text-danger"></span>
+                </div>
 
-                                </form>*@
+                </form>*@
                         }
-                      @*  <br></br>
-                        <a asp-action="SendFiles" asp-route-id="@item.Id">Изпращане</a>*@
+                        @*  <br></br>
+                <a asp-action="SendFiles" asp-route-id="@item.Id">Изпращане</a>*@
                         <br>
                         <a asp-action="ById" asp-route-id="@item.Id" class="card-button">Детайли</a>
                     </div>
@@ -196,9 +199,9 @@
         padding-top: 25px;
     }
     /*
-                                                                                                                                .progress-bar {
-                                                                                                                                    background-color: #fd6900eb;
-                                                                                                                                }*/
+                                                                                                                                    .progress-bar {
+                                                                                                                                        background-color: #fd6900eb;
+                                                                                                                                    }*/
 
     .container2 {
         margin-top: 20px;

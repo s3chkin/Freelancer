@@ -7,6 +7,7 @@ using MVC_Freelancer.Data;
 using MVC_Freelancer.Data.Models;
 using MVC_Freelancer.Models;
 using Recipes.Services;
+using System.Diagnostics;
 using System.Diagnostics.Eventing.Reader;
 using System.Net;
 using System.Net.Mail;
@@ -37,6 +38,7 @@ namespace MVC_Freelancer.Controllers
                 Name = x.Name,
                 Price = x.Price,
                 Id = x.Id,
+                FileURL = $"/file/{x.Files.FirstOrDefault().Id}.{x.Files.FirstOrDefault().Extention}",
                 Status = x.Status,
                 WorkType = x.WorkType,
                 Finished = x.Finished,
@@ -146,7 +148,7 @@ namespace MVC_Freelancer.Controllers
                 Finished = x.Finished,
                 Status = x.Status,
                 Rating = x.Rating,
-
+                FileURL = $"/file/{x.Files.FirstOrDefault().Id}.{x.Files.FirstOrDefault().Extention}",
                 ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}",
 
                 PackageName = x.PackageName,
@@ -359,16 +361,7 @@ namespace MVC_Freelancer.Controllers
             return RedirectToAction("Orders");
         }
 
-        [Authorize]
-        public async Task<IActionResult> Finished(int id)
-        {
-            var jobFd = db.Jobs.FirstOrDefault(r => r.Id == id); //Търсене на обява по айди
-            jobFd.Finished = true;
-            //jobFd.Accept= jobFd.TakerId;
-            db.Update(jobFd);
-            await db.SaveChangesAsync();
-            return RedirectToAction("Orders");
-        }
+
 
         //Refuse
         public async Task<IActionResult> Refuse(int id)
@@ -414,6 +407,7 @@ namespace MVC_Freelancer.Controllers
                     Status = x.Status,
                     DeadLine = x.DeadLine,
                     ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}", //прочитене на снимката от базата данни
+                    FileURL = $"/file/{x.Files.FirstOrDefault().Id}.{x.Files.FirstOrDefault().Extention}",
                 }
              ).ToListAsync();
             return View(model);
@@ -431,6 +425,7 @@ namespace MVC_Freelancer.Controllers
                 Id = x.Id,
                 Status = x.Status,
                 ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}", //прочитене на снимката от базата данни
+                FileURL = $"/file/{x.Files.FirstOrDefault().Id}.{x.Files.FirstOrDefault().Extention}",
             }
              ).ToList();
             db.SaveChanges();
@@ -454,33 +449,13 @@ namespace MVC_Freelancer.Controllers
                 Progress = x.Progress,
                 DeadLine = x.DeadLine,
                 ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}", //прочитене на снимката от базата данни
+                FileURL = $"/file/{x.Files.FirstOrDefault().Id}.{x.Files.FirstOrDefault().Extention}",
             }).ToListAsync();
 
             return View(model);
         }
 
         //качване на файл 
-        //[HttpGet]
-        //public async Task<IActionResult> SendFiles()
-        //{
-        //    string myId = (await GetCurrentUserAsync()).Id;
-
-        //    var model = await db.Jobs.Where(j => j.TakerId == myId).Select(x => new InputJobModel
-        //    {
-        //        Name = x.Name,
-        //        Price = x.Price,
-        //        Id = x.Id,
-        //        Status = x.Status,
-        //        WorkType = x.WorkType,
-        //        Finished = x.Finished,
-        //        Progress = x.Progress,
-        //        DeadLine = x.DeadLine,
-        //        ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}", //прочитене на снимката от базата данни
-        //    }).ToListAsync();
-
-        //    return View(model);
-        //}
-
         [HttpGet]
         public IActionResult SendFiles(int id)
         {
@@ -493,6 +468,7 @@ namespace MVC_Freelancer.Controllers
         public IActionResult SendFiles(int id, InputJobModel model)
         {
             var jobFd = db.Jobs.Where(s => s.Id == id).FirstOrDefault();
+            jobFd.Finished = true;
             var extention = Path.GetExtension(model.File.FileName).TrimStart('.');
             var file2 = new File
             {
@@ -506,10 +482,20 @@ namespace MVC_Freelancer.Controllers
             }
 
             jobFd.Files.Add(file2);
+            db.Update(jobFd);
             db.SaveChanges();
             return RedirectToAction("Orders");
         }
 
+        [Authorize]
+        public async Task<IActionResult> Finished(int id)
+        {
+            var jobFd = db.Jobs.FirstOrDefault(r => r.Id == id); //Търсене на обява по айди
+            jobFd.Finished = true;
+            db.Update(jobFd);
+            await db.SaveChangesAsync();
+            return RedirectToAction("Orders");
+        }
 
 
 
@@ -528,6 +514,18 @@ namespace MVC_Freelancer.Controllers
             db.SaveChanges();
             return this.RedirectToAction("Index");
         }
+
+
+        public IActionResult Download(string filePath, InputJobModel model, int id)
+        {
+            var jobFd = db.Jobs.FirstOrDefault(r => r.Id == id);
+            byte[] fileBytes = System.IO.File.ReadAllBytes(model.FileURL);
+            string fileName = Path.GetFileName(model.FileURL);
+            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
+        }
+
+
+
 
         [HttpPost]
         public IActionResult Rating(int id/*, InputJobModel model*/)
