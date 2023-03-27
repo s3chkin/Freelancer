@@ -11,20 +11,47 @@
 </section>
 <br>
 
+
+<div class="d-flex justify-content-center">
+    <div class="btn-group">
+        <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            Поръчки
+        </button>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" onclick="Accepted()" @*asp-controller="Job" asp-action="Orders"*@>Приети</a></li>
+            <li><a class="dropdown-item" onclick="Finished()" @*href="#"*@>Предадени (Готови)</a></li>
+        </ul>
+    </div>
+
+    <script>
+        function Accepted()
+        {
+            document.getElementById("AcceptedOrders").style.display= "block";
+            document.getElementById("FinishedOrders").style.display= "none";
+
+        }
+
+        function Finished()
+        {
+            document.getElementById("AcceptedOrders").style.display= "none";
+            document.getElementById("FinishedOrders").style.display= "block";
+        }
+    </script>
+</div>
 <br>
 
 <div class=" d-flex flex-wrap justify-content-around ">
     @if (Model.Any())
     {
 
-        <div style=" width:1500px; margin-top:60px;">
+        <div id="AcceptedOrders" style=" width:1500px; margin-top:10px; display:none;">
+
 
             <h5 class="d-flex justify-content-center"><i><b>Приети</b></i> </h5>
 
 
             @foreach (var item in Model.Where(x => x.Finished == false))
             {
-
                 <div class="container container2 float-left" style="">
                     <div class="card-sl ">
                         <div class="card-image">
@@ -35,62 +62,62 @@
                             @item.Name
                         </div>
                         @*  <div class="card-text">
-                <div class="skills">
-                <div style="padding-bottom: 40px;">
-                <div>
-                <p style="float: left;">Напредък (Прогрес)</p>
-                <p style="float: right;">@item.Progress%</p>
-                </div>
-                </div>
-                <form method="post" asp-action="Progress">
-                <input asp-for="@item.Progress">
-                <input type="submit" value="ok" />
-                </form>
-                <br>
+                            <div class="skills">
+                            <div style="padding-bottom: 40px;">
+                            <div>
+                            <p style="float: left;">Напредък (Прогрес)</p>
+                            <p style="float: right;">@item.Progress%</p>
+                            </div>
+                            </div>
+                            <form method="post" asp-action="Progress">
+                            <input asp-for="@item.Progress">
+                            <input type="submit" value="ok" />
+                            </form>
+                            <br>
 
-                <div class="progress">
-                <div class="progress-bar" style="width:@item.Progress%; "></div>
+                            <div class="progress">
+                            <div class="progress-bar" style="width:@item.Progress%; "></div>
 
 
 
-                @if (item.Progress <= 30)
-                {
-                <style>
-                .progress-bar {
-                background-color: red;
-                }
-                </style>
+                            @if (item.Progress <= 30)
+                            {
+                            <style>
+                            .progress-bar {
+                            background-color: red;
+                            }
+                            </style>
 
-                }
-                else if (item.Progress >= 31 && item.Progress <= 60)
-                {
-                <style>
-                .progress-bar {
-                background-color: yellow;
-                }
-                </style>
-                }
-                else if (item.Progress >= 61)
-                {
-                <style>
-                .progress-bar {
-                background-color: green;
-                }
-                </style>
-                }
-                </div>
+                            }
+                            else if (item.Progress >= 31 && item.Progress <= 60)
+                            {
+                            <style>
+                            .progress-bar {
+                            background-color: yellow;
+                            }
+                            </style>
+                            }
+                            else if (item.Progress >= 61)
+                            {
+                            <style>
+                            .progress-bar {
+                            background-color: green;
+                            }
+                            </style>
+                            }
+                            </div>
 
-                @if (item.Progress <= 30)
-                {
-                <p>Стартиране</p>
-                }
-                else if (item.Progress >= 61)
-                {
-                <p>Приключване</p>
-                }
+                            @if (item.Progress <= 30)
+                            {
+                            <p>Стартиране</p>
+                            }
+                            else if (item.Progress >= 61)
+                            {
+                            <p>Приключване</p>
+                            }
 
-                </div>
-                </div>*@
+                            </div>
+                            </div>*@
                         <div class="card-text">
                             <p class="float-start">@item.Price <i>BGN</i></p>
                         </div>
@@ -114,28 +141,6 @@
                         </div>
 
 
-
-                        <br>
-
-                        @*качване на извършената работа*@
-                        @if (item.Finished == true)
-                        {
-                            @*<form method="post" enctype="multipart/form-data" asp-action="SendFiles">
-
-                <input name="id" value="@item.Id" type="hidden">
-
-                <div class="form-group">
-
-                <label asp-for="@item.File" class="control-label" style="display:none;"></label>
-                <input asp-for="@item.File" style="display:none;" type="file" id="file" />
-                <label id="file2" onclick="func()" for="file" style="display:grid; place-items:center; cursor:pointer;"><i id="imgLogo2" class="bi bi-check" style="display:none;"></i><i class="bi bi-camera" id="imgLogo1"></i></label>
-                <span asp-validation-for="@item.File" class="text-danger"></span>
-                </div>
-
-                </form>*@
-                        }
-                        @*  <br></br>
-                <a asp-action="SendFiles" asp-route-id="@item.Id">Изпращане</a>*@
                         <br>
                         <a asp-action="ById" asp-route-id="@item.Id" class="card-button">Детайли</a>
                     </div>
@@ -144,12 +149,12 @@
             }
         </div>
 
-        <div style=" width:1500px; margin-top:60px;">
+        <div id="FinishedOrders" style=" width:1500px; margin-top:10px; display:block;">
 
+            <h5 class="d-flex justify-content-center"><i><b>Извършени, предадени</b></i> </h5>
 
             @foreach (var item in Model.Where(x => x.Finished == true))
             {
-                <h5 class="d-flex justify-content-center"><i><b>Извършени, предадени</b></i> </h5>
 
                 <div class="container container2 float-left" style="">
                     <div class="card-sl ">
@@ -243,9 +248,9 @@
         padding-top: 25px;
     }
     /*
-                                                                                                                                                            .progress-bar {
-                                                                                                                                                                background-color: #fd6900eb;
-                                                                                                                                                            }*/
+                                                                                                                                                                                            .progress-bar {
+                                                                                                                                                                                                background-color: #fd6900eb;
+                                                                                                                                                                                            }*/
 
     .container2 {
         margin-top: 20px;

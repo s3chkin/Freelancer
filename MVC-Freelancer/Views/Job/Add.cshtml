@@ -7,12 +7,12 @@
 
 <form style="display:grid; place-items:center;" method="post" enctype="multipart/form-data">
 
-    <div class="form-group" >
-    <label asp-for="Name" class="control-label">Изберете: <span style="color:red; font-size:20px;">*</span></label>
-    <select class="form-control" style="width: 600px; height:55px;" asp-for="WorkType" name="WorkType">
-        <option value="Предлагам">Предлагам</option>
-        <option value="Търся">Търся</option>
-    </select>
+    <div class="form-group">
+        <label asp-for="Name" class="control-label">Изберете: <span style="color:red; font-size:20px;">*</span></label>
+        <select class="form-control" style="width: 600px; height:55px;" asp-for="WorkType" name="WorkType">
+            <option value="Предлагам">Предлагам</option>
+            <option value="Търся">Търся</option>
+        </select>
     </div>
 
 
@@ -22,7 +22,7 @@
         <label asp-for="Progress" class="control-label"></label>
         <input asp-for="Progress" class="form-control" value="null" id="jobProgress " />
         <span asp-validation-for="Progress" class="text-danger"></span>
-    </div>*@
+        </div>*@
 
     <div class="form-group" style="display:none;">
         <label asp-for="Status" class="control-label"></label>
@@ -37,7 +37,7 @@
     </div>
 
     <div class="form-group">
-        <label  asp-for="DeadLine" class="control-label">Срок <span style="color:red; font-size:20px;">*</span></label>
+        <label asp-for="DeadLine" class="control-label">Срок <span style="color:red; font-size:20px;">*</span> <i style="color:red;">(Ако въведената дата е стара, обявата няма да се види от другите!)</i></label>
         <input required type="date" value="@Model.DeadLine.Date" asp-for="DeadLine" style="width: 600px;height: 55px;margin-bottom: 20px; id="jobInfo" class="form-control" />
         <span asp-validation-for="DeadLine" class="text-danger"></span>
     </div>
@@ -230,8 +230,10 @@
 
 
     </div>
+
     <input type="submit" class="site-btn" value="Добави обява" />
 </form>
+
 
 
 
@@ -273,33 +275,33 @@
 
 @section Scripts
     {
-    <script>
+<script>
 
 
-        function func() {
-            setTimeout(() => { document.getElementById('imgLogo2').style.display = 'block'; }, 3500);
-            document.getElementById('file2').style.color = 'green';
-            document.getElementById('imgLogo1').style.display = 'none';
+    function func() {
+        setTimeout(() => { document.getElementById('imgLogo2').style.display = 'block'; }, 3500);
+        document.getElementById('file2').style.color = 'green';
+        document.getElementById('imgLogo1').style.display = 'none';
 
-            document.getElementById('file2').style.backgroundImage = '@Model.ImgURL';
-        }
-        //function func()
-        //     {
-        //         document.getElementById('file2').style.backgroundImage=@Model.Image;
-        //         //document.getElementById('file').style.color='blue';
-        //     }
-    </script>
+        document.getElementById('file2').style.backgroundImage = '@Model.ImgURL';
+    }
+    //function func()
+    //     {
+    //         document.getElementById('file2').style.backgroundImage=@Model.Image;
+    //         //document.getElementById('file').style.color='blue';
+    //     }
+</script>
 
-    <script>
+<script>
 
-        var needIndex = 0;
+    var needIndex = 0;
 
-        function AddNeed() {
-            $("#Need")
-                .append("<div> Name:<input type='text' name='Need[" + needIndex + "].Name'/> Description: <input type='text' name='Need[" + needIndex + "].Description'/> </div>");
-            needIndex++;
-        }
-    </script>
+    function AddNeed() {
+        $("#Need")
+            .append("<div> Name:<input type='text' name='Need[" + needIndex + "].Name'/> Description: <input type='text' name='Need[" + needIndex + "].Description'/> </div>");
+        needIndex++;
+    }
+</script>
     }
 
 

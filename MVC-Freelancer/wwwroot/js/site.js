@@ -85,7 +85,7 @@ function infoBlock3() {
     document.getElementById("h4Txt").style.color = "black";
 
 
-    document.getElementById("aboutUs-Info-Title").innerHTML = "Свъжете се с мен";
+    document.getElementById("aboutUs-Info-Title").innerHTML = "Свържете се с мен";
     document.getElementById("aboutUs-Info-Text").innerHTML =
         `<a href="https://www.facebook.com/seckin.salim"><i class="fa-brands fa-facebook"  style="font-size:60px;  margin-left:30px; margin-top:30px; color:blue;"></i> </a>
 <a href="https://www.instagram.com/__sechkin__/"><i class="fa-brands fa-instagram" style="font-size:60px;  margin-left:30px; margin-top:30px; color:pink;"></i></a>
