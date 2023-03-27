@@ -23,7 +23,7 @@
         </ul>
     </div>
 
-    <script>
+   @* <script>
         function Accepted()
         {
             document.getElementById("AcceptedOrders").style.display= "block";
@@ -36,7 +36,7 @@
             document.getElementById("AcceptedOrders").style.display= "none";
             document.getElementById("FinishedOrders").style.display= "block";
         }
-    </script>
+    </script>*@
 </div>
 <br>
 
@@ -44,7 +44,7 @@
     @if (Model.Any())
     {
 
-        <div id="AcceptedOrders" style=" width:1500px; margin-top:10px; display:none;">
+        <div id="AcceptedOrders" style=" width:1500px; margin-top:10px; /*display:none;*/">
 
 
             <h5 class="d-flex justify-content-center"><i><b>Приети</b></i> </h5>
@@ -149,7 +149,7 @@
             }
         </div>
 
-        <div id="FinishedOrders" style=" width:1500px; margin-top:10px; display:block;">
+        <div id="FinishedOrders" style=" width:1500px; margin-top:10px; /*display:block;*/">
 
             <h5 class="d-flex justify-content-center"><i><b>Извършени, предадени</b></i> </h5>
 
