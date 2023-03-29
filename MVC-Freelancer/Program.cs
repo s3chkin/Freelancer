@@ -9,6 +9,7 @@ namespace MVC_Freelancer
 {
     public class Program
     {
+        
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
@@ -37,16 +38,19 @@ namespace MVC_Freelancer
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.AddControllersWithViews();
 
-            //builder.Services.AddDefaultIdentity<AppUser>(options =>
-            //{
-            //    options.SignIn.RequireConfirmedAccount = false;
-            //    options.Password.RequireDigit = false;
-            //    options.Password.RequiredLength = 4;
-            //    options.Password.RequireLowercase = false;
-            //    options.Password.RequireUppercase = false;
-            //    options.Password.RequiredUniqueChars = 0;
-            //});
+            //builder.Services.AddDbContext<AppI>(options => options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
+            //builder.Services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<AppIdentityDbContext>().AddDefaultTokenProviders();
 
+            builder.Services.AddAuthentication().AddGoogle(
+                opts =>
+                {
+                    opts.ClientId = "584315873580-vupubqnalkd8qmih96unubt2408v27l6.apps.googleusercontent.com";
+                    opts.ClientSecret = "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";
+                    opts.SignInScheme = IdentityConstants.ExternalScheme;
+                });
+            builder.Services.AddControllersWithViews();
+
+           
             builder.Services.AddTransient<IDataBaseSeeder, DataBaseSeeder>();
             var app = builder.Build();
 

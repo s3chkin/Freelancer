@@ -23,7 +23,7 @@ namespace MVC_Freelancer.Controllers
         private string[] allowedExtention = new[] { "png", "jpg", "jpeg" };
         private string[] allowedExtention2 = new[] { "png", "jpg", "jpeg", "zip", "txt", "exe", "cs", "css", "js", "sln", "rar" };
 
-        public JobController(ApplicationDbContext db, IWebHostEnvironment webHostEnvironment/*, IShortStringService shortStringService*/, UserManager<AppUser> um) : base(um)
+        public JobController(ApplicationDbContext db, IWebHostEnvironment webHostEnvironment/*, IShortStringService shortStringService*/, UserManager<AppUser> userManager) : base(userManager)
         {
             this.db = db;
             this.webHostEnvironment = webHostEnvironment;
