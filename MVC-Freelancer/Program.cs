@@ -9,7 +9,7 @@ namespace MVC_Freelancer
 {
     public class Program
     {
-        
+
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
@@ -38,6 +38,19 @@ namespace MVC_Freelancer
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.AddControllersWithViews();
 
+        //    builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+        //.AddEntityFrameworkStores<ApplicationDbContext>()
+        //.AddDefaultTokenProviders();
+
+            //builder.Services.AddAuthorization(options =>
+            //{
+            //    options.AddPolicy("AdminsOnly", policy => policy.RequireRole("Admin"));
+            //    options.AddPolicy("UsersOnly", policy => policy.RequireRole("User"));
+            //});
+
+            
+
+
             //builder.Services.AddDbContext<AppI>(options => options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
             //builder.Services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<AppIdentityDbContext>().AddDefaultTokenProviders();
 
@@ -50,7 +63,7 @@ namespace MVC_Freelancer
                 });
             builder.Services.AddControllersWithViews();
 
-           
+
             builder.Services.AddTransient<IDataBaseSeeder, DataBaseSeeder>();
             var app = builder.Build();
 
@@ -75,7 +88,6 @@ namespace MVC_Freelancer
             app.UseStaticFiles();
 
             app.UseRouting();
-
             app.UseAuthentication();
             app.UseAuthorization();
 
