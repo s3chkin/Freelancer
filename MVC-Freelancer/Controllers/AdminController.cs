@@ -22,8 +22,8 @@ namespace MVC_Freelancer.Controllers
             return View();
         }
 
-        public IActionResult Portfolio() 
-        { 
+        public IActionResult Portfolio()
+        {
             return View();
         }
 
@@ -45,7 +45,7 @@ namespace MVC_Freelancer.Controllers
             {
                 IdentityRole identityRole = new()
                 {
-                     Name = model.RoleName
+                    Name = model.RoleName
                 };
                 var result = await _roleManager.CreateAsync(identityRole);
                 if (result.Succeeded)
@@ -60,7 +60,7 @@ namespace MVC_Freelancer.Controllers
             return View(model);
         }
 
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public IActionResult UsersList()
         {
             var usersWithRoles = (from user in db.Users
@@ -76,12 +76,22 @@ namespace MVC_Freelancer.Controllers
                                   }).ToList().Select(p => new UserViewModel()
 
                                   {
-                                      UserId = p.UserId,
+                                      Id = p.UserId,
                                       Username = p.Username,
                                       Email = p.Email,
                                       //Role = string.Join(",", p.RoleNames)
                                   });
             return View(usersWithRoles);
+        }
+
+        public IActionResult IsDisabled(string id, AppUser usr)
+        {
+            var userFd = db.AppUser.FirstOrDefault(r => r.Id == id); //Търсене на потребител по айди
+            usr.IsDisabled = userFd.IsDisabled;
+            userFd.IsDisabled = true;
+            db.Update(userFd);
+             db.SaveChanges();
+            return RedirectToAction("UsersList");
         }
     }
 }

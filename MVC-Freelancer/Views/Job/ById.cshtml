@@ -29,8 +29,9 @@
                 <p>Крайна дата: @Model.DeadLine.ToString("dd/MM/yyyy")</p>
                 <p>Цена: @Model.Price лв.</p>
                 <p>Автор: @Model.Author.FirstName</p>
+                <p>Комуникация: @Model.Author.Email</p>
                 <hr>
-                <br></br>
+                <br>
                 <div class="d-flex justify-content-center">
                     <form method="post" asp-action="Accept">
                         <fieldset>

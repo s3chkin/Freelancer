@@ -1,6 +1,8 @@
 ﻿@model IEnumerable<MVC_Freelancer.Models.UserViewModel>
-<br><br>
-<br><br>
+<br>
+<br>
+<br>
+<br>
 
 <div class="d-flex justify-content-center">
     <div>
@@ -26,6 +28,7 @@
                     <td><b>Потребителско име</b></td>
                     <td><b>Email</b></td>
                     <td><b>Роля</b></td>
+                    <td><b>Опция</b></td>
                 </tr>
             </thead>
             @foreach (var user in Model)
@@ -34,6 +37,14 @@
                     <td>@user.Username</td>
                     <td>@user.Email</td>
                     <td>@user.Role</td>
+                    <td>
+                        <form method="post" asp-controller="Admin" asp-action="IsDisabled">
+                            <fieldset>
+                                <input type="hidden" name="id" value="@user.Id" />
+                                <button type="submit" class="btn btn-warning"><i class="fa-solid fa-pause float-left"></i> </button>
+                            </fieldset>
+                        </form>
+                    </td>
 
                 </tr>
             }

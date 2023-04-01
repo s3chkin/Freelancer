@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using MVC_Freelancer.Data.Models;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MVC_Freelancer.Models
 {
@@ -27,7 +28,8 @@ namespace MVC_Freelancer.Models
         [Required]
         public string WorkType { get; set; }
         public bool Finished { get; set; }
-        public int Progress { get; set; }
+        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int? Progress { get; set; }
 
         public string GiverId { get; set; }
         public string? TakerId { get; set; }

@@ -23,19 +23,19 @@
         </ul>
     </div>
 
-   @* <script>
-        function Accepted()
-        {
-            document.getElementById("AcceptedOrders").style.display= "block";
-            document.getElementById("FinishedOrders").style.display= "none";
+    @* <script>
+    function Accepted()
+    {
+    document.getElementById("AcceptedOrders").style.display= "block";
+    document.getElementById("FinishedOrders").style.display= "none";
 
-        }
+    }
 
-        function Finished()
-        {
-            document.getElementById("AcceptedOrders").style.display= "none";
-            document.getElementById("FinishedOrders").style.display= "block";
-        }
+    function Finished()
+    {
+    document.getElementById("AcceptedOrders").style.display= "none";
+    document.getElementById("FinishedOrders").style.display= "block";
+    }
     </script>*@
 </div>
 <br>
@@ -61,63 +61,72 @@
                         <div class="card-heading">
                             @item.Name
                         </div>
-                        @*  <div class="card-text">
+                        <div class="card-text">
                             <div class="skills">
-                            <div style="padding-bottom: 40px;">
-                            <div>
-                            <p style="float: left;">Напредък (Прогрес)</p>
-                            <p style="float: right;">@item.Progress%</p>
+                                <div style="padding-bottom: 40px;">
+                                    <div>
+                                        <p style="float: left;">Напредък (Прогрес)</p>
+                                        <p style="float: right;">@item.Progress%</p>
+                                    </div>
+                                </div>
+                                @*<form method="post" asp-action="Progress">
+                                    <input asp-for="@item.Progress">
+                                    <input type="submit" value="ok" />
+                                </form>*@
+
+                                <form method="post" asp-action="Progress">
+                                    <fieldset>
+                                        <input type="hidden" name="id" value="@item.Id" />
+                                        <input asp-for="@item.Progress">
+                                        <button type="submit" class="btn btn-warning">ok</button>
+                                    </fieldset>
+                                </form>
+
+                                <br>
+
+                                <div class="progress">
+                                    <div class="progress-bar" style="width:@item.Progress%; "></div>
+
+
+
+                                    @if (item.Progress <= 30)
+                                    {
+                                        <style>
+                                            .progress-bar {
+                                                background-color: red;
+                                            }
+                                        </style>
+
+                                    }
+                                    else if (item.Progress >= 31 && item.Progress <= 60)
+                                    {
+                                        <style>
+                                            .progress-bar {
+                                                background-color: yellow;
+                                            }
+                                        </style>
+                                    }
+                                    else if (item.Progress >= 61)
+                                    {
+                                        <style>
+                                            .progress-bar {
+                                                background-color: green;
+                                            }
+                                        </style>
+                                    }
+                                </div>
+
+                                @if (item.Progress <= 30)
+                                {
+                                    <p>Стартиране</p>
+                                }
+                                else if (item.Progress >= 61)
+                                {
+                                    <p>Приключване</p>
+                                }
+
                             </div>
-                            </div>
-                            <form method="post" asp-action="Progress">
-                            <input asp-for="@item.Progress">
-                            <input type="submit" value="ok" />
-                            </form>
-                            <br>
-
-                            <div class="progress">
-                            <div class="progress-bar" style="width:@item.Progress%; "></div>
-
-
-
-                            @if (item.Progress <= 30)
-                            {
-                            <style>
-                            .progress-bar {
-                            background-color: red;
-                            }
-                            </style>
-
-                            }
-                            else if (item.Progress >= 31 && item.Progress <= 60)
-                            {
-                            <style>
-                            .progress-bar {
-                            background-color: yellow;
-                            }
-                            </style>
-                            }
-                            else if (item.Progress >= 61)
-                            {
-                            <style>
-                            .progress-bar {
-                            background-color: green;
-                            }
-                            </style>
-                            }
-                            </div>
-
-                            @if (item.Progress <= 30)
-                            {
-                            <p>Стартиране</p>
-                            }
-                            else if (item.Progress >= 61)
-                            {
-                            <p>Приключване</p>
-                            }
-
-                            </div>
-                            </div>*@
+                        </div>
                         <div class="card-text">
                             <p class="float-start">@item.Price <i>BGN</i></p>
                         </div>
@@ -248,9 +257,9 @@
         padding-top: 25px;
     }
     /*
-                                                                                                                                                                                            .progress-bar {
-                                                                                                                                                                                                background-color: #fd6900eb;
-                                                                                                                                                                                            }*/
+                                                                                                                                                                                                    .progress-bar {
+                                                                                                                                                                                                        background-color: #fd6900eb;
+                                                                                                                                                                                                    }*/
 
     .container2 {
         margin-top: 20px;

@@ -23,6 +23,7 @@ namespace MVC_Freelancer.Data.Models
         //public string Skills { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public bool IsDisabled { get; set; }
         //public virtual ICollection<Job> JobsGiven { get; set; }
 
         public virtual ICollection<UserSkill> Skills { get; set; }

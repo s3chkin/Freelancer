@@ -42,6 +42,7 @@ namespace MVC_Freelancer.Controllers
                 Status = x.Status,
                 WorkType = x.WorkType,
                 Finished = x.Finished,
+                Progress= x.Progress,
                 DeadLine = x.DeadLine,
                 ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}", //прочитене на снимката от базата данни
                 Author = x.Giver,
@@ -355,9 +356,7 @@ namespace MVC_Freelancer.Controllers
         {
             string myId = (await GetCurrentUserAsync()).Id; //моето айди
             var jobFd = db.Jobs.FirstOrDefault(r => r.Id == id /*|| r.GiverId != myId || r.TakerId != myId*/); //Търсене на обява по айди
-            //jobFd.Accept = true;
             jobFd.TakerId = myId;
-            //jobFd.Accept= jobFd.TakerId;
             db.Update(jobFd);
             await db.SaveChangesAsync();
             return RedirectToAction("Orders");
@@ -504,30 +503,20 @@ namespace MVC_Freelancer.Controllers
 
 
 
-        public IActionResult Progress(InputJobModel model)
+        public IActionResult Progress(InputJobModel model, int id)
         {
-            var job = new Job
-            {
-                Progress = model.Progress,
-
-            };
-            if (model.Finished == false)
-            {
-                model.Progress = 0;
-            }
-            db.Jobs.Add(job);
-            db.SaveChanges();
-            return this.RedirectToAction("Index");
-        }
-
-
-        public IActionResult Download(string filePath, InputJobModel model, int id)
-        {
+            //var jobFd = db.Jobs.Where(s => s.Id == model.Id).FirstOrDefault(); //търсене
             var jobFd = db.Jobs.FirstOrDefault(r => r.Id == id);
-            byte[] fileBytes = System.IO.File.ReadAllBytes(model.FileURL);
-            string fileName = Path.GetFileName(model.FileURL);
-            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
+            model.Progress = 60;
+
+            //db.Jobs.Add(jobFd);
+            db.Update(jobFd);
+            db.SaveChanges();
+            return this.View("Orders");
         }
+
+
+      
 
 
 

@@ -1,4 +1,6 @@
-﻿namespace MVC_Freelancer.Data.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace MVC_Freelancer.Data.Models
 {
     public class Job
     {
@@ -14,7 +16,8 @@
         public string Description { get; set; }
         public double Price { get; set; }
         public DateTime DeadLine { get; set; }
-        public int Progress { get; set; }
+        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int? Progress { get; set; }
         public bool? Status { get; set; }
         public double? Rating { get; set; }
         public string WorkType { get; set; }
