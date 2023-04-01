@@ -55,7 +55,7 @@
                 <div class="container container2 float-left" style="">
                     <div class="card-sl ">
                         <div class="card-image">
-                            <img id="image" height="220px;" src="@item.ImgURL" />
+                            <img id="image" height="220px;" width="100%" src="@item.ImgURL" />
                         </div>
 
                         <div class="card-heading">
@@ -70,16 +70,17 @@
                                     </div>
                                 </div>
                                 @*<form method="post" asp-action="Progress">
-                                    <input asp-for="@item.Progress">
-                                    <input type="submit" value="ok" />
-                                </form>*@
+                        <input asp-for="@item.Progress">
+                        <input type="submit" value="ok" />
+                        </form>*@
 
                                 <form method="post" asp-action="Progress">
-                                    <fieldset>
-                                        <input type="hidden" name="id" value="@item.Id" />
-                                        <input asp-for="@item.Progress">
-                                        <button type="submit" class="btn btn-warning">ok</button>
-                                    </fieldset>
+                                    @*<input type="hidden" name="id" value="@item.Id" />*@
+                                    <input type="hidden" name="id" value="@item.Id" />
+                                    <input id="progressNum" min="0" max="100" step="1" value="0" value="@item.Progress" for="@item.Progress" asp-for="@item.Progress">
+                                    <input type="submit" class="btn btn-success" value="ok" />
+
+
                                 </form>
 
                                 <br>
@@ -89,31 +90,31 @@
 
 
 
-                                    @if (item.Progress <= 30)
-                                    {
-                                        <style>
-                                            .progress-bar {
-                                                background-color: red;
-                                            }
-                                        </style>
+                                    @*@if (item.Progress <= 30)
+                            {
+                            <style>
+                            .progress-bar {
+                            background-color: red;
+                            }
+                            </style>
 
-                                    }
-                                    else if (item.Progress >= 31 && item.Progress <= 60)
-                                    {
-                                        <style>
-                                            .progress-bar {
-                                                background-color: yellow;
-                                            }
-                                        </style>
-                                    }
-                                    else if (item.Progress >= 61)
-                                    {
-                                        <style>
-                                            .progress-bar {
-                                                background-color: green;
-                                            }
-                                        </style>
-                                    }
+                            }
+                            else if (item.Progress >= 31 && item.Progress <= 60)
+                            {
+                            <style>
+                            .progress-bar {
+                            background-color: yellow;
+                            }
+                            </style>
+                            }
+                            else if (item.Progress >= 61)
+                            {
+                            <style>
+                            .progress-bar {
+                            background-color: green;
+                            }
+                            </style>
+                            }*@
                                 </div>
 
                                 @if (item.Progress <= 30)
@@ -257,9 +258,9 @@
         padding-top: 25px;
     }
     /*
-                                                                                                                                                                                                    .progress-bar {
-                                                                                                                                                                                                        background-color: #fd6900eb;
-                                                                                                                                                                                                    }*/
+                                                                                                                                                                                                            .progress-bar {
+                                                                                                                                                                                                                background-color: #fd6900eb;
+                                                                                                                                                                                                            }*/
 
     .container2 {
         margin-top: 20px;

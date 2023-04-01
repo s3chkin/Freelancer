@@ -42,7 +42,7 @@ namespace MVC_Freelancer.Controllers
                 Status = x.Status,
                 WorkType = x.WorkType,
                 Finished = x.Finished,
-                Progress= x.Progress,
+                Progress = x.Progress,
                 DeadLine = x.DeadLine,
                 ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}", //прочитене на снимката от базата данни
                 Author = x.Giver,
@@ -83,7 +83,7 @@ namespace MVC_Freelancer.Controllers
                 Price = model.Price,
                 CategoryId = model.CategoryId,
                 Description = model.Description,
-                Progress = model.Progress,
+                //Progress = model.Progress,
                 Status = model.Status,
                 WorkType = model.WorkType,
                 Rating = model.Rating,
@@ -236,6 +236,7 @@ namespace MVC_Freelancer.Controllers
             job.CategoryId = model.CategoryId;
             job.WorkType = model.WorkType;
 
+
             job.PackageName = model.PackageName;
             job.PackageName2 = model.PackageName2;
             job.PackageName3 = model.PackageName3;
@@ -367,7 +368,7 @@ namespace MVC_Freelancer.Controllers
         //Refuse
         public async Task<IActionResult> Refuse(int id)
         {
-            string myId = (await GetCurrentUserAsync()).Id;
+            //string myId = (await GetCurrentUserAsync()).Id;
             var jobFd = db.Jobs.FirstOrDefault(j => j.Id == id);
             jobFd.TakerId = null;
             db.Update(jobFd);
@@ -407,6 +408,7 @@ namespace MVC_Freelancer.Controllers
                     Id = x.Id,
                     WorkType = x.WorkType,
                     Status = x.Status,
+                    Progress = x.Progress,
                     DeadLine = x.DeadLine,
                     ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}", //прочитене на снимката от базата данни
                     FileURL = $"/file/{x.Files.FirstOrDefault().Id}.{x.Files.FirstOrDefault().Extention}",
@@ -426,6 +428,7 @@ namespace MVC_Freelancer.Controllers
                 Price = x.Price,
                 Id = x.Id,
                 Status = x.Status,
+                Progress = x.Progress,
                 ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}", //прочитене на снимката от базата данни
                 FileURL = $"/file/{x.Files.FirstOrDefault().Id}.{x.Files.FirstOrDefault().Extention}",
             }
@@ -439,9 +442,6 @@ namespace MVC_Freelancer.Controllers
         public async Task<IActionResult> Orders()
         {
             string myId = (await GetCurrentUserAsync()).Id;
-
-
-
             var model = await db.Jobs.Where(j => j.TakerId == myId).Select(x => new InputJobModel
             {
                 Id = x.Id,
@@ -502,21 +502,20 @@ namespace MVC_Freelancer.Controllers
         }
 
 
-
         public IActionResult Progress(InputJobModel model, int id)
         {
             //var jobFd = db.Jobs.Where(s => s.Id == model.Id).FirstOrDefault(); //търсене
-            var jobFd = db.Jobs.FirstOrDefault(r => r.Id == id);
-            model.Progress = 60;
-
-            //db.Jobs.Add(jobFd);
+            var jobFd = db.Jobs.FirstOrDefault(r => r.Id == model.Id);
+            model.Progress = jobFd.Progress;
+            //jobFd.Progress = 20;
+            db.Jobs.Add(jobFd);
             db.Update(jobFd);
             db.SaveChanges();
-            return this.View("Orders");
+            return RedirectToAction("Orders");
         }
 
 
-      
+
 
 
 
