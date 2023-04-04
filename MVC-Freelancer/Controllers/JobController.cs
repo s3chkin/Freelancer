@@ -52,9 +52,6 @@ namespace MVC_Freelancer.Controllers
             return View(model);
         }
 
-
-
-
         [HttpGet]
         public IActionResult Add()
         {
@@ -501,12 +498,12 @@ namespace MVC_Freelancer.Controllers
             return RedirectToAction("Orders");
         }
 
-
+        [HttpPost]
         public IActionResult Progress(InputJobModel model, int id)
         {
             //var jobFd = db.Jobs.Where(s => s.Id == model.Id).FirstOrDefault(); //търсене
             var jobFd = db.Jobs.FirstOrDefault(r => r.Id == model.Id);
-            model.Progress = jobFd.Progress;
+             jobFd.Progress = model.Progress ;
             //jobFd.Progress = 20;
             db.Jobs.Add(jobFd);
             db.Update(jobFd);
