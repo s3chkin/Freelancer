@@ -29,25 +29,25 @@
 <br>
 <br>
 @*
-@foreach (var item in Model)
-{
+    @foreach (var item in Model)
+    {
     <div class="float-left">
     <div class="row d-flex justify-content-center">
-        <div class="column">
-            <div class="card">
-                <div>
-                    <p class="float-start">Заявка</p>
-                   
-                </div>
-                <h3 class="float-end">Заглавие: <b>@item.Title</b></h3>
-                <p>Описание: @item.Description</p>
-                <p>Бюджет: @item.Sum лева</p>
-                <p>Срок: @item.DeadLine.ToString("dd/MM/yyyy")</p>
-            </div></div>
-            <br><br>
-        </div>
+    <div class="column">
+    <div class="card">
+    <div>
+    <p class="float-start">Заявка</p>
+
     </div>
-}*@
+    <h3 class="float-end">Заглавие: <b>@item.Title</b></h3>
+    <p>Описание: @item.Description</p>
+    <p>Бюджет: @item.Sum лева</p>
+    <p>Срок: @item.DeadLine.ToString("dd/MM/yyyy")</p>
+    </div></div>
+    <br><br>
+    </div>
+    </div>
+    }*@
 
 
 
@@ -74,24 +74,49 @@
                         <p class="float-start">@item.Price <i>BGN</i></p>
 
                     </div>
+                    <div style="margin-top:30px;" class="d-flex justify-content-center">
+                        @*<form method="post" asp-action="Accept">
+                            <fieldset>
+                            <input type="hidden" name="id" value="@item.Id" />
+                            <button type="submit" class="btn btn-success">Приеми </button>
+                            </fieldset>
+                            </form>*@
 
-                    @if (item.Finished == true)
-                    {
-                        <div style="margin-top:30px;" class="d-flex justify-content-center">
-                            <button type="submit" class="btn btn-warning disabled">Прието </button>
-                        </div>
-                    }
-                    else
-                    {
-                        <div style="margin-top:30px;" class="d-flex justify-content-center">
+                        @if (item.Author.UserName == User.Identity.Name)
+                        {
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <form method="post">
+                                    <fieldset>
+                                        <button type="submit" class="btn btn-secondary" disabled>Собствена </button>
+                                    </fieldset>
+                                </form>
+                            }
+                            else
+                            {
+
+                                <form asp-area="Identity" asp-page="/Account/Login">
+                                    <fieldset>
+                                        <input type="hidden" name="id" value="@item.Id" />
+                                        <button type="submit" class="btn btn-success">Приеми </button>
+                                    </fieldset>
+                                </form>
+
+                            }
+                        }
+                        else
+                        {
                             <form method="post" asp-action="Accept">
                                 <fieldset>
                                     <input type="hidden" name="id" value="@item.Id" />
                                     <button type="submit" class="btn btn-success">Приеми </button>
                                 </fieldset>
                             </form>
-                        </div>
-                    }
+                        }
+
+
+
+                    </div>
                     <br>
                     <a asp-action="ById" asp-route-id="@item.Id" class="card-button"> Детайли</a>
                 </div>
@@ -104,8 +129,9 @@
 </div>
 <style>
     .card-sl {
-     border-radius: 4px; 
-}
+        border-radius: 4px;
+    }
+
     .container2 {
         margin-top: 20px;
         width: 25%;
