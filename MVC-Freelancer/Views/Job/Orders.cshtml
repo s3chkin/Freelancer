@@ -69,13 +69,18 @@
                                         <p style="float: right;">@item.Progress%</p>
                                     </div>
                                 </div>
-                               
+
 
                                 <form method="post" asp-action="Progress">
                                     <input type="hidden" name="id" value="@item.Id" />
-                                    <input type="number" min="0" max="100" step="1"  value="@item.Progress" name="newProgress"  >
-                                    <input type="submit" class="btn btn-success" value="ok" />
+                                    <div class="d-flex justify-content-center">
+                                        <input type="number" min="0" max="100" step="1" value="@item.Progress" name="newProgress" style="width:200px;">
+                                    </div>
 
+                                    <br>
+                                    <div class="d-flex justify-content-center">
+                                        <input type="submit" class="btn btn-warning" value="Запази" />
+                                    </div>
 
                                 </form>
 
@@ -86,7 +91,7 @@
 
 
 
-                                    @*@if (item.Progress <= 30)
+                                    @if (item.Progress <= 30)
                             {
                             <style>
                             .progress-bar {
@@ -110,7 +115,7 @@
                             background-color: green;
                             }
                             </style>
-                            }*@
+                            }
                                 </div>
 
                                 @if (item.Progress <= 30)

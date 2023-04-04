@@ -501,10 +501,8 @@ namespace MVC_Freelancer.Controllers
         [HttpPost]
         public IActionResult Progress(int newProgress, int id)
         {
-            //var jobFd = db.Jobs.Where(s => s.Id == model.Id).FirstOrDefault(); //търсене
             var jobFd = db.Jobs.FirstOrDefault(r => r.Id == id);
-             jobFd.Progress = newProgress;
-            //jobFd.Progress = 20;
+            jobFd.Progress = newProgress;
             db.Jobs.Add(jobFd);
             db.Update(jobFd);
             db.SaveChanges();
