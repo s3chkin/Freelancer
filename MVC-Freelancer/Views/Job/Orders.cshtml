@@ -69,15 +69,11 @@
                                         <p style="float: right;">@item.Progress%</p>
                                     </div>
                                 </div>
-                                @*<form method="post" asp-action="Progress">
-                        <input asp-for="@item.Progress">
-                        <input type="submit" value="ok" />
-                        </form>*@
+                               
 
                                 <form method="post" asp-action="Progress">
-                                    @*<input type="hidden" name="id" value="@item.Id" />*@
                                     <input type="hidden" name="id" value="@item.Id" />
-                                    <input id="progressNum" min="0" max="100" step="1"  value="@item.Progress"  asp-for="@item.Progress">
+                                    <input type="number" min="0" max="100" step="1"  value="@item.Progress" name="newProgress"  >
                                     <input type="submit" class="btn btn-success" value="ok" />
 
 
