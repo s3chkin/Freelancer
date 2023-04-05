@@ -137,14 +137,14 @@
 
                         </div>
                         <br>
-                        @if (item.TakerRating == null)
+                        @if (item.RatingForTaker == null)
                         {
                             <div class="d-flex justify-content-center">
-                                <form method="post" asp-action="Rating">
+                                <form method="post" asp-action="RatingForTaker">
                                     <input type="hidden" name="id" value="@item.Id" />
                                     <div>
-                                        <label asp-for="@item.TakerRating">Рейтинг: </label>
-                                        <select value="@item.TakerRating" name="rating">
+                                        <label asp-for="@item.RatingForTaker">Рейтинг: </label>
+                                        <select value="@item.RatingForTaker" name="rating">
                                             <option value="1">1</option>
                                             <option value="2">2</option>
                                             <option value="3">3</option>
@@ -161,11 +161,11 @@
                             
                             <div class="d-flex justify-content-center">
 
-                                @for (var i = 0; i < @item.TakerRating; i++)
+                                @for (var i = 0; i < @item.RatingForTaker; i++)
                                 {
                                     <i class="fa-solid fa-star" style="color:#e1da02;"></i>
                                 }
-                                @for (var j = 0; j < 5 - @item.TakerRating; j++)
+                                @for (var j = 0; j < 5 - @item.RatingForTaker; j++)
                                 {
                                     <i class="fa-regular fa-star"></i>
                                 }

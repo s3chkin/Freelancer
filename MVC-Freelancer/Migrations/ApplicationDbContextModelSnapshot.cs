@@ -417,9 +417,6 @@ namespace MVC_Freelancer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int?>("GiverRating")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -463,6 +460,12 @@ namespace MVC_Freelancer.Migrations
                     b.Property<int?>("Progress")
                         .HasColumnType("int");
 
+                    b.Property<int?>("RatingForGiver")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("RatingForTaker")
+                        .HasColumnType("int");
+
                     b.Property<int>("Revision")
                         .HasColumnType("int");
 
@@ -477,9 +480,6 @@ namespace MVC_Freelancer.Migrations
 
                     b.Property<string>("TakerId")
                         .HasColumnType("nvarchar(450)");
-
-                    b.Property<int?>("TakerRating")
-                        .HasColumnType("int");
 
                     b.Property<string>("WorkType")
                         .IsRequired()

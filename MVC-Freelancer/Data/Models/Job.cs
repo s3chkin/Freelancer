@@ -19,8 +19,8 @@ namespace MVC_Freelancer.Data.Models
         //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int? Progress { get; set; }
         public bool? Status { get; set; }
-        public int?  TakerRating { get; set; }
-        public int?  GiverRating { get; set; }
+        public int?  RatingForTaker { get; set; } // - В това поле се записва рейтингът, изпратен от собственика на обявата за приемащия.
+        public int?  RatingForGiver { get; set; } // - В това поле се записва рейтингът, изпратен от приемащия на обявата за собствника й.
         public string WorkType { get; set; }
         public bool Finished { get; set; }
         public string GiverId { get; set; }

@@ -83,7 +83,7 @@ namespace MVC_Freelancer.Controllers
                 //Progress = model.Progress,
                 Status = model.Status,
                 WorkType = model.WorkType,
-                TakerRating = model.TakerRating,
+                RatingForTaker = model.RatingForTaker,
 
 
                 PackageName = model.PackageName,
@@ -145,7 +145,7 @@ namespace MVC_Freelancer.Controllers
                 Progress = x.Progress,
                 Finished = x.Finished,
                 Status = x.Status,
-                TakerRating = x.TakerRating,
+                RatingForTaker = x.RatingForTaker,
                 FileURL = $"/file/{x.Files.FirstOrDefault().Id}.{x.Files.FirstOrDefault().Extention}",
                 ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}",
 
@@ -406,7 +406,7 @@ namespace MVC_Freelancer.Controllers
                     WorkType = x.WorkType,
                     Status = x.Status,
                     Progress = x.Progress,
-                    TakerRating = x.TakerRating,
+                    RatingForTaker = x.RatingForTaker,
                     DeadLine = x.DeadLine,
                     ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}", //прочитене на снимката от базата данни
                     FileURL = $"/file/{x.Files.FirstOrDefault().Id}.{x.Files.FirstOrDefault().Extention}",
@@ -449,6 +449,7 @@ namespace MVC_Freelancer.Controllers
                 WorkType = x.WorkType,
                 Finished = x.Finished,
                 Progress = x.Progress,
+                RatingForGiver = x.RatingForGiver,
                 DeadLine = x.DeadLine,
                 ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}", //прочитене на снимката от базата данни
                 FileURL = $"/file/{x.Files.FirstOrDefault().Id}.{x.Files.FirstOrDefault().Extention}",
@@ -511,14 +512,24 @@ namespace MVC_Freelancer.Controllers
         }
 
         [HttpPost]
-        public IActionResult Rating(int rating, int id)
+        public IActionResult RatingForTaker(int rating, int id)
         {
             var jobFd = db.Jobs.FirstOrDefault(r => r.Id == id);
-            jobFd.TakerRating = rating;
+            jobFd.RatingForTaker = rating;
             db.Jobs.Add(jobFd);
             db.Update(jobFd);
             db.SaveChanges();
             return RedirectToAction("MyJobs");
+        }
+        [HttpPost]
+        public IActionResult RatingForGiver(int rating, int id)
+        {
+            var jobFd = db.Jobs.FirstOrDefault(r => r.Id == id);
+            jobFd.RatingForGiver = rating;
+            db.Jobs.Add(jobFd);
+            db.Update(jobFd);
+            db.SaveChanges();
+            return RedirectToAction("Orders");
         }
 
 

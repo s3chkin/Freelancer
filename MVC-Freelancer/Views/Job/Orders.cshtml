@@ -208,6 +208,40 @@
                         }
 
                         <br>
+                        @if (item.RatingForGiver == null)
+                        {
+                            <div class="d-flex justify-content-center">
+                                <form method="post" asp-action="RatingForGiver">
+                                    <input type="hidden" name="id" value="@item.Id" />
+                                    <div>
+                                        <label asp-for="@item.RatingForGiver">Рейтинг: </label>
+                                        <select value="@item.RatingForGiver" name="rating">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                        <input class="btn btn-warning" type="submit" value="Изпрати">
+                                    </div>
+                                </form>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="d-flex justify-content-center">
+
+                                @for (var i = 0; i < @item.RatingForGiver; i++)
+                                {
+                                    <i class="fa-solid fa-star" style="color:#e1da02;"></i>
+                                }
+                                @for (var j = 0; j < 5 - @item.RatingForGiver; j++)
+                                {
+                                    <i class="fa-regular fa-star"></i>
+                                }
+                            </div>
+                        }
+
                         <br>
                         <a asp-action="ById" asp-route-id="@item.Id" class="card-button">Детайли</a>
                     </div>
