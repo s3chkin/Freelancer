@@ -83,7 +83,7 @@ namespace MVC_Freelancer.Controllers
                 //Progress = model.Progress,
                 Status = model.Status,
                 WorkType = model.WorkType,
-                Rating = model.Rating,
+                TakerRating = model.TakerRating,
 
 
                 PackageName = model.PackageName,
@@ -145,7 +145,7 @@ namespace MVC_Freelancer.Controllers
                 Progress = x.Progress,
                 Finished = x.Finished,
                 Status = x.Status,
-                Rating = x.Rating,
+                TakerRating = x.TakerRating,
                 FileURL = $"/file/{x.Files.FirstOrDefault().Id}.{x.Files.FirstOrDefault().Extention}",
                 ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}",
 
@@ -406,6 +406,7 @@ namespace MVC_Freelancer.Controllers
                     WorkType = x.WorkType,
                     Status = x.Status,
                     Progress = x.Progress,
+                    TakerRating = x.TakerRating,
                     DeadLine = x.DeadLine,
                     ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}", //прочитене на снимката от базата данни
                     FileURL = $"/file/{x.Files.FirstOrDefault().Id}.{x.Files.FirstOrDefault().Extention}",
@@ -509,30 +510,24 @@ namespace MVC_Freelancer.Controllers
             return RedirectToAction("Orders");
         }
 
-
-
-
-
-
-
         [HttpPost]
-        public IActionResult Rating(int id/*, InputJobModel model*/)
+        public IActionResult Rating(int rating, int id)
         {
-            //var job = db.Jobs.Where(s => s.Id == model.Id).FirstOrDefault();
-            //job.Rating = model.Rating;
-            //db.Update(jobFd);
-            var model = db.Jobs.Where(x => id == x.Id).Select(x => new InputJobModel
-            {
-                //otlyavo modeli otdyasno bazatadanni
-                Rating = x.Rating,
-            }).FirstOrDefault();
-            //var category = db.Categories.Where(x => model.CategoryId == x.Id).FirstOrDefault();
-            //db.SaveChanges();
-            return this.View(model);
-
-
-            //return RedirectToAction("Index");
+            var jobFd = db.Jobs.FirstOrDefault(r => r.Id == id);
+            jobFd.TakerRating = rating;
+            db.Jobs.Add(jobFd);
+            db.Update(jobFd);
+            db.SaveChanges();
+            return RedirectToAction("MyJobs");
         }
+
+
+
+
+
+
+
+        
 
 
     }

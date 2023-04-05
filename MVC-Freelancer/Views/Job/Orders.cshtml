@@ -24,19 +24,19 @@
     </div>
 
     @* <script>
-    function Accepted()
-    {
-    document.getElementById("AcceptedOrders").style.display= "block";
-    document.getElementById("FinishedOrders").style.display= "none";
+        function Accepted()
+        {
+        document.getElementById("AcceptedOrders").style.display= "block";
+        document.getElementById("FinishedOrders").style.display= "none";
 
-    }
+        }
 
-    function Finished()
-    {
-    document.getElementById("AcceptedOrders").style.display= "none";
-    document.getElementById("FinishedOrders").style.display= "block";
-    }
-    </script>*@
+        function Finished()
+        {
+        document.getElementById("AcceptedOrders").style.display= "none";
+        document.getElementById("FinishedOrders").style.display= "block";
+        }
+        </script>*@
 </div>
 <br>
 
@@ -92,30 +92,30 @@
 
 
                                     @if (item.Progress <= 30)
-                            {
-                            <style>
-                            .progress-bar {
-                            background-color: red;
-                            }
-                            </style>
+                                    {
+                                        <style>
+                                            .progress-bar {
+                                                background-color: red;
+                                            }
+                                        </style>
 
-                            }
-                            else if (item.Progress >= 31 && item.Progress <= 60)
-                            {
-                            <style>
-                            .progress-bar {
-                            background-color: yellow;
-                            }
-                            </style>
-                            }
-                            else if (item.Progress >= 61)
-                            {
-                            <style>
-                            .progress-bar {
-                            background-color: green;
-                            }
-                            </style>
-                            }
+                                    }
+                                    else if (item.Progress >= 31 && item.Progress <= 60)
+                                    {
+                                        <style>
+                                            .progress-bar {
+                                                background-color: yellow;
+                                            }
+                                        </style>
+                                    }
+                                    else if (item.Progress >= 61)
+                                    {
+                                        <style>
+                                            .progress-bar {
+                                                background-color: green;
+                                            }
+                                        </style>
+                                    }
                                 </div>
 
                                 @if (item.Progress <= 30)
@@ -259,9 +259,9 @@
         padding-top: 25px;
     }
     /*
-                                                                                                                                                                                                            .progress-bar {
-                                                                                                                                                                                                                background-color: #fd6900eb;
-                                                                                                                                                                                                            }*/
+                                                                                                                                                                                                                .progress-bar {
+                                                                                                                                                                                                                    background-color: #fd6900eb;
+                                                                                                                                                                                                                }*/
 
     .container2 {
         margin-top: 20px;

@@ -127,17 +127,107 @@
 
 
                                 <div class="d-flex justify-content-center">
-
-                                    @*<a href="@item.FileURL" download>Изтегляне на получените файлове</a>*@
-
                                     <a href="@item.FileURL" download title="Изтегляне на файловете">
                                         <button class=" btn btn-success" style="margin-left:5px; margin-right:5px;">
                                             <i class="fas fa-download" style="color:white;"></i>
                                         </button>
                                     </a>
-
                                 </div>
                             </div>
+
+                        </div>
+                        <br>
+                        @if (item.TakerRating == null)
+                        {
+                            <div class="d-flex justify-content-center">
+                                <form method="post" asp-action="Rating">
+                                    <input type="hidden" name="id" value="@item.Id" />
+                                    <div>
+                                        <label asp-for="@item.TakerRating">Рейтинг: </label>
+                                        <select value="@item.TakerRating" name="rating">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                        <input class="btn btn-warning" type="submit" value="Изпрати">
+                                    </div>
+                                </form>
+                            </div>
+                        }
+                        else
+                        {
+                            
+                            <div class="d-flex justify-content-center">
+
+                                @for (var i = 0; i < @item.TakerRating; i++)
+                                {
+                                    <i class="fa-solid fa-star" style="color:#e1da02;"></i>
+                                }
+                                @for (var j = 0; j < 5 - @item.TakerRating; j++)
+                                {
+                                    <i class="fa-regular fa-star"></i>
+                                }
+                            </div>
+                        }
+
+                        <br>
+                        <a asp-action="ById" asp-route-id="@item.Id" class="card-button">Детайли</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    @*------*@
+    <br>
+    <br>
+    <div class=" d-flex flex-wrap justify-content-around ">
+        <div style=" width:1330px;">
+
+            <br>
+            <h4 align="center">Приети. В процес на разработка</h4>
+            @foreach (var item in Model.Where(x => @*x.TakerId != null &&*@ x.Progress > 0 && x.Progress < 99))
+            {
+
+                <div class="container container2 float-left" style="">
+                    <div class="card-sl ">
+                        <div class="card-image">
+                            <img id="image" height="220px;" src="@item.ImgURL" width="100%" />
+                        </div>
+
+                        <div class="card-heading">
+                            @item.Name
+                        </div>
+                        <div class="card-text">
+                            Цената е @item.Price лева. За по-подр...
+                        </div>
+
+                        <div class="card-text">
+                            <p class="float-start">@item.Price <i>BGN</i></p>
+                            <p class="float-end">@item.WorkType </p>
+                        </div>
+                        <br>
+                        <div class="d-flex justify-content-center">
+
+                            <div class="skills">
+                                <div style="padding-bottom: 40px;">
+                                    <div>
+                                        <p style="float: left;">Напредък (Прогрес)</p>
+                                        <p style="float: right;">@item.Progress%</p>
+                                    </div>
+                                </div>
+                                <br>
+
+                                <div class="progress">
+                                    <div class="progress-bar" style="width:@item.Progress%; "></div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <br>
+                        <div class="d-flex justify-content-center">
+                            <p> Разработва се от "@item.Author.FirstName"</p>
                         </div>
 
                         <br>
@@ -264,6 +354,16 @@ else
     </div>
 }
 <style>
+    .progress {
+        height: 10px;
+        border-radius: 0px;
+        width: 240px;
+    }
+
+    .skills {
+        padding-top: 25px;
+    }
+
     .container2 {
         margin-top: 20px;
         width: 25%;

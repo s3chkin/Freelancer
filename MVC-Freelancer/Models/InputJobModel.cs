@@ -24,7 +24,8 @@ namespace MVC_Freelancer.Models
         public string ImgURL { get; set; }
         public string? FileURL { get; set; }
         public bool? Status { get; set; }
-        public double? Rating { get; set; }
+        public int? TakerRating { get; set; }
+        public int? GiverRating { get; set; }
         [Required]
         public string WorkType { get; set; }
         public bool Finished { get; set; }
