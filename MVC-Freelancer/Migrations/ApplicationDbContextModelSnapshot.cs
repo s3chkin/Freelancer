@@ -524,6 +524,23 @@ namespace MVC_Freelancer.Migrations
                     b.ToTable("Requests");
                 });
 
+            modelBuilder.Entity("MVC_Freelancer.Data.Models.Role", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Roles");
+                });
+
             modelBuilder.Entity("MVC_Freelancer.Data.Models.Skill", b =>
                 {
                     b.Property<int>("Id")

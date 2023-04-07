@@ -158,7 +158,7 @@
                         }
                         else
                         {
-                            
+
                             <div class="d-flex justify-content-center">
 
                                 @for (var i = 0; i < @item.RatingForTaker; i++)
@@ -226,10 +226,12 @@
 
                         </div>
                         <br>
-                        <div class="d-flex justify-content-center">
-                            <p> Разработва се от "@item.Author.FirstName"</p>
-                        </div>
-
+                        @*@if (item.Finished == false)
+                        {
+                            <div class="d-flex justify-content-center">
+                                <p> Разработва се от "@item.Author.FirstName"</p>
+                            </div>
+                        }*@
                         <br>
                         <a asp-action="ById" asp-route-id="@item.Id" class="card-button">Детайли</a>
                     </div>

@@ -38,17 +38,8 @@ namespace MVC_Freelancer
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.AddControllersWithViews();
 
-        //    builder.Services.AddIdentity<IdentityUser, IdentityRole>()
-        //.AddEntityFrameworkStores<ApplicationDbContext>()
-        //.AddDefaultTokenProviders();
+           
 
-            //builder.Services.AddAuthorization(options =>
-            //{
-            //    options.AddPolicy("AdminsOnly", policy => policy.RequireRole("Admin"));
-            //    options.AddPolicy("UsersOnly", policy => policy.RequireRole("User"));
-            //});
-
-            
 
 
             //builder.Services.AddDbContext<AppI>(options => options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
@@ -67,12 +58,15 @@ namespace MVC_Freelancer
             builder.Services.AddTransient<IDataBaseSeeder, DataBaseSeeder>();
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
-            //builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-            //    .AddCookie(x=>
-            //    {
-            //        x.LogoutPath = "/Home/index/";
-            //    });
+          
+            //using (var serviceScope = app.Services.CreateScope())
+            //{
+            //    var context = serviceScope.ServiceProvider.GetService<ApplicationDbContext>();
+
+            //    RoleSeeder.Seed(context);
+            //}
+
+
             if (app.Environment.IsDevelopment())
             {
                 app.UseMigrationsEndPoint();

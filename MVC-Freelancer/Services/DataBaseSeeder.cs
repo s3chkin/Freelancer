@@ -41,6 +41,7 @@ namespace MVC_Freelancer.Services
             var user1 = new AppUser
             {
                 UserName = "Administrator",
+                FirstName = "Admin",
                 Email = "admin@gmail.com",
             };
 

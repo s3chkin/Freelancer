@@ -353,7 +353,7 @@ namespace MVC_Freelancer.Controllers
         public async Task<IActionResult> Accept(int id)
         {
             string myId = (await GetCurrentUserAsync()).Id; //моето айди
-            var jobFd = db.Jobs.FirstOrDefault(r => r.Id == id /*|| r.GiverId != myId || r.TakerId != myId*/); //Търсене на обява по айди
+            var jobFd = db.Jobs.FirstOrDefault(r => r.Id == id); //Търсене на обява по айди
             jobFd.TakerId = myId;
             db.Update(jobFd);
             await db.SaveChangesAsync();
