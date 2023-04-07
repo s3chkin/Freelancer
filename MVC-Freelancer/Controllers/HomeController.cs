@@ -10,12 +10,12 @@ namespace MVC_Freelancer.Controllers
     public class HomeController : BaseController
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly IDataBaseSeeder dbSeeder;
+        //private readonly IDataBaseSeeder dbSeeder;
 
-        public HomeController(ILogger<HomeController> logger, UserManager<AppUser> um, IDataBaseSeeder dbSeeder) : base(um)
+        public HomeController(ILogger<HomeController> logger, UserManager<AppUser> um/*, IDataBaseSeeder dbSeeder*/) : base(um)
         {
             _logger = logger;
-            this.dbSeeder = dbSeeder;
+            //this.dbSeeder = dbSeeder;
          
         }
 

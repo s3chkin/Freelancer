@@ -5,57 +5,30 @@ using MVC_Freelancer.Data.Models;
 
 namespace MVC_Freelancer.Services
 {
-    public class RoleSeeder : IDataBaseSeeder
+    public class RoleSeeder 
     {
 
-        private readonly ApplicationDbContext dbContext;
-        private readonly UserManager<AppUser> userManager;
-        private readonly RoleManager<IdentityRole> roleManager;
-
-        public RoleSeeder(ApplicationDbContext dbContext, UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager)
+        public static async Task SeedAsync(UserManager<AppUser> userManager, RoleManager<Role> roleManager)
         {
-            this.dbContext = dbContext;
-            this.userManager = userManager;
-            this.roleManager = roleManager;
-        }
-
-
-        public async Task<bool> HasAnyDataInDBAsync() =>
-                   await roleManager.Roles.AnyAsync();
-
-        public async Task InsertDataInDBAsync()
-        {
-            await this.CreateRolesAsync();
-            await this.RegisterUsersAsync();
-
-        }
-
-        private async Task CreateRolesAsync()
-        {
-            await roleManager.CreateAsync(new IdentityRole("Admin"));//.GetAwaiter().GetResult();
-            await roleManager.CreateAsync(new IdentityRole("Waiter"));
-        }
-
-        private async Task RegisterUsersAsync()
-        {
-            var user1 = new AppUser
+            // Проверка за наличие на роля "Администратор"
+            if (!await roleManager.RoleExistsAsync("Admin"))
             {
-                UserName = "Administrator",
-                FirstName = "Admin",
-                Email = "admin@gmail.com",
-            };
+                // Създаване на роля "Администратор"
+                var adminRole = new Role { Name = "Admin" };
+                await roleManager.CreateAsync(adminRole);
 
-            var user2 = new AppUser
-            {
-                UserName = "SimpleUser",
-                Email = "user0000@abv.bg",
-            };
-            var pwd = "1234Aa%";
-
-            await userManager.CreateAsync(user1, pwd);
-            await userManager.CreateAsync(user2, pwd);
-            await userManager.AddToRoleAsync(user1, "Admin");
+                // Създаване на потребител "admin" и добавяне на роля "Администратор"
+                var adminUser = new AppUser
+                {
+                    UserName = "admin@example.com",
+                    Email = "admin@example.com",
+                    EmailConfirmed = true
+                };
+                await userManager.CreateAsync(adminUser, "StrongPassword!1");
+                await userManager.AddToRoleAsync(adminUser, "Admin");
+            }
         }
+
 
         //public static void Seed(ApplicationDbContext context)
         //{

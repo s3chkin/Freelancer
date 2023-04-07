@@ -4,13 +4,14 @@ using Microsoft.EntityFrameworkCore;
 using MVC_Freelancer.Data;
 using MVC_Freelancer.Data.Models;
 using MVC_Freelancer.Services;
+//using MVC_Freelancer.Services.RoleSeeder;
 
 namespace MVC_Freelancer
 {
     public class Program
     {
 
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -38,7 +39,8 @@ namespace MVC_Freelancer
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.AddControllersWithViews();
 
-           
+
+
 
 
 
@@ -55,10 +57,10 @@ namespace MVC_Freelancer
             builder.Services.AddControllersWithViews();
 
 
-            builder.Services.AddTransient<IDataBaseSeeder, DataBaseSeeder>();
+            //builder.Services.AddTransient<IDataBaseSeeder, DataBaseSeeder>();
             var app = builder.Build();
 
-          
+
             //using (var serviceScope = app.Services.CreateScope())
             //{
             //    var context = serviceScope.ServiceProvider.GetService<ApplicationDbContext>();
@@ -90,7 +92,20 @@ namespace MVC_Freelancer
                 pattern: "{controller=Home}/{action=Index}/{id?}");
             app.MapRazorPages();
 
+
+            //using (var scope = app.Services.CreateScope())
+            //{
+            //    var services = scope.ServiceProvider;
+            //    var userManager = services.GetRequiredService<UserManager<AppUser>>();
+            //    var roleManager = services.GetRequiredService<RoleManager<Role>>();
+            //    await Services.RoleSeeder.SeedAsync(userManager, roleManager);
+            //}
+
+
             app.Run();
         }
+
+
     }
+
 }
