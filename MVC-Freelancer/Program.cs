@@ -47,14 +47,7 @@ namespace MVC_Freelancer
             //builder.Services.AddDbContext<AppI>(options => options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
             //builder.Services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<AppIdentityDbContext>().AddDefaultTokenProviders();
 
-            builder.Services.AddAuthentication().AddGoogle(
-                opts =>
-                {
-                    opts.ClientId = "584315873580-vupubqnalkd8qmih96unubt2408v27l6.apps.googleusercontent.com";
-                    opts.ClientSecret = "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";
-                    opts.SignInScheme = IdentityConstants.ExternalScheme;
-                });
-            builder.Services.AddControllersWithViews();
+           
 
 
             //builder.Services.AddTransient<IDataBaseSeeder, DataBaseSeeder>();
