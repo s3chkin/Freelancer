@@ -47,7 +47,7 @@ namespace MVC_Freelancer
             //builder.Services.AddDbContext<AppI>(options => options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
             //builder.Services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<AppIdentityDbContext>().AddDefaultTokenProviders();
 
-           
+
 
 
             //builder.Services.AddTransient<IDataBaseSeeder, DataBaseSeeder>();
