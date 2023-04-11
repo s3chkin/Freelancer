@@ -38,6 +38,11 @@ namespace MVC_Freelancer.Controllers
             return View();
         }
 
+        public IActionResult LoginError()//ако акаунтът на потребителя е блокиран от администратора, ще се препрати към този екшън
+        {
+            return View();
+        }
+
         [HttpPost]
         public async Task<IActionResult> AddRole(AddRoleViewModel model)
         {
@@ -92,12 +97,6 @@ namespace MVC_Freelancer.Controllers
             //db.Update(userFd);
             db.SaveChanges();
             return RedirectToAction("UsersList");
-        }
-
-        [HttpPost]
-        public IActionResult DisableMessage()//ако акаунта на потребителя е нлокиран от администратора, ще се препрати към този екшън
-        {
-            return View();  
         }
     }
 }

@@ -116,7 +116,7 @@ namespace MVC_Freelancer.Areas.Identity.Pages.Account
             var userFd = await userManager.Users.FirstOrDefaultAsync(x => x.Email == Input.Email);
             if (userFd != null && userFd.IsDisabled)
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("LoginError","Admin");
             }
 
             returnUrl ??= Url.Content("~/");
