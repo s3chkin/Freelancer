@@ -11,12 +11,13 @@
             <a class="nav-link text-dark" title="Моите пари">  <i>0 BGN</i> </a>
         </li>
 
-        
 
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-controller="Job" asp-action="Messages" title="AdminPanel"><i class="fa-solid fa-money-check-dollar" style="font-size:25px;"></i></a>
-        </li>
-
+        @if (User.IsInRole("Admin"))
+        {
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-controller="Job" asp-action="Messages" title="AdminPanel"><i class="fa-solid fa-money-check-dollar" style="font-size:25px;"></i></a>
+            </li>
+        }
         @*  <li class="nav-item">
     <button style="border:none; background:none;" onclick="search()" class="nav-link text-dark" id="searchBar"><i style="font-size:25px; margin-left:10px;" class="fas fa-search"></i></button>
     </li>*@
