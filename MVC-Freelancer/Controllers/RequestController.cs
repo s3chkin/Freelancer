@@ -12,6 +12,7 @@ namespace MVC_Freelancer.Controllers
         private readonly ApplicationDbContext db;
         private readonly IWebHostEnvironment webHostEnvironment;
         private string[] allowedExtention = new[] { "png", "jpg", "jpeg" };
+        private string[] allowedExtention2 = new[] { "png", "jpg", "jpeg", "zip", "txt", "exe", "cs", "css", "js", "sln", "rar" };
         public RequestController(ApplicationDbContext db, IWebHostEnvironment webHostEnvironment, UserManager<AppUser> um) : base(um)
         {
             this.db = db;
@@ -25,7 +26,7 @@ namespace MVC_Freelancer.Controllers
                 Sum = x.Sum,
                 DeadLine = x.DeadLine,
                 Title = x.Title,
-               
+
 
                 Description = x.Description,
                 CategoryId = x.CategoryId,
@@ -165,18 +166,22 @@ namespace MVC_Freelancer.Controllers
 
         public IActionResult Requests()
         {
-            var model = db.Jobs.Select(x => new InputJobModel
+            var model = db.Jobs.Where(x => x.WorkType == "Предлагам" && x.Status == true && x.DeadLine > DateTime.Today && x.TakerId == null).Select(x => new InputJobModel
             {
                 Name = x.Name,
                 Price = x.Price,
                 Id = x.Id,
+                FileURL = $"/file/{x.Files.FirstOrDefault().Id}.{x.Files.FirstOrDefault().Extention}",
                 Status = x.Status,
-                Finished = x.Finished,
-                DeadLine = x.DeadLine,
                 WorkType = x.WorkType,
+                Finished = x.Finished,
+                Progress = x.Progress,
+                DeadLine = x.DeadLine,
                 ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}", //прочитене на снимката от базата данни
-            }
-            ).ToList();
+                Author = x.Giver,
+                TakerId = x.TakerId
+            }).ToList();
+
             return View(model);
         }
 
@@ -186,7 +191,6 @@ namespace MVC_Freelancer.Controllers
             jobFd.Finished = true;
             db.Update(jobFd);
             db.SaveChanges();
-            //return RedirectToAction("Orders");
             return Redirect("Requests");
         }
     }

@@ -20,7 +20,6 @@
             <b>Потребители и роли</b>
         </h3>
     </div>
-    <!-- /.box-header -->
     <div class="panel-body">
         <table class="table table-hover table-bordered table-condensed" id="UsersWithRoles">
             <thead>
@@ -28,10 +27,8 @@
                     <td><b>Потребителско име</b></td>
                     <td><b>Email</b></td>
                     <td><b>Роля</b></td>
-                    @if (User.IsInRole("Admin"))
-                    {
-                        <td><b>Опция</b></td>
-                    }
+                    <td><b>Опция</b></td>
+
                 </tr>
             </thead>
             @foreach (var user in Model)
@@ -41,18 +38,29 @@
                     <td>@user.Email</td>
                     <td>
                         @user.Role
-                       
+                        @if (user.Email == User.Identity.Name)
+                        {
+                            <p>Администратор <i style="color:red;">(Аз)</i></p>
+                        }
+                        else
+                        {
+                            <p>Обикновен потребител</p>
+
+                        }
                     </td>
-                    
-                        <td>
+
+                    <td>
+                        <div class="d-flex justify-content-center">
+                            
                             <form method="post" asp-controller="Admin" asp-action="Disable">
                                 <fieldset>
                                     <input type="hidden" name="id" value="@user.Id" />
                                     <button type="submit" class="btn btn-danger"><i class="fa-solid fa-ban"></i> </button>
                                 </fieldset>
                             </form>
-                        </td>
-                    
+                        </div>
+                    </td>
+
 
 
                 </tr>

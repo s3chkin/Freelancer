@@ -33,39 +33,13 @@ namespace MVC_Freelancer.Controllers
             return View(roles);
         }
 
-        public IActionResult AddRole()
-        {
-            return View();
-        }
-
+      
         public IActionResult LoginError()//ако акаунтът на потребителя е блокиран от администратора, ще се препрати към този екшън
         {
             return View();
         }
-
-        [HttpPost]
-        public async Task<IActionResult> AddRole(AddRoleViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                IdentityRole identityRole = new()
-                {
-                    Name = model.RoleName
-                };
-                var result = await _roleManager.CreateAsync(identityRole);
-                if (result.Succeeded)
-                {
-                    return RedirectToAction("ListAllRoles");
-                }
-                foreach (var error in result.Errors)
-                {
-                    ModelState.AddModelError(string.Empty, error.Description);
-                }
-            }
-            return View(model);
-        }
-
-        //[Authorize(Roles = "Admin")]
+                
+        [Authorize(Roles = "Admin")]
         public IActionResult UsersList()
         {
             var usersWithRoles = (from user in db.Users
@@ -74,17 +48,13 @@ namespace MVC_Freelancer.Controllers
                                       UserId = user.Id,
                                       Username = user.UserName,
                                       Email = user.Email,
-                                      //RoleNames = (from userRole in user.Roles
-                                      //             join role in db.Roles on userRole.RoleId
-                                      //             equals role.Id
-                                      //             select role.Name).ToList()
+                                     
                                   }).ToList().Select(p => new UserViewModel()
 
                                   {
                                       Id = p.UserId,
                                       Username = p.Username,
                                       Email = p.Email,
-                                      //Role = string.Join(",", p.RoleNames)
                                   });
             return View(usersWithRoles);
         }
@@ -94,7 +64,6 @@ namespace MVC_Freelancer.Controllers
         {
             var userFd = db.AppUser.FirstOrDefault(r => r.Id == id); //Търсене на потребител по айди
             userFd.IsDisabled = true;
-            //db.Update(userFd);
             db.SaveChanges();
             return RedirectToAction("UsersList");
         }

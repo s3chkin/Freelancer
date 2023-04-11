@@ -54,9 +54,9 @@
 <div class=" d-flex flex-wrap justify-content-around ">
     <div style=" width:1330px;">
         <h5><i><b>Заявки</b></i> </h5>
-
-        @foreach (var item in Model.Where(x => x.WorkType == "Търся" && x.Status == true && x.DeadLine > DateTime.Today && x.Finished == false))
+        @foreach (var item in Model)
         {
+
             <div class="container container2 float-left" style="">
                 <div class="card-sl ">
                     <div class="card-image">
@@ -72,15 +72,18 @@
                     </div>
                     <div class="card-text">
                         <p class="float-start">@item.Price <i>BGN</i></p>
+                        <p class="float-end">@item.Author.FirstName</p>
 
                     </div>
+
+
                     <div style="margin-top:30px;" class="d-flex justify-content-center">
                         @*<form method="post" asp-action="Accept">
-                            <fieldset>
-                            <input type="hidden" name="id" value="@item.Id" />
-                            <button type="submit" class="btn btn-success">Приеми </button>
-                            </fieldset>
-                            </form>*@
+                    <fieldset>
+                    <input type="hidden" name="id" value="@item.Id" />
+                    <button type="submit" class="btn btn-success">Приеми </button>
+                    </fieldset>
+                    </form>*@
 
                         @if (item.Author.UserName == User.Identity.Name)
                         {
@@ -117,16 +120,17 @@
 
 
                     </div>
+
                     <br>
                     <a asp-action="ById" asp-route-id="@item.Id" class="card-button"> Детайли</a>
                 </div>
             </div>
 
         }
+        
     </div>
 </div>
 
-</div>
 <style>
     .card-sl {
         border-radius: 4px;

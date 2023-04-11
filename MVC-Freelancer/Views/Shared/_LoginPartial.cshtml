@@ -7,15 +7,12 @@
 <ul class="navbar-nav">
     @if (SignInManager.IsSignedIn(User))
     {
-        <li class="nav-item">
-            <a class="nav-link text-dark" title="Моите пари">  <i>0 BGN</i> </a>
-        </li>
-
+       
 
         @if (User.IsInRole("Admin"))
         {
             <li class="nav-item">
-                <a class="nav-link text-dark" asp-controller="Job" asp-action="Messages" title="AdminPanel"><i class="fa-solid fa-money-check-dollar" style="font-size:25px;"></i></a>
+                <a class="nav-link text-dark" asp-controller="Job" asp-action="Messages" title="AdminPanel"><i class="fa-solid fa-screwdriver-wrench" style="font-size:25px; margin-left:10px;"></i></a>
             </li>
         }
         @*  <li class="nav-item">

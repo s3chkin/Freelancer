@@ -28,9 +28,9 @@
             char[] gmail = { '@', 'g', 'm', 'a', 'i', 'l', '.', 'c', 'o', 'm' };
             char[] email = { '@', 'a', 'b', 'v', '.', 'b', 'g' };
             char[] hotmail = { '@', 'h', 'o', 't', 'm', 'a', 'i', 'l', '.', 'c', 'o', 'm' };
-           var onlyname = username.Trim(hotmail);
+            var onlyname = username.Trim(hotmail);
             onlyname = username.Trim(email);
-             onlyname = username.Trim(gmail);
+            onlyname = username.Trim(gmail);
         }
 
         @*<div class="alert alert-success" role="alert">
@@ -45,7 +45,7 @@
 
 
         <center>
-            <div class="d-flex justify-content-center">
+            @*<div class="d-flex justify-content-center">
                 <span> <input asp-for="@Model.Name" onclick="ContactsForm()" value="@onlyname" required id="name" readonly="readonly" class="contactInputs form-control float-left " type="text" placeholder="Собствено име"></span>
                 <input asp-for="@Model.Email" onclick="ContactsForm()" value="@User.Identity.Name" required id="e-mail" readonly="readonly" class="contactInputs form-control" type="email" placeholder="E-mail">
             </div>
@@ -55,13 +55,54 @@
             <textarea asp-for="@Model.Message" onclick="ContactsForm()" id="msg" class="contactInputs  form-control md-textarea" placeholder="Вашето съобщение" required></textarea>
 
 
-            <br><br>
-            <input onclick=success() value="Изпращане" type="submit" id="btn">
+            <br><br>*@
+            @if (!User.IsInRole("Admin"))
+            {
+                <div class="d-flex justify-content-center">
+                    <span> <input asp-for="@Model.Name" onclick="ContactsForm()" value="@onlyname" required id="name" readonly="readonly" class="contactInputs form-control float-left " type="text" placeholder="Собствено име"></span>
+                    <input asp-for="@Model.Email" onclick="ContactsForm()" value="@User.Identity.Name" required id="e-mail" readonly="readonly" class="contactInputs form-control" type="email" placeholder="E-mail">
+                </div>
+                <br>
+
+                <br>
+                <input asp-for="@Model.Subject" onclick="ContactsForm()" id="theme" class="contactInputs form-control" type="text" placeholder="Тема" required>
+                <br>
+
+                <br>
+                <textarea asp-for="@Model.Message" onclick="ContactsForm()" id="msg" class="contactInputs  form-control md-textarea" placeholder="Вашето съобщение" required></textarea>
+
+
+                <br><br>
+                <input onclick=success() value="Изпращане" type="submit" id="btn">
+            }
+            else
+            {
+                <div class="d-flex justify-content-center">
+                    <span> <input asp-for="@Model.Name" onclick="ContactsForm()" value="@onlyname" required id="name" readonly="readonly" class="contactInputs form-control float-left " type="text" placeholder="Собствено име"></span>
+                    <input asp-for="@Model.Email" onclick="ContactsForm()" value="@User.Identity.Name" required id="e-mail" readonly="readonly" class="contactInputs form-control" type="email" placeholder="E-mail">
+                </div>
+                <br>
+
+                <br>
+                <input disabled asp-for="@Model.Subject" onclick="ContactsForm()" id="theme" class="contactInputs form-control" type="text" placeholder="Тема" required>
+                <br>
+
+                <br>
+                <textarea disabled asp-for="@Model.Message" onclick="ContactsForm()" id="msg" class="contactInputs  form-control md-textarea" placeholder="Вашето съобщение" required></textarea>
+
+                <br>
+                <br>
+
+
+                <input value="Изпращане" type="submit" id="btn" disabled style="background-color:gray;">
+                <br>
+                <br>
+                <p style="color:red;"><i>Администраторът няма право да пише съобщение за себе си!</i></p>
+            }
         </center>
 
     </section>
 </form>
-<br>
 <br>
 
 <style>

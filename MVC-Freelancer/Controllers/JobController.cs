@@ -309,6 +309,7 @@ namespace MVC_Freelancer.Controllers
             return RedirectToAction("Contacts");
 
         }
+        [Authorize(Roles = "Admin")]
         public IActionResult Messages()
         {
             var msg = db.ContactUs.Select(x => new InputSendMailModel
