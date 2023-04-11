@@ -83,14 +83,14 @@ namespace MVC_Freelancer.Controllers
                                   });
             return View(usersWithRoles);
         }
-
-        public IActionResult IsDisabled(string id, AppUser usr)
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public IActionResult Disable(string id)
         {
             var userFd = db.AppUser.FirstOrDefault(r => r.Id == id); //Търсене на потребител по айди
-            usr.IsDisabled = userFd.IsDisabled;
             userFd.IsDisabled = true;
-            db.Update(userFd);
-             db.SaveChanges();
+            //db.Update(userFd);
+            db.SaveChanges();
             return RedirectToAction("UsersList");
         }
     }

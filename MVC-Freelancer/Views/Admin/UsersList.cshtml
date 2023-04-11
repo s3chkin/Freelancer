@@ -38,7 +38,7 @@
                     <td>@user.Email</td>
                     <td>@user.Role</td>
                     <td>
-                        <form method="post" asp-controller="Admin" asp-action="IsDisabled">
+                        <form method="post" asp-controller="Admin" asp-action="Disable">
                             <fieldset>
                                 <input type="hidden" name="id" value="@user.Id" />
                                 <button type="submit" class="btn btn-danger"><i class="fa-solid fa-ban"></i> </button>

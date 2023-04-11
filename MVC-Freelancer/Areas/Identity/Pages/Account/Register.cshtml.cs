@@ -30,13 +30,14 @@ namespace MVC_Freelancer.Areas.Identity.Pages.Account
         private readonly IUserEmailStore<AppUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly RoleManager<IdentityRole> roleManager;
 
         public RegisterModel(
             UserManager<AppUser> userManager,
             IUserStore<AppUser> userStore,
             SignInManager<AppUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender, RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -44,6 +45,7 @@ namespace MVC_Freelancer.Areas.Identity.Pages.Account
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            this.roleManager = roleManager;
         }
 
         /// <summary>
@@ -128,7 +130,17 @@ namespace MVC_Freelancer.Areas.Identity.Pages.Account
                 user.IsDisabled = Input.IsDisabled;
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
+                if (!roleManager.Roles.Any())
+                {
+                    await roleManager.CreateAsync(new IdentityRole("Admin"));
+                }
+                bool hasToBeAdmin = !_userManager.Users.Any();//!
+
                 var result = await _userManager.CreateAsync(user, Input.Password);
+                if (hasToBeAdmin)
+                {
+                    await _userManager.AddToRoleAsync(user, "Admin");
+                }
 
                 //var addRoleToUser = await _userManager.AddToRoleAsync(user, Input.Role);
 
