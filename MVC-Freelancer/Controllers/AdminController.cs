@@ -93,5 +93,11 @@ namespace MVC_Freelancer.Controllers
             db.SaveChanges();
             return RedirectToAction("UsersList");
         }
+
+        [HttpPost]
+        public IActionResult DisableMessage()//ако акаунта на потребителя е нлокиран от администратора, ще се препрати към този екшън
+        {
+            return View();  
+        }
     }
 }

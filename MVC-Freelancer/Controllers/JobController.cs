@@ -531,16 +531,6 @@ namespace MVC_Freelancer.Controllers
             db.SaveChanges();
             return RedirectToAction("Orders");
         }
-
-
-
-
-
-
-
-        
-
-
     }
 }
 
