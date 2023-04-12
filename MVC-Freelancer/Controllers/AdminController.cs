@@ -67,5 +67,13 @@ namespace MVC_Freelancer.Controllers
             db.SaveChanges();
             return RedirectToAction("UsersList");
         }
+
+        public IActionResult DeleteMsg(int id)
+        {
+            var msg = db.ContactUs.Where(s => s.Id == id).FirstOrDefault(); //търсене
+            db.ContactUs.Remove(msg);
+            db.SaveChanges();
+            return this.RedirectToAction("messages");
+        }
     }
 }
