@@ -333,6 +333,10 @@ namespace MVC_Freelancer.Controllers
             }).ToList();
             return View(panel);
         }
+
+        //за спиране на публичната обява и отново публикуване. При
+        //кликването на бутона, екшънът се активира и статуса на
+        //обявата ако е true става false и ако е false става true.
         [HttpPost]
         public IActionResult Pause(int id)
         {
@@ -351,7 +355,7 @@ namespace MVC_Freelancer.Controllers
 
         }
         [Authorize]
-        public async Task<IActionResult> Accept(int id)
+        public async Task<IActionResult> Accept(int id) //Приемане на обява. По id намира обявата и в TakerId записва id-то на приемащия.
         {
             string myId = (await GetCurrentUserAsync()).Id; //моето айди
             var jobFd = db.Jobs.FirstOrDefault(r => r.Id == id); //Търсене на обява по айди
@@ -363,7 +367,7 @@ namespace MVC_Freelancer.Controllers
 
 
 
-        //Refuse
+        //за отказване на поръчка. Зачиства TakerId.
         public async Task<IActionResult> Refuse(int id)
         {
             //string myId = (await GetCurrentUserAsync()).Id;
@@ -374,6 +378,7 @@ namespace MVC_Freelancer.Controllers
             return RedirectToAction("Orders");
         }
 
+        //Търсачка
         public async Task<IActionResult> Search(string querry)
         {
             var jobsFd = db.Jobs.Where(x => x.Name.Contains(querry)).Select(x => new InputJobModel
@@ -393,6 +398,7 @@ namespace MVC_Freelancer.Controllers
             return View("Index", jobsFd);
         }
 
+        //потребителят в секция Моите Обяви си вижда собствените обяви. Сортира се по собствено ид
         public async Task<IActionResult> MyJobs()
         {
             string myId = (await GetCurrentUserAsync()).Id;
