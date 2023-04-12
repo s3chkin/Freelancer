@@ -443,6 +443,7 @@ namespace MVC_Freelancer.Controllers
             return View(model);
         }
 
+        //Показва поръчките, които е приел потребителят.
         [Authorize]
         public async Task<IActionResult> Orders()
         {
@@ -469,8 +470,7 @@ namespace MVC_Freelancer.Controllers
         [HttpGet]
         public IActionResult SendFiles(int id)
         {
-            var job = db.Jobs.Where(s => s.Id == id).FirstOrDefault();
-            //id = job.Id;
+           
             return View();
         }
 
