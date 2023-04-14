@@ -44,7 +44,6 @@
                         else
                         {
                             <p>Обикновен потребител</p>
-
                         }
                     </td>
 
@@ -52,33 +51,43 @@
                         <div class="d-flex justify-content-center">
                             @if (user.Email == User.Identity.Name)
                             {
+                                <form method="post" asp-controller="Admin" asp-action="Disable">
+                                    <fieldset>
+                                        <input type="hidden" name="id" value="@user.Id" />
+                                        <button disabled type="submit" class="btn btn-danger"><i class="fa-solid fa-ban"></i> </button>
+                                    </fieldset>
+                                </form>
+
+                            }
+                            else
+                            {
+
+
                                 if (user.IsDisabled == false)
                                 {
                                     <form method="post" asp-controller="Admin" asp-action="Disable">
                                         <fieldset>
                                             <input type="hidden" name="id" value="@user.Id" />
-                                            <button disabled type="submit" class="btn btn-danger"><i class="fa-solid fa-ban"></i> </button>
+                                            <button type="submit"  class="btn btn-danger"><i class="fa-solid fa-ban"></i> </button>
                                         </fieldset>
                                     </form>
                                 }
                                 else
                                 {
-                                        <form method="post" asp-controller="Admin" asp-action="Disable">
+                                    <form method="post" asp-controller="Admin" asp-action="Disable">
                                         <fieldset>
                                             <input type="hidden" name="id" value="@user.Id" />
-                                            <button disabled type="submit" class="btn btn-success"><i class="fa-solid fa-ban"></i> </button>
+                                            <button type="submit"  class="btn btn-success"><i class="fa-solid fa-ban"></i> </button>
                                         </fieldset>
                                     </form>
                                 }
-                            }
-                            else
-                            {
-                                <form method="post" asp-controller="Admin" asp-action="Disable">
-                                    <fieldset>
-                                        <input type="hidden" name="id" value="@user.Id" />
-                                        <button type="submit" class="btn btn-danger"><i class="fa-solid fa-ban"></i> </button>
-                                    </fieldset>
-                                </form>
+
+                                @*   <form method="post" asp-controller="Admin" asp-action="Disable">
+                        <fieldset>
+                        <input type="hidden" name="id" value="@user.Id" />
+                        <button type="submit" class="btn btn-danger"><i class="fa-solid fa-ban"></i> </button>
+                        </fieldset>
+                        </form>*@
                             }
 
                         </div>

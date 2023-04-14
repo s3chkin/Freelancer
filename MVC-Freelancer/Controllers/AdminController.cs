@@ -1,4 +1,4 @@
-﻿using AspNetCore;
+﻿//using AspNetCore;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -41,28 +41,29 @@ namespace MVC_Freelancer.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        public IActionResult UsersList()
+        public IActionResult UsersList(string id, UserViewModel model)
         {
+            var userFd = db.AppUser.FirstOrDefault(r => r.Id == id);
+            //model.IsDisabled = true;
             var usersWithRoles = (from user in db.Users
                                   select new
                                   {
                                       UserId = user.Id,
                                       Username = user.UserName,
                                       Email = user.Email,
-                                      
-
+                                      IsDisabled = model.IsDisabled
                                   }).ToList().Select(p => new UserViewModel()
-
                                   {
                                       Id = p.UserId,
                                       Username = p.Username,
                                       Email = p.Email,
+                                      IsDisabled = p.IsDisabled,
                                   });
             return View(usersWithRoles);
         }
         [HttpPost]
         [Authorize(Roles = "Admin")]
-        public IActionResult Disable(string id, UserViewModel model)
+        public IActionResult Disable(string id, UserViewModel model, bool isDsbld)
         {
 
             var userFd = db.AppUser.FirstOrDefault(r => r.Id == id); //Търсене на потребител по айди
@@ -74,7 +75,10 @@ namespace MVC_Freelancer.Controllers
             {
                 userFd.IsDisabled = false;
             }
-            model.IsDisabled = userFd.IsDisabled;
+
+            //model.IsDisabled = true;
+            //model.IsDisabled = userFd.IsDisabled;
+            db.Update(userFd);
             db.SaveChanges();
             return RedirectToAction("UsersList");
         }
