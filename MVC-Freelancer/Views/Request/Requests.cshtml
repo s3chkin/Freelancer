@@ -1,19 +1,23 @@
 ﻿@model ICollection<MVC_Freelancer.Models.InputJobModel>
 
-
 <section class="header-section home-one">
-    <header class="header-area">
-    </header>
     <div class="container">
         <div class="row section-gap header-content">
-            <div class="col-lg-7 col-md-8 header-text-wrap">
-                <h1>
-                    Заявки
-                </h1>
-                <p>
+            <div class="  header-text-wrap">
+                @* <h1>
+                Обяви
+                </h1>*@
+                <div class="float-start">
+                    <h2 style="color:white; font-size:35px;"><b>Зявки</b></h2>
                     <br>
+                    <form asp-action="Search" method="get">
+                        <div class="d-flex justify-content-center">
+                            <input type="search" class="form-control" placeholder="Опитайте 'Фиксиране на грешки'" name="querry" id="searchBar" style="">
+                            <input type="submit" style="margin:0; border:none; border-bottom-left-radius:0; border-top-left-radius:0; width:80px;" value="Търси" class="btn btn-danger">
+                        </div>
+                    </form>
+                </div>
 
-                </p>
             </div>
         </div>
     </div>
@@ -132,6 +136,18 @@
 </div>
 
 <style>
+    #searchBar {
+        width: 450px;
+        height: 45px;
+        margin: 0;
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+    }
+
+        #searchBar:focus {
+            outline: none;
+        }
+
     .card-sl {
         border-radius: 4px;
     }
