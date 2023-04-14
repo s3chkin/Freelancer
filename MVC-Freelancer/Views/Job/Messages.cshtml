@@ -43,11 +43,13 @@
                     <td>@msg.Subject</td>
                     <td>@msg.Message</td>
                     <td>
-                        <a asp-action="DeleteMsg" asp-route-id="@msg.Id">
-                            <button class="btn btn-danger">
-                                <i class="requestDeleteBtn fa-solid fa-trash-can float-left" style="  color:white;"></i>
-                            </button>
-                        </a>
+                        <div class="d-flex justify-content-center">
+                            <a asp-action="DeleteMsg" asp-route-id="@msg.Id">
+                                <button class="btn btn-danger">
+                                    <i class="requestDeleteBtn fa-solid fa-trash-can float-left" style="  color:white;"></i>
+                                </button>
+                            </a>
+                        </div>
                     </td>
 
                 </tr>

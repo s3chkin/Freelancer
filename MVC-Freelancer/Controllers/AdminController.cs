@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using AspNetCore;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MVC_Freelancer.Data;
@@ -33,12 +34,12 @@ namespace MVC_Freelancer.Controllers
             return View(roles);
         }
 
-      
+
         public IActionResult LoginError()//ако акаунтът на потребителя е блокиран от администратора, ще се препрати към този екшън
         {
             return View();
         }
-                
+
         [Authorize(Roles = "Admin")]
         public IActionResult UsersList()
         {
@@ -48,7 +49,8 @@ namespace MVC_Freelancer.Controllers
                                       UserId = user.Id,
                                       Username = user.UserName,
                                       Email = user.Email,
-                                     
+                                      
+
                                   }).ToList().Select(p => new UserViewModel()
 
                                   {
@@ -60,10 +62,19 @@ namespace MVC_Freelancer.Controllers
         }
         [HttpPost]
         [Authorize(Roles = "Admin")]
-        public IActionResult Disable(string id)
+        public IActionResult Disable(string id, UserViewModel model)
         {
+
             var userFd = db.AppUser.FirstOrDefault(r => r.Id == id); //Търсене на потребител по айди
-            userFd.IsDisabled = true;
+            if (userFd.IsDisabled == false)
+            {
+                userFd.IsDisabled = true;
+            }
+            else
+            {
+                userFd.IsDisabled = false;
+            }
+            model.IsDisabled = userFd.IsDisabled;
             db.SaveChanges();
             return RedirectToAction("UsersList");
         }

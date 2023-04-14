@@ -37,7 +37,6 @@
                     <td>@user.Username</td>
                     <td>@user.Email</td>
                     <td>
-                        @user.Role
                         @if (user.Email == User.Identity.Name)
                         {
                             <p>Администратор <i style="color:red;">(Аз)</i></p>
@@ -51,13 +50,37 @@
 
                     <td>
                         <div class="d-flex justify-content-center">
-                            
-                            <form method="post" asp-controller="Admin" asp-action="Disable">
-                                <fieldset>
-                                    <input type="hidden" name="id" value="@user.Id" />
-                                    <button type="submit" class="btn btn-danger"><i class="fa-solid fa-ban"></i> </button>
-                                </fieldset>
-                            </form>
+                            @if (user.Email == User.Identity.Name)
+                            {
+                                if (user.IsDisabled == false)
+                                {
+                                    <form method="post" asp-controller="Admin" asp-action="Disable">
+                                        <fieldset>
+                                            <input type="hidden" name="id" value="@user.Id" />
+                                            <button disabled type="submit" class="btn btn-danger"><i class="fa-solid fa-ban"></i> </button>
+                                        </fieldset>
+                                    </form>
+                                }
+                                else
+                                {
+                                        <form method="post" asp-controller="Admin" asp-action="Disable">
+                                        <fieldset>
+                                            <input type="hidden" name="id" value="@user.Id" />
+                                            <button disabled type="submit" class="btn btn-success"><i class="fa-solid fa-ban"></i> </button>
+                                        </fieldset>
+                                    </form>
+                                }
+                            }
+                            else
+                            {
+                                <form method="post" asp-controller="Admin" asp-action="Disable">
+                                    <fieldset>
+                                        <input type="hidden" name="id" value="@user.Id" />
+                                        <button type="submit" class="btn btn-danger"><i class="fa-solid fa-ban"></i> </button>
+                                    </fieldset>
+                                </form>
+                            }
+
                         </div>
                     </td>
 
@@ -73,20 +96,3 @@
     </div>
 </div>
 
-
-
-@section Scripts{
-    <script>
-
-        $(function () {
-            $('#UsersWithRoles').DataTable({
-                "paging": true,
-                "lengthChange": true,
-                "searching": true,
-                "ordering": true,
-                "info": true,
-                "autoWidth": true
-            });
-        });
-    </script>
-}  
