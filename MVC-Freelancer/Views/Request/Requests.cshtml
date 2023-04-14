@@ -57,7 +57,20 @@
 
 <div class=" d-flex flex-wrap justify-content-around ">
     <div style=" width:1330px;">
-        <h5><i><b>Заявки</b></i> </h5>
+        @if (ViewData.ContainsKey("Search"))
+        {
+            <h5 style="margin-left:10px;"><i><b>Резултатите от търсенето за „@(ViewData["Search"])“ са:</b></i> </h5>
+
+
+        }
+        else if (ViewData.ContainsKey("Search"))
+        {
+            <h5 style="margin-left:10px;"><i><b>няма намерени резултати:</b></i> </h5>
+        }
+        else
+        {
+            <h5 style="margin-left:10px;"><i><b>Заявки:</b></i> </h5>
+        }
         @foreach (var item in Model.Where(x => x.Status == true))
         {
 

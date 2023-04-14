@@ -166,7 +166,7 @@ namespace MVC_Freelancer.Controllers
 
         public IActionResult Requests()
         {
-            var model = db.Jobs.Where(x => x.WorkType == "Предлагам" && x.Status == true && x.DeadLine > DateTime.Today && x.TakerId == null).Select(x => new InputJobModel
+            var model = db.Jobs.Where(x => x.WorkType == "Търся" && x.Status == true && x.DeadLine > DateTime.Today && x.TakerId == null).Select(x => new InputJobModel
             {
                 Name = x.Name,
                 Price = x.Price,
@@ -211,7 +211,7 @@ namespace MVC_Freelancer.Controllers
             }).ToList();
 
             ViewData["Search"] = querry;
-            return View("Index", jobsFd);
+            return View("Requests", jobsFd);
         }
     }
 }
