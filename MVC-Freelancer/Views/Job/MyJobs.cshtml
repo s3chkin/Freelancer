@@ -4,19 +4,35 @@
 <br>
 <br>
 
+<div class="d-flex justify-content-center">
+    @* <a asp-action="Myjobs" class="btn btn-warning" style="margin-left:10px;">Моите обяви</a>
+    <a asp-action="FinishedJobs" class="btn btn-warning" style="margin-left:10px;">Готови - получени</a>
+    <a asp-action="BuildingJobs" class="btn btn-warning" style="margin-left:10px;">В процес на разработка</a>
+    <a asp-action="Expired" class="btn btn-warning" style="margin-left:10px;">С изтекъл срок</a>
+    *@
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            Други
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item active" asp-action="Myjobs">Моите обяви</a></li>
+            <li><a class="dropdown-item" asp-action="FinishedJobs">В процес на разработка</a></li>
+            <li><a class="dropdown-item" asp-action="BuildingJobs">Готови-получени</a></li>
+            <li><a class="dropdown-item" asp-action="Expired">С изтекъл срок</a></li>
+        </ul>
+    </div>
+</div>
 
+<br>
 @if (Model.Any())
 {
 
     <h4 align="center">Моите обяви</h4>
     <br>
-
-
-
     <div class=" d-flex flex-wrap justify-content-around ">
         <div style=" width:1330px;">
 
-            @foreach (var item in Model.Where(x => x.DeadLine > DateTime.Today && x.Finished == false))
+            @foreach (var item in Model)
             {
 
                 <div class="container container2 float-left" style="">
@@ -85,237 +101,8 @@
         </div>
     </div>
 
-
-    @*------*@
     <br>
     <br>
-    <div class=" d-flex flex-wrap justify-content-around ">
-        <div style=" width:1330px;">
-
-            <br>
-            <h4 align="center">Извършени, получени</h4>
-            @foreach (var item in Model.Where(x => x.Finished == true))
-            {
-
-                <div class="container container2 float-left" style="">
-                    <div class="card-sl ">
-                        <div class="card-image">
-                            <img id="image" height="220px;" src="@item.ImgURL" width="100%"/>
-                        </div>
-
-                        <div class="card-heading">
-                            @item.Name
-                        </div>
-                        <div class="card-text">
-                            Цената е @item.Price лева. За по-подр...
-                        </div>
-
-                        <div class="card-text">
-                            <p class="float-start">@item.Price <i>BGN</i></p>
-                            <p class="float-end">@item.WorkType </p>
-                        </div>
-                        <br>
-                        <br>
-                        <div class="d-flex justify-content-center">
-
-
-                            <div>
-
-                                <div class="d-flex justify-content-center">
-                                    <p>Получено от @item.Author.FirstName</p>
-                                </div>
-
-
-                                <div class="d-flex justify-content-center">
-                                    <a href="@item.FileURL" download title="Изтегляне на файловете">
-                                        <button class=" btn btn-success" style="margin-left:5px; margin-right:5px;">
-                                            <i class="fas fa-download" style="color:white;"></i>
-                                        </button>
-                                    </a>
-                                </div>
-                            </div>
-
-                        </div>
-                        <br>
-                        @if (item.RatingForTaker == null)
-                        {
-                            <div class="d-flex justify-content-center">
-                                <form method="post" asp-action="RatingForTaker">
-                                    <input type="hidden" name="id" value="@item.Id" />
-                                    <div>
-                                        <label asp-for="@item.RatingForTaker">Рейтинг: </label>
-                                        <select value="@item.RatingForTaker" name="rating">
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                        </select>
-                                        <input class="btn btn-warning" type="submit" value="Изпрати">
-                                    </div>
-                                </form>
-                            </div>
-                        }
-                        else
-                        {
-
-                            <div class="d-flex justify-content-center">
-
-                                @for (var i = 0; i < @item.RatingForTaker; i++)
-                                {
-                                    <i class="fa-solid fa-star" style="color:#e1da02;"></i>
-                                }
-                                @for (var j = 0; j < 5 - @item.RatingForTaker; j++)
-                                {
-                                    <i class="fa-regular fa-star"></i>
-                                }
-                            </div>
-                        }
-
-                        <br>
-                        <a asp-action="ById" asp-route-id="@item.Id" class="card-button">Детайли</a>
-                    </div>
-                </div>
-            }
-        </div>
-    </div>
-    @*------*@
-    <br>
-    <br>
-    <div class=" d-flex flex-wrap justify-content-around ">
-        <div style=" width:1330px;">
-
-            <br>
-            <h4 align="center">Приети. В процес на разработка</h4>
-            @foreach (var item in Model.Where(x => @*x.TakerId != null &&*@ x.Progress > 0 && x.Progress < 99))
-            {
-
-                <div class="container container2 float-left" style="">
-                    <div class="card-sl ">
-                        <div class="card-image">
-                            <img id="image" height="220px;" src="@item.ImgURL" width="100%" />
-                        </div>
-
-                        <div class="card-heading">
-                            @item.Name
-                        </div>
-                        <div class="card-text">
-                            Цената е @item.Price лева. За по-подр...
-                        </div>
-
-                        <div class="card-text">
-                            <p class="float-start">@item.Price <i>BGN</i></p>
-                            <p class="float-end">@item.WorkType </p>
-                        </div>
-                        <br>
-                        <div class="d-flex justify-content-center">
-
-                            <div class="skills">
-                                <div style="padding-bottom: 40px;">
-                                    <div>
-                                        <p style="float: left;">Напредък (Прогрес)</p>
-                                        <p style="float: right;">@item.Progress%</p>
-                                    </div>
-                                </div>
-                                <br>
-
-                                <div class="progress">
-                                    <div class="progress-bar" style="width:@item.Progress%; "></div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <br>
-                        @*@if (item.Finished == false)
-                        {
-                            <div class="d-flex justify-content-center">
-                                <p> Разработва се от "@item.Author.FirstName"</p>
-                            </div>
-                        }*@
-                        <br>
-                        <a asp-action="ById" asp-route-id="@item.Id" class="card-button">Детайли</a>
-                    </div>
-                </div>
-            }
-        </div>
-    </div>
-
-    @*------*@
-
-    <br></br>
-
-    <div class=" d-flex flex-wrap justify-content-around ">
-        <div style=" width:1330px;">
-            <div style=" width:1330px;">
-
-                @foreach (var item in Model.Where(x => x.DeadLine < DateTime.Today))
-                {
-                    <h5><i><b>Изтекъл срок:</b></i> </h5>
-
-                    <div class="container container2 float-left" style="">
-                        <div class="card-sl ">
-                            <div class="card-image">
-                                <img id="image" height="220px;" src="@item.ImgURL" width="100%" />
-                            </div>
-
-                            <div class="card-heading">
-                                @item.Name
-                            </div>
-                            <div class="card-text">
-                                Цената е @item.Price лева. За по-подробна информация
-                                влезте в самата обява,<br> като натиснете бутона "детайли".
-                            </div>
-                            <div class="card-text">
-                                <p class="float-start">@item.Price <i>BGN</i></p>
-
-                            </div>
-                            <br>
-                            <br>
-                            <div class="d-flex justify-content-center">
-                                @if (item.Status == false)
-                                {
-                                    <form method="post" asp-action="Pause">
-                                        <fieldset>
-                                            <input type="hidden" name="id" value="@item.Id" />
-                                            <button type="submit" class="btn btn-warning"><i class="fa-solid fa-play float-left"></i> </button>
-                                        </fieldset>
-                                    </form>
-                                }
-                                else
-                                {
-                                    <form method="post" asp-action="Pause">
-                                        <fieldset>
-                                            <input type="hidden" name="id" value="@item.Id" />
-                                            <button type="submit" class="btn btn-warning"><i class="fa-solid fa-pause float-left"></i> </button>
-                                        </fieldset>
-                                    </form>
-                                }
-                                <a asp-action="Edit" asp-route-id="@item.Id">
-                                    <button class=" btn btn-success" style="margin-left:5px; margin-right:5px;">
-                                        <i class="requestEditBtn fa-solid fa-pencil float-left" style="color:white;"></i>
-                                    </button>
-                                </a>
-
-                                <a asp-action="Delete" asp-route-id="@item.Id">
-                                    <button class="btn btn-danger">
-                                        <i class="requestDeleteBtn fa-solid fa-trash-can float-left" style="  color:white;"></i>
-                                    </button>
-                                </a>
-
-                            </div>
-
-                            <br>
-                            <a asp-action="ById" asp-route-id="@item.Id" class="card-button"> Детайли</a>
-                        </div>
-                    </div>
-
-
-
-
-                }
-            </div>
-        </div>
-    </div>
 }
 else
 {
@@ -342,15 +129,6 @@ else
                 </a>
             </div>
             <br>
-
-            <div class="d-flex justify-content-center">
-                <h4>
-                    <b>
-                        @*<i>Приетите от вас поръчки, се появяват тук!</i>*@
-                    </b>
-                </h4>
-            </div>
-            <br></br>
 
         </div>
     </div>
@@ -484,5 +262,4 @@ else
             top: 100px;
         }
     }
-
 </style>

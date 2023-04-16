@@ -1,0 +1,94 @@
+﻿@model ICollection<MVC_Freelancer.Models.InputJobModel>
+<br>
+<br>
+<br>
+<br>
+
+<div class="d-flex justify-content-center">
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            Други
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" asp-action="Myjobs">Моите обяви</a></li>
+            <li><a class="dropdown-item" asp-action="FinishedJobs">В процес на разработка</a></li>
+            <li><a class="dropdown-item active" asp-action="BuildingJobs">Готови-получени</a></li>
+            <li><a class="dropdown-item" asp-action="Expired">С изтекъл срок</a></li>
+        </ul>
+    </div>
+</div>
+<br>
+@if (Model.Any())
+{
+    <h4 align="center">В процес на разработка</h4>
+    <br>
+    <div class=" d-flex flex-wrap justify-content-around ">
+        <div style=" width:1330px;">
+
+
+            @foreach (var item in Model)
+            {
+
+                <div class="container container2 float-left" style="">
+                    <div class="card-sl ">
+                        <div class="card-image">
+                            <img id="image" height="220px;" src="@item.ImgURL" width="100%" />
+                        </div>
+
+                        <div class="card-heading">
+                            @item.Name
+                        </div>
+                        <div class="card-text">
+                            Цената е @item.Price лева. За по-подр...
+                        </div>
+
+                        <div class="card-text">
+                            <p class="float-start">@item.Price <i>BGN</i></p>
+                            <p class="float-end">@item.WorkType </p>
+                        </div>
+                        <br>
+                        <div class="d-flex justify-content-center">
+
+                            <div class="skills">
+                                <div style="padding-bottom: 40px;">
+                                    <div>
+                                        <p style="float: left;">Напредък (Прогрес)</p>
+                                        <p style="float: right;">@item.Progress%</p>
+                                    </div>
+                                </div>
+                                <br>
+
+                                <div class="progress">
+                                    <div class="progress-bar" style="width:@item.Progress%; "></div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <br>
+                        @*@if (item.Finished == false)
+                {
+                <div class="d-flex justify-content-center">
+                <p> Разработва се от "@item.Author.FirstName"</p>
+                </div>
+                }*@
+                        <br>
+                        <a asp-action="ById" asp-route-id="@item.Id" class="card-button">Детайли</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+}
+else
+{
+    <div>
+        <div class="d-flex justify-content-center">
+            <h3><i><b>Все още нямате приети обяви, които се обработват.</b></i></h3>
+        </div>
+        <br><br><br>
+        <div class="d-flex justify-content-center">
+            <img src="~/ImageRepository/undraw_building_websites_i78t.svg" width="400px;">
+        </div>
+    </div>
+}

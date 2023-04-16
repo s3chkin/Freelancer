@@ -402,7 +402,7 @@ namespace MVC_Freelancer.Controllers
         public async Task<IActionResult> MyJobs()
         {
             string myId = (await GetCurrentUserAsync()).Id;
-            var model = await db.Jobs.Where(j => j.GiverId == myId)
+            var model = await db.Jobs.Where(j => j.GiverId == myId && j.DeadLine > DateTime.Today && j.Finished == false)
                 .Select(x => new InputJobModel
                 {
                     Author = x.Taker,
@@ -416,7 +416,79 @@ namespace MVC_Freelancer.Controllers
                     RatingForTaker = x.RatingForTaker,
                     DeadLine = x.DeadLine,
                     ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}", //прочитене на снимката от базата данни
-                    FileURL = $"/file/{x.Files.FirstOrDefault().Id}.{x.Files.FirstOrDefault().Extention}",
+                    FileURL = $"/file/{x.Files.FirstOrDefault().Id}.{x.Files.FirstOrDefault().Extention}", //прочитене на файла от базата данни
+                }
+             ).ToListAsync();
+            return View(model);
+        }
+
+        //потребителят в секция „Извършени-получени“ си вижда собствените получени - извършени обяви.
+        public async Task<IActionResult> FinishedJobs()
+        {
+            string myId = (await GetCurrentUserAsync()).Id;
+            var model = await db.Jobs.Where(j => j.GiverId == myId && j.Finished == true)
+                .Select(x => new InputJobModel
+                {
+                    Author = x.Taker,
+                    Finished = x.Finished,
+                    Name = x.Name,
+                    Price = x.Price,
+                    Id = x.Id,
+                    WorkType = x.WorkType,
+                    Status = x.Status,
+                    Progress = x.Progress,
+                    RatingForTaker = x.RatingForTaker,
+                    DeadLine = x.DeadLine,
+                    ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}", //прочитене на снимката от базата данни
+                    FileURL = $"/file/{x.Files.FirstOrDefault().Id}.{x.Files.FirstOrDefault().Extention}", //прочитене на файла от базата данни
+                }
+             ).ToListAsync();
+            return View(model);
+        }
+
+        //потребителят в секция „В процес на разработка“ си вижда собствените обяви, които са приети и се разработват.
+        public async Task<IActionResult> BuildingJobs()
+        {
+            string myId = (await GetCurrentUserAsync()).Id;
+            var model = await db.Jobs.Where(j => j.GiverId == myId &&  /* x.TakerId != null && */ j.Progress > 0 && j.Progress < 99)
+                .Select(x => new InputJobModel
+                {
+                    Author = x.Taker,
+                    Finished = x.Finished,
+                    Name = x.Name,
+                    Price = x.Price,
+                    Id = x.Id,
+                    WorkType = x.WorkType,
+                    Status = x.Status,
+                    Progress = x.Progress,
+                    RatingForTaker = x.RatingForTaker,
+                    DeadLine = x.DeadLine,
+                    ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}", //прочитене на снимката от базата данни
+                    FileURL = $"/file/{x.Files.FirstOrDefault().Id}.{x.Files.FirstOrDefault().Extention}",//прочитене на файла от базата данни
+                }
+             ).ToListAsync();
+            return View(model);
+        }
+
+        //потребителят в секция „Изтекъл срок“ си вижда собствените обяви, на които им е изтекъл срокът.
+        public async Task<IActionResult> Expired()
+        {
+            string myId = (await GetCurrentUserAsync()).Id;
+            var model = await db.Jobs.Where(j => j.GiverId == myId && j.DeadLine < DateTime.Today)
+                .Select(x => new InputJobModel
+                {
+                    Author = x.Taker,
+                    Finished = x.Finished,
+                    Name = x.Name,
+                    Price = x.Price,
+                    Id = x.Id,
+                    WorkType = x.WorkType,
+                    Status = x.Status,
+                    Progress = x.Progress,
+                    RatingForTaker = x.RatingForTaker,
+                    DeadLine = x.DeadLine,
+                    ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}", //прочитене на снимката от базата данни
+                    FileURL = $"/file/{x.Files.FirstOrDefault().Id}.{x.Files.FirstOrDefault().Extention}",//прочитене на файла от базата данни
                 }
              ).ToListAsync();
             return View(model);
@@ -435,7 +507,7 @@ namespace MVC_Freelancer.Controllers
                 Status = x.Status,
                 Progress = x.Progress,
                 ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}", //прочитене на снимката от базата данни
-                FileURL = $"/file/{x.Files.FirstOrDefault().Id}.{x.Files.FirstOrDefault().Extention}",
+                FileURL = $"/file/{x.Files.FirstOrDefault().Id}.{x.Files.FirstOrDefault().Extention}", //прочитене на файла от базата данни
             }
              ).ToList();
             db.SaveChanges();
@@ -460,7 +532,7 @@ namespace MVC_Freelancer.Controllers
                 RatingForGiver = x.RatingForGiver,
                 DeadLine = x.DeadLine,
                 ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}", //прочитене на снимката от базата данни
-                FileURL = $"/file/{x.Files.FirstOrDefault().Id}.{x.Files.FirstOrDefault().Extention}",
+                FileURL = $"/file/{x.Files.FirstOrDefault().Id}.{x.Files.FirstOrDefault().Extention}", //прочитене на файла от базата данни
             }).ToListAsync();
 
             return View(model);

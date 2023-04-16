@@ -1,0 +1,127 @@
+﻿@model ICollection< MVC_Freelancer.Models.InputJobModel>
+<br>
+<br>
+<br>
+<br>
+
+<div class="d-flex justify-content-center">
+     <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            Други
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" asp-action="Myjobs">Моите обяви</a></li>
+            <li><a class="dropdown-item active" asp-action="FinishedJobs">В процес на разработка</a></li>
+            <li><a class="dropdown-item" asp-action="BuildingJobs">Готови-получени</a></li>
+            <li><a class="dropdown-item" asp-action="Expired">С изтекъл срок</a></li>
+        </ul>
+    </div>
+</div>
+<br>
+@if (Model.Any())
+{
+
+    <h4 align="center">Извършени - получени</h4>
+    <br>
+
+    <div class=" d-flex flex-wrap justify-content-around ">
+        <div style=" width:1330px;">
+
+            @foreach (var item in Model)
+            {
+
+                <div class="container container2 float-left" style="">
+                    <div class="card-sl ">
+                        <div class="card-image">
+                            <img id="image" height="220px;" src="@item.ImgURL" width="100%" />
+                        </div>
+
+                        <div class="card-heading">
+                            @item.Name
+                        </div>
+                        <div class="card-text">
+                            Цената е @item.Price лева. За по-подр...
+                        </div>
+
+                        <div class="card-text">
+                            <p class="float-start">@item.Price <i>BGN</i></p>
+                            <p class="float-end">@item.WorkType </p>
+                        </div>
+                        <br>
+                        <br>
+                        <div class="d-flex justify-content-center">
+
+
+                            <div>
+
+                                <div class="d-flex justify-content-center">
+                                    <p>Получено от @item.Author.FirstName</p>
+                                </div>
+
+
+                                <div class="d-flex justify-content-center">
+                                    <a href="@item.FileURL" download title="Изтегляне на файловете">
+                                        <button class=" btn btn-success" style="margin-left:5px; margin-right:5px;">
+                                            <i class="fas fa-download" style="color:white;"></i>
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                        <br>
+                        @if (item.RatingForTaker == null)
+                        {
+                            <div class="d-flex justify-content-center">
+                                <form method="post" asp-action="RatingForTaker">
+                                    <input type="hidden" name="id" value="@item.Id" />
+                                    <div>
+                                        <label asp-for="@item.RatingForTaker">Рейтинг: </label>
+                                        <select value="@item.RatingForTaker" name="rating">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                        <input class="btn btn-warning" type="submit" value="Изпрати">
+                                    </div>
+                                </form>
+                            </div>
+                        }
+                        else
+                        {
+
+                            <div class="d-flex justify-content-center">
+
+                                @for (var i = 0; i < @item.RatingForTaker; i++)
+                                {
+                                    <i class="fa-solid fa-star" style="color:#e1da02;"></i>
+                                }
+                                @for (var j = 0; j < 5 - @item.RatingForTaker; j++)
+                                {
+                                    <i class="fa-regular fa-star"></i>
+                                }
+                            </div>
+                        }
+
+                        <br>
+                        <a asp-action="ById" asp-route-id="@item.Id" class="card-button">Детайли</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}
+else
+{
+    <div>
+        <div class="d-flex justify-content-center">
+            <h3><i><b>Все още нямате готови получени работи.</b></i></h3>
+        </div>
+        <br><br><br>
+        <div class="d-flex justify-content-center">
+            <img src="~/ImageRepository/undraw_work_in_progress_re_byic.svg" width="400px;">
+        </div>
+    </div>
+}
