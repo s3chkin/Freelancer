@@ -25,7 +25,6 @@ namespace MVC_Freelancer.Data.Models
         public bool IsDisabled { get; set; }
         //public virtual ICollection<Job> JobsGiven { get; set; }
 
-        public virtual ICollection<UserSkill> Skills { get; set; }
         public virtual  ICollection<Job> JobsGiven { get; set; }
         public virtual  ICollection<Job> JobsTaken { get; set; }
 

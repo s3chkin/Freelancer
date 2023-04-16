@@ -44,7 +44,6 @@ namespace MVC_Freelancer.Controllers
         public IActionResult UsersList(string id, UserViewModel model)
         {
             var userFd = db.AppUser.FirstOrDefault(r => r.Id == id);
-            //model.IsDisabled = true;
             var usersWithRoles = (from user in db.Users
                                   select new
                                   {
@@ -61,6 +60,7 @@ namespace MVC_Freelancer.Controllers
                                   });
             return View(usersWithRoles);
         }
+
         [HttpPost]
         [Authorize(Roles = "Admin")]
         public IActionResult Disable(string id, UserViewModel model, bool isDsbld)
