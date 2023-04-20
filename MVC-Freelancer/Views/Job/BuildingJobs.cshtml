@@ -10,10 +10,10 @@
             Други
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li><a class="dropdown-item" asp-action="Myjobs">Моите обяви</a></li>
-            <li><a class="dropdown-item" asp-action="FinishedJobs">В процес на разработка</a></li>
-            <li><a class="dropdown-item active" asp-action="BuildingJobs">Готови-получени</a></li>
-            <li><a class="dropdown-item" asp-action="Expired">С изтекъл срок</a></li>
+            <li><a class="dropdown-item " asp-action="Myjobs">Моите обяви</a></li>
+            <li><a class="dropdown-item active" asp-action="BuildingJobs">В процес на разработка</a></li>
+            <li><a class="dropdown-item" asp-action="FinishedJobs">Готови-получени</a></li>
+            <li><a class="dropdown-item " asp-action="Expired">С изтекъл срок</a></li>
         </ul>
     </div>
 </div>
@@ -65,12 +65,12 @@
 
                         </div>
                         <br>
-                        @*@if (item.Finished == false)
-                {
-                <div class="d-flex justify-content-center">
-                <p> Разработва се от "@item.Author.FirstName"</p>
-                </div>
-                }*@
+                        @if (item.Finished == false)
+                        {
+                            <div class="d-flex justify-content-center">
+                                <p> Разработва се от "@item.Author.FirstName"</p>
+                            </div>
+                        }
                         <br>
                         <a asp-action="ById" asp-route-id="@item.Id" class="card-button">Детайли</a>
                     </div>

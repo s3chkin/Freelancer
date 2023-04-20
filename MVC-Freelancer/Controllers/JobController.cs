@@ -450,7 +450,7 @@ namespace MVC_Freelancer.Controllers
         public async Task<IActionResult> BuildingJobs()
         {
             string myId = (await GetCurrentUserAsync()).Id;
-            var model = await db.Jobs.Where(j => j.GiverId == myId &&  /* x.TakerId != null && */ j.Progress > 0 && j.Progress < 99)
+            var model = await db.Jobs.Where(j => j.GiverId == myId && j.TakerId != null /*&&  j.Progress > 0 && j.Progress < 99*/)
                 .Select(x => new InputJobModel
                 {
                     Author = x.Taker,
