@@ -36,13 +36,62 @@
                     <form method="post" asp-action="Accept">
                         <fieldset>
                             <input type="hidden" name="id" value="@Model.Id" />
-                            @if (Model.TakerId != null)
+                            @* @if (Model.TakerId != null)
                             {
-                                <button type="submit" class="btn btn-warning disabled">Приета</button>
+                            <button type="submit" class="btn btn-warning disabled">Приета</button>
                             }
                             else
                             {
-                                <button type="submit" class="btn btn-success">Приеми</button>
+                            if (true)
+                            {
+
+                            }
+                            <button type="submit" class="btn btn-success">Приеми</button>
+                            }*@
+
+
+                            @if (Model.Author.UserName == User.Identity.Name)
+                            {
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <form method="post">
+                                        <fieldset>
+                                            <button type="submit" class="btn btn-secondary" disabled>Собствена </button>
+                                        </fieldset>
+                                    </form>
+                                }
+                                else
+                                {
+
+                                    <form asp-area="Identity" asp-page="/Account/Login">
+                                        <fieldset>
+                                            <input type="hidden" name="id" value="@Model.Id" />
+                                            <button type="submit" class="btn btn-success">Приеми </button>
+                                        </fieldset>
+                                    </form>
+
+                                }
+                            }
+                            else
+                            {
+                                @if (Model.TakerId == null)
+                                {
+                                    <form method="post" asp-action="Accept">
+                                        <fieldset>
+                                            <input type="hidden" name="id" value="@Model.Id" />
+                                            <button type="submit" class="btn btn-success">Приеми </button>
+                                        </fieldset>
+                                    </form>
+                                }
+                                else
+                                {
+                                   <form method="post" asp-action="Accept">
+                                        <fieldset>
+                                            <input type="hidden" name="id" value="@Model.Id" />
+                                            <button type="submit" class="btn btn-success">Приета </button>
+                                        </fieldset>
+                                    </form> 
+                                }
                             }
                         </fieldset>
                     </form>
@@ -53,13 +102,13 @@
             </div>
         </div>
 
-        @*<div style=" margin-top:30px;">
+        <div style=" margin-top:30px;">
 
             <div style="width:700px; margin-top:80px;">
 
 
                 <div id="tableContainer">
-                    <table class="table table-bordered">
+                    <table class="table table-bordered" style="background-color:white;">
                         <thead>
                             <tr>
                                 <th scope="col" class="tableTh"></th>
@@ -199,7 +248,7 @@
             </div>
 
 
-        </div>*@
+        </div>
 
     </div>
 
@@ -266,5 +315,4 @@
     .bi {
         padding-top: 20px;
     }
-
 </style>

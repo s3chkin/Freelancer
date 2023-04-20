@@ -13,30 +13,17 @@
 
 
 <div class="d-flex justify-content-center">
-    <div class="btn-group">
-        <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            Поръчки
-        </button>
-        <ul class="dropdown-menu">
-            <li><a class="dropdown-item" onclick="Accepted()" @*asp-controller="Job" asp-action="Orders"*@>Приети</a></li>
-            <li><a class="dropdown-item" onclick="Finished()" @*href="#"*@>Предадени (Готови)</a></li>
-        </ul>
+    <div class="d-flex justify-content-center">
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                Други
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item active" asp-action="Orders">Приети</a></li>
+                <li><a class="dropdown-item " asp-action="FinishedOrders">Предадени (Готови)</a></li>
+            </ul>
+        </div>
     </div>
-
-    @* <script>
-        function Accepted()
-        {
-        document.getElementById("AcceptedOrders").style.display= "block";
-        document.getElementById("FinishedOrders").style.display= "none";
-
-        }
-
-        function Finished()
-        {
-        document.getElementById("AcceptedOrders").style.display= "none";
-        document.getElementById("FinishedOrders").style.display= "block";
-        }
-        </script>*@
 </div>
 <br>
 
@@ -50,7 +37,7 @@
             <h5 class="d-flex justify-content-center"><i><b>Приети</b></i> </h5>
 
 
-            @foreach (var item in Model.Where(x => x.Finished == false))
+            @foreach (var item in Model)
             {
                 <div class="container container2 float-left" style="">
                     <div class="card-sl ">
@@ -160,95 +147,7 @@
             }
         </div>
 
-        <div id="FinishedOrders" style=" width:1500px; margin-top:10px; /*display:block;*/">
 
-            <h5 class="d-flex justify-content-center"><i><b>Извършени, предадени</b></i> </h5>
-
-            @foreach (var item in Model.Where(x => x.Finished == true))
-            {
-
-                <div class="container container2 float-left" style="">
-                    <div class="card-sl ">
-                        <div class="card-image">
-                            <img id="image" height="220px;" src="@item.ImgURL" width="100%" />
-                        </div>
-
-                        <div class="card-heading">
-                            @item.Name
-                        </div>
-
-                        <div class="card-text">
-                            <p class="float-start">@item.Price <i>BGN</i></p>
-                        </div>
-                        <br><br>
-
-                        @if (item.Finished == false)
-                        {
-                            <div class="card-text">
-                                <div class="float-end">
-                                    <input type="hidden" name="id" value="@item.Id" />
-                                    <button class="btn btn-danger" id="refuseBtn" onclick="refuse(@item.Id+'-cancel')">Отказвам</button>
-                                </div>
-                                <form id="@(item.Id+"-cancel")" method="post" asp-action="Refuse" style="display:none">
-                                    <input name="id" value="@item.Id" type="hidden">
-                                </form>
-
-                                <div class="float-start">
-                                    <a class="btn btn-success" asp-action="SendFiles" asp-route-id="@item.Id">Предаване</a>
-                                </div>
-
-                                <br>
-                            </div>
-                        }
-                        else
-                        {
-                            <div class="d-flex justify-content-center">
-                                <p>Готово!</p>
-                            </div>
-                        }
-
-                        <br>
-                        @if (item.RatingForGiver == null)
-                        {
-                            <div class="d-flex justify-content-center">
-                                <form method="post" asp-action="RatingForGiver">
-                                    <input type="hidden" name="id" value="@item.Id" />
-                                    <div>
-                                        <label asp-for="@item.RatingForGiver">Рейтинг: </label>
-                                        <select value="@item.RatingForGiver" name="rating">
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                        </select>
-                                        <input class="btn btn-warning" type="submit" value="Изпрати">
-                                    </div>
-                                </form>
-                            </div>
-                        }
-                        else
-                        {
-                            <div class="d-flex justify-content-center">
-
-                                @for (var i = 0; i < @item.RatingForGiver; i++)
-                                {
-                                    <i class="fa-solid fa-star" style="color:#e1da02;"></i>
-                                }
-                                @for (var j = 0; j < 5 - @item.RatingForGiver; j++)
-                                {
-                                    <i class="fa-regular fa-star"></i>
-                                }
-                            </div>
-                        }
-
-                        <br>
-                        <a asp-action="ById" asp-route-id="@item.Id" class="card-button">Детайли</a>
-                    </div>
-                </div>
-
-            }
-        </div>
     }
     else
     {
@@ -293,9 +192,9 @@
         padding-top: 25px;
     }
     /*
-                                                                                                                                                                                                                .progress-bar {
-                                                                                                                                                                                                                    background-color: #fd6900eb;
-                                                                                                                                                                                                                }*/
+                                                                                                                                                                                                                    .progress-bar {
+                                                                                                                                                                                                                        background-color: #fd6900eb;
+                                                                                                                                                                                                                    }*/
 
     .container2 {
         margin-top: 20px;
@@ -415,5 +314,4 @@
             top: 100px;
         }
     }
-
 </style>

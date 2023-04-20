@@ -520,7 +520,28 @@ namespace MVC_Freelancer.Controllers
         public async Task<IActionResult> Orders()
         {
             string myId = (await GetCurrentUserAsync()).Id;
-            var model = await db.Jobs.Where(j => j.TakerId == myId).Select(x => new InputJobModel
+            var model = await db.Jobs.Where(j => j.TakerId == myId && j.Finished == false).Select(x => new InputJobModel
+            {
+                Id = x.Id,
+                Name = x.Name,
+                Price = x.Price,
+                Status = x.Status,
+                WorkType = x.WorkType,
+                Finished = x.Finished,
+                Progress = x.Progress,
+                RatingForGiver = x.RatingForGiver,
+                DeadLine = x.DeadLine,
+                ImgURL = $"/img/{x.Images.FirstOrDefault().Id}.{x.Images.FirstOrDefault().Extention}", //прочитене на снимката от базата данни
+                FileURL = $"/file/{x.Files.FirstOrDefault().Id}.{x.Files.FirstOrDefault().Extention}", //прочитене на файла от базата данни
+            }).ToListAsync();
+
+            return View(model);
+        }
+
+        public async Task<IActionResult> FinishedOrders()
+        {
+            string myId = (await GetCurrentUserAsync()).Id;
+            var model = await db.Jobs.Where(j => j.TakerId == myId && j.Finished == true).Select(x => new InputJobModel
             {
                 Id = x.Id,
                 Name = x.Name,
@@ -566,7 +587,7 @@ namespace MVC_Freelancer.Controllers
             jobFd.Files.Add(file2);
             db.Update(jobFd);
             db.SaveChanges();
-            return RedirectToAction("Orders");
+            return RedirectToAction("FinishedOrders");
         }
 
         [Authorize]
