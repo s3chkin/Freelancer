@@ -41,7 +41,7 @@ namespace MVC_Freelancer.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        public IActionResult UsersList(string id/*, UserViewModel model*/)
+        public IActionResult UsersList(string id, UserViewModel model)
         {
             var userFd = db.AppUser.FirstOrDefault(r => r.Id == id);
             var usersWithRoles = (from user in db.Users
@@ -50,13 +50,13 @@ namespace MVC_Freelancer.Controllers
                                       UserId = user.Id,
                                       Username = user.UserName,
                                       Email = user.Email,
-                                      //IsDisabled = model.IsDisabled
+                                      IsDisabled = model.IsDisabled
                                   }).ToList().Select(p => new UserViewModel()
                                   {
                                       Id = p.UserId,
                                       Username = p.Username,
                                       Email = p.Email,
-                                      //IsDisabled = true,
+                                      IsDisabled = true,
                                   });
             return View(usersWithRoles);
         }
