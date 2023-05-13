@@ -18,7 +18,6 @@ namespace MVC_Freelancer.Data
         public DbSet<Image> Images { get; set; }
         public DbSet<AppUser> AppUser { get; set; }
         public DbSet<ContactUs> ContactUs { get; set; }
-        public DbSet<Request> Requests { get; set; }
         public DbSet<Models.File> Files { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
