@@ -79,10 +79,10 @@
         </div>
         <div class="d-flex justify-content-center">
             <label asp-for="Image" class="control-label" style="display:none;"></label>
-            <input asp-for="Image" style="display:none;" type="file" id="file" />
+            <input required asp-for="Image" style="display:none;" type="file" id="file" />
 
-            <label id="file2" onclick="func()" for="file" style="display:grid; place-items:center; cursor:pointer;" class="d-flex justify-content-center"><i id="imgLogo2" class="bi bi-check" style="display:none;"></i><i class="bi bi-camera" id="imgLogo1"></i></label>
-            <span asp-validation-for="Image" class="text-danger"></span>
+            <label  id="file2" onclick="func()" for="file" style="display:grid; place-items:center; cursor:pointer;" class="d-flex justify-content-center"><i id="imgLogo2" class="bi bi-check" style="display:none;"></i><i class="bi bi-camera" id="imgLogo1"></i></label>
+            <span  asp-validation-for="Image" class="text-danger"></span>
         </div>
         <div>
             <p style="color:red;"> <i>СНИМКАТА Е ЗАДЪЛЖИТЕЛНА и трябва да е с разширение .png, .jpg или .jpeg*</i></p>
