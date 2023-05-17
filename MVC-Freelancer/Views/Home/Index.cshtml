@@ -1,4 +1,4 @@
-﻿@model ICollection<MVC_Freelancer.Models.InputJobModel>
+﻿@model ICollection< MVC_Freelancer.Models.InputJobModel>
 
 
 
@@ -190,6 +190,58 @@
 </section>
 
 <!-- End team section -->
+<br></br>
+<section>
+    <div class="d-flex justify-content-center">
+        <h4>Успешно приключени обяви</h4>
+    </div>
+    <div class=" d-flex flex-wrap justify-content-around ">
+        <div style=" width:1330px;">
+
+            @foreach (var item in Model)
+            {
+
+                <div class="container container2 float-left" style="">
+                    <div class="card-sl ">
+                        <div class="card-image">
+                            <img id="image" height="220px;" src="@item.ImgURL" width="100%" />
+                        </div>
+
+                        <div class="card-heading">
+                            @item.Name
+                        </div>
+                        <div class="card-text">
+                            Цената е @item.Price лева. За по-подр...
+                        </div>
+
+                        <div class="card-text">
+                            <p class="float-start">@item.Price <i>BGN</i></p>
+                            @*<p class="float-end">@item.WorkType </p>*@
+                        </div>
+                        <br>
+                        <br>
+
+                        <div class="d-flex justify-content-center">
+
+
+                            <div>
+
+                                <div class="d-flex justify-content-center">
+                                    <p>Предадено от @item.Author.FirstName</p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <br>
+                        <a class="card-button">Приключено</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
 
 <section class="info-section section-gap home-two">
     <div class="container-fluid">
@@ -237,96 +289,7 @@
     </div>
 </section>
 <!-- End info section -->
-<section>
-    <div class=" d-flex flex-wrap justify-content-around ">
-        <div style=" width:1330px;">
 
-            @foreach (var item in Model)
-            {
-
-                <div class="container container2 float-left" style="">
-                    <div class="card-sl ">
-                        <div class="card-image">
-                            <img id="image" height="220px;" src="@item.ImgURL" width="100%" />
-                        </div>
-
-                        <div class="card-heading">
-                            @item.Name
-                        </div>
-                        <div class="card-text">
-                            Цената е @item.Price лева. За по-подр...
-                        </div>
-
-                        <div class="card-text">
-                            <p class="float-start">@item.Price <i>BGN</i></p>
-                            <p class="float-end">@item.WorkType </p>
-                        </div>
-                        <br>
-                        <br>
-                        <div class="d-flex justify-content-center">
-
-
-                            <div>
-
-                                <div class="d-flex justify-content-center">
-                                    <p>Получено от @item.Author.FirstName</p>
-                                </div>
-
-
-                                <div class="d-flex justify-content-center">
-                                    <a href="@item.FileURL" download title="Изтегляне на файловете">
-                                        <button class=" btn btn-success" style="margin-left:5px; margin-right:5px;">
-                                            <i class="fas fa-download" style="color:white;"></i>
-                                        </button>
-                                    </a>
-                                </div>
-                            </div>
-
-                        </div>
-                        <br>
-                        @if (item.RatingForTaker == null)
-                        {
-                            <div class="d-flex justify-content-center">
-                                <form method="post" asp-action="RatingForTaker">
-                                    <input type="hidden" name="id" value="@item.Id" />
-                                    <div>
-                                        <label asp-for="@item.RatingForTaker">Рейтинг: </label>
-                                        <select value="@item.RatingForTaker" name="rating">
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                        </select>
-                                        <input class="btn btn-warning" type="submit" value="Изпрати">
-                                    </div>
-                                </form>
-                            </div>
-                        }
-                        else
-                        {
-
-                            <div class="d-flex justify-content-center">
-
-                                @for (var i = 0; i < @item.RatingForTaker; i++)
-                                {
-                                    <i class="fa-solid fa-star" style="color:#e1da02;"></i>
-                                }
-                                @for (var j = 0; j < 5 - @item.RatingForTaker; j++)
-                                {
-                                    <i class="fa-regular fa-star"></i>
-                                }
-                            </div>
-                        }
-
-                        <br>
-                        <a asp-action="ById" asp-route-id="@item.Id" class="card-button">Детайли</a>
-                    </div>
-                </div>
-            }
-        </div>
-    </div>
-</section>
 
 
 <style>
@@ -393,5 +356,75 @@
         }
     }
 
-    
+    .progress {
+        height: 10px;
+        border-radius: 0px;
+        width: 240px;
+    }
+
+    .skills {
+        padding-top: 25px;
+    }
+
+    .container2 {
+        margin-top: 20px;
+        width: 25%;
+    }
+
+    @@media screen and (max-width: 1240px) {
+        .container2 {
+            width: 28%;
+            justify-content: center;
+            display: grid;
+            align-items: center;
+        }
+    }
+
+    @@media screen and (max-width: 1080px) {
+        .container2 {
+            width: 33%;
+            justify-content: center;
+        }
+    }
+
+    @@media screen and (max-width: 1000px) {
+        .container2 {
+            width: 40%;
+            justify-content: center;
+        }
+    }
+
+    @@media screen and (max-width: 830px) {
+        .container2 {
+            width: 50%;
+            justify-content: center;
+        }
+
+        #image {
+            width: 100%;
+        }
+    }
+
+    @@media screen and (max-width: 660px) {
+        .container2 {
+            width: 50%;
+            justify-content: center;
+        }
+
+        #image {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    @@media screen and (max-width: 600px) {
+        .container2 {
+            width: 100%;
+            justify-content: center;
+        }
+
+        #image {
+            width: 100%;
+        }
+    }
 </style>

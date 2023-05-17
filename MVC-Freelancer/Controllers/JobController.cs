@@ -21,7 +21,11 @@ namespace MVC_Freelancer.Controllers
         private readonly IWebHostEnvironment webHostEnvironment;
         //private readonly object shortStringService;
         private string[] allowedExtention = new[] { "png", "jpg", "jpeg" };
-        private string[] allowedExtention2 = new[] { "png", "jpg", "jpeg", "zip", "txt", "exe", "cs", "css", "js", "sln", "rar" };
+        private string[] allowedExtention2 = new[] 
+        {
+            "png", "jpg", "jpeg", "zip", "txt", "exe", "cs", "css", "js", "sln", "rar",
+            "docx","dotx","dot"
+        };
 
         public JobController(ApplicationDbContext db, IWebHostEnvironment webHostEnvironment/*, IShortStringService shortStringService*/, UserManager<AppUser> userManager) : base(userManager)
         {
@@ -373,6 +377,7 @@ namespace MVC_Freelancer.Controllers
             //string myId = (await GetCurrentUserAsync()).Id;
             var jobFd = db.Jobs.FirstOrDefault(j => j.Id == id);
             jobFd.TakerId = null;
+            jobFd.Progress= 0;
             db.Update(jobFd);
             await db.SaveChangesAsync();
             return RedirectToAction("Orders");
@@ -571,7 +576,7 @@ namespace MVC_Freelancer.Controllers
         public IActionResult SendFiles(int id, InputJobModel model)
         {
             var jobFd = db.Jobs.Where(s => s.Id == id).FirstOrDefault();
-            jobFd.Finished = true;
+            
             var extention = Path.GetExtension(model.File.FileName).TrimStart('.');
             var file2 = new File
             {
@@ -583,7 +588,7 @@ namespace MVC_Freelancer.Controllers
             {
                 model.File.CopyTo(fs);
             }
-
+            jobFd.Finished = true;
             jobFd.Files.Add(file2);
             db.Update(jobFd);
             db.SaveChanges();
