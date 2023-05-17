@@ -18,7 +18,7 @@
 
     <img style="width:560px; margin-top:80px;" src="~/ImageRepository/undraw_add_tasks_re_s5yj.svg">
     <br><br>
-   
+
 
     <div class="form-group" style="display:none;">
         <label asp-for="Status" class="control-label"></label>
@@ -70,13 +70,23 @@
     <br>
 
     <div class="form-group">
+
+
+
         <div style="text-align:center;">
-            <label asp-for="CategoryId" class="control-label">Снимка <span style="color:red; font-size:20px;">*</span></label>
+
+            <label asp-for="CategoryId" class="control-label">Снимка <span style="color:red; font-size:20px;">* </span></label>
         </div>
-        <label asp-for="Image" class="control-label" style="display:none;"></label>
-        <input asp-for="Image" style="display:none;" type="file" id="file" />
-        <label id="file2" onclick="func()" for="file" style="display:grid; place-items:center; cursor:pointer;"><i id="imgLogo2" class="bi bi-check" style="display:none;"></i><i class="bi bi-camera" id="imgLogo1"></i></label>
-        <span asp-validation-for="Image" class="text-danger"></span>
+        <div class="d-flex justify-content-center">
+            <label asp-for="Image" class="control-label" style="display:none;"></label>
+            <input asp-for="Image" style="display:none;" type="file" id="file" />
+
+            <label id="file2" onclick="func()" for="file" style="display:grid; place-items:center; cursor:pointer;" class="d-flex justify-content-center"><i id="imgLogo2" class="bi bi-check" style="display:none;"></i><i class="bi bi-camera" id="imgLogo1"></i></label>
+            <span asp-validation-for="Image" class="text-danger"></span>
+        </div>
+        <div>
+            <p style="color:red;"> <i>СНИМКАТА Е ЗАДЪЛЖИТЕЛНА и трябва да е с разширение .png, .jpg или .jpeg*</i></p>
+        </div>
     </div>
 
 
@@ -264,33 +274,33 @@
 
 @section Scripts
     {
-<script>
+    <script>
 
 
-    function func() {
-        setTimeout(() => { document.getElementById('imgLogo2').style.display = 'block'; }, 3500);
-        document.getElementById('file2').style.color = 'green';
-        document.getElementById('imgLogo1').style.display = 'none';
+        function func() {
+            setTimeout(() => { document.getElementById('imgLogo2').style.display = 'block'; }, 3500);
+            document.getElementById('file2').style.color = 'green';
+            document.getElementById('imgLogo1').style.display = 'none';
 
-        document.getElementById('file2').style.backgroundImage = '@Model.ImgURL';
-    }
-    //function func()
-    //     {
-    //         document.getElementById('file2').style.backgroundImage=@Model.Image;
-    //         //document.getElementById('file').style.color='blue';
-    //     }
-</script>
+            document.getElementById('file2').style.backgroundImage = '@Model.ImgURL';
+        }
+        //function func()
+        //     {
+        //         document.getElementById('file2').style.backgroundImage=@Model.Image;
+        //         //document.getElementById('file').style.color='blue';
+        //     }
+    </script>
 
-<script>
+    <script>
 
-    var needIndex = 0;
+        var needIndex = 0;
 
-    function AddNeed() {
-        $("#Need")
-            .append("<div> Name:<input type='text' name='Need[" + needIndex + "].Name'/> Description: <input type='text' name='Need[" + needIndex + "].Description'/> </div>");
-        needIndex++;
-    }
-</script>
+        function AddNeed() {
+            $("#Need")
+                .append("<div> Name:<input type='text' name='Need[" + needIndex + "].Name'/> Description: <input type='text' name='Need[" + needIndex + "].Description'/> </div>");
+            needIndex++;
+        }
+    </script>
     }
 
 
