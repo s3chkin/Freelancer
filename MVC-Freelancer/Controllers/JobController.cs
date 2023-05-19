@@ -62,7 +62,7 @@ namespace MVC_Freelancer.Controllers
             //
             var categories = db.Categories.Select(x => new SelectListItem
             {
-                Text = x.Name,
+                Text = x.Name.ToString(),
                 Value = x.Id.ToString()
             }).ToList();
             InputJobModel model = new InputJobModel
@@ -219,7 +219,7 @@ namespace MVC_Freelancer.Controllers
             var categories = db.Categories.Select(x =>
              new SelectListItem
              {
-                 Text = x.Name,
+                 Text = x.Name.ToString(),
                  Value = x.Id.ToString()
              }).ToList();
             model.Categories = categories;

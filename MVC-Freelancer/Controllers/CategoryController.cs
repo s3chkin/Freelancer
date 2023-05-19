@@ -35,7 +35,8 @@ namespace MVC_Freelancer.Controllers
         {
             var category = new Category
             {
-                Name = model.Name
+                
+                Name =  model.Name
             };
             db.Categories.Add(category);
             db.SaveChanges();

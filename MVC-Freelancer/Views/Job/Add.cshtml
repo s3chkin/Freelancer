@@ -60,7 +60,8 @@
     <div class="form-group">
         <label asp-for="CategoryId" class="control-label">Категория <span style="color:red; font-size:20px;">*</span></label>
         <div>
-            <select class="float-left" style="margin-right:30px; " asp-for="CategoryId" id="jobCategory" class="form-control" asp-items="@Model.Categories"></select>
+            <select class="float-left" style="margin-right:30px;margin-left: 30px; " asp-for="CategoryId" id="jobCategory" class="form-control" asp-items="@Model.Categories" >
+            </select>
             <a asp-controller="Category" asp-action="Add" style="height:55px; width:55px; font-size:32px;" title="Добави нова категория">
                 +
             </a>
@@ -81,8 +82,8 @@
             <label asp-for="Image" class="control-label" style="display:none;"></label>
             <input required asp-for="Image" style="display:none;" type="file" id="file" />
 
-            <label  id="file2" onclick="func()" for="file" style="display:grid; place-items:center; cursor:pointer;" class="d-flex justify-content-center"><i id="imgLogo2" class="bi bi-check" style="display:none;"></i><i class="bi bi-camera" id="imgLogo1"></i></label>
-            <span  asp-validation-for="Image" class="text-danger"></span>
+            <label id="file2" onclick="func()" for="file" style="display:grid; place-items:center; cursor:pointer;" class="d-flex justify-content-center"><i id="imgLogo2" class="bi bi-check" style="display:none;"></i><i class="bi bi-camera" id="imgLogo1"></i></label>
+            <span asp-validation-for="Image" class="text-danger"></span>
         </div>
         <div>
             <p style="color:red;"> <i>СНИМКАТА Е ЗАДЪЛЖИТЕЛНА и трябва да е с разширение .png, .jpg или .jpeg*</i></p>
