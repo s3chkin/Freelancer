@@ -20,7 +20,7 @@ namespace MVC_Freelancer.Data
         public DbSet<ContactUs> ContactUs { get; set; }
         public DbSet<Models.File> Files { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder builder)
+        protected override void OnModelCreating(ModelBuilder builder) //първичен ключ и описание на връзките
         {
             builder.Entity<Job>()
             .HasOne<AppUser>(j => j.Giver)

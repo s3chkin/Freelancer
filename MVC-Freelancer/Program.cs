@@ -24,7 +24,7 @@ namespace MVC_Freelancer
                 options.UseSqlServer(connectionString));
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-            builder.Services.AddDefaultIdentity<AppUser>(options =>
+            builder.Services.AddDefaultIdentity<AppUser>(options => // za parolata
             {
                 options.SignIn.RequireConfirmedAccount = false;
                 options.Password.RequireDigit = false;
@@ -43,23 +43,9 @@ namespace MVC_Freelancer
 
 
 
-
-            //builder.Services.AddDbContext<AppI>(options => options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
-            //builder.Services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<AppIdentityDbContext>().AddDefaultTokenProviders();
-
-
-
-
             //builder.Services.AddTransient<IDataBaseSeeder, DataBaseSeeder>();
             var app = builder.Build();
 
-
-            //using (var serviceScope = app.Services.CreateScope())
-            //{
-            //    var context = serviceScope.ServiceProvider.GetService<ApplicationDbContext>();
-
-            //    RoleSeeder.Seed(context);
-            //}
 
 
             if (app.Environment.IsDevelopment())
@@ -86,13 +72,7 @@ namespace MVC_Freelancer
             app.MapRazorPages();
 
 
-            //using (var scope = app.Services.CreateScope())
-            //{
-            //    var services = scope.ServiceProvider;
-            //    var userManager = services.GetRequiredService<UserManager<AppUser>>();
-            //    var roleManager = services.GetRequiredService<RoleManager<Role>>();
-            //    await Services.RoleSeeder.SeedAsync(userManager, roleManager);
-            //}
+         
 
 
             app.Run();

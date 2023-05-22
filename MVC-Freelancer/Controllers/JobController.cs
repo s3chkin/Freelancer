@@ -57,7 +57,7 @@ namespace MVC_Freelancer.Controllers
         }
 
         [HttpGet]
-        public IActionResult Add()
+        public IActionResult Add() //при стартирането на съответната страница
         {
             //
             var categories = db.Categories.Select(x => new SelectListItem
@@ -74,12 +74,12 @@ namespace MVC_Freelancer.Controllers
 
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> Add(InputJobModel model)
+        public async Task<IActionResult> Add(InputJobModel model)//при кликването на бутона "Добави" във формата за изпращене към сървъра
         {
             //Добавяне на 1 обява в базата данни
             var job = new Job
             {
-                Name = model.Name,
+                Name = model.Name, //изпраща се от браузъра към сървъра
                 DeadLine = model.DeadLine,
                 Price = model.Price,
                 CategoryId = model.CategoryId,

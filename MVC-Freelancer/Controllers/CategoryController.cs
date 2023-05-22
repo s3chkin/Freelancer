@@ -25,18 +25,18 @@ namespace MVC_Freelancer.Controllers
             return View(categories);
         }
 
-        [HttpGet]
+        [HttpGet]//при стартирането на съответната страница
         public IActionResult Add()
         {
             return this.View();
         }
-        [HttpPost]
+        [HttpPost]//при кликването на бутона "Добави" във формата за изпращене към сървъра
         public IActionResult Add(InputCategoryModel model)
         {
             var category = new Category
             {
                 
-                Name =  model.Name
+                Name = model.Name// от браузъра към сървъра
             };
             db.Categories.Add(category);
             db.SaveChanges();
@@ -58,11 +58,12 @@ namespace MVC_Freelancer.Controllers
         [HttpPost]
         public IActionResult Edit(int id, InputCategoryModel model) //update
         {
-            var category = db.Categories.Where(s => s.Id == model.Id).FirstOrDefault(); //търсене
+            var category = db.Categories.Where(s => s.Id == model.Id).FirstOrDefault(); //търсене-прочитане
             category.Name = model.Name;
             db.SaveChanges();
             return this.RedirectToAction("Index");
         }
+
         public IActionResult Delete(int id)
         {
             var category = db.Categories.Where(s => s.Id == id).FirstOrDefault(); //търсене
