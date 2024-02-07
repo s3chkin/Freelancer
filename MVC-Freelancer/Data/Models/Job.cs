@@ -56,8 +56,6 @@ namespace MVC_Freelancer.Data.Models
         public string? ExtraInfo3 { get; set; }
 
 
-
-
         //public string GiverId { get; set; }
         //public virtual AppUser Giver { get; set; }
 
